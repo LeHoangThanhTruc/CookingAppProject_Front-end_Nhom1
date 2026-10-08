@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+        android:supportsRtl="true">
+        <activity android:name=".Frame33NotificationsActivity" />
+        <activity android:name=".Frame32PrivacyActivity" />
+        <activity android:name=".Frame31CreateRecipeActivity" />
+        <activity android:name=".Frame30ChatDetailActivity" />
+        <activity android:name=".Frame29MessagesActivity" />
+        <activity android:name=".Frame28FollowingActivity" />
+        <activity android:name=".Frame27FriendsActivity" />
+        <activity android:name=".Frame26BioActivity" />
+        <activity android:name=".Frame25MyProfileActivity" />
+        <activity android:name=".Frame24OtherProfileActivity" />
+        <activity android:name=".PlaceholderActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

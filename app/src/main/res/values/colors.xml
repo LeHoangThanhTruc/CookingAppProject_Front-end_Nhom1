@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="panda_bg">#F0F7F0</color>
+    <color name="panda_bg_alt">#F1F8E9</color>
+    <color name="panda_card">#FFFFFF</color>
+    <color name="panda_card_soft">#F8FBF8</color>
+    <color name="panda_input">#F4F7F2</color>
+    <color name="panda_mint">#E4F2E1</color>
+    <color name="panda_mint_light">#E8F5E9</color>
+    <color name="panda_green">#2D6A2D</color>
+    <color name="panda_green_dark">#1A3D1A</color>
+    <color name="panda_green_mid">#4A7A4A</color>
+    <color name="panda_green_light_text">#6A9B6A</color>
+    <color name="panda_border">#E5EFE2</color>
+    <color name="panda_gray">#6B7280</color>
+    <color name="panda_red">#E53935</color>
+    <color name="panda_blue">#164CD7</color>
+</resources>
