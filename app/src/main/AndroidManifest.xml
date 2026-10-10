@@ -16,6 +16,7 @@
         <activity android:name=".Frame26BioActivity" />
         <activity android:name=".Frame25MyProfileActivity" />
         <activity android:name=".Frame24OtherProfileActivity" />
+        <activity android:name=".Frame7SettingActivity" />
         <activity android:name=".PlaceholderActivity" />
         <activity
             android:name=".MainActivity"
