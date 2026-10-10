@@ -18,6 +18,7 @@
         <activity android:name=".Frame24OtherProfileActivity" />
         <activity android:name=".Frame7SettingActivity" />
         <activity android:name=".Frame8Language" />
+        <activity android:name=".Frame9Contactus" />
         <activity android:name=".PlaceholderActivity" />
         <activity
             android:name=".MainActivity"

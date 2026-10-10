@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/panda_bg"
+    android:fillViewport="true"
+    tools:ignore="HardcodedText,Autofill">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- HEADER SECTION -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="20dp">
+
+            <!-- Nút Quay lại (Back Button) -->
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="@drawable/bg_circle_white"
+                android:src="@drawable/ic_arrow_back"
+                android:contentDescription="Quay lại"
+                android:elevation="2dp"
+                android:tint="@color/panda_green_dark"
+                app:tint="@color/panda_green_dark" />
+
+            <!-- Khối Tiêu đề màn hình -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="14dp">
+
+                <TextView
+                    android:id="@+id/tvHeaderCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Contact us"
+                    android:textColor="#8AA68A"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Liên hệ"
+                    android:textColor="@color/panda_green_dark"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvSubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Panda luôn sẵn sàng hỗ trợ bạn"
+                    android:textColor="@color/panda_gray"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <!-- Nút Chat / Hỗ trợ (Top Right Icon) -->
+            <ImageButton
+                android:id="@+id/btnSupportHeader"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_circle_white"
+                android:src="@drawable/ic_support"
+                android:contentDescription="Hỗ trợ"
+                android:elevation="2dp"
+                android:tint="@color/panda_gray"
+                app:tint="@color/panda_gray" />
+
+        </LinearLayout>
+
+        <!-- HERO BANNER CARD -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/bg_card"
+            android:padding="20dp"
+            android:elevation="2dp"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:id="@+id/ivPandaHero"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@drawable/bg_circle_cream"
+                android:padding="12dp"
+                android:src="@drawable/ic_panda_avatar"
+                android:contentDescription="Panda Avatar"
+                android:tint="@color/panda_green_dark"
+                app:tint="@color/panda_green_dark" />
+
+            <TextView
+                android:id="@+id/tvHeroTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bạn cần trợ giúp?"
+                android:textColor="@color/panda_green_dark"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="12dp" />
+
+            <TextView
+                android:id="@+id/tvHeroSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gửi góp ý về công thức, lỗi hiển thị hoặc câu hỏi học nấu ăn. Tụi mình sẽ phản hồi sớm nhất có thể."
+                android:textColor="@color/panda_gray"
+                android:textSize="13sp"
+                android:gravity="center"
+                android:layout_marginTop="6dp" />
+
+        </LinearLayout>
+
+        <!-- CARD 1: KÊNH LIÊN HỆ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_card"
+            android:padding="20dp"
+            android:elevation="2dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:id="@+id/tvChannelsHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kênh liên hệ"
+                android:textColor="@color/panda_green_dark"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Mục 1: Email -->
+            <LinearLayout
+                android:id="@+id/btnEmailChannel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingVertical="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?android:attr/selectableItemBackground">
+
+                <ImageView
+                    android:id="@+id/ivEmailIcon"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:background="@drawable/bg_circle_cream"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_mail"
+                    android:contentDescription="Email"
+                    android:tint="@color/panda_gray"
+                    app:tint="@color/panda_gray" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="14dp">
+
+                    <TextView
+                        android:id="@+id/tvEmailTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Email"
+                        android:textColor="@color/panda_green_dark"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvEmailValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="support@panda-cooking.app"
+                        android:textColor="@color/panda_gray"
+                        android:textSize="12sp"
+                        android:layout_marginTop="2dp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/ivEmailChevron"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_chevron_right"
+                    android:contentDescription="Mở rộng"
+                    android:tint="@color/panda_gray"
+                    app:tint="@color/panda_gray" />
+            </LinearLayout>
+
+            <!-- Mục 2: Hotline -->
+            <LinearLayout
+                android:id="@+id/btnHotlineChannel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingVertical="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?android:attr/selectableItemBackground">
+
+                <ImageView
+                    android:id="@+id/ivHotlineIcon"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:background="@drawable/bg_circle_cream"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_phone"
+                    android:contentDescription="Hotline"
+                    android:tint="@color/panda_red"
+                    app:tint="@color/panda_red" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="14dp">
+
+                    <TextView
+                        android:id="@+id/tvHotlineTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hotline"
+                        android:textColor="@color/panda_green_dark"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvHotlineValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1900 1234"
+                        android:textColor="@color/panda_gray"
+                        android:textSize="12sp"
+                        android:layout_marginTop="2dp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/ivHotlineChevron"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_chevron_right"
+                    android:contentDescription="Mở rộng"
+                    android:tint="@color/panda_gray"
+                    app:tint="@color/panda_gray" />
+            </LinearLayout>
+
+            <!-- Mục 3: Địa chỉ -->
+            <LinearLayout
+                android:id="@+id/btnAddressChannel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingVertical="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?android:attr/selectableItemBackground">
+
+                <ImageView
+                    android:id="@+id/ivAddressIcon"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:background="@drawable/bg_circle_cream"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_location"
+                    android:contentDescription="Địa chỉ"
+                    android:tint="@color/panda_green"
+                    app:tint="@color/panda_green" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="14dp">
+
+                    <TextView
+                        android:id="@+id/tvAddressTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Địa chỉ"
+                        android:textColor="@color/panda_green_dark"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvAddressValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="UIT, TP. Hồ Chí Minh"
+                        android:textColor="@color/panda_gray"
+                        android:textSize="12sp"
+                        android:layout_marginTop="2dp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/ivAddressChevron"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_chevron_right"
+                    android:contentDescription="Mở rộng"
+                    android:tint="@color/panda_gray"
+                    app:tint="@color/panda_gray" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- CARD 2: GỬI TIN NHẮN FORM -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_card"
+            android:padding="20dp"
+            android:elevation="2dp"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:id="@+id/tvSendMessageHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gửi tin nhắn"
+                android:textColor="@color/panda_green_dark"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Trường 1: Chủ đề -->
+            <TextView
+                android:id="@+id/tvSubjectLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chủ đề"
+                android:textColor="@color/panda_green_dark"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="6dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_input_field"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="14dp">
+
+                <ImageView
+                    android:id="@+id/ivSubjectIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_tag"
+                    android:contentDescription="Chủ đề"
+                    android:tint="#D97706"
+                    app:tint="#D97706" />
+
+                <EditText
+                    android:id="@+id/etSubject"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:hint="Góp ý công thức"
+                    android:textColor="@color/panda_green_dark"
+                    android:textColorHint="@color/panda_gray"
+                    android:textSize="14sp"
+                    android:layout_marginStart="10dp"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <!-- Trường 2: Email của bạn -->
+            <TextView
+                android:id="@+id/tvUserEmailLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email của bạn"
+                android:textColor="@color/panda_green_dark"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:layout_marginTop="14dp"
+                android:layout_marginBottom="6dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_input_field"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="14dp">
+
+                <ImageView
+                    android:id="@+id/ivUserEmailIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_mail"
+                    android:contentDescription="Email người gửi"
+                    android:tint="@color/panda_gray"
+                    app:tint="@color/panda_gray" />
+
+                <EditText
+                    android:id="@+id/etUserEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:hint="23521558@gm.uit.edu.vn"
+                    android:textColor="@color/panda_green_dark"
+                    android:textColorHint="@color/panda_gray"
+                    android:textSize="14sp"
+                    android:layout_marginStart="10dp"
+                    android:inputType="textEmailAddress" />
+            </LinearLayout>
+
+            <!-- Trường 3: Nội dung -->
+            <TextView
+                android:id="@+id/tvMessageLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nội dung"
+                android:textColor="@color/panda_green_dark"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:layout_marginTop="14dp"
+                android:layout_marginBottom="6dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:background="@drawable/bg_input_field"
+                android:orientation="horizontal"
+                android:gravity="top"
+                android:padding="12dp">
+
+                <ImageView
+                    android:id="@+id/ivMessageIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_edit_note"
+                    android:contentDescription="Nội dung tin nhắn"
+                    android:tint="@color/panda_green"
+                    app:tint="@color/panda_green"
+                    android:layout_marginTop="2dp" />
+
+                <EditText
+                    android:id="@+id/etMessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:hint="Nhập lời nhắn cho Panda..."
+                    android:textColor="@color/panda_green_dark"
+                    android:textColorHint="@color/panda_gray"
+                    android:textSize="14sp"
+                    android:gravity="top|start"
+                    android:layout_marginStart="10dp"
+                    android:inputType="textMultiLine" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- KHOẢNG TRỐNG ĐẨY NÚT GỬI LIÊN HỆ XUỐNG DƯỚI CÙNG -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- NÚT GỬI LIÊN HỆ -->
+        <LinearLayout
+            android:id="@+id/btnSendContact"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@drawable/bg_btn_primary"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:elevation="2dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:id="@+id/ivSendIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_send"
+                android:contentDescription="Gửi"
+                android:tint="@android:color/white"
+                app:tint="@android:color/white"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/tvSendContact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gửi liên hệ"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
