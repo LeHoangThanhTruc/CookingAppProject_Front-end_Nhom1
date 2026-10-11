@@ -42,5 +42,14 @@
     <string name="register_hint_confirm_password">••••••••</string>
 
     <string name="register_terms_agree">Tôi đồng ý với điều khoản và nhận gợi ý công thức mới.</string>
-    <string name="register_btn_submit">Đăng ký</string>
+    <string name="register_btn_submit">Đăng Ký</string>
+    <!-- Chuỗi văn bản màn hình Quên mật khẩu -->
+    <string name="forgot_password_title">Quên mật khẩu</string>
+    <string name="forgot_password_banner_title">Nhập Email hoặc SĐT</string>
+    <string name="forgot_password_banner_desc">Nhập địa chỉ email hoặc số điện thoại đã đăng ký để nhận hướng dẫn lấy lại mật khẩu.</string>
+    <string name="forgot_password_or">or</string>
+
+    <string name="forgot_password_label_input">Email hoặc SĐT *</string>
+    <string name="forgot_password_hint_input">VD: nguyenvana@gmail.com hoặc 0909 123 456</string>
+    <string name="forgot_password_btn_submit">Tiếp tục</string>
 </resources>

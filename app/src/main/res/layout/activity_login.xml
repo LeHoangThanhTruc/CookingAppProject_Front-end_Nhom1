@@ -1,331 +1,333 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- FRAMELAYOUT NGOÀI CÙNG LÀM CONTAINER -->
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Root Layout: LinearLayout ngoài cùng mang background1 tràn toàn bộ màn hình -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLogin"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/background1"
+    android:orientation="vertical"
+    android:weightSum="1.0"
+    tools:ignore="UnusedResources">
 
-    <!-- 1. BACKGROUND1 TRÀN 100% MÀN HÌNH -->
-    <ImageView
-        android:id="@+id/imgBackground"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:contentDescription="@null"
-        android:scaleType="centerCrop"
-        android:src="@drawable/background1" />
-
-    <!-- 2. NỘI DUNG CHÍNH (DÙNG RELATIVELAYOUT ĐỂ CĂN GIỮA MÀN HÌNH LỚN) -->
+    <!-- ================= PHẦN 1: TOP HEADER (Tỷ lệ 28%) ================= -->
     <RelativeLayout
+        android:id="@+id/partTop"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="0.28"
+        android:paddingHorizontal="@dimen/login_screen_padding_horizontal"
+        android:paddingTop="16dp">
 
-        <!-- CỤM FORM LINEARLAYOUT DỌC 3 PHẦN (Căn giữa ngang layout_centerHorizontal) -->
-        <LinearLayout
-            android:id="@+id/mainLogin"
+        <ImageView
+            android:id="@+id/imgIconPanda"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@null"
+            android:src="@drawable/logo_container" />
+
+        <TextView
+            android:id="@+id/txt1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imgIconPanda"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="4dp"
+            android:text="@string/splash_app_title"
+            android:textColor="#193B1C"
+            android:textSize="@dimen/splash_title_size"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+
+    <!-- ================= PHẦN 2: FORM CHÍNH (Tỷ lệ 57%) ================= -->
+    <RelativeLayout
+        android:id="@+id/partMiddle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.57"
+        android:paddingHorizontal="@dimen/login_screen_padding_horizontal">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="@string/login_title"
+            android:textColor="#193B1C"
+            android:textSize="@dimen/login_title_size"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:orientation="vertical"
-            android:weightSum="1.0">
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvTitle"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:text="@string/login_sub_title"
+            android:textColor="#4A704D"
+            android:textSize="@dimen/login_subtitle_size" />
 
-            <!-- ================= PHẦN 1: TOP HEADER (28%) ================= -->
-            <RelativeLayout
-                android:id="@+id/partTop"
+        <!-- Label Email/SĐT -->
+        <TextView
+            android:id="@+id/txt3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt2"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="16dp"
+            android:text="@string/login_label_email_phone"
+            android:textColor="#234725"
+            android:textSize="@dimen/login_label_size"
+            android:textStyle="bold" />
+
+        <!-- Ô nhập Email/SĐT -->
+        <RelativeLayout
+            android:id="@+id/layoutInputGmail"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/login_input_height"
+            android:layout_below="@id/txt3"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/bg_pill_white"
+            android:paddingHorizontal="15dp">
+
+            <ImageView
+                android:id="@+id/iconGmail"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_centerVertical="true"
+                android:contentDescription="@null"
+                android:src="@drawable/email_icon_bg" />
+
+            <EditText
+                android:id="@+id/edtEmailPhone"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.28"
-                android:paddingHorizontal="@dimen/login_screen_padding_horizontal"
-                android:paddingTop="16dp">
+                android:layout_height="match_parent"
+                android:layout_toEndOf="@id/iconGmail"
+                android:autofillHints="emailAddress,phoneNumber"
+                android:background="@null"
+                android:hint="@string/login_hint_email_phone"
+                android:inputType="textEmailAddress|phone"
+                android:paddingStart="10dp"
+                android:paddingEnd="0dp"
+                android:textColor="#193B1C"
+                android:textColorHint="#9EAFA0"
+                android:textSize="@dimen/login_input_text_size" />
+        </RelativeLayout>
 
-                <ImageView
-                    android:id="@+id/imgIconPanda"
-                    android:layout_width="160dp"
-                    android:layout_height="160dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:contentDescription="@null"
-                    android:src="@drawable/logo_container" />
+        <!-- Label Mật khẩu -->
+        <TextView
+            android:id="@+id/txt4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layoutInputGmail"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="12dp"
+            android:text="@string/login_label_password"
+            android:textColor="#234725"
+            android:textSize="@dimen/login_label_size"
+            android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/txt1"
+        <!-- Ô nhập Mật khẩu -->
+        <RelativeLayout
+            android:id="@+id/layoutInputPassword"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/login_input_height"
+            android:layout_below="@id/txt4"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/bg_pill_white"
+            android:paddingHorizontal="15dp">
+
+            <ImageView
+                android:id="@+id/iconClock"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_centerVertical="true"
+                android:contentDescription="@null"
+                android:src="@drawable/lock_icon_bg" />
+
+            <ImageView
+                android:id="@+id/iconEye"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@null"
+                android:src="@drawable/eye_off" />
+
+            <EditText
+                android:id="@+id/edtPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toStartOf="@id/iconEye"
+                android:layout_toEndOf="@id/iconClock"
+                android:autofillHints="password"
+                android:background="@null"
+                android:hint="@string/login_hint_password"
+                android:inputType="textPassword"
+                android:paddingHorizontal="10dp"
+                android:textColor="#193B1C"
+                android:textColorHint="#9EAFA0"
+                android:textSize="@dimen/login_input_text_size" />
+        </RelativeLayout>
+
+        <!-- Quên mật khẩu -->
+        <TextView
+            android:id="@+id/tvForgotPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layoutInputPassword"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/login_forgot_password"
+            android:textColor="#2D7A32"
+            android:textSize="@dimen/login_label_size"
+            android:textStyle="bold" />
+
+        <!-- Nút Đăng nhập -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnDangNhap"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/login_button_height"
+            android:layout_below="@+id/tvForgotPassword"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_button_green"
+            android:text="@string/login_btn_submit"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/login_button_text_size"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+
+    <!-- ================= PHẦN 3: SOCIAL LOGIN & FOOTER (Tỷ lệ 15%) ================= -->
+    <RelativeLayout
+        android:id="@+id/partBottom"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.15"
+        android:paddingHorizontal="@dimen/login_screen_padding_horizontal">
+
+        <!-- Nhóm Nút Đăng nhập qua Mạng xã hội -->
+        <LinearLayout
+            android:id="@+id/layoutSocialGroup"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/login_input_height"
+            android:layout_alignParentTop="true"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <!-- Nút Google -->
+            <RelativeLayout
+                android:id="@+id/btnLogInUsingGoogle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_pill_white"
+                android:clickable="true"
+                android:focusable="true">
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/imgIconPanda"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/splash_app_title"
-                    android:textColor="#193B1C"
-                    android:textSize="35sp"
-                    android:textStyle="bold" />
-
-            </RelativeLayout>
-
-            <!-- ================= PHẦN 2: FORM CHÍNH (57%) ================= -->
-            <RelativeLayout
-                android:id="@+id/partMiddle"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.57"
-                android:paddingHorizontal="@dimen/login_screen_padding_horizontal">
-
-                <TextView
-                    android:id="@+id/tvTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:text="@string/login_title"
-                    android:textColor="#193B1C"
-                    android:textSize="30sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/txt2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tvTitle"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="4dp"
+                    android:layout_centerInParent="true"
                     android:gravity="center"
-                    android:text="@string/login_sub_title"
-                    android:textColor="#4A704D"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/txt3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/txt2"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/login_label_email_phone"
-                    android:textColor="#234725"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-                <RelativeLayout
-                    android:id="@+id/layoutInputGmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_below="@id/txt3"
-                    android:layout_marginTop="6dp"
-                    android:background="@drawable/bg_pill_white"
-                    android:paddingHorizontal="15dp">
-
-                    <ImageView
-                        android:id="@+id/iconGmail"
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
-                        android:layout_centerVertical="true"
-                        android:contentDescription="@null"
-                        android:src="@drawable/email_icon_bg" />
-
-                    <EditText
-                        android:id="@+id/edtEmailPhone"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_toEndOf="@id/iconGmail"
-                        android:background="@null"
-                        android:hint="@string/login_hint_email_phone"
-                        android:inputType="textEmailAddress|phone"
-                        android:paddingStart="10dp"
-                        android:paddingEnd="0dp"
-                        android:textColor="#193B1C"
-                        android:textColorHint="#9EAFA0"
-                        android:textSize="15sp" />
-                </RelativeLayout>
-
-                <TextView
-                    android:id="@+id/txt4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/layoutInputGmail"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="12dp"
-                    android:text="@string/login_label_password"
-                    android:textColor="#234725"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-                <RelativeLayout
-                    android:id="@+id/layoutInputPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_below="@id/txt4"
-                    android:layout_marginTop="6dp"
-                    android:background="@drawable/bg_pill_white"
-                    android:paddingHorizontal="15dp">
-
-                    <ImageView
-                        android:id="@+id/iconClock"
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
-                        android:layout_centerVertical="true"
-                        android:contentDescription="@null"
-                        android:src="@drawable/lock_icon_bg" />
-
-                    <ImageView
-                        android:id="@+id/iconEye"
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:contentDescription="@null"
-                        android:src="@drawable/eye_off" />
-
-                    <EditText
-                        android:id="@+id/edtPassword"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_toStartOf="@id/iconEye"
-                        android:layout_toEndOf="@id/iconClock"
-                        android:background="@null"
-                        android:hint="@string/login_hint_password"
-                        android:inputType="textPassword"
-                        android:paddingHorizontal="10dp"
-                        android:textColor="#193B1C"
-                        android:textColorHint="#9EAFA0"
-                        android:textSize="15sp" />
-                </RelativeLayout>
-
-                <TextView
-                    android:id="@+id/txtForgotPassword"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/layoutInputPassword"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/login_forgot_password"
-                    android:textColor="#2D7A32"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnDangNhap"
-                    android:layout_width="match_parent"
-                    android:layout_height="54dp"
-                    android:layout_below="@id/txtForgotPassword"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="14dp"
-                    android:background="@drawable/bg_button_green"
-                    android:text="@string/login_btn_submit"
-                    android:textAllCaps="false"
-                    android:textColor="#FFFFFF"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
-
-            </RelativeLayout>
-
-            <!-- ================= PHẦN 3: SOCIAL LOGIN & FOOTER (15%) ================= -->
-            <RelativeLayout
-                android:id="@+id/partBottom"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.15"
-                android:paddingHorizontal="@dimen/login_screen_padding_horizontal">
-
-                <LinearLayout
-                    android:id="@+id/layoutSocialGroup"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_alignParentTop="true"
                     android:orientation="horizontal">
 
-                    <RelativeLayout
-                        android:id="@+id/btnLogInUsingGoogle"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="6dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_pill_white">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:gravity="center"
-                            android:orientation="horizontal">
-
-                            <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:contentDescription="@null"
-                                android:src="@drawable/globe" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:text="@string/login_btn_google"
-                                android:textColor="#333333"
-                                android:textSize="20sp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:id="@+id/btnLogInUsingFacebook"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="6dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_pill_white">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:gravity="center"
-                            android:orientation="horizontal">
-
-                            <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:contentDescription="@null"
-                                android:src="@drawable/facebook" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:text="@string/login_btn_facebook"
-                                android:textColor="#333333"
-                                android:textSize="20sp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-                    </RelativeLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/txt5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/layoutSocialGroup"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/globe" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/login_register_prompt"
-                        android:textColor="#4A704D"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:id="@+id/tvRegister"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/login_register_action"
-                        android:textColor="#2D7A32"
-                        android:textSize="15sp"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/login_btn_google"
+                        android:textColor="#333333"
+                        android:textSize="@dimen/login_social_text_size"
                         android:textStyle="bold" />
                 </LinearLayout>
+            </RelativeLayout>
 
+            <!-- Nút Facebook -->
+            <RelativeLayout
+                android:id="@+id/btnLogInUsingFacebook"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_pill_white"
+                android:clickable="true"
+                android:focusable="true">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/facebook" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/login_btn_facebook"
+                        android:textColor="#333333"
+                        android:textSize="@dimen/login_social_text_size"
+                        android:textStyle="bold" />
+                </LinearLayout>
             </RelativeLayout>
 
         </LinearLayout>
+
+        <!-- Dòng prompt Đăng ký tài khoản -->
+        <LinearLayout
+            android:id="@+id/txt5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layoutSocialGroup"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login_register_prompt"
+                android:textColor="#4A704D"
+                android:textSize="@dimen/login_label_size" />
+
+            <TextView
+                android:id="@+id/tvRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/login_register_action"
+                android:textColor="#2D7A32"
+                android:textSize="@dimen/login_label_size"
+                android:textStyle="bold" />
+        </LinearLayout>
+
     </RelativeLayout>
 
-</FrameLayout>
+</LinearLayout>
