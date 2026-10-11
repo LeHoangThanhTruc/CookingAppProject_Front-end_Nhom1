@@ -52,4 +52,17 @@
     <string name="forgot_password_label_input">Email hoặc SĐT *</string>
     <string name="forgot_password_hint_input">VD: nguyenvana@gmail.com hoặc 0909 123 456</string>
     <string name="forgot_password_btn_submit">Tiếp tục</string>
+    <!-- Chuỗi văn bản màn hình Nhập lại mật khẩu (Reset Password) -->
+    <string name="reset_header_title">Quên mật khẩu</string>
+    <string name="reset_banner_title">Nhập lại mật khẩu</string>
+    <string name="reset_banner_desc">Tạo mật khẩu mới để tiếp tục sử dụng tài khoản của bạn.</string>
+
+    <string name="reset_label_new_password">Mật khẩu mới *</string>
+    <string name="reset_hint_new_password">Nhập mật khẩu mới</string>
+    <string name="reset_note_password_policy">Mật khẩu mới cần có ít nhất 8 ký tự, bao gồm chữ cái và số.</string>
+
+    <string name="reset_label_confirm_password">Nhập lại mật khẩu *</string>
+    <string name="reset_hint_confirm_password">Nhập lại mật khẩu mới</string>
+
+    <string name="reset_btn_submit">Xác nhận đặt lại</string>
 </resources>
