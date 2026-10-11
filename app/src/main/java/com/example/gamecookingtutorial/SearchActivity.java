@@ -16,7 +16,7 @@ public class SearchActivity extends AppCompatActivity {
     private LinearLayout layoutAdvancedHeader;
     private NestedScrollView cardAdvancedFilter;
     private TextView btnTypeAll, btnTypeDishes, btnTypeUsers;
-
+    private TextView btnViewRecipe; // Nút chuyển sang màn hình Chi tiết công thức
     private boolean isFilterExpanded = true; // Mặc định đang mở
 
     @Override
@@ -37,23 +37,33 @@ public class SearchActivity extends AppCompatActivity {
         btnTypeAll = findViewById(R.id.btnTypeAll);
         btnTypeDishes = findViewById(R.id.btnTypeDishes);
         btnTypeUsers = findViewById(R.id.btnTypeUsers);
+        // Ánh xạ nút Xem công thức món ăn
+        btnViewRecipe = findViewById(R.id.btnViewRecipe);
     }
 
     private void setupEvents() {
-        // Nút mũi tên quay về: Mở lại MainActivity và đóng SearchActivity
+        // 1. Nút mũi tên quay về: Mở lại MainActivity và đóng SearchActivity
         btnHome.setOnClickListener(v -> {
             Intent intent = new Intent(SearchActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
         });
 
-        // Bật / Tắt hiển thị bộ lọc nâng cao bằng Chevron
+        // 2. Bật / Tắt hiển thị bộ lọc nâng cao bằng Chevron
         layoutAdvancedHeader.setOnClickListener(v -> toggleAdvancedFilter());
 
-        // Xử lý chọn loại tìm kiếm (Tất cả / Món ăn / Người dùng)
+        // 3. Xử lý chọn loại tìm kiếm (Tất cả / Món ăn / Người dùng)
         btnTypeAll.setOnClickListener(v -> selectTypeFilter("ALL"));
         btnTypeDishes.setOnClickListener(v -> selectTypeFilter("DISHES"));
         btnTypeUsers.setOnClickListener(v -> selectTypeFilter("USERS"));
+
+        // 4. Lắng nghe sự kiện click -> Chuyển sang màn hình Chi tiết công thức (RecipeDetailActivity)
+        if (btnViewRecipe != null) {
+            btnViewRecipe.setOnClickListener(v -> {
+                Intent intent = new Intent(SearchActivity.this, RecipeDetailActivity.class);
+                startActivity(intent);
+            });
+        }
     }
 
     private void toggleAdvancedFilter() {

@@ -1,0 +1,1063 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Root Container: LinearLayout tràn background1.png -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background1"
+    android:orientation="vertical"
+    tools:ignore="UnusedResources">
+
+    <!-- ScrollView tổng thể giúp cuộn toàn bộ trang -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <!-- DUY NHẤT 1 LINERLAYOUT BỌC TOÀN BỘ NỘI DUNG MÀN HÌNH -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/main_screen_padding_horizontal"
+            android:paddingEnd="@dimen/main_screen_padding_horizontal"
+            android:paddingTop="16dp"
+            android:paddingBottom="24dp">
+
+            <!-- ================= 1. TOP HEADER (BACK + TITLE + SHARE) ================= -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/btnBack"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/bg_pill_white"
+                    android:clickable="true"
+                    android:contentDescription="@null"
+                    android:focusable="true"
+                    android:padding="10dp"
+                    android:src="@drawable/vector_back" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/recipe_detail_top_title"
+                        android:textColor="#2D7A32"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/recipe_title"
+                        android:textColor="#193B1C"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/btnShare"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/bg_pill_white"
+                    android:clickable="true"
+                    android:contentDescription="@null"
+                    android:focusable="true"
+                    android:padding="10dp"
+                    android:src="@drawable/share_icon" />
+            </RelativeLayout>
+
+
+            <!-- ================= 2. CARD MÓN ĂN & TỔNG QUAN ================= -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_pill_white"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <!-- Ảnh món ăn + Tag loại + Nút Lưu -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@null"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/disk_goicuon_chunhat" />
+
+                    <!-- Tag Món cuốn -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_margin="10dp"
+                        android:background="#80000000"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="4dp"
+                        android:text="@string/recipe_category_roll"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp" />
+
+                    <!-- Nút Lưu -->
+                    <ImageView
+                        android:id="@+id/btnSaveRecipe"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/bg_pill_white"
+                        android:clickable="true"
+                        android:contentDescription="@null"
+                        android:focusable="true"
+                        android:padding="9dp"
+                        android:src="@drawable/save_icon" />
+                </RelativeLayout>
+
+                <!-- Tên món & Điểm Đánh giá -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:text="@string/recipe_title"
+                        android:textColor="#193B1C"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:drawablePadding="4dp"
+                        android:text="@string/recipe_rating_val"
+                        android:textColor="#193B1C"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:drawableStartCompat="@drawable/star" />
+                </RelativeLayout>
+
+                <!-- Các thông số: Thời gian, Độ khó, Số người -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:baselineAligned="false"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="4dp"
+                        android:text="@string/recipe_time_val"
+                        android:textColor="#718096"
+                        android:textSize="13sp"
+                        app:drawableStartCompat="@drawable/clock" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:drawablePadding="4dp"
+                        android:text="@string/recipe_difficulty_val"
+                        android:textColor="#718096"
+                        android:textSize="13sp"
+                        app:drawableStartCompat="@drawable/flame" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:drawablePadding="4dp"
+                        android:text="@string/recipe_servings_val"
+                        android:textColor="#718096"
+                        android:textSize="13sp"
+                        app:drawableStartCompat="@drawable/users" />
+                </LinearLayout>
+
+                <!-- Khung Tổng quan -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="#F0F7F0"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/recipe_overview_title"
+                        android:textColor="#193B1C"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:lineSpacingExtra="2dp"
+                        android:text="@string/recipe_overview_desc"
+                        android:textColor="#4A704D"
+                        android:textSize="13sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <!-- ================= 3. KHU VỰC HƯỚNG DẪN CHI TIẾT (CÓ THỂ ẨN/SHOW) ================= -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_pill_white"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <!-- Header Hướng dẫn chi tiết + Chevron -->
+                <RelativeLayout
+                    android:id="@+id/layoutInstructionHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/recipe_instruction_title"
+                        android:textColor="#193B1C"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <!-- Mặc định trạng thái ẩn dùng chevron_down.xml -->
+                    <ImageView
+                        android:id="@+id/imgInstructionChevron"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="@null"
+                        android:src="@drawable/chevron_down" />
+                </RelativeLayout>
+
+                <!-- KHU VỰC NỘI DUNG CHI TIẾT (MẶC ĐỊNH GONE) -->
+                <LinearLayout
+                    android:id="@+id/layoutInstructionContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <!-- ================= 1. DỤNG CỤ & NGUYÊN LIỆU (LIỆT KÊ CHỮ + HÌNH) ================= -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#F0F7F0"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:text="@string/recipe_ingredients_title"
+                                android:textColor="#193B1C"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:background="@drawable/bg_pill_white"
+                                android:paddingHorizontal="10dp"
+                                android:paddingVertical="4dp"
+                                android:text="@string/recipe_ingredients_servings"
+                                android:textColor="#2D7A32"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+
+                        <!-- Liệt kê danh sách nguyên liệu đầy đủ bằng chữ -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:lineSpacingExtra="2dp"
+                                android:text="@string/recipe_ing_1"
+                                android:textColor="#2D3748"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:lineSpacingExtra="2dp"
+                                android:text="@string/recipe_ing_2"
+                                android:textColor="#2D3748"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:lineSpacingExtra="2dp"
+                                android:text="@string/recipe_ing_3"
+                                android:textColor="#2D3748"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:lineSpacingExtra="2dp"
+                                android:text="@string/recipe_ing_4"
+                                android:textColor="#2D3748"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:lineSpacingExtra="2dp"
+                                android:text="@string/recipe_ing_5"
+                                android:textColor="#2D3748"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lineSpacingExtra="2dp"
+                                android:text="@string/recipe_ing_6"
+                                android:textColor="#2D3748"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+
+                        <!-- Hình ảnh minh họa nguyên liệu tổng hợp -->
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:adjustViewBounds="true"
+                            android:contentDescription="@null"
+                            android:src="@drawable/img_nguyenlieu_template" />
+                    </LinearLayout>
+
+
+                    <!-- ================= 2. BƯỚC 1: SƠ CHẾ & LUỘC TÔM THỊT ================= -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:background="#F0F7F0"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:text="@string/recipe_step1_title"
+                                android:textColor="#193B1C"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <!-- Đếm ngược thời gian với countdown_timer.xml -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:background="@drawable/bg_pill_white"
+                                android:drawablePadding="4dp"
+                                android:paddingHorizontal="10dp"
+                                android:paddingVertical="4dp"
+                                android:text="@string/recipe_step1_time"
+                                android:textColor="#2D7A32"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                app:drawableStartCompat="@drawable/countdown_timer" />
+                        </RelativeLayout>
+
+                        <!-- Mô tả bằng chữ -->
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:lineSpacingExtra="2dp"
+                            android:text="@string/recipe_step1_desc"
+                            android:textColor="#4A704D"
+                            android:textSize="13sp" />
+
+                        <!-- Hình ảnh minh họa bước 1 -->
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:layout_marginTop="10dp"
+                            android:contentDescription="@null"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/disk_phobo2" />
+
+                        <!-- Video hướng dẫn bước 1 -->
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:adjustViewBounds="true"
+                                android:contentDescription="@null"
+                                android:src="@drawable/videohuongdan_img_template" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+
+                    <!-- ================= 3. BƯỚC 2: SƠ CHẾ RAU SỐNG & BÚN ================= -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:background="#F0F7F0"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:text="@string/recipe_step2_title"
+                                android:textColor="#193B1C"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <!-- Đếm ngược thời gian với countdown_timer.xml -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:background="@drawable/bg_pill_white"
+                                android:drawablePadding="4dp"
+                                android:paddingHorizontal="10dp"
+                                android:paddingVertical="4dp"
+                                android:text="@string/recipe_step2_time"
+                                android:textColor="#2D7A32"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                app:drawableStartCompat="@drawable/countdown_timer" />
+                        </RelativeLayout>
+
+                        <!-- Mô tả bằng chữ -->
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:lineSpacingExtra="2dp"
+                            android:text="@string/recipe_step2_desc"
+                            android:textColor="#4A704D"
+                            android:textSize="13sp" />
+
+                        <!-- Hình ảnh minh họa bước 2 -->
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:layout_marginTop="10dp"
+                            android:contentDescription="@null"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/disk_goicuon_vuong" />
+
+                        <!-- Video hướng dẫn bước 2 -->
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:adjustViewBounds="true"
+                                android:contentDescription="@null"
+                                android:src="@drawable/videohuongdan_img_template" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+
+                    <!-- ================= 4. BƯỚC 3: TIẾN HÀNH CUỐN GỎI CUỐN ================= -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:background="#F0F7F0"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:text="@string/recipe_step3_title"
+                                android:textColor="#193B1C"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <!-- Đếm ngược thời gian với countdown_timer.xml -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:background="@drawable/bg_pill_white"
+                                android:drawablePadding="4dp"
+                                android:paddingHorizontal="10dp"
+                                android:paddingVertical="4dp"
+                                android:text="@string/recipe_step3_time"
+                                android:textColor="#2D7A32"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                app:drawableStartCompat="@drawable/countdown_timer" />
+                        </RelativeLayout>
+
+                        <!-- Mô tả bằng chữ -->
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:lineSpacingExtra="2dp"
+                            android:text="@string/recipe_step3_desc"
+                            android:textColor="#4A704D"
+                            android:textSize="13sp" />
+
+                        <!-- Hình ảnh minh họa bước 3 -->
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:layout_marginTop="10dp"
+                            android:contentDescription="@null"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/disk_goicuon_chunhat" />
+
+                        <!-- Video hướng dẫn bước 3 -->
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:contentDescription="@null"
+                            android:src="@drawable/videohuongdan_img_template" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <!-- ================= 4. KHU VỰC ĐÁNH GIÁ (REVIEWS) ================= -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_pill_white"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <!-- Header Đánh giá + Panda Green Icon + Tổng số lượt -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/recipe_rating_section_title"
+                            android:textColor="#193B1C"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="6dp"
+                            android:contentDescription="@null"
+                            android:src="@drawable/panda_green_icon" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/recipe_rating_count_val"
+                        android:textColor="#2D7A32"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <!-- BẢNG THỐNG KÊ SỐ LƯỢNG ĐÁNH GIÁ CHI TIẾT (5 -> 1 SAO) -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="#F0F7F0"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <!-- Row 5 sao -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="42dp"
+                            android:layout_height="wrap_content"
+                            android:text="5 sao"
+                            android:textColor="#193B1C"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView android:layout_width="12dp" android:layout_height="12dp" android:contentDescription="@null" android:src="@drawable/star" />
+                            <ImageView android:layout_width="12dp" android:layout_height="12dp" android:contentDescription="@null" android:src="@drawable/star" />
+                            <ImageView android:layout_width="12dp" android:layout_height="12dp" android:contentDescription="@null" android:src="@drawable/star" />
+                            <ImageView android:layout_width="12dp" android:layout_height="12dp" android:contentDescription="@null" android:src="@drawable/star" />
+                            <ImageView android:layout_width="12dp" android:layout_height="12dp" android:contentDescription="@null" android:src="@drawable/star" />
+                        </LinearLayout>
+
+                        <ProgressBar
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="8dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:max="100"
+                            android:progress="67"
+                            android:progressDrawable="@drawable/bg_button_green" />
+
+                        <TextView
+                            android:layout_width="28dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:text="86"
+                            android:textColor="#193B1C"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Row 4 sao -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="42dp"
+                            android:layout_height="wrap_content"
+                            android:text="4 sao"
+                            android:textColor="#193B1C"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView android:layout_width="12dp" android:layout_height="12dp" android:contentDescription="@null" android:src="@drawable/star" />
+                            <ImageView android:layout_width="12dp" android:layout_height="12dp" android:contentDescription="@null" android:src="@drawable/star" />
+                            <ImageView android:layout_width="12dp" android:layout_height="12dp" android:contentDescription="@null" android:src="@drawable/star" />
+                            <ImageView android:layout_width="12dp" android:layout_height="12dp" android:contentDescription="@null" android:src="@drawable/star" />
+                        </LinearLayout>
+
+                        <ProgressBar
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="8dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:max="100"
+                            android:progress="22"
+                            android:progressDrawable="@drawable/bg_button_green" />
+
+                        <TextView
+                            android:layout_width="28dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:text="28"
+                            android:textColor="#718096"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+
+                    <!-- Row 3 sao -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="42dp"
+                            android:layout_height="wrap_content"
+                            android:text="3 sao"
+                            android:textColor="#193B1C"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView android:layout_width="12dp" android:layout_height="12dp" android:contentDescription="@null" android:src="@drawable/star" />
+                            <ImageView android:layout_width="12dp" android:layout_height="12dp" android:contentDescription="@null" android:src="@drawable/star" />
+                            <ImageView android:layout_width="12dp" android:layout_height="12dp" android:contentDescription="@null" android:src="@drawable/star" />
+                        </LinearLayout>
+
+                        <ProgressBar
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="8dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:max="100"
+                            android:progress="7"
+                            android:progressDrawable="@drawable/bg_button_green" />
+
+                        <TextView
+                            android:layout_width="28dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:text="9"
+                            android:textColor="#718096"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+
+                    <!-- Row 2 sao -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="42dp"
+                            android:layout_height="wrap_content"
+                            android:text="2 sao"
+                            android:textColor="#193B1C"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView android:layout_width="12dp" android:layout_height="12dp" android:contentDescription="@null" android:src="@drawable/star" />
+                            <ImageView android:layout_width="12dp" android:layout_height="12dp" android:contentDescription="@null" android:src="@drawable/star" />
+                        </LinearLayout>
+
+                        <ProgressBar
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="8dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:max="100"
+                            android:progress="3"
+                            android:progressDrawable="@drawable/bg_button_green" />
+
+                        <TextView
+                            android:layout_width="28dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:text="3"
+                            android:textColor="#718096"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+
+                    <!-- Row 1 sao -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="42dp"
+                            android:layout_height="wrap_content"
+                            android:text="1 sao"
+                            android:textColor="#193B1C"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView android:layout_width="12dp" android:layout_height="12dp" android:contentDescription="@null" android:src="@drawable/star" />
+                        </LinearLayout>
+
+                        <ProgressBar
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="8dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:max="100"
+                            android:progress="2"
+                            android:progressDrawable="@drawable/bg_button_green" />
+
+                        <TextView
+                            android:layout_width="28dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:text="2"
+                            android:textColor="#718096"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Nút Lọc theo 5 sao -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_button_green"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="6dp"
+                    android:text="@string/recipe_rating_filter_5star"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <!-- Comment 1 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:background="@drawable/bg_circle_avatar"
+                            android:gravity="center"
+                            android:text="MN"
+                            android:textColor="#2D7A32"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text="@string/recipe_review1_author"
+                            android:textColor="#193B1C"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:drawablePadding="2dp"
+                            android:text="5"
+                            android:textColor="#193B1C"
+                            android:textSize="12sp"
+                            app:drawableStartCompat="@drawable/star" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:lineSpacingExtra="2dp"
+                        android:text="@string/recipe_review1_content"
+                        android:textColor="#4A704D"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <!-- Comment 2 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:background="@drawable/bg_circle_avatar"
+                            android:gravity="center"
+                            android:text="HL"
+                            android:textColor="#2D7A32"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text="@string/recipe_review2_author"
+                            android:textColor="#193B1C"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:drawablePadding="2dp"
+                            android:text="5"
+                            android:textColor="#193B1C"
+                            android:textSize="12sp"
+                            app:drawableStartCompat="@drawable/star" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:lineSpacingExtra="2dp"
+                        android:text="@string/recipe_review2_content"
+                        android:textColor="#4A704D"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <!-- NÚT TỰ ĐÁNH GIÁ -->
+                <RelativeLayout
+                    android:id="@+id/btnWriteReview"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/bg_button_green"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:contentDescription="@null"
+                            android:src="@drawable/pen_edit" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="@string/recipe_btn_write_review"
+                            android:textColor="#FFFFFF"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

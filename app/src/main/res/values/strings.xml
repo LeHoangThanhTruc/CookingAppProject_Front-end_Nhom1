@@ -132,4 +132,54 @@
 
     <string name="search_dish_rating_val">4.8</string>
     <string name="search_dish_time_val">15 phút</string>
+    <!-- Chuỗi văn bản màn hình Chi tiết công thức -->
+    <string name="recipe_detail_top_title">Chi tiết công thức</string>
+    <string name="recipe_title">Gỏi Cuốn Tôm Thịt</string>
+    <string name="recipe_category_roll">Món cuốn</string>
+    <string name="recipe_rating_val">4.8</string>
+    <string name="recipe_time_val">15 phút</string>
+    <string name="recipe_difficulty_val">Dễ</string>
+    <string name="recipe_servings_val">4 người</string>
+
+    <string name="recipe_overview_title">Tổng quan</string>
+    <string name="recipe_overview_desc">Món ăn dễ làm, ít nguyên liệu, thích hợp cho bữa tối nhẹ nhàng và dễ cuốn cùng gia đình.</string>
+
+    <string name="recipe_instruction_title">Hướng dẫn chi tiết</string>
+    <string name="recipe_ingredients_title">Nguyên liệu</string>
+    <string name="recipe_ingredients_servings">4 người ăn</string>
+
+    <string name="recipe_video_title">Video hướng dẫn</string>
+    <string name="recipe_video_time">3:42</string>
+    <string name="recipe_video_tag">Video hướng dẫn</string>
+    <string name="recipe_video_desc">Xem nhanh cách cuốn đều tay, pha nước mắm vừa miệng và trình bày đẹp mắt cho bữa tối gia đình.</string>
+
+    <string name="recipe_rating_section_title">Đánh giá</string>
+    <string name="recipe_rating_count_val">128 lượt</string>
+    <string name="recipe_rating_filter_5star">Lọc theo 5 sao</string>
+    <string name="recipe_btn_write_review">Tự Đánh Giá</string>
+
+    <string name="recipe_review1_author">Minh Ngọc</string>
+    <string name="recipe_review1_content">Công thức dễ làm, nguyên liệu đơn giản, cả nhà đều thích.</string>
+    <string name="recipe_review2_author">Hoàng Linh</string>
+    <string name="recipe_review2_content">Nước mắm pha vừa miệng, hướng dẫn dễ hiểu, sẽ làm lại nhiều lần.</string>
+    <!-- Danh sách nguyên liệu chi tiết bằng chữ -->
+    <string name="recipe_ing_1">Bánh tráng cuốn: 1 gói (200g)</string>
+    <string name="recipe_ing_2">Tôm sú tươi: 300g (khoảng 12 - 15 con)</string>
+    <string name="recipe_ing_3">Thịt ba chỉ heo: 250g</string>
+    <string name="recipe_ing_4">Bún tươi: 300g</string>
+    <string name="recipe_ing_5">Rau sống: Xà lách, rau húng lủi, giá đỗ, hẹ lá</string>
+    <string name="recipe_ing_6">Gia vị pha nước chấm: Tỏi, ớt, chanh, nước mắm, đường, tương đen, đậu phụng rang</string>
+
+    <!-- Các Bước Hướng Dẫn Nấu Chi Tiết -->
+    <string name="recipe_step1_title">Bước 1: Sơ chế &amp; Luộc tôm thịt</string>
+    <string name="recipe_step1_time">10 phút</string>
+    <string name="recipe_step1_desc">Rửa sạch thịt ba chỉ, luộc chín tới cùng ít hành tím băm rồi thái lát mỏng. Tôm sú rửa sạch, luộc chín, bóc vỏ và chẻ đôi theo chiều dọc.</string>
+
+    <string name="recipe_step2_title">Bước 2: Sơ chế rau sống &amp; Bún</string>
+    <string name="recipe_step2_time">5 phút</string>
+    <string name="recipe_step2_desc">Rau sống nhặt sạch, rửa nhiều lần với nước muối nhạt rồi để ráo. Bún tươi chần sơ qua nước sôi để ráo nước.</string>
+
+    <string name="recipe_step3_title">Bước 3: Tiến hành cuốn Gỏi Cuốn</string>
+    <string name="recipe_step3_time">15 phút</string>
+    <string name="recipe_step3_desc">Làm ẩm bánh tráng, xếp lần lượt xà lách, bún, thịt ba chỉ, rau thơm và hẹ. Gấp 2 mép bánh tráng, xếp tôm lên trên rồi cuốn chặt tay.</string>
 </resources>
