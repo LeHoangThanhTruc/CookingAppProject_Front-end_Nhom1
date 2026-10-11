@@ -65,4 +65,31 @@
     <string name="reset_hint_confirm_password">Nhập lại mật khẩu mới</string>
 
     <string name="reset_btn_submit">Xác nhận đặt lại</string>
+    <!-- Chuỗi văn bản màn hình Màn hình chính (Main / Social) -->
+    <string name="main_greeting">Chào buổi sáng! 🐼</string>
+    <string name="main_greeting_sub">Hôm nay bạn muốn nấu món gì nào?</string>
+
+    <string name="main_action_search">Tìm kiếm</string>
+    <string name="main_action_profile">Trang của tôi</string>
+    <string name="main_action_settings">Cài đặt</string>
+
+    <string name="main_section_community">Cộng đồng Panda 💚</string>
+    <string name="main_action_see_all">Xem tất cả</string>
+
+    <!-- Bài đăng mẫu 1 -->
+    <string name="main_post1_author">Thảo Vy 👩‍🍳</string>
+    <string name="main_post1_time">2 giờ trước</string>
+    <string name="main_post1_content">Mình vừa thử làm Phở Bò theo công thức của Panda, nước dùng ngọt thanh chuẩn vị luôn các bạn ơi! Cả nhà ai cũng khen nức nở 🍲✨</string>
+    <string name="main_post1_likes">128</string>
+    <string name="main_post1_comments">42</string>
+
+    <!-- Bài đăng mẫu 2 -->
+    <string name="main_post2_author">Tuấn Lâm 🥖</string>
+    <string name="main_post2_time">4 giờ trước</string>
+    <string name="main_post2_content">Hôm nay đổi vị với món Bánh Mỳ Chảo tự làm tại nhà cực dễ mà giòn ngon khó cưỡng! 🍳🥖</string>
+    <string name="main_post2_likes">95</string>
+    <string name="main_post2_comments">18</string>
+
+    <string name="main_action_share">Chia sẻ</string>
+    <string name="main_action_save">Lưu</string>
 </resources>

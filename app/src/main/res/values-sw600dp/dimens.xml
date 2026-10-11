@@ -45,5 +45,11 @@
     <dimen name="forgot_input_height">60dp</dimen>
     <dimen name="forgot_button_height">58dp</dimen>
     <dimen name="forgot_screen_padding_horizontal">250dp</dimen>
+    <!-- Kích thước cho Màn hình chính (Tablet) -->
+    <dimen name="main_greeting_size">28sp</dimen>
+    <dimen name="main_greeting_sub_size">16sp</dimen>
+    <dimen name="main_action_text_size">15sp</dimen>
+    <dimen name="main_section_title_size">20sp</dimen>
+    <dimen name="main_screen_padding_horizontal">180dp</dimen>
 </resources>
 <!--dimens là viết tắt của Dimensions (kích thước)-->
