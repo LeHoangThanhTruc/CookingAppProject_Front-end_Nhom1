@@ -1,5 +1,6 @@
 package com.example.gamecookingtutorial;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -40,9 +41,10 @@ public class MainActivity extends AppCompatActivity {
         );
 
         // Nút Tìm kiếm
-        btnQuickSearch.setOnClickListener(v ->
-                Toast.makeText(this, "Mở màn hình Tìm kiếm!", Toast.LENGTH_SHORT).show()
-        );
+        btnQuickSearch.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+            startActivity(intent);
+        });
 
         // Nút Trang của tôi
         btnQuickProfile.setOnClickListener(v ->

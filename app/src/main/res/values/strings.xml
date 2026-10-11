@@ -92,4 +92,44 @@
 
     <string name="main_action_share">Chia sẻ</string>
     <string name="main_action_save">Lưu</string>
+    <!-- Chuỗi văn bản màn hình Tìm kiếm -->
+    <string name="search_title">Tìm kiếm</string>
+    <string name="search_hint">Tìm kiếm công thức hoặc người dùng...</string>
+
+    <!-- Phân loại đối tượng -->
+    <string name="search_type_all">Tất cả</string>
+    <string name="search_type_dishes">Món ăn</string>
+    <string name="search_type_users">Người dùng</string>
+
+    <!-- Phân loại món -->
+    <string name="search_cat_savory">Món mặn</string>
+    <string name="search_cat_vegetarian">Món chay</string>
+
+    <!-- Bộ lọc nâng cao -->
+    <string name="search_filter_advanced">Bộ lọc nâng cao</string>
+    <string name="search_filter_exclude">Nguyên liệu loại trừ</string>
+    <string name="search_filter_rating">Mức sao đánh giá</string>
+    <string name="search_filter_difficulty">Độ phức tạp</string>
+    <string name="search_filter_time">Thời gian nấu</string>
+    <string name="search_filter_reset">Đặt lại</string>
+    <string name="search_filter_apply">Áp dụng</string>
+
+    <!-- Kết quả mẫu -->
+    <string name="search_section_suggested">Chủ đề gợi ý</string>
+    <string name="search_section_popular">Công thức phổ biến</string>
+    <string name="search_dish_phobo">Phở Bò</string>
+    <string name="search_dish_banhmi">Bánh Mì</string>
+    <string name="search_dish_goicuon">Gỏi Cuốn</string>
+    <string name="search_dish_goicuon_full">Gỏi Cuốn Tôm Thịt</string>
+    <string name="search_action_view_recipe">Xem công thức</string>
+    <string name="search_filter_seafood">Hải sản</string>
+    <string name="search_filter_water_spinach">Rau muống</string>
+    <string name="search_filter_rating_val">Từ 4.5 sao</string>
+
+    <string name="search_filter_easy">Dễ</string>
+    <string name="search_filter_medium">Trung bình</string>
+    <string name="search_filter_under_30m">Dưới 30 phút</string>
+
+    <string name="search_dish_rating_val">4.8</string>
+    <string name="search_dish_time_val">15 phút</string>
 </resources>
