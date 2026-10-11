@@ -61,10 +61,11 @@ public class RecipeDetailActivity extends AppCompatActivity {
         // 4. Bật / Tắt hiển thị Hướng dẫn chi tiết bằng Chevron (Thay đổi chevron_down <-> chevron_up)
         layoutInstructionHeader.setOnClickListener(v -> toggleInstructionContent());
 
-        // 5. Nút Tự Đánh Giá
-        btnWriteReview.setOnClickListener(v ->
-                Toast.makeText(this, "Mở trình đánh giá món ăn!", Toast.LENGTH_SHORT).show()
-        );
+        // Bấm nút Tự Đánh Giá -> Chuyển sang Màn hình Đánh giá (ReviewActivity)
+        btnWriteReview.setOnClickListener(v -> {
+            Intent intent = new Intent(RecipeDetailActivity.this, ReviewActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void toggleInstructionContent() {

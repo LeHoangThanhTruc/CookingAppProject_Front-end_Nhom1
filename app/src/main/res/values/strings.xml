@@ -182,4 +182,26 @@
     <string name="recipe_step3_title">Bước 3: Tiến hành cuốn Gỏi Cuốn</string>
     <string name="recipe_step3_time">15 phút</string>
     <string name="recipe_step3_desc">Làm ẩm bánh tráng, xếp lần lượt xà lách, bún, thịt ba chỉ, rau thơm và hẹ. Gấp 2 mép bánh tráng, xếp tôm lên trên rồi cuốn chặt tay.</string>
+    <!-- Chuỗi văn bản màn hình Đánh giá công thức -->
+    <string name="review_top_tag">Đánh giá công thức</string>
+    <string name="review_top_title">Chia sẻ trải nghiệm</string>
+    <string name="review_top_sub">Panda muốn biết bạn thích công thức này đến mức nào!</string>
+
+    <string name="review_your_rating_title">Đánh giá của bạn</string>
+    <string name="review_your_rating_sub">Chọn số sao để thể hiện mức độ hài lòng của bạn với công thức này.</string>
+    <string name="review_rating_5star_tag">5 sao</string>
+    <string name="review_rating_5star_sub">Đánh giá cao nhất</string>
+
+    <string name="review_comment_title">Bình luận của bạn</string>
+    <string name="review_comment_sub">Viết cảm nhận, gợi ý hoặc điều bạn thích nhất về công thức này.</string>
+    <string name="review_comment_hint">Viết cảm nhận, gợi ý hoặc điều bạn thích nhất về công thức này...</string>
+    <string name="review_comment_footer_hint">Gợi ý: chia sẻ trải nghiệm nấu, hương vị, cách trình bày hoặc điều bạn muốn cải thiện.</string>
+    <string name="review_comment_char_count">0 / 500 ký tự</string>
+
+    <string name="review_btn_add_picture">+ Ảnh</string>
+    <string name="review_btn_add_video">+ Video</string>
+
+    <string name="review_warning_text">Hãy chia sẻ chân thật để mọi người cùng tham khảo trước khi vào bếp.</string>
+    <string name="review_btn_cancel">Hủy</string>
+    <string name="review_btn_submit">Gửi</string>
 </resources>
