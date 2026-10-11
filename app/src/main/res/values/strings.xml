@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">GameCookingTutorial</string>
+    <!-- Các chuỗi văn bản cho màn hình Splash -->
+    <string name="splash_app_title">Nấu Ăn Cùng Panda</string>
+    <string name="splash_tagline">🎋  Học nấu ăn vui cùng Panda! 🐼</string>
+    <string name="splash_pill_recipes">🍲 100+ Công thức</string>
+    <string name="splash_pill_easy">⭐ Dễ theo dõi</string>
+    <string name="splash_pill_fun">🎋 Vui &amp; Thú vị</string>
+    <string name="splash_btn_start">🐼  Vào Bếp Cùng Panda!</string>
+    <string name="splash_footer">Miễn phí · Không quảng cáo · Dành cho gia đình 🏠</string>
+    <!-- Chuỗi văn bản màn hình Đăng nhập -->
+    <string name="login_title">Đăng nhập</string>
+    <string name="login_sub_title">Đăng nhập để lưu món ngon yêu thích, đánh giá công thức và theo dõi tiến độ học nấu ăn.</string>
+    <string name="login_label_email_phone">Email / Số điện thoại</string>
+    <string name="login_hint_email_phone">Nhập email hoặc số điện thoại</string>
+    <string name="login_label_password">Mật khẩu</string>
+    <string name="login_hint_password">Nhập mật khẩu</string>
+    <string name="login_forgot_password">Quên mật khẩu?</string>
+    <string name="login_btn_submit">Đăng nhập</string>
+    <string name="login_divider_or">hoặc</string>
+    <string name="login_btn_google">Google</string>
+    <string name="login_btn_facebook">Facebook</string>
+    <string name="login_register_prompt">Chưa có tài khoản? </string>
+    <string name="login_register_action">Đăng ký</string>
+    <!-- Chuỗi văn bản màn hình Đăng ký -->
+    <string name="register_header_category">Đăng ký</string>
+    <string name="register_title">Tạo tài khoản</string>
+    <string name="register_sub_title">Bắt đầu lưu món ngon cùng Panda</string>
+    <string name="register_banner_title">Nấu ăn vui hơn mỗi ngày</string>
+    <string name="register_banner_desc">Tạo tài khoản để lưu món yêu thích, đánh giá công thức và theo dõi tiến độ học nấu ăn.</string>
+
+    <string name="register_label_fullname">Họ tên</string>
+    <string name="register_hint_fullname">Nguyễn Minh Anh</string>
+
+    <string name="register_label_email">Email</string>
+    <string name="register_hint_email">23521558@gm.uit.edu.vn</string>
+
+    <string name="register_label_password">Mật khẩu</string>
+    <string name="register_hint_password">••••••••</string>
+
+    <string name="register_label_confirm_password">Xác nhận mật khẩu</string>
+    <string name="register_hint_confirm_password">••••••••</string>
+
+    <string name="register_terms_agree">Tôi đồng ý với điều khoản và nhận gợi ý công thức mới.</string>
+    <string name="register_btn_submit">Đăng ký</string>
+</resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tăng cỡ chữ và lề cho Tablet/Desktop -->
+    <dimen name="splash_title_size">40sp</dimen>
+    <dimen name="splash_tagline_size">20sp</dimen>
+    <dimen name="splash_pill_text_size">16sp</dimen>
+    <dimen name="splash_button_text_size">22sp</dimen>
+    <dimen name="splash_footer_text_size">15sp</dimen>
+    <dimen name="splash_max_width">500dp</dimen>
+    <dimen name="splash_max_height">850dp</dimen>
+    <!-- Cỡ chữ to dễ đọc hơn trên màn hình rộng -->
+    <dimen name="login_title_size">32sp</dimen>
+    <dimen name="login_subtitle_size">16sp</dimen>
+    <dimen name="login_label_size">18sp</dimen>
+    <dimen name="login_input_text_size">18sp</dimen>
+    <dimen name="login_button_text_size">20sp</dimen>
+    <dimen name="login_social_text_size">16sp</dimen>
+
+    <!-- Chiều cao ô nhập liệu & Nút to hơn giúp dễ bấm -->
+    <dimen name="login_input_height">60dp</dimen>
+    <dimen name="login_button_height">62dp</dimen>
+
+    <dimen name="login_screen_padding_horizontal">350dp</dimen>
+    <!-- Bổ sung kích thước cho Đăng ký (Tablet) -->
+    <dimen name="register_title_size">30sp</dimen>
+    <dimen name="register_subtitle_size">15sp</dimen>
+    <dimen name="register_banner_title_size">22sp</dimen>
+    <dimen name="register_banner_desc_size">15sp</dimen>
+    <dimen name="register_label_size">16sp</dimen>
+    <dimen name="register_input_text_size">16sp</dimen>
+    <dimen name="register_button_text_size">20sp</dimen>
+    <dimen name="register_terms_text_size">15sp</dimen>
+
+    <dimen name="register_input_height">56dp</dimen>
+    <dimen name="register_button_height">60dp</dimen>
+    <dimen name="register_screen_padding_horizontal">350dp</dimen>
+</resources>
+<!--dimens là viết tắt của Dimensions (kích thước)-->
