@@ -19,6 +19,7 @@
         <activity android:name=".Frame7SettingActivity" />
         <activity android:name=".Frame8Language" />
         <activity android:name=".Frame9Contactus" />
+        <activity android:name=".Frame10Myactivity" />
         <activity android:name=".PlaceholderActivity" />
         <activity
             android:name=".MainActivity"
