@@ -16,6 +16,7 @@
         <activity android:name=".Frame26BioActivity" />
         <activity android:name=".Frame25MyProfileActivity" />
         <activity android:name=".Frame24OtherProfileActivity" />
+        <activity android:name=".Frame19ChangePhoneNumber" />
         <activity android:name=".Frame18EnterGmailOTP" />
         <activity android:name=".Frame17ChangeGmailAddress" />
         <activity android:name=".Frame16ChangeAccountName" />
