@@ -20,7 +20,7 @@ public class Frame14SavedList extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.acitivity_SavedList);
+        setContentView(R.layout.activity_saved_list);
 
         // Ánh xạ các View từ XML
         initViews();

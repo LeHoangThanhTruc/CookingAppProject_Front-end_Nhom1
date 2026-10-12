@@ -19,7 +19,7 @@ public class Frame11Dadanhgia extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_Dadanhgia);
+        setContentView(R.layout.activity_dadanhgia);
 
         // Ánh xạ các View từ XML
         initViews();

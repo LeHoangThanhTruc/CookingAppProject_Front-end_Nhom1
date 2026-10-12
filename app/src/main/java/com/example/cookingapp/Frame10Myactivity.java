@@ -18,7 +18,7 @@ public class Frame10Myactivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_Myactivity);
+        setContentView(R.layout.activity_myactivity);
 
         initViews();
         setupEvents();

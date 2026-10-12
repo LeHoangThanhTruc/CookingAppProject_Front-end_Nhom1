@@ -17,7 +17,7 @@ public class Frame16ChangeAccountName extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ChangeAccountName);
+        setContentView(R.layout.activity_change_account_name);
 
         // Ánh xạ các View từ XML
         initViews();

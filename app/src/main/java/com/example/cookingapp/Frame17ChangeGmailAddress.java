@@ -19,7 +19,7 @@ public class Frame17ChangeGmailAddress extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ChangeGmailAddress);
+        setContentView(R.layout.activity_change_gmail_address);
 
         // Ánh xạ các View từ XML
         initViews();

@@ -23,7 +23,7 @@ public class Frame15ProfileDetails extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ProfileDetails);
+        setContentView(R.layout.activity_profile_details);
 
         // Ánh xạ các View từ XML
         initViews();

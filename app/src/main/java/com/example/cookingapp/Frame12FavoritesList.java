@@ -20,7 +20,7 @@ public class Frame12FavoritesList extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_FavoritesList);
+        setContentView(R.layout.activity_favorites_list);
 
         // Ánh xạ các View từ XML
         initViews();

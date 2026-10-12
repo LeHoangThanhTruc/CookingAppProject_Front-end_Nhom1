@@ -29,7 +29,7 @@ public class Frame18EnterGmailOTP extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_EnterGmailOTP);
+        setContentView(R.layout.activity_enter_gmail_otp);
 
         // Ánh xạ các View từ XML
         initViews();

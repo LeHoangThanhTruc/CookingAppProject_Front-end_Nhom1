@@ -21,7 +21,7 @@ public class Frame13CookingSchedule extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_CookingSchedule);
+        setContentView(R.layout.activity_cooking_schedule);
 
         // Ánh xạ các View từ XML
         initViews();

@@ -19,7 +19,7 @@ public class Frame19ChangePhoneNumber extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ChangePhoneNumber);
+        setContentView(R.layout.activity_change_phone_number);
 
         // Ánh xạ các View từ XML
         initViews();

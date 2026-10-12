@@ -29,7 +29,7 @@ public class Frame22OTPSDT extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_OTPSDT);
+        setContentView(R.layout.activity_otpsdt);
 
         // Ánh xạ các View từ XML
         initViews();

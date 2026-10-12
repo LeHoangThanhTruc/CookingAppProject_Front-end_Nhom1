@@ -20,7 +20,7 @@ public class Frame23EnterCurrentPassword extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_EnterCurrentPassword);
+        setContentView(R.layout.activity_enter_current_password);
 
         // Ánh xạ các View từ XML
         initViews();

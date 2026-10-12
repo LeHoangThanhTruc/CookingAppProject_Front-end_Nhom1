@@ -17,7 +17,7 @@ public class Frame20SelectAMethod extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_SelectAMethod);
+        setContentView(R.layout.activity_select_a_method);
 
         // Ánh xạ các View từ XML
         initViews();
