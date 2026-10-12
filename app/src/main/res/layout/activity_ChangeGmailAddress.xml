@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/panda_bg"
+    android:fillViewport="true"
+    tools:ignore="HardcodedText,Autofill">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- HEADER SECTION -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="24dp">
+
+            <!-- Nút Quay lại (Back Button) -->
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_arrow_back"
+                android:contentDescription="Quay lại"
+                android:tint="@color/panda_green_dark"
+                app:tint="@color/panda_green_dark" />
+
+            <!-- Tiêu đề màn hình -->
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Thay đổi email"
+                android:textColor="@color/panda_green_dark"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginStart="12dp" />
+
+        </LinearLayout>
+
+        <!-- INPUT FIELD: ĐỊA CHỈ EMAIL -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@drawable/bg_card"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="16dp"
+            android:elevation="1dp"
+            android:layout_marginBottom="20dp">
+
+            <ImageView
+                android:id="@+id/ivEmailIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_mail"
+                android:contentDescription="Email"
+                android:tint="@color/panda_green"
+                app:tint="@color/panda_green" />
+
+            <EditText
+                android:id="@+id/etNewEmail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:hint="Địa chỉ email"
+                android:textColor="@color/panda_green_dark"
+                android:textColorHint="@color/panda_gray"
+                android:textSize="15sp"
+                android:layout_marginStart="12dp"
+                android:inputType="textEmailAddress" />
+        </LinearLayout>
+
+        <!-- NÚT TIẾP THEO -->
+        <LinearLayout
+            android:id="@+id/btnNext"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@drawable/bg_badge_published"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:elevation="1dp"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:id="@+id/tvNext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tiếp theo"
+                android:textColor="@color/panda_green"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- CHECKBOX / NEWSLETTER ROW -->
+        <LinearLayout
+            android:id="@+id/layoutNewsletter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="top"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingVertical="4dp">
+
+            <CheckBox
+                android:id="@+id/cbNewsletter"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:checked="true"
+                android:buttonTint="@color/panda_green" />
+
+            <TextView
+                android:id="@+id/tvNewsletterDesc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Gửi tôi thông tin xu hướng, chương trình khuyến mãi &amp; cập nhật mới nhất."
+                android:textColor="@color/panda_gray"
+                android:textSize="13sp"
+                android:layout_marginStart="10dp" />
+        </LinearLayout>
+
+        <!-- KHOẢNG TRỐNG ĐẨY NỘI DUNG LÊN TRÊN -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+</ScrollView>
