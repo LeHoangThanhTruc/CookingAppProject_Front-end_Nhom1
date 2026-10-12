@@ -1,6 +1,7 @@
 package com.example.cookingapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.widget.EditText;
@@ -66,7 +67,7 @@ public class Frame15ProfileDetails extends Activity {
         if (ivEditUsername != null) {
             ivEditUsername.setOnClickListener(v -> {
                 if (etUsername != null) etUsername.requestFocus();
-                Toast.makeText(this, "Chỉnh sửa tên tài khoản", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, Frame16ChangeAccountName.class));
             });
         }
 
@@ -74,7 +75,7 @@ public class Frame15ProfileDetails extends Activity {
         if (ivEditGmail != null) {
             ivEditGmail.setOnClickListener(v -> {
                 if (etGmail != null) etGmail.requestFocus();
-                Toast.makeText(this, "Chỉnh sửa Gmail", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, Frame17ChangeGmailAddress.class));
             });
         }
 
@@ -82,7 +83,7 @@ public class Frame15ProfileDetails extends Activity {
         if (ivEditPhone != null) {
             ivEditPhone.setOnClickListener(v -> {
                 if (etPhone != null) etPhone.requestFocus();
-                Toast.makeText(this, "Cập nhật số điện thoại", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, Frame19ChangePhoneNumber.class));
             });
         }
 
@@ -104,7 +105,7 @@ public class Frame15ProfileDetails extends Activity {
         // Đổi mật khẩu row
         if (btnChangePasswordRow != null) {
             btnChangePasswordRow.setOnClickListener(v ->
-                    Toast.makeText(this, "Mở màn hình Đổi mật khẩu", Toast.LENGTH_SHORT).show()
+                    startActivity(new Intent(this, Frame23EnterCurrentPassword.class))
             );
         }
     }

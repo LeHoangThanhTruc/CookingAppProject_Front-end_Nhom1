@@ -1,5 +1,6 @@
 package com.example.cookingapp;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -17,6 +18,7 @@ public class Frame31CreateRecipeActivity extends BaseFrameActivity {
         steps();
         categories();
         TextView next = primaryButton("🐼 Tiếp Theo");
+        next.setOnClickListener(v -> startActivity(new Intent(this, Frame32PrivacyActivity.class)));
         ScreenUi.margin(next, 0, dp(12), 0, 0);
         content.addView(next);
     }

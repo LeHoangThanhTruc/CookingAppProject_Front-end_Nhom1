@@ -1,6 +1,7 @@
 package com.example.cookingapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -59,7 +60,7 @@ public class Frame19ChangePhoneNumber extends Activity {
                     Toast.makeText(this, "Số điện thoại không hợp lệ!", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(this, "Mã xác thực đã được gửi đến: " + phone + (logoutOthers ? " (Đã chọn đăng xuất thiết bị khác)" : ""), Toast.LENGTH_LONG).show();
-                    finish();
+                    startActivity(new Intent(this, Frame20SelectAMethod.class));
                 }
             });
         }

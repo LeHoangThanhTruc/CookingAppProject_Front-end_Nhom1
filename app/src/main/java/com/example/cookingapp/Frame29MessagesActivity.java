@@ -1,5 +1,6 @@
 package com.example.cookingapp;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.widget.LinearLayout;
@@ -46,6 +47,7 @@ public class Frame29MessagesActivity extends BaseFrameActivity {
         }
         meta.addView(text(time, 12, unread ? R.color.panda_green_dark : R.color.panda_gray, Typeface.BOLD));
         row.addView(meta);
+        row.setOnClickListener(v -> startActivity(new Intent(this, Frame30ChatDetailActivity.class)));
         return row;
     }
 }

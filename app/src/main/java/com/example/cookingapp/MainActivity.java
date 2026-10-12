@@ -16,7 +16,7 @@ public class MainActivity extends Activity {
 
         LinearLayout list = findViewById(R.id.frame_list);
         list.addView(title("Cooking Panda", 26, R.color.panda_green_dark, Typeface.BOLD));
-        list.addView(title("Menu kiểm thử giao diện frame 24-33", 14, R.color.panda_green_mid, Typeface.NORMAL));
+        list.addView(title("Menu kiểm thử giao diện frame 7-33", 14, R.color.panda_green_mid, Typeface.NORMAL));
 
         for (FrameDefinition frame : FrameRoutes.FRAMES) {
             TextView button = item(frame);

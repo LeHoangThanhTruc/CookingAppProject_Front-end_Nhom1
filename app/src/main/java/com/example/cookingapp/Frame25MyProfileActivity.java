@@ -1,5 +1,6 @@
 package com.example.cookingapp;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -14,8 +15,8 @@ public class Frame25MyProfileActivity extends BaseFrameActivity {
         addHeader("", "Trang cá nhân", "", null);
         profileCard();
         menuCard();
-        singleMenu("🔔", "Thông Báo");
-        singleMenu("✍️", "Tạo Công Thức");
+        singleMenu("🔔", "Thông Báo", Frame33NotificationsActivity.class);
+        singleMenu("✍️", "Tạo Công Thức", Frame31CreateRecipeActivity.class);
         posts();
     }
 
@@ -42,17 +43,23 @@ public class Frame25MyProfileActivity extends BaseFrameActivity {
     private void menuCard() {
         LinearLayout card = card();
         addSectionTitle(card, "Mục nhanh", null);
-        card.addView(menuRow("📄", "Giới thiệu"));
-        card.addView(menuRow("👥", "Bạn bè"));
-        card.addView(menuRow("👀", "Người bạn đang theo dõi"));
-        card.addView(menuRow("📨", "Tin nhắn"));
+        card.addView(menuItem("📄", "Giới thiệu", Frame26BioActivity.class));
+        card.addView(menuItem("👥", "Bạn bè", Frame27FriendsActivity.class));
+        card.addView(menuItem("👀", "Người bạn đang theo dõi", Frame28FollowingActivity.class));
+        card.addView(menuItem("📨", "Tin nhắn", Frame29MessagesActivity.class));
         content.addView(card);
     }
 
-    private void singleMenu(String icon, String title) {
+    private void singleMenu(String icon, String title, Class<?> target) {
         LinearLayout card = card();
-        card.addView(menuRow(icon, title));
+        card.addView(menuItem(icon, title, target));
         content.addView(card);
+    }
+
+    private LinearLayout menuItem(String icon, String title, Class<?> target) {
+        LinearLayout row = menuRow(icon, title);
+        row.setOnClickListener(v -> startActivity(new Intent(this, target)));
+        return row;
     }
 
     private void posts() {

@@ -1,6 +1,7 @@
 package com.example.cookingapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -59,7 +60,7 @@ public class Frame17ChangeGmailAddress extends Activity {
                     Toast.makeText(this, "Địa chỉ email không hợp lệ!", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(this, "Đã gửi mã xác nhận đến: " + email + (receiveUpdates ? " (Đã đăng ký nhận bản tin)" : ""), Toast.LENGTH_LONG).show();
-                    finish();
+                    startActivity(new Intent(this, Frame18EnterGmailOTP.class));
                 }
             });
         }

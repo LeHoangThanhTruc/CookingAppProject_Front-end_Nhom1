@@ -1,5 +1,6 @@
 package com.example.cookingapp;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -59,11 +60,17 @@ public class Frame24OtherProfileActivity extends BaseFrameActivity {
     private void menuSection() {
         LinearLayout card = card();
         addSectionTitle(card, "Mục nhanh", null);
-        card.addView(menuRow("📄", "Giới thiệu"));
-        card.addView(menuRow("👥", "Bạn bè"));
-        card.addView(menuRow("👀", "Đang theo dõi"));
-        card.addView(menuRow("📨", "Nhắn tin với người này"));
+        card.addView(menuItem("📄", "Giới thiệu", Frame26BioActivity.class));
+        card.addView(menuItem("👥", "Bạn bè", Frame27FriendsActivity.class));
+        card.addView(menuItem("👀", "Đang theo dõi", Frame28FollowingActivity.class));
+        card.addView(menuItem("📨", "Nhắn tin với người này", Frame30ChatDetailActivity.class));
         content.addView(card);
+    }
+
+    private LinearLayout menuItem(String icon, String title, Class<?> target) {
+        LinearLayout row = menuRow(icon, title);
+        row.setOnClickListener(v -> startActivity(new Intent(this, target)));
+        return row;
     }
 
     private void postsSection(String owner) {

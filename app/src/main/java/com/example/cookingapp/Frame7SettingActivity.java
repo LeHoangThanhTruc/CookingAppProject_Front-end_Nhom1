@@ -79,7 +79,7 @@ public class Frame7SettingActivity extends Activity {
 
         if (btnLanguage != null) {
             btnLanguage.setOnClickListener(v ->
-                    Toast.makeText(this, "Ngôn ngữ hiện tại: Tiếng Việt", Toast.LENGTH_SHORT).show()
+                    startActivity(new Intent(this, Frame8Language.class))
             );
         }
 
@@ -91,7 +91,7 @@ public class Frame7SettingActivity extends Activity {
 
         if (btnChangePassword != null) {
             btnChangePassword.setOnClickListener(v ->
-                    Toast.makeText(this, "Mở màn hình Đổi mật khẩu", Toast.LENGTH_SHORT).show()
+                    startActivity(new Intent(this, Frame23EnterCurrentPassword.class))
             );
         }
 
@@ -103,13 +103,13 @@ public class Frame7SettingActivity extends Activity {
 
         if (btnActivity != null) {
             btnActivity.setOnClickListener(v ->
-                    Toast.makeText(this, "Mở lịch sử hoạt động nấu ăn", Toast.LENGTH_SHORT).show()
+                    startActivity(new Intent(this, Frame10Myactivity.class))
             );
         }
 
         if (btnSupport != null) {
             btnSupport.setOnClickListener(v ->
-                    Toast.makeText(this, "Mở Trung tâm hỗ trợ", Toast.LENGTH_SHORT).show()
+                    startActivity(new Intent(this, Frame9Contactus.class))
             );
         }
 

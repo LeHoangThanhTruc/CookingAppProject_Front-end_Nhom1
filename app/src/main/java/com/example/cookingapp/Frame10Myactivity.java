@@ -1,6 +1,7 @@
 package com.example.cookingapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -46,25 +47,25 @@ public class Frame10Myactivity extends Activity {
 
         if (btnSavedRecipes != null) {
             btnSavedRecipes.setOnClickListener(v ->
-                    Toast.makeText(this, "Mở danh sách Công thức đã lưu", Toast.LENGTH_SHORT).show()
+                    startActivity(new Intent(this, Frame14SavedList.class))
             );
         }
 
         if (btnReviews != null) {
             btnReviews.setOnClickListener(v ->
-                    Toast.makeText(this, "Mở danh sách Đánh giá đã viết", Toast.LENGTH_SHORT).show()
+                    startActivity(new Intent(this, Frame11Dadanhgia.class))
             );
         }
 
         if (btnCookingCalendar != null) {
             btnCookingCalendar.setOnClickListener(v ->
-                    Toast.makeText(this, "Mở Lịch nấu ăn", Toast.LENGTH_SHORT).show()
+                    startActivity(new Intent(this, Frame13CookingSchedule.class))
             );
         }
 
         if (btnFavoriteRecipes != null) {
             btnFavoriteRecipes.setOnClickListener(v ->
-                    Toast.makeText(this, "Mở danh sách Công thức yêu thích", Toast.LENGTH_SHORT).show()
+                    startActivity(new Intent(this, Frame12FavoritesList.class))
             );
         }
     }

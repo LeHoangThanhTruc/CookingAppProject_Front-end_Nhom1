@@ -1,6 +1,7 @@
 package com.example.cookingapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -83,7 +84,7 @@ public class Frame14SavedList extends Activity {
         // Nút Lên lịch nấu ăn
         if (btnScheduleCooking != null) {
             btnScheduleCooking.setOnClickListener(v ->
-                    Toast.makeText(this, "Mở màn hình Lên lịch nấu ăn", Toast.LENGTH_SHORT).show()
+                    startActivity(new Intent(this, Frame13CookingSchedule.class))
             );
         }
     }

@@ -1,6 +1,7 @@
 package com.example.cookingapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -49,7 +50,7 @@ public class Frame20SelectAMethod extends Activity {
         if (btnZaloOption != null) {
             btnZaloOption.setOnClickListener(v -> {
                 Toast.makeText(this, "Đã chọn nhận mã qua Zalo", Toast.LENGTH_SHORT).show();
-                finish();
+                startActivity(new Intent(this, Frame21OTPZalo.class));
             });
         }
 
@@ -57,7 +58,7 @@ public class Frame20SelectAMethod extends Activity {
         if (btnSmsOption != null) {
             btnSmsOption.setOnClickListener(v -> {
                 Toast.makeText(this, "Đã chọn nhận mã qua Tin nhắn SMS", Toast.LENGTH_SHORT).show();
-                finish();
+                startActivity(new Intent(this, Frame22OTPSDT.class));
             });
         }
 
