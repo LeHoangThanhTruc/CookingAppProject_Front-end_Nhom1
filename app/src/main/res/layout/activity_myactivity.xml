@@ -34,19 +34,6 @@
                 android:tint="@color/panda_green_dark"
                 app:tint="@color/panda_green_dark" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Hoạt động của tôi"
-                android:textColor="@color/panda_green_dark"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:gravity="center" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/btnReviews"
             <!-- Khối Tiêu đề màn hình -->
             <LinearLayout
                 android:layout_width="0dp"
@@ -136,19 +123,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:background="@drawable/bg_card"
-            android:padding="20dp"
-            android:elevation="2dp"
-            android:clickable="true"
-            android:focusable="true">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Đánh giá đã viết"
-                android:textColor="@color/panda_green_dark"
-                android:textSize="16sp"
-                android:textStyle="bold" />
             android:background="@drawable/bg_badge_card"
             android:padding="18dp"
             android:elevation="1dp"
