@@ -31,8 +31,7 @@
                 android:src="@drawable/ic_arrow_back"
                 android:contentDescription="Quay lại"
                 android:elevation="2dp"
-                android:tint="@color/panda_green_dark"
-                app:tint="@color/panda_green_dark" />
+                android:tint="@color/panda_green_dark" />
 
             <!-- Khối Tiêu đề màn hình -->
             <LinearLayout

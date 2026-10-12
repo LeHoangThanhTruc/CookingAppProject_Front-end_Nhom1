@@ -31,8 +31,7 @@
                 android:src="@drawable/ic_arrow_back"
                 android:contentDescription="Quay lại"
                 android:elevation="2dp"
-                android:tint="@color/panda_green_dark"
-                app:tint="@color/panda_green_dark" />
+                android:tint="@color/panda_green_dark" />
 
             <View
                 android:layout_width="0dp"
@@ -49,7 +48,6 @@
                 android:contentDescription="Thông báo"
                 android:elevation="2dp"
                 android:tint="@color/panda_green_dark"
-                app:tint="@color/panda_green_dark"
                 android:layout_marginEnd="10dp" />
 
             <!-- Nút Avatar User -->
@@ -62,8 +60,7 @@
                 android:contentDescription="Tài khoản"
                 android:elevation="2dp"
                 android:scaleType="centerCrop"
-                android:tint="@color/panda_green_dark"
-                app:tint="@color/panda_green_dark" />
+                android:tint="@color/panda_green_dark" />
 
         </LinearLayout>
 
@@ -214,8 +211,7 @@
                     android:layout_height="24dp"
                     android:src="@drawable/ic_chevron_up"
                     android:contentDescription="Thu gọn"
-                    android:tint="@color/panda_green_dark"
-                    app:tint="@color/panda_green_dark" />
+                    android:tint="@color/panda_green_dark" />
             </LinearLayout>
 
             <!-- Slot 1: Sáng (Đã lên lịch) -->
@@ -438,8 +434,7 @@
                 android:layout_height="24dp"
                 android:src="@drawable/ic_chevron_down"
                 android:contentDescription="Mở rộng"
-                android:tint="@color/panda_green_dark"
-                app:tint="@color/panda_green_dark" />
+                android:tint="@color/panda_green_dark" />
         </LinearLayout>
 
         <!-- ==================== THỨ 4 (COLLAPSED) ==================== -->
@@ -484,8 +479,7 @@
                 android:layout_height="24dp"
                 android:src="@drawable/ic_chevron_down"
                 android:contentDescription="Mở rộng"
-                android:tint="@color/panda_green_dark"
-                app:tint="@color/panda_green_dark" />
+                android:tint="@color/panda_green_dark" />
         </LinearLayout>
 
         <!-- ==================== THỨ 5 (COLLAPSED) ==================== -->
@@ -530,8 +524,7 @@
                 android:layout_height="24dp"
                 android:src="@drawable/ic_chevron_down"
                 android:contentDescription="Mở rộng"
-                android:tint="@color/panda_green_dark"
-                app:tint="@color/panda_green_dark" />
+                android:tint="@color/panda_green_dark" />
         </LinearLayout>
 
         <!-- ==================== THỨ 6 (COLLAPSED) ==================== -->
@@ -576,8 +569,7 @@
                 android:layout_height="24dp"
                 android:src="@drawable/ic_chevron_down"
                 android:contentDescription="Mở rộng"
-                android:tint="@color/panda_green_dark"
-                app:tint="@color/panda_green_dark" />
+                android:tint="@color/panda_green_dark" />
         </LinearLayout>
 
         <!-- ==================== THỨ 7 (COLLAPSED) ==================== -->
@@ -622,8 +614,7 @@
                 android:layout_height="24dp"
                 android:src="@drawable/ic_chevron_down"
                 android:contentDescription="Mở rộng"
-                android:tint="@color/panda_green_dark"
-                app:tint="@color/panda_green_dark" />
+                android:tint="@color/panda_green_dark" />
         </LinearLayout>
 
         <!-- ==================== CHỦ NHẬT (COLLAPSED) ==================== -->
@@ -668,8 +659,7 @@
                 android:layout_height="24dp"
                 android:src="@drawable/ic_chevron_down"
                 android:contentDescription="Mở rộng"
-                android:tint="@color/panda_green_dark"
-                app:tint="@color/panda_green_dark" />
+                android:tint="@color/panda_green_dark" />
         </LinearLayout>
 
     </LinearLayout>

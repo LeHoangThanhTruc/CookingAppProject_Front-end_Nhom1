@@ -31,8 +31,7 @@
                 android:src="@drawable/ic_arrow_back"
                 android:contentDescription="Quay lại"
                 android:elevation="2dp"
-                android:tint="@color/panda_green_dark"
-                app:tint="@color/panda_green_dark" />
+                android:tint="@color/panda_green_dark" />
 
             <!-- Khối Tiêu đề màn hình -->
             <LinearLayout
@@ -78,8 +77,7 @@
                 android:src="@drawable/ic_support"
                 android:contentDescription="Hỗ trợ"
                 android:elevation="2dp"
-                android:tint="@color/panda_gray"
-                app:tint="@color/panda_gray" />
+                android:tint="@color/panda_gray" />
 
         </LinearLayout>
 
@@ -102,8 +100,7 @@
                 android:padding="12dp"
                 android:src="@drawable/ic_panda_avatar"
                 android:contentDescription="Panda Avatar"
-                android:tint="@color/panda_green_dark"
-                app:tint="@color/panda_green_dark" />
+                android:tint="@color/panda_green_dark" />
 
             <TextView
                 android:id="@+id/tvHeroTitle"
@@ -167,8 +164,7 @@
                     android:padding="10dp"
                     android:src="@drawable/ic_mail"
                     android:contentDescription="Email"
-                    android:tint="@color/panda_gray"
-                    app:tint="@color/panda_gray" />
+                    android:tint="@color/panda_gray" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -202,8 +198,7 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_chevron_right"
                     android:contentDescription="Mở rộng"
-                    android:tint="@color/panda_gray"
-                    app:tint="@color/panda_gray" />
+                    android:tint="@color/panda_gray" />
             </LinearLayout>
 
             <!-- Mục 2: Hotline -->
@@ -226,8 +221,7 @@
                     android:padding="10dp"
                     android:src="@drawable/ic_phone"
                     android:contentDescription="Hotline"
-                    android:tint="@color/panda_red"
-                    app:tint="@color/panda_red" />
+                    android:tint="@color/panda_red" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -261,8 +255,7 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_chevron_right"
                     android:contentDescription="Mở rộng"
-                    android:tint="@color/panda_gray"
-                    app:tint="@color/panda_gray" />
+                    android:tint="@color/panda_gray" />
             </LinearLayout>
 
             <!-- Mục 3: Địa chỉ -->
@@ -285,8 +278,7 @@
                     android:padding="10dp"
                     android:src="@drawable/ic_location"
                     android:contentDescription="Địa chỉ"
-                    android:tint="@color/panda_green"
-                    app:tint="@color/panda_green" />
+                    android:tint="@color/panda_green" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -320,8 +312,7 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_chevron_right"
                     android:contentDescription="Mở rộng"
-                    android:tint="@color/panda_gray"
-                    app:tint="@color/panda_gray" />
+                    android:tint="@color/panda_gray" />
             </LinearLayout>
 
         </LinearLayout>
@@ -371,8 +362,7 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_tag"
                     android:contentDescription="Chủ đề"
-                    android:tint="#D97706"
-                    app:tint="#D97706" />
+                    android:tint="#D97706" />
 
                 <EditText
                     android:id="@+id/etSubject"
@@ -413,8 +403,7 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_mail"
                     android:contentDescription="Email người gửi"
-                    android:tint="@color/panda_gray"
-                    app:tint="@color/panda_gray" />
+                    android:tint="@color/panda_gray" />
 
                 <EditText
                     android:id="@+id/etUserEmail"
@@ -456,7 +445,6 @@
                     android:src="@drawable/ic_edit_note"
                     android:contentDescription="Nội dung tin nhắn"
                     android:tint="@color/panda_green"
-                    app:tint="@color/panda_green"
                     android:layout_marginTop="2dp" />
 
                 <EditText
@@ -502,7 +490,6 @@
                 android:src="@drawable/ic_send"
                 android:contentDescription="Gửi"
                 android:tint="@android:color/white"
-                app:tint="@android:color/white"
                 android:layout_marginEnd="8dp" />
 
             <TextView

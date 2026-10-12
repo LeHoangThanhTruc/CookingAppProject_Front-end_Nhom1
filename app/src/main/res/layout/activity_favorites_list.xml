@@ -31,8 +31,7 @@
                 android:src="@drawable/ic_arrow_back"
                 android:contentDescription="Quay lại"
                 android:elevation="2dp"
-                android:tint="@color/panda_green_dark"
-                app:tint="@color/panda_green_dark" />
+                android:tint="@color/panda_green_dark" />
 
             <!-- Khối Tiêu đề màn hình -->
             <LinearLayout
@@ -78,8 +77,7 @@
                 android:src="@drawable/ic_heart"
                 android:contentDescription="Yêu thích"
                 android:elevation="2dp"
-                android:tint="@color/panda_green"
-                app:tint="@color/panda_green" />
+                android:tint="@color/panda_green" />
 
         </LinearLayout>
 
@@ -100,8 +98,7 @@
                 android:layout_height="20dp"
                 android:src="@drawable/ic_search"
                 android:contentDescription="Tìm kiếm"
-                android:tint="@color/panda_green"
-                app:tint="@color/panda_green" />
+                android:tint="@color/panda_green" />
 
             <EditText
                 android:id="@+id/etSearchFavorite"
@@ -217,8 +214,7 @@
                 android:padding="10dp"
                 android:src="@drawable/ic_heart"
                 android:contentDescription="Yêu thích"
-                android:tint="@color/panda_green"
-                app:tint="@color/panda_green" />
+                android:tint="@color/panda_green" />
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -316,7 +312,6 @@
                         android:layout_height="14dp"
                         android:src="@drawable/ic_star"
                         android:tint="#F59E0B"
-                        app:tint="#F59E0B"
                         android:contentDescription="Star" />
 
                     <TextView
@@ -338,8 +333,7 @@
                 android:background="@drawable/bg_badge_published"
                 android:src="@drawable/ic_heart"
                 android:contentDescription="Yêu thích"
-                android:tint="@color/panda_green"
-                app:tint="@color/panda_green" />
+                android:tint="@color/panda_green" />
         </LinearLayout>
 
         <!-- RECIPE ITEM 2: CƠM GÀ XỐI MỠ -->
@@ -411,7 +405,6 @@
                         android:layout_height="14dp"
                         android:src="@drawable/ic_star"
                         android:tint="#F59E0B"
-                        app:tint="#F59E0B"
                         android:contentDescription="Star" />
 
                     <TextView
@@ -433,8 +426,7 @@
                 android:background="@drawable/bg_badge_published"
                 android:src="@drawable/ic_heart"
                 android:contentDescription="Yêu thích"
-                android:tint="@color/panda_green"
-                app:tint="@color/panda_green" />
+                android:tint="@color/panda_green" />
         </LinearLayout>
 
         <!-- RECIPE ITEM 3: CHÈ KHÚC BẠCH -->
@@ -506,7 +498,6 @@
                         android:layout_height="14dp"
                         android:src="@drawable/ic_star"
                         android:tint="#F59E0B"
-                        app:tint="#F59E0B"
                         android:contentDescription="Star" />
 
                     <TextView
@@ -528,8 +519,7 @@
                 android:background="@drawable/bg_badge_published"
                 android:src="@drawable/ic_heart"
                 android:contentDescription="Yêu thích"
-                android:tint="@color/panda_green"
-                app:tint="@color/panda_green" />
+                android:tint="@color/panda_green" />
         </LinearLayout>
 
         <!-- RECIPE ITEM 4: MÌ Ý SỐT BÒ BẰM -->
@@ -601,7 +591,6 @@
                         android:layout_height="14dp"
                         android:src="@drawable/ic_star"
                         android:tint="#F59E0B"
-                        app:tint="#F59E0B"
                         android:contentDescription="Star" />
 
                     <TextView
@@ -623,8 +612,7 @@
                 android:background="@drawable/bg_badge_published"
                 android:src="@drawable/ic_heart"
                 android:contentDescription="Yêu thích"
-                android:tint="@color/panda_green"
-                app:tint="@color/panda_green" />
+                android:tint="@color/panda_green" />
         </LinearLayout>
 
         <!-- BOTTOM BUTTON: KHÁM PHÁ THÊM CÔNG THỨC -->
@@ -647,7 +635,6 @@
                 android:src="@drawable/ic_plus"
                 android:contentDescription="Thêm"
                 android:tint="@color/panda_green"
-                app:tint="@color/panda_green"
                 android:layout_marginEnd="6dp" />
 
             <TextView
