@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/panda_bg"
+    android:fillViewport="true"
+    tools:ignore="HardcodedText,UseCompoundDrawables">
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/panda_bg"
@@ -28,6 +35,9 @@
                 android:src="@drawable/ic_arrow_back"
                 android:contentDescription="Quay lại"
                 android:elevation="2dp"
+                android:tint="@color/panda_green_dark"
+                app:tint="@color/panda_green_dark" />
+
                 android:tint="@color/panda_green_dark" />
 
             <!-- Khối Tiêu đề màn hình -->
@@ -67,6 +77,12 @@
                 android:src="@drawable/ic_gear"
                 android:contentDescription="Cài đặt khác"
                 android:elevation="2dp"
+                android:tint="@color/panda_gray"
+                app:tint="@color/panda_gray" />
+
+        </LinearLayout>
+
+        <!-- CARD 1 -->
                 android:tint="@color/panda_gray" />
 
         </LinearLayout>
@@ -91,6 +107,7 @@
                 android:textStyle="bold"
                 android:layout_marginBottom="16dp" />
 
+            <LinearLayout
             <!-- Mục 1: Thông báo món mới -->
             <LinearLayout
                 android:id="@+id/btnNotificationItem"
@@ -114,6 +131,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
                     android:orientation="vertical"
                     android:layout_marginStart="14dp"
                     android:layout_marginEnd="8dp">
@@ -133,6 +153,7 @@
                         android:layout_height="wrap_content"
                         android:text="Nhắc khi có công thức phù hợp"
                         android:textColor="@color/panda_gray"
+                        android:textSize="12sp" />
                         android:textSize="12sp"
                         android:layout_marginTop="2dp" />
                 </LinearLayout>
@@ -144,6 +165,7 @@
                     android:checked="true" />
             </LinearLayout>
 
+            <LinearLayout
             <!-- Mục 2: Chế độ tối -->
             <LinearLayout
                 android:id="@+id/btnDarkModeItem"
@@ -167,6 +189,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
                     android:orientation="vertical"
                     android:layout_marginStart="14dp"
                     android:layout_marginEnd="8dp">
@@ -186,6 +211,7 @@
                         android:layout_height="wrap_content"
                         android:text="Dịu mắt khi xem bếp buổi tối"
                         android:textColor="@color/panda_gray"
+                        android:textSize="12sp" />
                         android:textSize="12sp"
                         android:layout_marginTop="2dp" />
                 </LinearLayout>
@@ -223,6 +249,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
                     android:orientation="vertical"
                     android:layout_marginStart="14dp">
 
@@ -241,6 +270,10 @@
                         android:layout_height="wrap_content"
                         android:text="Tiếng Việt"
                         android:textColor="@color/panda_gray"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <ImageView
                         android:textSize="12sp"
                         android:layout_marginTop="2dp" />
                 </LinearLayout>
@@ -251,11 +284,14 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_chevron_right"
                     android:contentDescription="Mở rộng"
+                    android:tint="@color/panda_gray"
+                    app:tint="@color/panda_gray" />
                     android:tint="@color/panda_gray" />
             </LinearLayout>
 
         </LinearLayout>
 
+        <!-- CARD 2 -->
         <!-- CARD 2: TÀI KHOẢN & BẢO MẬT -->
         <LinearLayout
             android:layout_width="match_parent"
@@ -302,6 +338,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
                     android:orientation="vertical"
                     android:layout_marginStart="14dp">
 
@@ -320,6 +359,10 @@
                         android:layout_height="wrap_content"
                         android:text="Cập nhật thông tin cá nhân"
                         android:textColor="@color/panda_gray"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <ImageView
                         android:textSize="12sp"
                         android:layout_marginTop="2dp" />
                 </LinearLayout>
@@ -330,6 +373,10 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_chevron_right"
                     android:contentDescription="Mở rộng"
+                    android:tint="@color/panda_gray"
+                    app:tint="@color/panda_gray" />
+            </LinearLayout>
+
                     android:tint="@color/panda_gray" />
             </LinearLayout>
 
@@ -359,6 +406,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
                     android:orientation="vertical"
                     android:layout_marginStart="14dp">
 
@@ -377,6 +427,10 @@
                         android:layout_height="wrap_content"
                         android:text="Bảo vệ tài khoản của bạn"
                         android:textColor="@color/panda_gray"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <ImageView
                         android:textSize="12sp"
                         android:layout_marginTop="2dp" />
                 </LinearLayout>
@@ -387,6 +441,10 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_chevron_right"
                     android:contentDescription="Mở rộng"
+                    android:tint="@color/panda_gray"
+                    app:tint="@color/panda_gray" />
+            </LinearLayout>
+
                     android:tint="@color/panda_gray" />
             </LinearLayout>
 
@@ -416,6 +474,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
                     android:orientation="vertical"
                     android:layout_marginStart="14dp">
 
@@ -434,6 +495,10 @@
                         android:layout_height="wrap_content"
                         android:text="Quản lý dữ liệu cá nhân"
                         android:textColor="@color/panda_gray"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <ImageView
                         android:textSize="12sp"
                         android:layout_marginTop="2dp" />
                 </LinearLayout>
@@ -444,6 +509,10 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_chevron_right"
                     android:contentDescription="Mở rộng"
+                    android:tint="@color/panda_gray"
+                    app:tint="@color/panda_gray" />
+            </LinearLayout>
+
                     android:tint="@color/panda_gray" />
             </LinearLayout>
 
@@ -473,6 +542,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
                     android:orientation="vertical"
                     android:layout_marginStart="14dp">
 
@@ -491,6 +563,10 @@
                         android:layout_height="wrap_content"
                         android:text="Xem lịch sử nấu và lưu trữ"
                         android:textColor="@color/panda_gray"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <ImageView
                         android:textSize="12sp"
                         android:layout_marginTop="2dp" />
                 </LinearLayout>
@@ -501,6 +577,10 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_chevron_right"
                     android:contentDescription="Mở rộng"
+                    android:tint="@color/panda_gray"
+                    app:tint="@color/panda_gray" />
+            </LinearLayout>
+
                     android:tint="@color/panda_gray" />
             </LinearLayout>
 
@@ -530,6 +610,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
                     android:orientation="vertical"
                     android:layout_marginStart="14dp">
 
@@ -548,6 +631,10 @@
                         android:layout_height="wrap_content"
                         android:text="Câu hỏi thường gặp"
                         android:textColor="@color/panda_gray"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <ImageView
                         android:textSize="12sp"
                         android:layout_marginTop="2dp" />
                 </LinearLayout>
@@ -558,11 +645,14 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_chevron_right"
                     android:contentDescription="Mở rộng"
+                    android:tint="@color/panda_gray"
+                    app:tint="@color/panda_gray" />
                     android:tint="@color/panda_gray" />
             </LinearLayout>
 
         </LinearLayout>
 
+        <!-- LOGOUT BUTTON -->
         <!-- NÚT ĐĂNG XUẤT (Log Out) -->
         <LinearLayout
             android:id="@+id/btnLogOut"
@@ -576,6 +666,7 @@
             android:elevation="1dp"
             android:layout_marginBottom="16dp">
 
+            <TextView
             <ImageView
                 android:id="@+id/ivLogOutIcon"
                 android:layout_width="20dp"
@@ -591,6 +682,7 @@
                 android:text="Đăng xuất"
                 android:textColor="@color/panda_red"
                 android:textSize="15sp"
+                android:textStyle="bold" />
                 android:textStyle="bold"
                 android:layout_marginStart="8dp" />
         </LinearLayout>

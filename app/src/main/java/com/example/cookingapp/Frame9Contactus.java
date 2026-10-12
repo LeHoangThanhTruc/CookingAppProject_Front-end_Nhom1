@@ -1,6 +1,7 @@
 package com.example.cookingapp;
 
 import android.app.Activity;
+import android.os.Bundle;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -9,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class Frame9Contactus extends Activity {
+    private ImageButton btnBack;
 
     // Khai báo các thành phần tương tác trên giao diện
     private ImageButton btnBack;
@@ -29,6 +31,14 @@ public class Frame9Contactus extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contactus);
 
+        btnBack = findViewById(R.id.btnBack);
+        btnSendContact = findViewById(R.id.btnSendContact);
+
+        if (btnBack != null) btnBack.setOnClickListener(v -> finish());
+        if (btnSendContact != null) btnSendContact.setOnClickListener(v -> {
+            Toast.makeText(this, "Gửi liên hệ thành công!", Toast.LENGTH_SHORT).show();
+            finish();
+        });
         // Ánh xạ các View từ file XML
         initViews();
 

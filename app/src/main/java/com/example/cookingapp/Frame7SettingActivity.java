@@ -10,6 +10,9 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 public class Frame7SettingActivity extends Activity {
+    private ImageButton btnBack, btnGear;
+    private Switch switchNotification, switchDarkMode;
+    private LinearLayout btnLanguage, btnProfile, btnChangePassword, btnPrivacy, btnActivity, btnSupport, btnLogOut;
 
     private ImageButton btnBack;
     private ImageButton btnGear;
@@ -47,6 +50,22 @@ public class Frame7SettingActivity extends Activity {
         btnActivity = findViewById(R.id.btnActivity);
         btnSupport = findViewById(R.id.btnSupport);
         btnLogOut = findViewById(R.id.btnLogOut);
+
+        if (btnBack != null) btnBack.setOnClickListener(v -> finish());
+        if (btnGear != null) btnGear.setOnClickListener(v -> Toast.makeText(this, "Cài đặt nâng cao", Toast.LENGTH_SHORT).show());
+        if (switchNotification != null) switchNotification.setOnCheckedChangeListener((b, isChecked) -> Toast.makeText(this, isChecked ? "Đã bật thông báo" : "Đã tắt thông báo", Toast.LENGTH_SHORT).show());
+        if (switchDarkMode != null) switchDarkMode.setOnCheckedChangeListener((b, isChecked) -> Toast.makeText(this, isChecked ? "Đã bật chế độ tối" : "Đã tắt chế độ tối", Toast.LENGTH_SHORT).show());
+        if (btnLanguage != null) btnLanguage.setOnClickListener(v -> startActivity(new Intent(this, Frame8Language.class)));
+        if (btnProfile != null) btnProfile.setOnClickListener(v -> startActivity(new Intent(this, Frame25MyProfileActivity.class)));
+        if (btnChangePassword != null) btnChangePassword.setOnClickListener(v -> Toast.makeText(this, "Đổi mật khẩu", Toast.LENGTH_SHORT).show());
+        if (btnPrivacy != null) btnPrivacy.setOnClickListener(v -> startActivity(new Intent(this, Frame32PrivacyActivity.class)));
+        if (btnActivity != null) btnActivity.setOnClickListener(v -> startActivity(new Intent(this, Frame10Myactivity.class)));
+        if (btnSupport != null) btnSupport.setOnClickListener(v -> startActivity(new Intent(this, Frame9Contactus.class)));
+        if (btnLogOut != null) btnLogOut.setOnClickListener(v -> {
+            new AlertDialog.Builder(this)
+                .setTitle("Đăng xuất")
+                .setMessage("Bạn có chắc muốn đăng xuất?")
+                .setPositiveButton("Đăng xuất", (d, w) -> {
     }
 
     private void setupEvents() {
@@ -151,5 +170,6 @@ public class Frame7SettingActivity extends Activity {
                 })
                 .setNegativeButton("Hủy", null)
                 .show();
+        });
     }
 }

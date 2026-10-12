@@ -69,6 +69,8 @@
                     android:textSize="13sp" />
             </LinearLayout>
 
+        </LinearLayout>
+
             <!-- Nút Cài đặt phụ (Gear Icon) -->
             <ImageButton
                 android:id="@+id/btnGear"
@@ -100,6 +102,20 @@
                 android:text="Ngôn ngữ ứng dụng"
                 android:textColor="@color/panda_green_dark"
                 android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tiếng Việt"
+                android:textColor="@color/panda_green_dark"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:padding="12dp"
+                android:background="@drawable/bg_language_item_selected" />
+        </LinearLayout>
+
                 android:textStyle="bold" />
 
             <TextView
@@ -374,6 +390,12 @@
             android:background="@drawable/bg_btn_primary"
             android:orientation="horizontal"
             android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:elevation="2dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
             android:layout_gravity="center"
             android:clickable="true"
             android:focusable="true"
@@ -388,6 +410,7 @@
                 android:text="Áp dụng"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
+                android:textStyle="bold" />
                 android:textStyle="bold"
                 android:gravity="center" />
         </LinearLayout>
