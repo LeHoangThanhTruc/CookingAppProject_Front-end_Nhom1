@@ -10,9 +10,6 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 public class Frame7SettingActivity extends Activity {
-    private ImageButton btnBack, btnGear;
-    private Switch switchNotification, switchDarkMode;
-    private LinearLayout btnLanguage, btnProfile, btnChangePassword, btnPrivacy, btnActivity, btnSupport, btnLogOut;
 
     private ImageButton btnBack;
     private ImageButton btnGear;
@@ -31,10 +28,7 @@ public class Frame7SettingActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
 
-        // Ánh xạ các View từ giao diện XML (findViewById)
         initViews();
-
-        // Đăng ký các sự kiện tương tác
         setupEvents();
     }
 
@@ -50,38 +44,19 @@ public class Frame7SettingActivity extends Activity {
         btnActivity = findViewById(R.id.btnActivity);
         btnSupport = findViewById(R.id.btnSupport);
         btnLogOut = findViewById(R.id.btnLogOut);
-
-        if (btnBack != null) btnBack.setOnClickListener(v -> finish());
-        if (btnGear != null) btnGear.setOnClickListener(v -> Toast.makeText(this, "Cài đặt nâng cao", Toast.LENGTH_SHORT).show());
-        if (switchNotification != null) switchNotification.setOnCheckedChangeListener((b, isChecked) -> Toast.makeText(this, isChecked ? "Đã bật thông báo" : "Đã tắt thông báo", Toast.LENGTH_SHORT).show());
-        if (switchDarkMode != null) switchDarkMode.setOnCheckedChangeListener((b, isChecked) -> Toast.makeText(this, isChecked ? "Đã bật chế độ tối" : "Đã tắt chế độ tối", Toast.LENGTH_SHORT).show());
-        if (btnLanguage != null) btnLanguage.setOnClickListener(v -> startActivity(new Intent(this, Frame8Language.class)));
-        if (btnProfile != null) btnProfile.setOnClickListener(v -> startActivity(new Intent(this, Frame25MyProfileActivity.class)));
-        if (btnChangePassword != null) btnChangePassword.setOnClickListener(v -> Toast.makeText(this, "Đổi mật khẩu", Toast.LENGTH_SHORT).show());
-        if (btnPrivacy != null) btnPrivacy.setOnClickListener(v -> startActivity(new Intent(this, Frame32PrivacyActivity.class)));
-        if (btnActivity != null) btnActivity.setOnClickListener(v -> startActivity(new Intent(this, Frame10Myactivity.class)));
-        if (btnSupport != null) btnSupport.setOnClickListener(v -> startActivity(new Intent(this, Frame9Contactus.class)));
-        if (btnLogOut != null) btnLogOut.setOnClickListener(v -> {
-            new AlertDialog.Builder(this)
-                .setTitle("Đăng xuất")
-                .setMessage("Bạn có chắc muốn đăng xuất?")
-                .setPositiveButton("Đăng xuất", (d, w) -> {
     }
 
     private void setupEvents() {
-        // Nút Back - quay lại màn hình trước
         if (btnBack != null) {
             btnBack.setOnClickListener(v -> finish());
         }
 
-        // Nút Cài đặt phụ (Gear)
         if (btnGear != null) {
             btnGear.setOnClickListener(v ->
                     Toast.makeText(this, "Tùy chọn cài đặt nâng cao", Toast.LENGTH_SHORT).show()
             );
         }
 
-        // Bật / Tắt Switch Thông báo món mới
         if (switchNotification != null) {
             switchNotification.setOnCheckedChangeListener((buttonView, isChecked) -> {
                 if (isChecked) {
@@ -92,7 +67,6 @@ public class Frame7SettingActivity extends Activity {
             });
         }
 
-        // Bật / Tắt Switch Chế độ tối
         if (switchDarkMode != null) {
             switchDarkMode.setOnCheckedChangeListener((buttonView, isChecked) -> {
                 if (isChecked) {
@@ -103,66 +77,53 @@ public class Frame7SettingActivity extends Activity {
             });
         }
 
-        // Mục Ngôn ngữ
         if (btnLanguage != null) {
             btnLanguage.setOnClickListener(v ->
                     Toast.makeText(this, "Ngôn ngữ hiện tại: Tiếng Việt", Toast.LENGTH_SHORT).show()
             );
         }
 
-        // Mục Hồ sơ của tôi
         if (btnProfile != null) {
-            btnProfile.setOnClickListener(v -> {
-                Intent intent = new Intent(this, Frame25MyProfileActivity.class);
-                startActivity(intent);
-            });
+            btnProfile.setOnClickListener(v ->
+                    startActivity(new Intent(this, Frame25MyProfileActivity.class))
+            );
         }
 
-        // Mục Đổi mật khẩu
         if (btnChangePassword != null) {
             btnChangePassword.setOnClickListener(v ->
                     Toast.makeText(this, "Mở màn hình Đổi mật khẩu", Toast.LENGTH_SHORT).show()
             );
         }
 
-        // Mục Quyền riêng tư
         if (btnPrivacy != null) {
-            btnPrivacy.setOnClickListener(v -> {
-                Intent intent = new Intent(this, Frame32PrivacyActivity.class);
-                startActivity(intent);
-            });
+            btnPrivacy.setOnClickListener(v ->
+                    startActivity(new Intent(this, Frame32PrivacyActivity.class))
+            );
         }
 
-        // Mục Hoạt động của tôi
         if (btnActivity != null) {
             btnActivity.setOnClickListener(v ->
                     Toast.makeText(this, "Mở lịch sử hoạt động nấu ăn", Toast.LENGTH_SHORT).show()
             );
         }
 
-        // Mục Trung tâm hỗ trợ
         if (btnSupport != null) {
             btnSupport.setOnClickListener(v ->
                     Toast.makeText(this, "Mở Trung tâm hỗ trợ", Toast.LENGTH_SHORT).show()
             );
         }
 
-        // Nút Đăng xuất
         if (btnLogOut != null) {
             btnLogOut.setOnClickListener(v -> showLogoutConfirmationDialog());
         }
     }
 
-    /**
-     * Hiển thị Dialog xác nhận đăng xuất
-     */
     private void showLogoutConfirmationDialog() {
         new AlertDialog.Builder(this)
                 .setTitle("Xác nhận đăng xuất")
                 .setMessage("Bạn có chắc chắn muốn đăng xuất khỏi ứng dụng?")
                 .setPositiveButton("Đăng xuất", (dialog, which) -> {
                     Toast.makeText(this, "Đã đăng xuất thành công", Toast.LENGTH_SHORT).show();
-                    // Chuyển về màn hình chính
                     Intent intent = new Intent(this, MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
@@ -170,6 +131,5 @@ public class Frame7SettingActivity extends Activity {
                 })
                 .setNegativeButton("Hủy", null)
                 .show();
-        });
     }
 }
