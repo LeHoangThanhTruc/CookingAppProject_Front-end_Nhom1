@@ -1,0 +1,606 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/panda_bg"
+    android:fillViewport="true"
+    tools:ignore="HardcodedText">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- HEADER SECTION -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="20dp">
+
+            <!-- Nút Quay lại (Back Button) -->
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="@drawable/bg_circle_white"
+                android:src="@drawable/ic_arrow_back"
+                android:contentDescription="Quay lại"
+                android:elevation="2dp"
+                android:tint="@color/panda_green_dark"
+                app:tint="@color/panda_green_dark" />
+
+            <!-- Tiêu đề màn hình -->
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Danh sách đã đánh giá"
+                android:textColor="@color/panda_green_dark"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:gravity="center" />
+
+            <!-- Nút Profile/Panda (Top Right Icon) -->
+            <ImageButton
+                android:id="@+id/btnProfileHeader"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_circle_white"
+                android:src="@drawable/ic_panda_avatar"
+                android:contentDescription="Tài khoản"
+                android:elevation="2dp"
+                android:tint="@color/panda_green_dark"
+                app:tint="@color/panda_green_dark" />
+
+        </LinearLayout>
+
+        <!-- CARD 1: SUMMARY & FILTER CHIPS -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_card"
+            android:padding="20dp"
+            android:elevation="2dp"
+            android:layout_marginBottom="16dp">
+
+            <!-- Top Row Summary -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvSummaryTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="12 đánh giá đã gửi"
+                        android:textColor="@color/panda_green_dark"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvSummaryDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Xem lại các món ăn bạn đã chấm điểm và để lại nhận xét."
+                        android:textColor="@color/panda_gray"
+                        android:textSize="12sp"
+                        android:layout_marginTop="2dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/btnSortOrder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cập nhật gần"
+                    android:textColor="@color/panda_green"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/bg_badge_published"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="6dp"
+                    android:clickable="true"
+                    android:focusable="true" />
+            </LinearLayout>
+
+            <!-- Filter Chips -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- Chip 1: Tất cả (Selected) -->
+                    <TextView
+                        android:id="@+id/chipAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tất cả"
+                        android:textColor="@android:color/white"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:background="@drawable/bg_chip_selected"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:gravity="center"
+                        android:clickable="true"
+                        android:focusable="true" />
+
+                    <!-- Chip 2: 5 sao -->
+                    <TextView
+                        android:id="@+id/chip5Star"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5 sao"
+                        android:textColor="@color/panda_green_dark"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:background="@drawable/bg_chip_normal"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:gravity="center"
+                        android:clickable="true"
+                        android:focusable="true" />
+
+                    <!-- Chip 3: 4 sao -->
+                    <TextView
+                        android:id="@+id/chip4Star"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4 sao"
+                        android:textColor="@color/panda_green_dark"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:background="@drawable/bg_chip_normal"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:gravity="center"
+                        android:clickable="true"
+                        android:focusable="true" />
+
+                    <!-- Chip 4: 3 sao -->
+                    <TextView
+                        android:id="@+id/chip3Star"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3 sao"
+                        android:textColor="@color/panda_green_dark"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:background="@drawable/bg_chip_normal"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:gravity="center"
+                        android:clickable="true"
+                        android:focusable="true" />
+
+                    <!-- Chip 5: 2 sao -->
+                    <TextView
+                        android:id="@+id/chip2Star"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2 sao"
+                        android:textColor="@color/panda_green_dark"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:background="@drawable/bg_chip_normal"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:gravity="center"
+                        android:clickable="true"
+                        android:focusable="true" />
+
+                    <!-- Chip 6: 1 sao -->
+                    <TextView
+                        android:id="@+id/chip1Star"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1 sao"
+                        android:textColor="@color/panda_green_dark"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:background="@drawable/bg_chip_normal"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="8dp"
+                        android:gravity="center"
+                        android:clickable="true"
+                        android:focusable="true" />
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+        </LinearLayout>
+
+        <!-- REVIEW ITEM 1: PHỞ BÒ HÀ NỘI -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_card"
+            android:padding="18dp"
+            android:elevation="2dp"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/ivRecipe1"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/bg_circle_cream"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_gear"
+                    android:contentDescription="Món ăn" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="12dp">
+
+                    <TextView
+                        android:id="@+id/tvRecipe1Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Phở Bò Hà Nội"
+                        android:textColor="@color/panda_green_dark"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <!-- Stars row -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="2dp">
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" android:tint="#F59E0B" app:tint="#F59E0B" android:contentDescription="Star" />
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" android:tint="#F59E0B" app:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" android:tint="#F59E0B" app:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" android:tint="#F59E0B" app:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" android:tint="#F59E0B" app:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvRecipe1Date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Đánh giá ngày 12/03/2025"
+                        android:textColor="@color/panda_gray"
+                        android:textSize="11sp"
+                        android:layout_marginTop="2dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvStatus1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Đã đăng"
+                    android:textColor="@color/panda_green"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/bg_badge_published"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvRecipe1Comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Món ăn rất đậm đà, nước dùng trong và thịt bò mềm. Công thức dễ làm, mình sẽ lưu lại để nấu thêm nhiều lần."
+                android:textColor="@color/panda_green_dark"
+                android:textSize="13sp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/btnViewReview1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Xem lại đánh giá"
+                    android:textColor="@color/panda_green"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+                <TextView
+                    android:id="@+id/btnEditReview1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sửa"
+                    android:textColor="@color/panda_green_dark"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/bg_button_light"
+                    android:paddingHorizontal="18dp"
+                    android:paddingVertical="6dp"
+                    android:clickable="true"
+                    android:focusable="true" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- REVIEW ITEM 2: SƯỜN NƯỚNG MẬT ONG -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_card"
+            android:padding="18dp"
+            android:elevation="2dp"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/ivRecipe2"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/bg_circle_cream"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_gear"
+                    android:contentDescription="Món ăn" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="12dp">
+
+                    <TextView
+                        android:id="@+id/tvRecipe2Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sườn Nướng Mật Ong"
+                        android:textColor="@color/panda_green_dark"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <!-- Stars row -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="2dp">
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" android:tint="#F59E0B" app:tint="#F59E0B" android:contentDescription="Star" />
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" android:tint="#F59E0B" app:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" android:tint="#F59E0B" app:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" android:tint="#F59E0B" app:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" android:tint="#CBD5E1" app:tint="#CBD5E1" android:layout_marginStart="2dp" android:contentDescription="Star" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvRecipe2Date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Đánh giá ngày 08/03/2025"
+                        android:textColor="@color/panda_gray"
+                        android:textSize="11sp"
+                        android:layout_marginTop="2dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvStatus2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Đã đăng"
+                    android:textColor="@color/panda_green"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/bg_badge_published"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvRecipe2Comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Món ăn ngon, cách ướp dễ hiểu. Mình chỉ cần lưu ý thời gian nướng để miếng sườn không bị cháy."
+                android:textColor="@color/panda_green_dark"
+                android:textSize="13sp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/btnViewReview2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Xem lại đánh giá"
+                    android:textColor="@color/panda_green"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+                <TextView
+                    android:id="@+id/btnEditReview2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sửa"
+                    android:textColor="@color/panda_green_dark"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/bg_button_light"
+                    android:paddingHorizontal="18dp"
+                    android:paddingVertical="6dp"
+                    android:clickable="true"
+                    android:focusable="true" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- REVIEW ITEM 3: BÚN BÒ HUẾ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_card"
+            android:padding="18dp"
+            android:elevation="2dp"
+            android:layout_marginBottom="24dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/ivRecipe3"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/bg_circle_cream"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_gear"
+                    android:contentDescription="Món ăn" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="12dp">
+
+                    <TextView
+                        android:id="@+id/tvRecipe3Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bún Bò Huế"
+                        android:textColor="@color/panda_green_dark"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <!-- Stars row -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="2dp">
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" android:tint="#F59E0B" app:tint="#F59E0B" android:contentDescription="Star" />
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" android:tint="#F59E0B" app:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" android:tint="#F59E0B" app:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" android:tint="#F59E0B" app:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" android:tint="#F59E0B" app:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvRecipe3Date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Đánh giá ngày 02/03/2025"
+                        android:textColor="@color/panda_gray"
+                        android:textSize="11sp"
+                        android:layout_marginTop="2dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvStatus3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Đã đăng"
+                    android:textColor="@color/panda_green"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/bg_badge_published"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvRecipe3Comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Công thức chuẩn vị Huế, nước dùng đậm đà và rất hợp với bún. Mình sẽ chia sẻ lại cho bạn bè."
+                android:textColor="@color/panda_green_dark"
+                android:textSize="13sp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/btnViewReview3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Xem lại đánh giá"
+                    android:textColor="@color/panda_green"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+                <TextView
+                    android:id="@+id/btnEditReview3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sửa"
+                    android:textColor="@color/panda_green_dark"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/bg_button_light"
+                    android:paddingHorizontal="18dp"
+                    android:paddingVertical="6dp"
+                    android:clickable="true"
+                    android:focusable="true" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
