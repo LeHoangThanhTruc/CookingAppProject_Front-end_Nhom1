@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:allowBackup="true"
@@ -11,49 +10,132 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GameCookingTutorial">
+
         <activity
+<<<<<<< HEAD
             android:name="com.example.gamecookingtutorial.SplashActivity"
+=======
+            android:name="com.example.cookingapp.SplashActivity"
+>>>>>>> a0f48ec (Fix giao dien khi merge)
             android:exported="true"
-            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
+<<<<<<< HEAD
             android:name="com.example.gamecookingtutorial.LoginActivity"
+=======
+            android:name="com.example.cookingapp.LoginActivity"
+>>>>>>> a0f48ec (Fix giao dien khi merge)
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+
         <activity
+<<<<<<< HEAD
             android:name="com.example.gamecookingtutorial.RegisterActivity"
+=======
+            android:name="com.example.cookingapp.RegisterActivity"
+>>>>>>> a0f48ec (Fix giao dien khi merge)
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+
         <activity
+<<<<<<< HEAD
             android:name="com.example.gamecookingtutorial.ForgotPasswordActivity"
+=======
+            android:name="com.example.cookingapp.ForgotPasswordActivity"
+>>>>>>> a0f48ec (Fix giao dien khi merge)
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+
         <activity
+<<<<<<< HEAD
             android:name="com.example.gamecookingtutorial.ResetPasswordActivity"
+=======
+            android:name="com.example.cookingapp.ResetPasswordActivity"
+>>>>>>> a0f48ec (Fix giao dien khi merge)
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+
         <activity
+<<<<<<< HEAD
             android:name="com.example.gamecookingtutorial.ManHinhChinhActivity"
+=======
+            android:name="com.example.cookingapp.ManHinhChinhActivity"
+>>>>>>> a0f48ec (Fix giao dien khi merge)
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+
         <activity
+<<<<<<< HEAD
             android:name="com.example.gamecookingtutorial.SearchActivity"
+=======
+            android:name="com.example.cookingapp.SearchActivity"
+>>>>>>> a0f48ec (Fix giao dien khi merge)
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+
         <activity
+<<<<<<< HEAD
             android:name="com.example.gamecookingtutorial.RecipeDetailActivity"
+=======
+            android:name="com.example.cookingapp.RecipeDetailActivity"
+>>>>>>> a0f48ec (Fix giao dien khi merge)
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+
         <activity
+<<<<<<< HEAD
             android:name="com.example.gamecookingtutorial.ReviewActivity"
+=======
+            android:name="com.example.cookingapp.ReviewActivity"
+>>>>>>> a0f48ec (Fix giao dien khi merge)
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name="com.example.cookingapp.MainActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name="com.example.cookingapp.PlaceholderActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Frame Activities 7-33 -->
+        <activity android:name="com.example.cookingapp.Frame7SettingActivity" android:exported="false" />
+        <activity android:name="com.example.cookingapp.Frame8Language" android:exported="false" />
+        <activity android:name="com.example.cookingapp.Frame9Contactus" android:exported="false" />
+        <activity android:name="com.example.cookingapp.Frame10Myactivity" android:exported="false" />
+        <activity android:name="com.example.cookingapp.Frame11Dadanhgia" android:exported="false" />
+        <activity android:name="com.example.cookingapp.Frame12FavoritesList" android:exported="false" />
+        <activity android:name="com.example.cookingapp.Frame13CookingSchedule" android:exported="false" />
+        <activity android:name="com.example.cookingapp.Frame14SavedList" android:exported="false" />
+        <activity android:name="com.example.cookingapp.Frame15ProfileDetails" android:exported="false" />
+        <activity android:name="com.example.cookingapp.Frame16ChangeAccountName" android:exported="false" />
+        <activity android:name="com.example.cookingapp.Frame17ChangeGmailAddress" android:exported="false" />
+        <activity android:name="com.example.cookingapp.Frame18EnterGmailOTP" android:exported="false" />
+        <activity android:name="com.example.cookingapp.Frame19ChangePhoneNumber" android:exported="false" />
+        <activity android:name="com.example.cookingapp.Frame20SelectAMethod" android:exported="false" />
+        <activity android:name="com.example.cookingapp.Frame21OTPZalo" android:exported="false" />
+        <activity android:name="com.example.cookingapp.Frame22OTPSDT" android:exported="false" />
+        <activity android:name="com.example.cookingapp.Frame23EnterCurrentPassword" android:exported="false" />
+        <activity android:name="com.example.cookingapp.Frame24OtherProfileActivity" android:exported="false" />
+        <activity android:name="com.example.cookingapp.Frame25MyProfileActivity" android:exported="false" />
+        <activity android:name="com.example.cookingapp.Frame26BioActivity" android:exported="false" />
+        <activity android:name="com.example.cookingapp.Frame27FriendsActivity" android:exported="false" />
+        <activity android:name="com.example.cookingapp.Frame28FollowingActivity" android:exported="false" />
+        <activity android:name="com.example.cookingapp.Frame29MessagesActivity" android:exported="false" />
+        <activity android:name="com.example.cookingapp.Frame30ChatDetailActivity" android:exported="false" />
+        <activity android:name="com.example.cookingapp.Frame31CreateRecipeActivity" android:exported="false" />
+        <activity android:name="com.example.cookingapp.Frame32PrivacyActivity" android:exported="false" />
+        <activity android:name="com.example.cookingapp.Frame33NotificationsActivity" android:exported="false" />
+
     </application>
 
 </manifest>

@@ -30,7 +30,7 @@
                 android:background="@android:color/transparent"
                 android:src="@drawable/ic_arrow_back"
                 android:contentDescription="Quay lại"
-                android:tint="@color/panda_green_dark" />
+                app:tint="@color/panda_green_dark" />
 
             <!-- Tiêu đề màn hình -->
             <TextView
@@ -63,7 +63,7 @@
                 android:layout_height="20dp"
                 android:src="@drawable/ic_phone"
                 android:contentDescription="Số điện thoại"
-                android:tint="@color/panda_green" />
+                app:tint="@color/panda_green" />
 
             <EditText
                 android:id="@+id/etNewPhone"

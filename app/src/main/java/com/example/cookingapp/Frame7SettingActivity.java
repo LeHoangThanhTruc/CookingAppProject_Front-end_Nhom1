@@ -47,8 +47,13 @@ public class Frame7SettingActivity extends Activity {
     }
 
     private void setupEvents() {
+        // Sửa nút Quay về -> Chuyển sang ManHinhChinhActivity
         if (btnBack != null) {
-            btnBack.setOnClickListener(v -> finish());
+            btnBack.setOnClickListener(v -> {
+                Intent intent = new Intent(Frame7SettingActivity.this, ManHinhChinhActivity.class);
+                startActivity(intent);
+                finish(); // Đóng màn hình Setting lại
+            });
         }
 
         if (btnGear != null) {

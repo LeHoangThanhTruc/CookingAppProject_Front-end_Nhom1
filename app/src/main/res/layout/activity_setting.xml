@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/panda_bg"
@@ -28,7 +29,7 @@
                 android:src="@drawable/ic_arrow_back"
                 android:contentDescription="Quay lại"
                 android:elevation="2dp"
-                android:tint="@color/panda_green_dark" />
+                app:tint="@color/panda_green_dark" />
 
             <!-- Khối Tiêu đề màn hình -->
             <LinearLayout
@@ -37,7 +38,6 @@
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:layout_marginStart="14dp">
-
 
 
                 <TextView
@@ -67,7 +67,7 @@
                 android:src="@drawable/ic_gear"
                 android:contentDescription="Cài đặt khác"
                 android:elevation="2dp"
-                android:tint="@color/panda_gray" />
+                app:tint="@color/panda_gray" />
 
         </LinearLayout>
 
@@ -108,7 +108,7 @@
                     android:padding="10dp"
                     android:src="@drawable/ic_bell"
                     android:contentDescription="Thông báo"
-                    android:tint="#D97706" />
+                    app:tint="#D97706" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -161,7 +161,7 @@
                     android:padding="10dp"
                     android:src="@drawable/ic_moon"
                     android:contentDescription="Chế độ tối"
-                    android:tint="#F59E0B" />
+                    app:tint="#F59E0B" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -217,7 +217,7 @@
                     android:padding="10dp"
                     android:src="@drawable/ic_globe"
                     android:contentDescription="Ngôn ngữ"
-                    android:tint="#2563EB" />
+                    app:tint="#2563EB" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -251,7 +251,7 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_chevron_right"
                     android:contentDescription="Mở rộng"
-                    android:tint="@color/panda_gray" />
+                    app:tint="@color/panda_gray" />
             </LinearLayout>
 
         </LinearLayout>
@@ -296,7 +296,7 @@
                     android:padding="10dp"
                     android:src="@drawable/ic_lock"
                     android:contentDescription="Hồ sơ"
-                    android:tint="#16A34A" />
+                    app:tint="#16A34A" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -330,7 +330,7 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_chevron_right"
                     android:contentDescription="Mở rộng"
-                    android:tint="@color/panda_gray" />
+                    app:tint="@color/panda_gray" />
             </LinearLayout>
 
             <!-- Mục 2: Đổi mật khẩu -->
@@ -353,7 +353,7 @@
                     android:padding="10dp"
                     android:src="@drawable/ic_key"
                     android:contentDescription="Đổi mật khẩu"
-                    android:tint="#16A34A" />
+                    app:tint="#16A34A" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -387,7 +387,7 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_chevron_right"
                     android:contentDescription="Mở rộng"
-                    android:tint="@color/panda_gray" />
+                    app:tint="@color/panda_gray" />
             </LinearLayout>
 
             <!-- Mục 3: Quyền riêng tư -->
@@ -410,7 +410,7 @@
                     android:padding="10dp"
                     android:src="@drawable/ic_shield"
                     android:contentDescription="Quyền riêng tư"
-                    android:tint="#16A34A" />
+                    app:tint="#16A34A" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -444,7 +444,7 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_chevron_right"
                     android:contentDescription="Mở rộng"
-                    android:tint="@color/panda_gray" />
+                    app:tint="@color/panda_gray" />
             </LinearLayout>
 
             <!-- Mục 4: Hoạt động của tôi -->
@@ -467,7 +467,7 @@
                     android:padding="10dp"
                     android:src="@drawable/ic_chart"
                     android:contentDescription="Hoạt động"
-                    android:tint="#16A34A" />
+                    app:tint="#16A34A" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -501,7 +501,7 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_chevron_right"
                     android:contentDescription="Mở rộng"
-                    android:tint="@color/panda_gray" />
+                    app:tint="@color/panda_gray" />
             </LinearLayout>
 
             <!-- Mục 5: Trung tâm hỗ trợ -->
@@ -524,7 +524,7 @@
                     android:padding="10dp"
                     android:src="@drawable/ic_support"
                     android:contentDescription="Hỗ trợ"
-                    android:tint="#16A34A" />
+                    app:tint="#16A34A" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -558,7 +558,7 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_chevron_right"
                     android:contentDescription="Mở rộng"
-                    android:tint="@color/panda_gray" />
+                    app:tint="@color/panda_gray" />
             </LinearLayout>
 
         </LinearLayout>
@@ -582,7 +582,7 @@
                 android:layout_height="20dp"
                 android:src="@drawable/ic_logout"
                 android:contentDescription="Đăng xuất"
-                android:tint="@color/panda_red" />
+                app:tint="@color/panda_red" />
 
             <TextView
                 android:id="@+id/tvLogOut"

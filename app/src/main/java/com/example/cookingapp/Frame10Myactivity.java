@@ -35,8 +35,13 @@ public class Frame10Myactivity extends Activity {
     }
 
     private void setupEvents() {
+        // Nút Quay về -> Chuyển sang ManHinhChinhActivity
         if (btnBack != null) {
-            btnBack.setOnClickListener(v -> finish());
+            btnBack.setOnClickListener(v -> {
+                Intent intent = new Intent(Frame10Myactivity.this, ManHinhChinhActivity.class);
+                startActivity(intent);
+                finish(); // Đóng màn hình cá nhân
+            });
         }
 
         if (btnEditHeader != null) {

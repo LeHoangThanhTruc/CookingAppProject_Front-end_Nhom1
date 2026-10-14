@@ -1,4 +1,4 @@
-package com.example.gamecookingtutorial;
+package com.example.cookingapp;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,10 +22,9 @@ public class ManHinhChinhActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_man_hinh_chinh);
 
-        // 1. Ánh xạ View từ layout activity_main.xml
         initViews();
 
-        // 2. Lắng nghe sự kiện click cho các nút lối tắt và thông báo
+        //Lắng nghe sự kiện click cho các nút lối tắt và thông báo
         setupEvents();
     }
 
@@ -48,14 +47,16 @@ public class ManHinhChinhActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // Nút Trang của tôi
-        btnQuickProfile.setOnClickListener(v ->
-                Toast.makeText(this, "Mở Trang cá nhân!", Toast.LENGTH_SHORT).show()
-        );
+        // Nút Trang của tôi -> Chuyển sang Frame10Myactivity
+        btnQuickProfile.setOnClickListener(v -> {
+            Intent intent = new Intent(ManHinhChinhActivity.this, Frame10Myactivity.class);
+            startActivity(intent);
+        });
 
-        // Nút Cài đặt
-        btnQuickSettings.setOnClickListener(v ->
-                Toast.makeText(this, "Mở Màn hình Cài đặt!", Toast.LENGTH_SHORT).show()
-        );
+        // Nút Cài đặt -> Chuyển sang Frame7SettingActivity
+        btnQuickSettings.setOnClickListener(v -> {
+            Intent intent = new Intent(ManHinhChinhActivity.this, Frame7SettingActivity.class);
+            startActivity(intent);
+        });
     }
 }

@@ -1,5 +1,7 @@
-<resources>
-    <style name="Base.Theme.GameCookingTutorial" parent="Theme.MaterialComponents.Light.NoActionBar">
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.GameCookingTutorial" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/panda_green</item>
         <item name="colorPrimaryDark">@color/panda_green_dark</item>
         <item name="colorAccent">@color/panda_green</item>
@@ -11,7 +13,8 @@
 
     <style name="Theme.GameCookingTutorial" parent="Base.Theme.GameCookingTutorial" />
 
-    <style name="RoundedCornersImage">
+    <!-- Style bo góc ảnh -->
+    <style name="RoundedCornersImage" parent="ShapeAppearance.Material3.Corner.Medium">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">20dp</item>
     </style>

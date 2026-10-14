@@ -86,7 +86,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/blockTop">
 
-            <!-- Hình Panda dùng fitCenter để không bao giờ bị cắt mất hình -->
+            <!-- Hình Panda dùng fitCenter để không bị cắt mất hình -->
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imgHero"
                 android:layout_width="0dp"

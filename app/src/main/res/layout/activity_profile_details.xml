@@ -31,7 +31,7 @@
                 android:src="@drawable/ic_arrow_back"
                 android:contentDescription="Quay lại"
                 android:elevation="2dp"
-                android:tint="@color/panda_green_dark" />
+                app:tint="@color/panda_green_dark" />
 
             <!-- Khối Tiêu đề màn hình -->
             <LinearLayout
@@ -89,7 +89,7 @@
                 android:padding="14dp"
                 android:src="@drawable/ic_panda_avatar"
                 android:contentDescription="Avatar"
-                android:tint="@color/panda_green_dark" />
+                app:tint="@color/panda_green_dark" />
 
             <TextView
                 android:id="@+id/btnChangeAvatar"
@@ -150,7 +150,7 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_person"
                     android:contentDescription="Tên tài khoản"
-                    android:tint="@color/panda_green" />
+                    app:tint="@color/panda_green" />
 
                 <EditText
                     android:id="@+id/etUsername"
@@ -171,7 +171,7 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_edit_pencil"
                     android:contentDescription="Chỉnh sửa"
-                    android:tint="@color/panda_green" />
+                    app:tint="@color/panda_green" />
             </LinearLayout>
 
             <!-- Field 2: Gmail -->
@@ -199,7 +199,7 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_mail"
                     android:contentDescription="Gmail"
-                    android:tint="@color/panda_green" />
+                    app:tint="@color/panda_green" />
 
                 <EditText
                     android:id="@+id/etGmail"
@@ -219,7 +219,7 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_edit_pencil"
                     android:contentDescription="Chỉnh sửa"
-                    android:tint="@color/panda_green" />
+                    app:tint="@color/panda_green" />
             </LinearLayout>
 
             <!-- Field 3: Số điện thoại -->
@@ -247,7 +247,7 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_phone"
                     android:contentDescription="Số điện thoại"
-                    android:tint="@color/panda_green" />
+                    app:tint="@color/panda_green" />
 
                 <EditText
                     android:id="@+id/etPhone"
@@ -267,7 +267,7 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_edit_pencil"
                     android:contentDescription="Chỉnh sửa"
-                    android:tint="@color/panda_green" />
+                    app:tint="@color/panda_green" />
             </LinearLayout>
 
             <!-- Field 4: Mật khẩu -->
@@ -295,7 +295,7 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_lock"
                     android:contentDescription="Mật khẩu"
-                    android:tint="@color/panda_green" />
+                    app:tint="@color/panda_green" />
 
                 <EditText
                     android:id="@+id/etPassword"
@@ -315,7 +315,7 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_visibility_off"
                     android:contentDescription="Hiện/Ẩn mật khẩu"
-                    android:tint="@color/panda_gray" />
+                    app:tint="@color/panda_gray" />
             </LinearLayout>
 
             <!-- Row: Đổi mật khẩu -->
@@ -346,7 +346,7 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_chevron_right"
                     android:contentDescription="Mở rộng"
-                    android:tint="@color/panda_gray" />
+                    app:tint="@color/panda_gray" />
             </LinearLayout>
 
         </LinearLayout>
@@ -365,7 +365,7 @@
                 android:layout_height="16dp"
                 android:src="@drawable/ic_check_circle"
                 android:contentDescription="Bảo mật"
-                android:tint="@color/panda_green" />
+                app:tint="@color/panda_green" />
 
             <TextView
                 android:id="@+id/tvSecurityNotice"

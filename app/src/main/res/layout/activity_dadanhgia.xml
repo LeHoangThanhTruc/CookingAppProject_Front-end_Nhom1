@@ -31,7 +31,7 @@
                 android:src="@drawable/ic_arrow_back"
                 android:contentDescription="Quay lại"
                 android:elevation="2dp"
-                android:tint="@color/panda_green_dark" />
+                app:tint="@color/panda_green_dark" />
 
             <!-- Tiêu đề màn hình -->
             <TextView
@@ -54,7 +54,7 @@
                 android:src="@drawable/ic_panda_avatar"
                 android:contentDescription="Tài khoản"
                 android:elevation="2dp"
-                android:tint="@color/panda_green_dark" />
+                app:tint="@color/panda_green_dark" />
 
         </LinearLayout>
 
@@ -280,11 +280,11 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:layout_marginTop="2dp">
-                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" android:tint="#F59E0B" android:contentDescription="Star" />
-                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" android:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
-                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" android:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
-                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" android:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
-                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" android:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" app:tint="#F59E0B" android:contentDescription="Star" />
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" app:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" app:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" app:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" app:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
                     </LinearLayout>
 
                     <TextView
@@ -402,11 +402,11 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:layout_marginTop="2dp">
-                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" android:tint="#F59E0B" android:contentDescription="Star" />
-                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" android:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
-                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" android:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
-                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" android:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
-                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" android:tint="#CBD5E1" android:layout_marginStart="2dp" android:contentDescription="Star" />
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" app:tint="#F59E0B" android:contentDescription="Star" />
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" app:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" app:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" app:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" app:tint="#CBD5E1" android:layout_marginStart="2dp" android:contentDescription="Star" />
                     </LinearLayout>
 
                     <TextView
@@ -524,11 +524,11 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:layout_marginTop="2dp">
-                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" android:tint="#F59E0B" android:contentDescription="Star" />
-                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" android:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
-                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" android:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
-                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" android:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
-                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" android:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" app:tint="#F59E0B" android:contentDescription="Star" />
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" app:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" app:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" app:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_star" app:tint="#F59E0B" android:layout_marginStart="2dp" android:contentDescription="Star" />
                     </LinearLayout>
 
                     <TextView

@@ -30,7 +30,7 @@
                 android:background="@android:color/transparent"
                 android:src="@drawable/ic_arrow_back"
                 android:contentDescription="Quay lại"
-                android:tint="@color/panda_green_dark" />
+                app:tint="@color/panda_green_dark" />
 
             <!-- Tiêu đề màn hình -->
             <TextView
@@ -92,7 +92,7 @@
                 android:layout_height="20dp"
                 android:src="@drawable/ic_chevron_right"
                 android:contentDescription="Mở rộng"
-                android:tint="@color/panda_gray" />
+                app:tint="@color/panda_gray" />
         </LinearLayout>
 
         <!-- OPTION 2: TIN NHẮN (SMS) -->
@@ -116,7 +116,7 @@
                 android:padding="8dp"
                 android:src="@drawable/ic_chat"
                 android:contentDescription="Tin nhắn"
-                android:tint="#0068FF" />
+                app:tint="#0068FF" />
 
             <TextView
                 android:id="@+id/tvSmsTitle"
@@ -134,7 +134,7 @@
                 android:layout_height="20dp"
                 android:src="@drawable/ic_chevron_right"
                 android:contentDescription="Mở rộng"
-                android:tint="@color/panda_gray" />
+                app:tint="@color/panda_gray" />
         </LinearLayout>
 
         <!-- OPTION 3: CUỘC GỌI THOẠI -->
@@ -158,7 +158,7 @@
                 android:padding="8dp"
                 android:src="@drawable/ic_phone"
                 android:contentDescription="Cuộc gọi thoại"
-                android:tint="#0068FF" />
+                app:tint="#0068FF" />
 
             <TextView
                 android:id="@+id/tvCallTitle"
@@ -176,7 +176,7 @@
                 android:layout_height="20dp"
                 android:src="@drawable/ic_chevron_right"
                 android:contentDescription="Mở rộng"
-                android:tint="@color/panda_gray" />
+                app:tint="@color/panda_gray" />
         </LinearLayout>
 
 

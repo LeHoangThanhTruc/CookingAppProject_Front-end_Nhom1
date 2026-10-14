@@ -1,4 +1,4 @@
-package com.example.gamecookingtutorial;
+package com.example.cookingapp;
 
 import android.content.Intent;
 import android.os.Bundle;
