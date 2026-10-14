@@ -18,6 +18,9 @@ public abstract class BaseFrameActivity extends Activity {
     protected void bindContent(int layoutId) {
         setContentView(layoutId);
         content = findViewById(R.id.screen_content);
+        if (content != null) {
+            content.removeAllViews();
+        }
     }
 
     protected int c(int colorId) {
