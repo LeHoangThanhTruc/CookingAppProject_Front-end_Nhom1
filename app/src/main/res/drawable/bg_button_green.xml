@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Trạng thái 1: KHI NGƯỜI DÙNG ĐANG BẤM VÀO NÚT (Màu xanh đậm hơn) -->
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="#19431C" /> <!-- Màu xanh lá trầm hơn khi nhấn -->
+            <corners android:radius="16dp" />
+        </shape>
+    </item>
+
+    <!-- Trạng thái 2: TRẠNG THÁI BÌNH THƯỜNG (Màu xanh gốc) -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#25632B" /> <!-- Màu xanh lá chính -->
+            <corners android:radius="16dp" />
+        </shape>
+    </item>
+
+</selector>

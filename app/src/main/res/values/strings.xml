@@ -1,4 +1,207 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Cooking Panda</string>
+    <string name="app_name">GameCookingTutorial</string>
+    <!-- Các chuỗi văn bản cho màn hình Splash -->
+    <string name="splash_app_title">Nấu Ăn Cùng Panda</string>
+    <string name="splash_tagline">🎋  Học nấu ăn vui cùng Panda! 🐼</string>
+    <string name="splash_pill_recipes">🍲 100+ Công thức</string>
+    <string name="splash_pill_easy">⭐ Dễ theo dõi</string>
+    <string name="splash_pill_fun">🎋 Vui &amp; Thú vị</string>
+    <string name="splash_btn_start">🐼  Vào Bếp Cùng Panda!</string>
+    <string name="splash_footer">Miễn phí · Không quảng cáo · Dành cho gia đình 🏠</string>
+    <!-- Chuỗi văn bản màn hình Đăng nhập -->
+    <string name="login_title">Đăng nhập</string>
+    <string name="login_sub_title">Đăng nhập để lưu món ngon yêu thích, đánh giá công thức và theo dõi tiến độ học nấu ăn.</string>
+    <string name="login_label_email_phone">Email / Số điện thoại</string>
+    <string name="login_hint_email_phone">Nhập email hoặc số điện thoại</string>
+    <string name="login_label_password">Mật khẩu</string>
+    <string name="login_hint_password">Nhập mật khẩu</string>
+    <string name="login_forgot_password">Quên mật khẩu?</string>
+    <string name="login_btn_submit">Đăng nhập</string>
+    <string name="login_divider_or">hoặc</string>
+    <string name="login_btn_google">Google</string>
+    <string name="login_btn_facebook">Facebook</string>
+    <string name="login_register_prompt">Chưa có tài khoản? </string>
+    <string name="login_register_action">Đăng ký</string>
+    <!-- Chuỗi văn bản màn hình Đăng ký -->
+    <string name="register_header_category">Đăng ký</string>
+    <string name="register_title">Tạo tài khoản</string>
+    <string name="register_sub_title">Bắt đầu lưu món ngon cùng Panda</string>
+    <string name="register_banner_title">Nấu ăn vui hơn mỗi ngày</string>
+    <string name="register_banner_desc">Tạo tài khoản để lưu món yêu thích, đánh giá công thức và theo dõi tiến độ học nấu ăn.</string>
+
+    <string name="register_label_fullname">Họ tên</string>
+    <string name="register_hint_fullname">Nguyễn Minh Anh</string>
+
+    <string name="register_label_email">Email</string>
+    <string name="register_hint_email">23521558@gm.uit.edu.vn</string>
+
+    <string name="register_label_password">Mật khẩu</string>
+    <string name="register_hint_password">••••••••</string>
+
+    <string name="register_label_confirm_password">Xác nhận mật khẩu</string>
+    <string name="register_hint_confirm_password">••••••••</string>
+
+    <string name="register_terms_agree">Tôi đồng ý với điều khoản và nhận gợi ý công thức mới.</string>
+    <string name="register_btn_submit">Đăng Ký</string>
+    <!-- Chuỗi văn bản màn hình Quên mật khẩu -->
+    <string name="forgot_password_title">Quên mật khẩu</string>
+    <string name="forgot_password_banner_title">Nhập Email hoặc SĐT</string>
+    <string name="forgot_password_banner_desc">Nhập địa chỉ email hoặc số điện thoại đã đăng ký để nhận hướng dẫn lấy lại mật khẩu.</string>
+    <string name="forgot_password_or">or</string>
+
+    <string name="forgot_password_label_input">Email hoặc SĐT *</string>
+    <string name="forgot_password_hint_input">VD: nguyenvana@gmail.com hoặc 0909 123 456</string>
+    <string name="forgot_password_btn_submit">Tiếp tục</string>
+    <!-- Chuỗi văn bản màn hình Nhập lại mật khẩu (Reset Password) -->
+    <string name="reset_header_title">Quên mật khẩu</string>
+    <string name="reset_banner_title">Nhập lại mật khẩu</string>
+    <string name="reset_banner_desc">Tạo mật khẩu mới để tiếp tục sử dụng tài khoản của bạn.</string>
+
+    <string name="reset_label_new_password">Mật khẩu mới *</string>
+    <string name="reset_hint_new_password">Nhập mật khẩu mới</string>
+    <string name="reset_note_password_policy">Mật khẩu mới cần có ít nhất 8 ký tự, bao gồm chữ cái và số.</string>
+
+    <string name="reset_label_confirm_password">Nhập lại mật khẩu *</string>
+    <string name="reset_hint_confirm_password">Nhập lại mật khẩu mới</string>
+
+    <string name="reset_btn_submit">Xác nhận đặt lại</string>
+    <!-- Chuỗi văn bản màn hình Màn hình chính (Main / Social) -->
+    <string name="main_greeting">Chào buổi sáng! 🐼</string>
+    <string name="main_greeting_sub">Hôm nay bạn muốn nấu món gì nào?</string>
+
+    <string name="main_action_search">Tìm kiếm</string>
+    <string name="main_action_profile">Trang của tôi</string>
+    <string name="main_action_settings">Cài đặt</string>
+
+    <string name="main_section_community">Cộng đồng Panda 💚</string>
+    <string name="main_action_see_all">Xem tất cả</string>
+
+    <!-- Bài đăng mẫu 1 -->
+    <string name="main_post1_author">Thảo Vy 👩‍🍳</string>
+    <string name="main_post1_time">2 giờ trước</string>
+    <string name="main_post1_content">Mình vừa thử làm Phở Bò theo công thức của Panda, nước dùng ngọt thanh chuẩn vị luôn các bạn ơi! Cả nhà ai cũng khen nức nở 🍲✨</string>
+    <string name="main_post1_likes">128</string>
+    <string name="main_post1_comments">42</string>
+
+    <!-- Bài đăng mẫu 2 -->
+    <string name="main_post2_author">Tuấn Lâm 🥖</string>
+    <string name="main_post2_time">4 giờ trước</string>
+    <string name="main_post2_content">Hôm nay đổi vị với món Bánh Mỳ Chảo tự làm tại nhà cực dễ mà giòn ngon khó cưỡng! 🍳🥖</string>
+    <string name="main_post2_likes">95</string>
+    <string name="main_post2_comments">18</string>
+
+    <string name="main_action_share">Chia sẻ</string>
+    <string name="main_action_save">Lưu</string>
+    <!-- Chuỗi văn bản màn hình Tìm kiếm -->
+    <string name="search_title">Tìm kiếm</string>
+    <string name="search_hint">Tìm kiếm công thức hoặc người dùng...</string>
+
+    <!-- Phân loại đối tượng -->
+    <string name="search_type_all">Tất cả</string>
+    <string name="search_type_dishes">Món ăn</string>
+    <string name="search_type_users">Người dùng</string>
+
+    <!-- Phân loại món -->
+    <string name="search_cat_savory">Món mặn</string>
+    <string name="search_cat_vegetarian">Món chay</string>
+
+    <!-- Bộ lọc nâng cao -->
+    <string name="search_filter_advanced">Bộ lọc nâng cao</string>
+    <string name="search_filter_exclude">Nguyên liệu loại trừ</string>
+    <string name="search_filter_rating">Mức sao đánh giá</string>
+    <string name="search_filter_difficulty">Độ phức tạp</string>
+    <string name="search_filter_time">Thời gian nấu</string>
+    <string name="search_filter_reset">Đặt lại</string>
+    <string name="search_filter_apply">Áp dụng</string>
+
+    <!-- Kết quả mẫu -->
+    <string name="search_section_suggested">Chủ đề gợi ý</string>
+    <string name="search_section_popular">Công thức phổ biến</string>
+    <string name="search_dish_phobo">Phở Bò</string>
+    <string name="search_dish_banhmi">Bánh Mì</string>
+    <string name="search_dish_goicuon">Gỏi Cuốn</string>
+    <string name="search_dish_goicuon_full">Gỏi Cuốn Tôm Thịt</string>
+    <string name="search_action_view_recipe">Xem công thức</string>
+    <string name="search_filter_seafood">Hải sản</string>
+    <string name="search_filter_water_spinach">Rau muống</string>
+    <string name="search_filter_rating_val">Từ 4.5 sao</string>
+
+    <string name="search_filter_easy">Dễ</string>
+    <string name="search_filter_medium">Trung bình</string>
+    <string name="search_filter_under_30m">Dưới 30 phút</string>
+
+    <string name="search_dish_rating_val">4.8</string>
+    <string name="search_dish_time_val">15 phút</string>
+    <!-- Chuỗi văn bản màn hình Chi tiết công thức -->
+    <string name="recipe_detail_top_title">Chi tiết công thức</string>
+    <string name="recipe_title">Gỏi Cuốn Tôm Thịt</string>
+    <string name="recipe_category_roll">Món cuốn</string>
+    <string name="recipe_rating_val">4.8</string>
+    <string name="recipe_time_val">15 phút</string>
+    <string name="recipe_difficulty_val">Dễ</string>
+    <string name="recipe_servings_val">4 người</string>
+
+    <string name="recipe_overview_title">Tổng quan</string>
+    <string name="recipe_overview_desc">Món ăn dễ làm, ít nguyên liệu, thích hợp cho bữa tối nhẹ nhàng và dễ cuốn cùng gia đình.</string>
+
+    <string name="recipe_instruction_title">Hướng dẫn chi tiết</string>
+    <string name="recipe_ingredients_title">Nguyên liệu</string>
+    <string name="recipe_ingredients_servings">4 người ăn</string>
+
+    <string name="recipe_video_title">Video hướng dẫn</string>
+    <string name="recipe_video_time">3:42</string>
+    <string name="recipe_video_tag">Video hướng dẫn</string>
+    <string name="recipe_video_desc">Xem nhanh cách cuốn đều tay, pha nước mắm vừa miệng và trình bày đẹp mắt cho bữa tối gia đình.</string>
+
+    <string name="recipe_rating_section_title">Đánh giá</string>
+    <string name="recipe_rating_count_val">128 lượt</string>
+    <string name="recipe_rating_filter_5star">Lọc theo 5 sao</string>
+    <string name="recipe_btn_write_review">Tự Đánh Giá</string>
+
+    <string name="recipe_review1_author">Minh Ngọc</string>
+    <string name="recipe_review1_content">Công thức dễ làm, nguyên liệu đơn giản, cả nhà đều thích.</string>
+    <string name="recipe_review2_author">Hoàng Linh</string>
+    <string name="recipe_review2_content">Nước mắm pha vừa miệng, hướng dẫn dễ hiểu, sẽ làm lại nhiều lần.</string>
+    <!-- Danh sách nguyên liệu chi tiết bằng chữ -->
+    <string name="recipe_ing_1">Bánh tráng cuốn: 1 gói (200g)</string>
+    <string name="recipe_ing_2">Tôm sú tươi: 300g (khoảng 12 - 15 con)</string>
+    <string name="recipe_ing_3">Thịt ba chỉ heo: 250g</string>
+    <string name="recipe_ing_4">Bún tươi: 300g</string>
+    <string name="recipe_ing_5">Rau sống: Xà lách, rau húng lủi, giá đỗ, hẹ lá</string>
+    <string name="recipe_ing_6">Gia vị pha nước chấm: Tỏi, ớt, chanh, nước mắm, đường, tương đen, đậu phụng rang</string>
+
+    <!-- Các Bước Hướng Dẫn Nấu Chi Tiết -->
+    <string name="recipe_step1_title">Bước 1: Sơ chế &amp; Luộc tôm thịt</string>
+    <string name="recipe_step1_time">10 phút</string>
+    <string name="recipe_step1_desc">Rửa sạch thịt ba chỉ, luộc chín tới cùng ít hành tím băm rồi thái lát mỏng. Tôm sú rửa sạch, luộc chín, bóc vỏ và chẻ đôi theo chiều dọc.</string>
+
+    <string name="recipe_step2_title">Bước 2: Sơ chế rau sống &amp; Bún</string>
+    <string name="recipe_step2_time">5 phút</string>
+    <string name="recipe_step2_desc">Rau sống nhặt sạch, rửa nhiều lần với nước muối nhạt rồi để ráo. Bún tươi chần sơ qua nước sôi để ráo nước.</string>
+
+    <string name="recipe_step3_title">Bước 3: Tiến hành cuốn Gỏi Cuốn</string>
+    <string name="recipe_step3_time">15 phút</string>
+    <string name="recipe_step3_desc">Làm ẩm bánh tráng, xếp lần lượt xà lách, bún, thịt ba chỉ, rau thơm và hẹ. Gấp 2 mép bánh tráng, xếp tôm lên trên rồi cuốn chặt tay.</string>
+    <!-- Chuỗi văn bản màn hình Đánh giá công thức -->
+    <string name="review_top_tag">Đánh giá công thức</string>
+    <string name="review_top_title">Chia sẻ trải nghiệm</string>
+    <string name="review_top_sub">Panda muốn biết bạn thích công thức này đến mức nào!</string>
+
+    <string name="review_your_rating_title">Đánh giá của bạn</string>
+    <string name="review_your_rating_sub">Chọn số sao để thể hiện mức độ hài lòng của bạn với công thức này.</string>
+    <string name="review_rating_5star_tag">5 sao</string>
+    <string name="review_rating_5star_sub">Đánh giá cao nhất</string>
+
+    <string name="review_comment_title">Bình luận của bạn</string>
+    <string name="review_comment_sub">Viết cảm nhận, gợi ý hoặc điều bạn thích nhất về công thức này.</string>
+    <string name="review_comment_hint">Viết cảm nhận, gợi ý hoặc điều bạn thích nhất về công thức này...</string>
+    <string name="review_comment_footer_hint">Gợi ý: chia sẻ trải nghiệm nấu, hương vị, cách trình bày hoặc điều bạn muốn cải thiện.</string>
+    <string name="review_comment_char_count">0 / 500 ký tự</string>
+
+    <string name="review_btn_add_picture">+ Ảnh</string>
+    <string name="review_btn_add_video">+ Video</string>
+
+    <string name="review_warning_text">Hãy chia sẻ chân thật để mọi người cùng tham khảo trước khi vào bếp.</string>
+    <string name="review_btn_cancel">Hủy</string>
+    <string name="review_btn_submit">Gửi</string>
 </resources>
