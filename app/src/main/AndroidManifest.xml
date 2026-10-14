@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GameCookingTutorial">
         <activity
-            android:name=".SplashActivity"
+            android:name="com.example.gamecookingtutorial.SplashActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize">
@@ -23,35 +23,35 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name="com.example.gamecookingtutorial.LoginActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".RegisterActivity"
+            android:name="com.example.gamecookingtutorial.RegisterActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ForgotPasswordActivity"
+            android:name="com.example.gamecookingtutorial.ForgotPasswordActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ResetPasswordActivity"
+            android:name="com.example.gamecookingtutorial.ResetPasswordActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ManHinhChinhActivity"
+            android:name="com.example.gamecookingtutorial.ManHinhChinhActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".SearchActivity"
+            android:name="com.example.gamecookingtutorial.SearchActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".RecipeDetailActivity"
+            android:name="com.example.gamecookingtutorial.RecipeDetailActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ReviewActivity"
+            android:name="com.example.gamecookingtutorial.ReviewActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
     </application>

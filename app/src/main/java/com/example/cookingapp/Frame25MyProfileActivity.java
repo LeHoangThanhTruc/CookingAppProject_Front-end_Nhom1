@@ -1,110 +1,12 @@
 package com.example.cookingapp;
 
-import android.content.Intent;
-import android.graphics.Typeface;
+import android.app.Activity;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
-public class Frame25MyProfileActivity extends BaseFrameActivity {
+public class Frame25MyProfileActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bindContent(R.layout.activity_frame_25_my_profile);
-        addHeader("", "Trang cá nhân", "", null);
-        profileCard();
-        menuCard();
-        singleMenu("🔔", "Thông Báo", Frame33NotificationsActivity.class);
-        singleMenu("✍️", "Tạo Công Thức", Frame31CreateRecipeActivity.class);
-        posts();
-    }
-
-    private void profileCard() {
-        LinearLayout card = card();
-        TextView cover = text("Ảnh bìa mặc định", 18, R.color.panda_green, Typeface.BOLD);
-        cover.setGravity(Gravity.CENTER);
-        cover.setBackground(ScreenUi.rounded(c(R.color.panda_mint), dp(20), c(R.color.panda_mint), 0));
-        card.addView(cover, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dp(96)));
-        LinearLayout top = ScreenUi.horizontal(this);
-        top.setPadding(0, dp(12), 0, 0);
-        top.addView(ScreenUi.profileAvatar(this, 56));
-        LinearLayout copy = ScreenUi.vertical(this);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
-        params.setMargins(dp(12), 0, 0, 0);
-        copy.setLayoutParams(params);
-        copy.addView(text("Tài khoản mẫu", 20, R.color.panda_green_dark, Typeface.BOLD));
-        copy.addView(text("@taikhoanmau • Nội dung minh họa", 13, R.color.panda_green_mid, Typeface.NORMAL));
-        top.addView(copy);
-        card.addView(top);
-        content.addView(card);
-    }
-
-    private void menuCard() {
-        LinearLayout card = card();
-        addSectionTitle(card, "Mục nhanh", null);
-        card.addView(menuItem("📄", "Giới thiệu", Frame26BioActivity.class));
-        card.addView(menuItem("👥", "Bạn bè", Frame27FriendsActivity.class));
-        card.addView(menuItem("👀", "Người bạn đang theo dõi", Frame28FollowingActivity.class));
-        card.addView(menuItem("📨", "Tin nhắn", Frame29MessagesActivity.class));
-        content.addView(card);
-    }
-
-    private void singleMenu(String icon, String title, Class<?> target) {
-        LinearLayout card = card();
-        card.addView(menuItem(icon, title, target));
-        content.addView(card);
-    }
-
-    private LinearLayout menuItem(String icon, String title, Class<?> target) {
-        LinearLayout row = menuRow(icon, title);
-        row.setOnClickListener(v -> startActivity(new Intent(this, target)));
-        return row;
-    }
-
-    private void posts() {
-        LinearLayout card = card();
-        addSectionTitle(card, "Bài viết đã đăng", null);
-        card.addView(post("2 giờ trước", "Bài viết mẫu: Bữa tối tự nấu hôm nay — một chút yêu thương từ căn bếp nhỏ. 🥗", "12", "4"));
-        card.addView(post("Hôm qua", "Bài viết mẫu: Cuối tuần thử một công thức mới. Bạn thích nấu món gì nhất?", "8", "2"));
-        content.addView(card);
-    }
-
-    private LinearLayout post(String time, String body, String likes, String comments) {
-        LinearLayout post = ScreenUi.vertical(this);
-        post.setPadding(dp(12), dp(10), dp(12), dp(10));
-        post.setBackground(ScreenUi.rounded(c(R.color.panda_card_soft), dp(18), c(R.color.panda_border), 1));
-        ScreenUi.margin(post, 0, dp(10), 0, 0);
-        LinearLayout header = ScreenUi.horizontal(this);
-        header.addView(ScreenUi.avatar(this, "A", 32));
-        LinearLayout meta = ScreenUi.vertical(this);
-        LinearLayout.LayoutParams metaParams = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
-        metaParams.setMargins(dp(10), 0, 0, 0);
-        meta.setLayoutParams(metaParams);
-        meta.addView(text("Tài khoản mẫu", 14, R.color.panda_green_dark, Typeface.BOLD));
-        meta.addView(text(time, 12, R.color.panda_gray, Typeface.NORMAL));
-        header.addView(meta);
-        post.addView(header);
-        post.addView(text(body, 14, R.color.panda_green_dark, Typeface.NORMAL));
-        post.addView(postActions(likes, comments));
-        return post;
-    }
-
-    private LinearLayout postActions(String likes, String comments) {
-        LinearLayout row = ScreenUi.horizontal(this);
-        row.setGravity(Gravity.CENTER_VERTICAL);
-        row.addView(text(likes, 13, R.color.panda_green_mid, Typeface.BOLD));
-        TextView likeLabel = text("thích", 13, R.color.panda_gray, Typeface.NORMAL);
-        LinearLayout.LayoutParams likeParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        likeParams.setMargins(dp(6), 0, dp(16), 0);
-        likeLabel.setLayoutParams(likeParams);
-        row.addView(likeLabel);
-        row.addView(text(comments, 13, R.color.panda_green_mid, Typeface.BOLD));
-        TextView commentLabel = text("bình luận", 13, R.color.panda_gray, Typeface.NORMAL);
-        LinearLayout.LayoutParams commentParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        commentParams.setMargins(dp(6), 0, 0, 0);
-        commentLabel.setLayoutParams(commentParams);
-        row.addView(commentLabel);
-        return row;
+        setContentView(R.layout.activity_frame_25_my_profile);
     }
 }

@@ -10,6 +10,8 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.cookingapp.R;
+
 public class ReviewActivity extends AppCompatActivity {
 
     private ImageView btnDeleteImage, btnDeleteVideo;

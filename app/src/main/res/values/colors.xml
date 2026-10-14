@@ -2,4 +2,22 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="panda_bg">#F1FAF1</color>
+    <color name="panda_card">#FFFFFF</color>
+    <color name="panda_card_soft">#FBFEFC</color>
+    <color name="panda_mint">#D9EBD7</color>
+    <color name="panda_mint_light">#EAF6E9</color>
+    <color name="panda_input">#F3F7F3</color>
+    <color name="panda_border">#DDEEDD</color>
+
+    <color name="panda_green_dark">#173E1D</color>
+    <color name="panda_green">#2F7D32</color>
+    <color name="panda_green_mid">#4A704D</color>
+    <color name="panda_green_light_text">#4B8F50</color>
+
+    <color name="panda_bg_alt">#F7FBF5</color>
+    <color name="panda_blue">#2455E6</color>
+    <color name="panda_gray">#6B7280</color>
+    <color name="panda_red">#DC2626</color>
 </resources>

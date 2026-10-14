@@ -11,6 +11,8 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.cookingapp.R;
+
 public class RecipeDetailActivity extends AppCompatActivity {
 
     private ImageView btnBack, btnShare, btnSaveRecipe, imgInstructionChevron;

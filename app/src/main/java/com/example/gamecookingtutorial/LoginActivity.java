@@ -9,6 +9,8 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.cookingapp.R;
+
 public class LoginActivity extends AppCompatActivity {
 
     @Override

@@ -8,6 +8,8 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.cookingapp.R;
+
 public class RegisterActivity extends AppCompatActivity {
 
     private ImageView btnBack;

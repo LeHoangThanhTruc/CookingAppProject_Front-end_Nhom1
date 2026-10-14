@@ -10,6 +10,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.NestedScrollView;
 
+import com.example.cookingapp.R;
+
 public class SearchActivity extends AppCompatActivity {
 
     private ImageView btnHome, imgChevron;

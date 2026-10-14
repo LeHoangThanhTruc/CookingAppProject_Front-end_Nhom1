@@ -12,56 +12,6 @@
         android:alpha="0.7"
         android:background="@drawable/bg_figma_deco" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="138dp"
-        android:alpha="0.16"
-        android:text="🍜"
-        android:textColor="@color/panda_green_light_text"
-        android:textSize="15sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="322dp"
-        android:layout_marginTop="92dp"
-        android:alpha="0.16"
-        android:text="🥗"
-        android:textColor="@color/panda_green_light_text"
-        android:textSize="15sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="292dp"
-        android:layout_marginTop="246dp"
-        android:alpha="0.16"
-        android:text="⭐"
-        android:textColor="@color/panda_green_light_text"
-        android:textSize="15sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="338dp"
-        android:layout_marginTop="540dp"
-        android:alpha="0.16"
-        android:text="🍳"
-        android:textColor="@color/panda_green_light_text"
-        android:textSize="15sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="564dp"
-        android:alpha="0.16"
-        android:text="🥢"
-        android:textColor="@color/panda_green_light_text"
-        android:textSize="15sp" />
-
     <View
         android:layout_width="132dp"
         android:layout_height="214dp"
@@ -70,17 +20,6 @@
         android:layout_marginBottom="21dp"
         android:alpha="0.68"
         android:background="@drawable/bg_figma_deco" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|start"
-        android:layout_marginStart="86dp"
-        android:layout_marginBottom="135dp"
-        android:alpha="0.16"
-        android:text="♡"
-        android:textColor="@color/panda_green_light_text"
-        android:textSize="15sp" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -105,13 +44,14 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/button_back_notifications"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/bg_circle_white"
                     android:gravity="center"
                     android:text="‹"
                     android:textColor="@color/panda_green_dark"
-                    android:textSize="26sp"
+                    android:textSize="28sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -121,20 +61,20 @@
                     android:layout_weight="1"
                     android:text="Thông Báo"
                     android:textColor="@color/panda_green_dark"
-                    android:textSize="24sp"
+                    android:textSize="25sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="795dp"
+                android:layout_height="700dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/bg_figma_card"
                 android:orientation="vertical"
                 android:paddingStart="16dp"
-                android:paddingTop="12dp"
+                android:paddingTop="14dp"
                 android:paddingEnd="16dp"
-                android:paddingBottom="12dp">
+                android:paddingBottom="14dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -148,7 +88,7 @@
                         android:layout_weight="1"
                         android:text="Danh sách thông báo"
                         android:textColor="@color/panda_green_dark"
-                        android:textSize="16sp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -156,26 +96,25 @@
                         android:layout_height="wrap_content"
                         android:text="4 thông báo"
                         android:textColor="@color/panda_green_mid"
-                        android:textSize="13sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="20dp"
                     android:text="Chưa đọc"
                     android:textColor="@color/panda_green_light_text"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="65dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="14dp"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="44dp"
@@ -184,14 +123,14 @@
                         android:gravity="center"
                         android:text="H"
                         android:textColor="@color/panda_green"
-                        android:textSize="16sp"
+                        android:textSize="17sp"
                         android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
-                        android:layout_marginEnd="12dp"
+                        android:layout_marginEnd="10dp"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
@@ -200,45 +139,44 @@
                             android:layout_height="wrap_content"
                             android:text="Huy Hoàng"
                             android:textColor="@color/panda_green_dark"
-                            android:textSize="14sp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
                             android:ellipsize="end"
                             android:maxLines="1"
                             android:text="Đã gửi cho bạn lời mời kết bạn"
                             android:textColor="@color/panda_green_dark"
-                            android:textSize="13sp"
+                            android:textSize="15sp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
                     <TextView
-                        android:layout_width="56dp"
+                        android:layout_width="58dp"
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:text="10:18"
                         android:textColor="@color/panda_green_dark"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="16dp"
-                        android:layout_height="wrap_content"
-                        android:gravity="end"
-                        android:text="🗑"
-                        android:textColor="@color/panda_red"
-                        android:textSize="14sp" />
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_marginStart="10dp"
+                        android:contentDescription="Xóa"
+                        android:src="@drawable/trash"
+                        android:tint="@color/panda_red" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="64dp"
+                    android:layout_height="70dp"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="44dp"
@@ -247,14 +185,14 @@
                         android:gravity="center"
                         android:text="A"
                         android:textColor="@color/panda_green"
-                        android:textSize="16sp"
+                        android:textSize="17sp"
                         android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
-                        android:layout_marginEnd="12dp"
+                        android:layout_marginEnd="10dp"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
@@ -263,54 +201,54 @@
                             android:layout_height="wrap_content"
                             android:text="Anh An"
                             android:textColor="@color/panda_green_dark"
-                            android:textSize="14sp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
                             android:ellipsize="end"
                             android:maxLines="1"
                             android:text="Đã gửi cho bạn lời mời kết bạn"
                             android:textColor="@color/panda_green_dark"
-                            android:textSize="13sp"
+                            android:textSize="15sp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
                     <TextView
-                        android:layout_width="56dp"
+                        android:layout_width="58dp"
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:text="09:42"
                         android:textColor="@color/panda_green_dark"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="16dp"
-                        android:layout_height="wrap_content"
-                        android:gravity="end"
-                        android:text="🗑"
-                        android:textColor="@color/panda_red"
-                        android:textSize="14sp" />
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_marginStart="10dp"
+                        android:contentDescription="Xóa"
+                        android:src="@drawable/trash"
+                        android:tint="@color/panda_red" />
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="8dp"
                     android:text="Đã đọc"
                     android:textColor="@color/panda_green_light_text"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="64dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="12dp"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="44dp"
@@ -319,14 +257,14 @@
                         android:gravity="center"
                         android:text="L"
                         android:textColor="@color/panda_green"
-                        android:textSize="16sp"
+                        android:textSize="17sp"
                         android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
-                        android:layout_marginEnd="12dp"
+                        android:layout_marginEnd="10dp"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
@@ -335,44 +273,43 @@
                             android:layout_height="wrap_content"
                             android:text="Linh Linh"
                             android:textColor="@color/panda_green_dark"
-                            android:textSize="14sp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
                             android:ellipsize="end"
                             android:maxLines="1"
-                            android:text="Đã chia sẽ bài viết của bạn"
+                            android:text="Đã chia sẻ bài viết của bạn"
                             android:textColor="@color/panda_gray"
-                            android:textSize="13sp" />
+                            android:textSize="15sp" />
                     </LinearLayout>
 
                     <TextView
-                        android:layout_width="56dp"
+                        android:layout_width="58dp"
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:text="13:05"
                         android:textColor="@color/panda_gray"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="16dp"
-                        android:layout_height="wrap_content"
-                        android:gravity="end"
-                        android:text="🗑"
-                        android:textColor="@color/panda_red"
-                        android:textSize="14sp" />
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_marginStart="10dp"
+                        android:contentDescription="Xóa"
+                        android:src="@drawable/trash"
+                        android:tint="@color/panda_red" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="64dp"
+                    android:layout_height="70dp"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="44dp"
@@ -381,14 +318,14 @@
                         android:gravity="center"
                         android:text="M"
                         android:textColor="@color/panda_green"
-                        android:textSize="16sp"
+                        android:textSize="17sp"
                         android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
-                        android:layout_marginEnd="12dp"
+                        android:layout_marginEnd="10dp"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
@@ -397,35 +334,36 @@
                             android:layout_height="wrap_content"
                             android:text="Minh Minh"
                             android:textColor="@color/panda_green_dark"
-                            android:textSize="14sp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
                             android:ellipsize="end"
                             android:maxLines="1"
                             android:text="Đã thích công thức của bạn"
                             android:textColor="@color/panda_gray"
-                            android:textSize="13sp" />
+                            android:textSize="15sp" />
                     </LinearLayout>
 
                     <TextView
-                        android:layout_width="56dp"
+                        android:layout_width="58dp"
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:text="Hôm qua"
                         android:textColor="@color/panda_gray"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="16dp"
-                        android:layout_height="wrap_content"
-                        android:gravity="end"
-                        android:text="🗑"
-                        android:textColor="@color/panda_red"
-                        android:textSize="14sp" />
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_marginStart="10dp"
+                        android:contentDescription="Xóa"
+                        android:src="@drawable/trash"
+                        android:tint="@color/panda_red" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
