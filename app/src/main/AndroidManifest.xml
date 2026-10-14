@@ -12,11 +12,7 @@
         android:theme="@style/Theme.GameCookingTutorial">
 
         <activity
-<<<<<<< HEAD
-            android:name="com.example.gamecookingtutorial.SplashActivity"
-=======
             android:name="com.example.cookingapp.SplashActivity"
->>>>>>> a0f48ec (Fix giao dien khi merge)
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
@@ -26,74 +22,42 @@
         </activity>
 
         <activity
-<<<<<<< HEAD
-            android:name="com.example.gamecookingtutorial.LoginActivity"
-=======
             android:name="com.example.cookingapp.LoginActivity"
->>>>>>> a0f48ec (Fix giao dien khi merge)
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
-<<<<<<< HEAD
-            android:name="com.example.gamecookingtutorial.RegisterActivity"
-=======
             android:name="com.example.cookingapp.RegisterActivity"
->>>>>>> a0f48ec (Fix giao dien khi merge)
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
-<<<<<<< HEAD
-            android:name="com.example.gamecookingtutorial.ForgotPasswordActivity"
-=======
             android:name="com.example.cookingapp.ForgotPasswordActivity"
->>>>>>> a0f48ec (Fix giao dien khi merge)
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
-<<<<<<< HEAD
-            android:name="com.example.gamecookingtutorial.ResetPasswordActivity"
-=======
             android:name="com.example.cookingapp.ResetPasswordActivity"
->>>>>>> a0f48ec (Fix giao dien khi merge)
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
-<<<<<<< HEAD
-            android:name="com.example.gamecookingtutorial.ManHinhChinhActivity"
-=======
             android:name="com.example.cookingapp.ManHinhChinhActivity"
->>>>>>> a0f48ec (Fix giao dien khi merge)
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
-<<<<<<< HEAD
-            android:name="com.example.gamecookingtutorial.SearchActivity"
-=======
             android:name="com.example.cookingapp.SearchActivity"
->>>>>>> a0f48ec (Fix giao dien khi merge)
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
-<<<<<<< HEAD
-            android:name="com.example.gamecookingtutorial.RecipeDetailActivity"
-=======
             android:name="com.example.cookingapp.RecipeDetailActivity"
->>>>>>> a0f48ec (Fix giao dien khi merge)
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
-<<<<<<< HEAD
-            android:name="com.example.gamecookingtutorial.ReviewActivity"
-=======
             android:name="com.example.cookingapp.ReviewActivity"
->>>>>>> a0f48ec (Fix giao dien khi merge)
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
