@@ -14,6 +14,7 @@ public class Frame30ChatDetailActivity extends BaseFrameActivity {
         addHeader("Trò chuyện", "Huy Hoàng", "", "H");
 
         LinearLayout chat = card();
+        chat.setMinimumHeight(dp(691));
         addSectionTitle(chat, "Cuộc trò chuyện", null);
         chat.addView(received("Huy Hoàng", "Bạn đã thử công thức gà rán mật ong mới chưa?", "09:42"));
         chat.addView(sent("Bạn", "Chưa, mình đang tìm công thức cho bữa tối. Bạn có thể chia sẻ lại không?"));
@@ -26,12 +27,12 @@ public class Frame30ChatDetailActivity extends BaseFrameActivity {
         LinearLayout composer = card();
         addSectionTitle(composer, "Soạn tin nhắn", null);
         LinearLayout row = ScreenUi.horizontal(this);
-        row.addView(ScreenUi.avatar(this, "📎", 40));
-        TextView input = inputBox("Nhập tin nhắn...", 48);
+        row.addView(ScreenUi.iconButton(this, "↗", 40, c(R.color.panda_input), c(R.color.panda_green)));
+        TextView input = inputBox("Nhập tin nhắn…", 48);
         LinearLayout.LayoutParams inputParams = new LinearLayout.LayoutParams(0, dp(48), 1f);
         inputParams.setMargins(dp(8), 0, dp(8), 0);
         row.addView(input, inputParams);
-        row.addView(ScreenUi.avatar(this, "➤", 40));
+        row.addView(ScreenUi.iconButton(this, "➤", 40, c(R.color.panda_green), c(android.R.color.white)));
         composer.addView(row);
         content.addView(composer);
     }

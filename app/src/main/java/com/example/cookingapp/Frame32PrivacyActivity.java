@@ -11,7 +11,8 @@ public class Frame32PrivacyActivity extends BaseFrameActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bindContent(R.layout.activity_frame_32_privacy);
-        addHeader("", "Chọn quyền xem", "", "🐼");
+        addStatusBar();
+        addCompactTopBar("Chọn quyền xem", "🐼");
 
         content.addView(text("Ai có thể xem bài đăng này?", 15, R.color.panda_green_dark, Typeface.BOLD));
         content.addView(text("Chọn chế độ đăng bài phù hợp để kiểm soát quyền xem công thức của bạn.", 13, R.color.panda_gray, Typeface.NORMAL));
@@ -29,6 +30,7 @@ public class Frame32PrivacyActivity extends BaseFrameActivity {
         content.addView(hint);
 
         TextView post = primaryButton("🐼 Đăng bài");
+        post.setBackground(ScreenUi.rounded(c(R.color.panda_green), dp(28), c(R.color.panda_green), 0));
         content.addView(post);
     }
 

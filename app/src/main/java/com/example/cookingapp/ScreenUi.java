@@ -5,6 +5,8 @@ import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -91,6 +93,31 @@ final class ScreenUi {
         button.setLayoutParams(new LinearLayout.LayoutParams(size, size));
         button.setBackground(rounded(context.getColor(R.color.panda_card), size / 2, context.getColor(R.color.panda_card), 0));
         return button;
+    }
+
+    static TextView iconButton(Context context, String value, int sizeDp, int bgColor, int textColor) {
+        TextView button = text(context, value, sizeDp >= 40 ? 16 : 14, textColor, Typeface.BOLD);
+        button.setGravity(Gravity.CENTER);
+        int size = dp(context, sizeDp);
+        button.setLayoutParams(new LinearLayout.LayoutParams(size, size));
+        button.setBackground(rounded(bgColor, size / 2, bgColor, 0));
+        return button;
+    }
+
+    static FrameLayout profileAvatar(Context context, int sizeDp) {
+        int size = dp(context, sizeDp);
+        FrameLayout avatar = new FrameLayout(context);
+        avatar.setLayoutParams(new LinearLayout.LayoutParams(size, size));
+        avatar.setBackground(rounded(context.getColor(R.color.panda_mint), size / 2, context.getColor(R.color.panda_mint), 0));
+
+        ImageView icon = new ImageView(context);
+        int iconSize = dp(context, Math.max(24, sizeDp - 26));
+        FrameLayout.LayoutParams iconParams = new FrameLayout.LayoutParams(iconSize, iconSize, Gravity.CENTER);
+        icon.setLayoutParams(iconParams);
+        icon.setImageResource(R.drawable.ic_person);
+        icon.setColorFilter(context.getColor(R.color.panda_green));
+        avatar.addView(icon);
+        return avatar;
     }
 
     static LinearLayout row(Context context) {

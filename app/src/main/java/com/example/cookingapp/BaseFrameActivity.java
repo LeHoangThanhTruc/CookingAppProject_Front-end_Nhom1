@@ -68,6 +68,42 @@ public abstract class BaseFrameActivity extends Activity {
         content.addView(header);
     }
 
+    protected void addStatusBar() {
+        LinearLayout status = ScreenUi.horizontal(this);
+        status.setGravity(Gravity.CENTER_VERTICAL);
+        status.setPadding(0, 0, 0, dp(4));
+        TextView time = text("9:41", 14, R.color.panda_green_dark, Typeface.BOLD);
+        time.setLayoutParams(new LinearLayout.LayoutParams(0, dp(36), 1f));
+        time.setGravity(Gravity.CENTER_VERTICAL);
+        status.addView(time);
+        TextView indicators = text("▮▮  ≋  ▰", 12, R.color.panda_green_dark, Typeface.BOLD);
+        indicators.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
+        status.addView(indicators, new LinearLayout.LayoutParams(dp(72), dp(36)));
+        content.addView(status);
+    }
+
+    protected void addCompactTopBar(String title, String action) {
+        LinearLayout top = ScreenUi.horizontal(this);
+        top.setGravity(Gravity.CENTER_VERTICAL);
+        top.setPadding(0, dp(8), 0, dp(8));
+
+        TextView back = ScreenUi.iconButton(this, "‹", 36, c(R.color.panda_card), c(R.color.panda_green));
+        back.setTextSize(24);
+        back.setOnClickListener(v -> finish());
+        top.addView(back);
+
+        TextView titleView = text(title, 18, R.color.panda_green_dark, Typeface.BOLD);
+        titleView.setGravity(Gravity.CENTER);
+        titleView.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
+        top.addView(titleView);
+
+        TextView actionView = ScreenUi.iconButton(this, action, 36, c(R.color.panda_mint_light), c(R.color.panda_green_dark));
+        actionView.setTextSize(18);
+        top.addView(actionView);
+
+        content.addView(top);
+    }
+
     protected TextView primaryButton(String label) {
         TextView button = text(label, 15, android.R.color.white, Typeface.BOLD);
         button.setGravity(Gravity.CENTER);

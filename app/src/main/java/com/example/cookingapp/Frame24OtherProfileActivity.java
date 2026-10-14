@@ -29,7 +29,7 @@ public class Frame24OtherProfileActivity extends BaseFrameActivity {
 
         LinearLayout top = ScreenUi.horizontal(this);
         top.setPadding(0, dp(12), 0, 0);
-        top.addView(ScreenUi.avatar(this, "●", 56));
+        top.addView(ScreenUi.profileAvatar(this, 56));
         LinearLayout copy = ScreenUi.vertical(this);
         LinearLayout.LayoutParams copyParams = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
         copyParams.setMargins(dp(12), 0, 0, 0);
@@ -76,12 +76,12 @@ public class Frame24OtherProfileActivity extends BaseFrameActivity {
     private void postsSection(String owner) {
         LinearLayout card = card();
         addSectionTitle(card, "Bài viết đã đăng", null);
-        card.addView(post(owner, "2 giờ trước", "Bài viết mẫu: Bữa tối tự nấu hôm nay — một chút yêu thương từ căn bếp nhỏ. 🥗", "12 thích     4 bình luận"));
-        card.addView(post(owner, "Hôm qua", "Bài viết mẫu: Cuối tuần thử một công thức mới. Bạn thích nấu món gì nhất?", "8 thích     2 bình luận"));
+        card.addView(post(owner, "2 giờ trước", "Bài viết mẫu: Bữa tối tự nấu hôm nay — một chút yêu thương từ căn bếp nhỏ. 🥗", "12", "4"));
+        card.addView(post(owner, "Hôm qua", "Bài viết mẫu: Cuối tuần thử một công thức mới. Bạn thích nấu món gì nhất?", "8", "2"));
         content.addView(card);
     }
 
-    private LinearLayout post(String owner, String time, String body, String stats) {
+    private LinearLayout post(String owner, String time, String body, String likes, String comments) {
         LinearLayout post = ScreenUi.vertical(this);
         post.setPadding(dp(12), dp(10), dp(12), dp(10));
         post.setBackground(ScreenUi.rounded(c(R.color.panda_card_soft), dp(18), c(R.color.panda_border), 1));
@@ -98,7 +98,25 @@ public class Frame24OtherProfileActivity extends BaseFrameActivity {
         header.addView(meta);
         post.addView(header);
         post.addView(text(body, 14, R.color.panda_green_dark, Typeface.NORMAL));
-        post.addView(text(stats, 13, R.color.panda_green_mid, Typeface.BOLD));
+        post.addView(postActions(likes, comments));
         return post;
+    }
+
+    private LinearLayout postActions(String likes, String comments) {
+        LinearLayout row = ScreenUi.horizontal(this);
+        row.setGravity(Gravity.CENTER_VERTICAL);
+        row.addView(text(likes, 13, R.color.panda_green_mid, Typeface.BOLD));
+        TextView likeLabel = text("thích", 13, R.color.panda_gray, Typeface.NORMAL);
+        LinearLayout.LayoutParams likeParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        likeParams.setMargins(dp(6), 0, dp(16), 0);
+        likeLabel.setLayoutParams(likeParams);
+        row.addView(likeLabel);
+        row.addView(text(comments, 13, R.color.panda_green_mid, Typeface.BOLD));
+        TextView commentLabel = text("bình luận", 13, R.color.panda_gray, Typeface.NORMAL);
+        LinearLayout.LayoutParams commentParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        commentParams.setMargins(dp(6), 0, 0, 0);
+        commentLabel.setLayoutParams(commentParams);
+        row.addView(commentLabel);
+        return row;
     }
 }

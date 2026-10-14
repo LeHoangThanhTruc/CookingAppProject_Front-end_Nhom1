@@ -19,7 +19,7 @@ public class Frame33NotificationsActivity extends BaseFrameActivity {
         card.addView(notification("H", "Huy Hoàng", "Đã gửi cho bạn lời mời kết bạn", "10:18", true));
         card.addView(notification("A", "Anh An", "Đã gửi cho bạn lời mời kết bạn", "09:42", true));
         card.addView(text("Đã đọc", 12, R.color.panda_green_light_text, Typeface.BOLD));
-        card.addView(notification("L", "Linh Linh", "Đã chia sẻ bài viết của bạn", "13:05", false));
+        card.addView(notification("L", "Linh Linh", "Đã chia sẽ bài viết của bạn", "13:05", false));
         card.addView(notification("M", "Minh Minh", "Đã thích công thức của bạn", "Hôm qua", false));
         content.addView(card);
     }

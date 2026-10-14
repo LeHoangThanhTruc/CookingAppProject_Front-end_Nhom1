@@ -12,12 +12,14 @@ public class Frame31CreateRecipeActivity extends BaseFrameActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bindContent(R.layout.activity_frame_31_create_recipe);
-        addHeader("", "Tạo công thức mới", "", "🐼");
+        addStatusBar();
+        addCompactTopBar("Tạo công thức mới", "🐼");
         basicInfo();
         ingredients();
         steps();
         categories();
         TextView next = primaryButton("🐼 Tiếp Theo");
+        next.setBackground(ScreenUi.rounded(c(R.color.panda_green), dp(28), c(R.color.panda_green), 0));
         next.setOnClickListener(v -> startActivity(new Intent(this, Frame32PrivacyActivity.class)));
         ScreenUi.margin(next, 0, dp(12), 0, 0);
         content.addView(next);
