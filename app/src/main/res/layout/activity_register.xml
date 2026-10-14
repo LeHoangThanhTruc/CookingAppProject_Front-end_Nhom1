@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1. LinearLayout ngoài cùng bao bọc toàn bộ giao diện, dùng background1 tràn màn hình -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background1"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/register_screen_padding_horizontal"
+    android:paddingEnd="@dimen/register_screen_padding_horizontal"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    android:weightSum="1.0">
+
+    <!-- ================= PHẦN 1: TỶ LỆ 30% (weight = 0.30) ================= -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.30">
+
+        <!-- Nút Back ở góc trên bên trái -->
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/deco_circle_"
+            android:padding="10dp"
+            android:src="@drawable/vector_back" />
+
+        <!-- Cụm Tiêu đề nằm kế bên Nút Back -->
+        <LinearLayout
+            android:id="@+id/layoutHeaderTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_toEndOf="@id/btnBack"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/register_header_category"
+                android:textColor="#2D6A32"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/register_title"
+                android:textColor="#1A202C"
+                android:textSize="@dimen/register_title_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/register_sub_title"
+                android:textColor="#718096"
+                android:textSize="@dimen/register_subtitle_size" />
+        </LinearLayout>
+
+        <!-- Banner card trắng nằm bên dưới cụm Header -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/layoutHeaderTitle"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_pill_white"
+            android:padding="12dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <!-- Logo đã thay bằng logo_container.png -->
+                <ImageView
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:src="@drawable/logo_container" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/register_banner_title"
+                    android:textColor="#1A365D"
+                    android:textSize="@dimen/register_banner_title_size"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:text="@string/register_banner_desc"
+                    android:textColor="#718096"
+                    android:textSize="@dimen/register_banner_desc_size" />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+    <!-- ================= PHẦN 2: TỶ LỆ 60% (weight = 0.60) ================= -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="0.60"
+        android:background="@drawable/bg_pill_white"
+        android:padding="16dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <!-- Sử dụng RelativeLayout bên trong ScrollView để sắp xếp thứ tự các ô nhập liệu -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- 1. Họ tên -->
+                <TextView
+                    android:id="@+id/tvLabelFullname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/register_label_fullname"
+                    android:textColor="#2D3748"
+                    android:textSize="@dimen/register_label_size"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:id="@+id/layoutInputFullname"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/register_input_height"
+                    android:layout_below="@id/tvLabelFullname"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/bg_pill_white"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp">
+
+                    <ImageView
+                        android:id="@+id/iconUser"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/user" />
+
+                    <EditText
+                        android:id="@+id/edtFullname"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_toEndOf="@id/iconUser"
+                        android:background="@null"
+                        android:hint="@string/register_hint_fullname"
+                        android:inputType="textPersonName"
+                        android:textSize="@dimen/register_input_text_size" />
+                </RelativeLayout>
+
+                <!-- 2. Email -->
+                <TextView
+                    android:id="@+id/tvLabelEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/layoutInputFullname"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/register_label_email"
+                    android:textColor="#2D3748"
+                    android:textSize="@dimen/register_label_size"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:id="@+id/layoutInputEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/register_input_height"
+                    android:layout_below="@id/tvLabelEmail"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/bg_pill_white"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp">
+
+                    <ImageView
+                        android:id="@+id/iconEmail"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/email_icon_bg" />
+
+                    <EditText
+                        android:id="@+id/edtEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_toEndOf="@id/iconEmail"
+                        android:background="@null"
+                        android:hint="@string/register_hint_email"
+                        android:inputType="textEmailAddress"
+                        android:textSize="@dimen/register_input_text_size" />
+                </RelativeLayout>
+
+                <!-- 3. Mật khẩu -->
+                <TextView
+                    android:id="@+id/tvLabelPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/layoutInputEmail"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/register_label_password"
+                    android:textColor="#2D3748"
+                    android:textSize="@dimen/register_label_size"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:id="@+id/layoutInputPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/register_input_height"
+                    android:layout_below="@id/tvLabelPassword"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/bg_pill_white"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp">
+
+                    <ImageView
+                        android:id="@+id/iconLock"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/lock_icon_bg" />
+
+                    <EditText
+                        android:id="@+id/edtPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_toEndOf="@id/iconLock"
+                        android:background="@null"
+                        android:hint="@string/register_hint_password"
+                        android:inputType="textPassword"
+                        android:textSize="@dimen/register_input_text_size" />
+                </RelativeLayout>
+
+                <!-- 4. Xác nhận mật khẩu -->
+                <TextView
+                    android:id="@+id/tvLabelConfirmPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/layoutInputPassword"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/register_label_confirm_password"
+                    android:textColor="#2D3748"
+                    android:textSize="@dimen/register_label_size"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:id="@+id/layoutInputConfirmPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/register_input_height"
+                    android:layout_below="@id/tvLabelConfirmPassword"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/bg_pill_white"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp">
+
+                    <ImageView
+                        android:id="@+id/iconTick"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/tick" />
+
+                    <EditText
+                        android:id="@+id/edtConfirmPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_toEndOf="@id/iconTick"
+                        android:background="@null"
+                        android:hint="@string/register_hint_confirm_password"
+                        android:inputType="textPassword"
+                        android:textSize="@dimen/register_input_text_size" />
+                </RelativeLayout>
+
+                <!-- 5. Checkbox Tôi đồng ý với điều khoản -->
+                <RelativeLayout
+                    android:id="@+id/layoutTerms"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/layoutInputConfirmPassword"
+                    android:layout_marginTop="12dp">
+
+                    <CheckBox
+                        android:id="@+id/chkTerms"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:button="@drawable/custom_checkbox"
+                        android:buttonTint="@null"
+                        app:buttonTint="@null"
+                        android:background="@null"
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
+                        android:padding="0dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="8dp"
+                        android:layout_toEndOf="@id/chkTerms"
+                        android:text="@string/register_terms_agree"
+                        android:textColor="#4A5568"
+                        android:textSize="@dimen/register_terms_text_size" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+
+    <!-- ================= PHẦN 3: TỶ LỆ 10% (weight = 0.10) ================= -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.10">
+
+        <!-- Nút Đăng ký căn giữa theo chiều dọc của phần 3 -->
+        <RelativeLayout
+            android:id="@+id/btnRegister"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/register_button_height"
+            android:layout_centerInParent="true"
+            android:background="@drawable/bg_button_green"
+            android:clickable="true"
+            android:focusable="true">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/three_starts" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/register_btn_submit"
+                    android:textColor="#FFFFFF"
+                    android:textSize="@dimen/register_button_text_size"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

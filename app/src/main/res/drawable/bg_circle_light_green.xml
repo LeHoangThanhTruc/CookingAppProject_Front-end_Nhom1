@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Khi bấm nút: Màu xanh lá đậm hơn chút -->
+    <item android:state_pressed="true">
+        <shape android:shape="oval">
+            <solid android:color="#83E86F" />
+        </shape>
+    </item>
+
+    <!-- Trạng thái mặc định: Màu xanh lá nhạt #9EFC8A -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#9EFC8A" />
+        </shape>
+    </item>
+</selector>
