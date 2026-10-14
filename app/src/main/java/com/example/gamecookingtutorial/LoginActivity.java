@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         btnDangNhap.setOnClickListener(v -> {
             Toast.makeText(LoginActivity.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
 
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            Intent intent = new Intent(LoginActivity.this, ManHinhChinhActivity.class);
             startActivity(intent);
 
             // Đóng LoginActivity để người dùng bấm nút Back không quay lại màn hình đăng nhập

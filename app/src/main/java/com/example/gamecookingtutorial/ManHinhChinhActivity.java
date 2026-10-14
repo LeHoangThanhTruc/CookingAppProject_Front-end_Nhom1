@@ -9,7 +9,7 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class ManHinhChinhActivity extends AppCompatActivity {
 
     private ImageView btnNotification;
     private LinearLayout btnQuickSearch, btnQuickProfile, btnQuickSettings;
@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_man_hinh_chinh);
 
         // 1. Ánh xạ View từ layout activity_main.xml
         initViews();
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Nút Tìm kiếm
         btnQuickSearch.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+            Intent intent = new Intent(ManHinhChinhActivity.this, SearchActivity.class);
             startActivity(intent);
         });
 

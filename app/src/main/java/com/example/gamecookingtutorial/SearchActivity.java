@@ -44,7 +44,7 @@ public class SearchActivity extends AppCompatActivity {
     private void setupEvents() {
         // 1. Nút mũi tên quay về: Mở lại MainActivity và đóng SearchActivity
         btnHome.setOnClickListener(v -> {
-            Intent intent = new Intent(SearchActivity.this, MainActivity.class);
+            Intent intent = new Intent(SearchActivity.this, ManHinhChinhActivity.class);
             startActivity(intent);
             finish();
         });
