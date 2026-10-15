@@ -1,0 +1,48 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_dd_65_472)">
+<rect x="20" y="12" width="120" height="120" rx="36" fill="white" shape-rendering="crispEdges"/>
+<rect x="20.75" y="12.75" width="118.5" height="118.5" rx="35.25" stroke="#2D6A2D" stroke-opacity="0.101961" stroke-width="1.5" shape-rendering="crispEdges"/>
+<rect x="20" y="12" width="120" height="120" rx="34" fill="#2D6A2D"/>
+<circle cx="53" cy="51" r="15" fill="#111111"/>
+<circle cx="107" cy="51" r="15" fill="#111111"/>
+<ellipse cx="80" cy="79" rx="39" ry="38" fill="white"/>
+<ellipse cx="67" cy="36" rx="12" ry="11" fill="white"/>
+<ellipse cx="82" cy="33" rx="14" ry="13" fill="white"/>
+<ellipse cx="96" cy="36.5" rx="11" ry="10.5" fill="white"/>
+<rect x="58" y="39" width="48" height="13" rx="6" fill="white"/>
+<ellipse cx="69.5724" cy="70.7122" rx="11.5" ry="15" transform="rotate(-18 69.5724 70.7122)" fill="#111111"/>
+<ellipse cx="93.3019" cy="77.8195" rx="11.5" ry="15" transform="rotate(18 93.3019 77.8195)" fill="#111111"/>
+<ellipse cx="65.5" cy="73.5" rx="3.5" ry="4.5" fill="white"/>
+<ellipse cx="96.5" cy="73.5" rx="3.5" ry="4.5" fill="white"/>
+<ellipse cx="65.25" cy="71.5" rx="1.25" ry="1.5" fill="#2D6A2D"/>
+<ellipse cx="96.25" cy="71.5" rx="1.25" ry="1.5" fill="#2D6A2D"/>
+<ellipse cx="80.5" cy="94.5" rx="15.5" ry="10.5" fill="#F4F7F2"/>
+<ellipse cx="81" cy="88.5" rx="5" ry="3.5" fill="#111111"/>
+<line x1="72.2601" y1="95.358" x2="79.8685" y2="97.8301" stroke="#111111" stroke-width="2" stroke-linecap="round"/>
+<line x1="80.642" y1="91.7399" x2="88.2505" y2="89.2678" stroke="#111111" stroke-width="2" stroke-linecap="round"/>
+<rect x="114" y="80" width="8" height="39" rx="4" transform="rotate(8 114 80)" fill="#78C850"/>
+<rect x="112" y="90" width="11" height="3" rx="1.5" transform="rotate(8 112 90)" fill="#D9F2C7"/>
+<rect x="109" y="103" width="11" height="3" rx="1.5" transform="rotate(8 109 103)" fill="#D9F2C7"/>
+<ellipse cx="115.865" cy="79.1304" rx="7" ry="3.5" transform="rotate(25 115.865 79.1304)" fill="#A7DC79"/>
+<ellipse cx="127.148" cy="81.5973" rx="6.5" ry="3" transform="rotate(-28 127.148 81.5973)" fill="#A7DC79"/>
+</g>
+<defs>
+<filter id="filter0_dd_65_472" x="0" y="0" width="160" height="160" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feMorphology radius="4" operator="erode" in="SourceAlpha" result="effect1_dropShadow_65_472"/>
+<feOffset dy="8"/>
+<feGaussianBlur stdDeviation="12"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.176471 0 0 0 0 0.415686 0 0 0 0 0.176471 0 0 0 0.2 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_65_472"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="2"/>
+<feGaussianBlur stdDeviation="4"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.176471 0 0 0 0 0.415686 0 0 0 0 0.176471 0 0 0 0.0784314 0"/>
+<feBlend mode="normal" in2="effect1_dropShadow_65_472" result="effect2_dropShadow_65_472"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_65_472" result="shape"/>
+</filter>
+</defs>
+</svg>

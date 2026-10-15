@@ -14,6 +14,7 @@ import com.example.cookingapp.R;
 public class ManHinhChinhActivity extends AppCompatActivity {
 
     private ImageView btnNotification;
+    private ImageView imgAvatar1; // Thêm khai báo imgAvatar1
     private LinearLayout btnQuickSearch, btnQuickProfile, btnQuickSettings;
 
     @Override
@@ -24,12 +25,13 @@ public class ManHinhChinhActivity extends AppCompatActivity {
 
         initViews();
 
-        //Lắng nghe sự kiện click cho các nút lối tắt và thông báo
+        // Lắng nghe sự kiện click cho các nút lối tắt và thông báo
         setupEvents();
     }
 
     private void initViews() {
         btnNotification = findViewById(R.id.btnNotification);
+        imgAvatar1 = findViewById(R.id.imgAvatar1); // Ánh xạ ID imgAvatar1
         btnQuickSearch = findViewById(R.id.btnQuickSearch);
         btnQuickProfile = findViewById(R.id.btnQuickProfile);
         btnQuickSettings = findViewById(R.id.btnQuickSettings);
@@ -37,26 +39,42 @@ public class ManHinhChinhActivity extends AppCompatActivity {
 
     private void setupEvents() {
         // Nút Chuông thông báo
-        btnNotification.setOnClickListener(v ->
-                Toast.makeText(this, "Chưa có thông báo mới!", Toast.LENGTH_SHORT).show()
-        );
+        if (btnNotification != null) {
+            btnNotification.setOnClickListener(v ->
+                    Toast.makeText(this, "Chưa có thông báo mới!", Toast.LENGTH_SHORT).show()
+            );
+        }
+
+        // Bấm imgAvatar1 -> Chuyển sang Frame24OtherProfileActivity
+        if (imgAvatar1 != null) {
+            imgAvatar1.setOnClickListener(v -> {
+                Intent intent = new Intent(ManHinhChinhActivity.this, Frame24OtherProfileActivity.class);
+                startActivity(intent);
+            });
+        }
 
         // Nút Tìm kiếm
-        btnQuickSearch.setOnClickListener(v -> {
-            Intent intent = new Intent(ManHinhChinhActivity.this, SearchActivity.class);
-            startActivity(intent);
-        });
+        if (btnQuickSearch != null) {
+            btnQuickSearch.setOnClickListener(v -> {
+                Intent intent = new Intent(ManHinhChinhActivity.this, SearchActivity.class);
+                startActivity(intent);
+            });
+        }
 
         // Nút Trang của tôi -> Chuyển sang Frame10Myactivity
-        btnQuickProfile.setOnClickListener(v -> {
-            Intent intent = new Intent(ManHinhChinhActivity.this, Frame10Myactivity.class);
-            startActivity(intent);
-        });
+        if (btnQuickProfile != null) {
+            btnQuickProfile.setOnClickListener(v -> {
+                Intent intent = new Intent(ManHinhChinhActivity.this, Frame10Myactivity.class);
+                startActivity(intent);
+            });
+        }
 
         // Nút Cài đặt -> Chuyển sang Frame7SettingActivity
-        btnQuickSettings.setOnClickListener(v -> {
-            Intent intent = new Intent(ManHinhChinhActivity.this, Frame7SettingActivity.class);
-            startActivity(intent);
-        });
+        if (btnQuickSettings != null) {
+            btnQuickSettings.setOnClickListener(v -> {
+                Intent intent = new Intent(ManHinhChinhActivity.this, Frame7SettingActivity.class);
+                startActivity(intent);
+            });
+        }
     }
 }
