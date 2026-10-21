@@ -14,7 +14,7 @@ import com.example.cookingapp.R;
 public class ManHinhChinhActivity extends AppCompatActivity {
 
     private ImageView btnNotification;
-    private ImageView imgAvatar1; // Thêm khai báo imgAvatar1
+    private ImageView imgAvatar1;
     private LinearLayout btnQuickSearch, btnQuickProfile, btnQuickSettings;
 
     @Override
@@ -31,7 +31,7 @@ public class ManHinhChinhActivity extends AppCompatActivity {
 
     private void initViews() {
         btnNotification = findViewById(R.id.btnNotification);
-        imgAvatar1 = findViewById(R.id.imgAvatar1); // Ánh xạ ID imgAvatar1
+        imgAvatar1 = findViewById(R.id.imgAvatar1);
         btnQuickSearch = findViewById(R.id.btnQuickSearch);
         btnQuickProfile = findViewById(R.id.btnQuickProfile);
         btnQuickSettings = findViewById(R.id.btnQuickSettings);
@@ -61,10 +61,10 @@ public class ManHinhChinhActivity extends AppCompatActivity {
             });
         }
 
-        // Nút Trang của tôi -> Chuyển sang Frame10Myactivity
+        // Nút Trang của tôi -> Chuyển sang activity_frame_25_my_profile.xml (Frame25MyProfileActivity)
         if (btnQuickProfile != null) {
             btnQuickProfile.setOnClickListener(v -> {
-                Intent intent = new Intent(ManHinhChinhActivity.this, Frame10Myactivity.class);
+                Intent intent = new Intent(ManHinhChinhActivity.this, Frame25MyProfileActivity.class);
                 startActivity(intent);
             });
         }

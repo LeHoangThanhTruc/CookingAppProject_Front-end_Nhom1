@@ -1,141 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/panda_bg"
-    android:fillViewport="true"
     tools:ignore="HardcodedText,Autofill">
 
-    <LinearLayout
+    <!-- Lớp ảnh nền dưới cùng -->
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background2" />
 
-        <!-- HEADER SECTION -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginBottom="24dp">
+            android:orientation="vertical"
+            android:padding="20dp">
 
-            <!-- Nút Quay lại (Back Button) -->
-            <ImageButton
-                android:id="@+id/btnBack"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_arrow_back"
-                android:contentDescription="Quay lại"
-                app:tint="@color/panda_green_dark" />
-
-            <!-- Tiêu đề màn hình -->
-            <TextView
-                android:id="@+id/tvTitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Đổi số điện thoại"
-                android:textColor="@color/panda_green_dark"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginStart="12dp" />
-
-        </LinearLayout>
-
-        <!-- INPUT FIELD: SỐ ĐIỆN THOẠI MỚI -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:background="@drawable/bg_card"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="16dp"
-            android:elevation="1dp"
-            android:layout_marginBottom="20dp">
-
-            <ImageView
-                android:id="@+id/ivPhoneIcon"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_phone"
-                android:contentDescription="Số điện thoại"
-                app:tint="@color/panda_green" />
-
-            <EditText
-                android:id="@+id/etNewPhone"
+            <!-- HEADER SECTION -->
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@null"
-                android:hint="Số điện thoại mới"
-                android:textColor="@color/panda_green_dark"
-                android:textColorHint="@color/panda_gray"
-                android:textSize="15sp"
-                android:layout_marginStart="12dp"
-                android:inputType="phone" />
-        </LinearLayout>
-
-        <!-- NÚT TIẾP THEO -->
-        <LinearLayout
-            android:id="@+id/btnNext"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:background="@drawable/bg_badge_published"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:clickable="true"
-            android:focusable="true"
-            android:elevation="1dp"
-            android:layout_marginBottom="20dp">
-
-            <TextView
-                android:id="@+id/tvNext"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tiếp theo"
-                android:textColor="@color/panda_green"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+                android:layout_marginBottom="24dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-        <!-- CHECKBOX / LOGOUT OTHER DEVICES -->
-        <LinearLayout
-            android:id="@+id/layoutLogoutDevices"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="top"
-            android:clickable="true"
-            android:focusable="true"
-            android:paddingVertical="4dp">
+                <!-- Nút Quay lại (Back Button) -->
+                <ImageButton
+                    android:id="@+id/btnBack"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Quay lại"
+                    android:src="@drawable/ic_arrow_back"
+                    app:tint="@color/panda_green_dark" />
 
-            <CheckBox
-                android:id="@+id/cbLogoutOtherDevices"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:checked="false"
-                android:buttonTint="@color/panda_green" />
+                <!-- Tiêu đề màn hình -->
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:text="Đổi số điện thoại"
+                    android:textColor="@color/panda_green_dark"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tvLogoutDevicesDesc"
-                android:layout_width="0dp"
+            </LinearLayout>
+
+            <!-- INPUT FIELD: SỐ ĐIỆN THOẠI MỚI -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/bg_card"
+                android:elevation="1dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp">
+
+                <ImageView
+                    android:id="@+id/ivPhoneIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:contentDescription="Số điện thoại"
+                    android:src="@drawable/ic_phone"
+                    app:tint="@color/panda_green" />
+
+                <EditText
+                    android:id="@+id/etNewPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="12dp"
+                    android:background="@null"
+                    android:hint="Số điện thoại mới"
+                    android:inputType="phone"
+                    android:textColor="@color/panda_green_dark"
+                    android:textColorHint="@color/panda_gray"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <!-- NÚT TIẾP THEO -->
+            <LinearLayout
+                android:id="@+id/btnNext"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/bg_button_green"
+                android:clickable="true"
+                android:elevation="1dp"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvNext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tiếp theo"
+                    android:textColor="@color/panda_card"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- CHECKBOX / LOGOUT OTHER DEVICES -->
+            <LinearLayout
+                android:id="@+id/layoutLogoutDevices"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Đăng xuất tôi khỏi các thiết bị khác sau khi thay đổi số điện thoại"
-                android:textColor="@color/panda_gray"
-                android:textSize="13sp"
-                android:layout_marginStart="10dp" />
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="top"
+                android:orientation="horizontal"
+                android:paddingVertical="4dp">
+
+                <CheckBox
+                    android:id="@+id/cbLogoutOtherDevices"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:buttonTint="@color/panda_green"
+                    android:checked="false" />
+
+                <TextView
+                    android:id="@+id/tvLogoutDevicesDesc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:text="Đăng xuất tôi khỏi các thiết bị khác sau khi thay đổi số điện thoại"
+                    android:textColor="@color/panda_gray"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <!-- KHOẢNG TRỐNG ĐẨY NỘI DUNG LÊN TRÊN -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
         </LinearLayout>
 
-        <!-- KHOẢNG TRỐNG ĐẨY NỘI DUNG LÊN TRÊN -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+    </ScrollView>
 
-    </LinearLayout>
-
-</ScrollView>
+</FrameLayout>

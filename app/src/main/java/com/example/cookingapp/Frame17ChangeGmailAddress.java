@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 public class Frame17ChangeGmailAddress extends Activity {
 
-    // Khai báo các thành phần tương tác trên giao diện
     private ImageButton btnBack;
     private EditText etNewEmail;
     private CheckBox cbNewsletter;
@@ -22,16 +21,10 @@ public class Frame17ChangeGmailAddress extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_gmail_address);
 
-        // Ánh xạ các View từ XML
         initViews();
-
-        // Đăng ký sự kiện Click
         setupEvents();
     }
 
-    /**
-     * Ánh xạ View thông qua findViewById
-     */
     private void initViews() {
         btnBack = findViewById(R.id.btnBack);
         etNewEmail = findViewById(R.id.etNewEmail);
@@ -39,28 +32,31 @@ public class Frame17ChangeGmailAddress extends Activity {
         btnNext = findViewById(R.id.btnNext);
     }
 
-    /**
-     * Đăng ký sự kiện Click cho từng mục
-     */
     private void setupEvents() {
-        // 1. Nút Back - quay về màn hình trước
+        // 1. Nút Back -> Quay lại activity_profile_details.xml (Frame15ProfileDetails)
         if (btnBack != null) {
-            btnBack.setOnClickListener(v -> finish());
+            btnBack.setOnClickListener(v -> {
+                Intent intent = new Intent(Frame17ChangeGmailAddress.this, Frame15ProfileDetails.class);
+                startActivity(intent);
+                finish();
+            });
         }
 
-        // 2. Nút Tiếp theo
+        // 2. Nút Tiếp theo -> Chuyển sang activity_enter_gmail_otp.xml (Frame18EnterGmailOTP)
         if (btnNext != null) {
             btnNext.setOnClickListener(v -> {
                 String email = etNewEmail != null ? etNewEmail.getText().toString().trim() : "";
-                boolean receiveUpdates = cbNewsletter != null && cbNewsletter.isChecked();
 
                 if (email.isEmpty()) {
                     Toast.makeText(this, "Vui lòng nhập địa chỉ email mới!", Toast.LENGTH_SHORT).show();
                 } else if (!email.contains("@") || !email.contains(".")) {
                     Toast.makeText(this, "Địa chỉ email không hợp lệ!", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(this, "Đã gửi mã xác nhận đến: " + email + (receiveUpdates ? " (Đã đăng ký nhận bản tin)" : ""), Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(this, Frame18EnterGmailOTP.class));
+                    Toast.makeText(this, "Đã gửi mã xác nhận đến: " + email, Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(Frame17ChangeGmailAddress.this, Frame18EnterGmailOTP.class);
+                    intent.putExtra("EMAIL_TARGET", email);
+                    intent.putExtra("FLOW_TYPE", "CHANGE_GMAIL");
+                    startActivity(intent);
                 }
             });
         }

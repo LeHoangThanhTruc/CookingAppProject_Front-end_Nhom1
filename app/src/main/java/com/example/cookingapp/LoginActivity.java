@@ -9,8 +9,6 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.cookingapp.R;
-
 public class LoginActivity extends AppCompatActivity {
 
     @Override
@@ -30,9 +28,10 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // 3. Lắng nghe sự kiện click chuyển sang Quên mật khẩu
+        // 3. Lắng nghe sự kiện click chuyển sang Quên mật khẩu -> Truyền FLOW_SOURCE = "LOGIN"
         tvForgotPassword.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+            intent.putExtra("FLOW_SOURCE", "LOGIN");
             startActivity(intent);
         });
 

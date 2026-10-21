@@ -1,652 +1,665 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/panda_bg"
-    android:fillViewport="true"
     tools:ignore="HardcodedText,Autofill">
 
-    <LinearLayout
+    <!-- Lớp ảnh nền dưới cùng -->
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background2" />
 
-        <!-- HEADER SECTION -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginBottom="16dp">
+            android:orientation="vertical"
+            android:padding="20dp">
 
-            <!-- Nút Quay lại (Back Button) -->
-            <ImageButton
-                android:id="@+id/btnBack"
-                android:layout_width="44dp"
-                android:layout_height="44dp"
-                android:background="@drawable/bg_circle_white"
-                android:src="@drawable/ic_arrow_back"
-                android:contentDescription="Quay lại"
-                android:elevation="2dp"
-                app:tint="@color/panda_green_dark" />
-
-            <!-- Khối Tiêu đề màn hình -->
+            <!-- HEADER SECTION -->
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_marginStart="14dp">
-
-                <TextView
-                    android:id="@+id/tvHeaderCategory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Yêu thích"
-                    android:textColor="#8AA68A"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Danh sách yêu thích"
-                    android:textColor="@color/panda_green_dark"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvSubtitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Những công thức bạn yêu thích"
-                    android:textColor="@color/panda_gray"
-                    android:textSize="13sp" />
-            </LinearLayout>
-
-            <!-- Nút Yêu thích (Top Right Heart Icon) -->
-            <ImageButton
-                android:id="@+id/btnHeartHeader"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/bg_circle_white"
-                android:src="@drawable/ic_heart"
-                android:contentDescription="Yêu thích"
-                android:elevation="2dp"
-                app:tint="@color/panda_green" />
-
-        </LinearLayout>
-
-        <!-- SEARCH BAR -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:background="@drawable/bg_input_field"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="16dp"
-            android:elevation="1dp"
-            android:layout_marginBottom="16dp">
-
-            <ImageView
-                android:id="@+id/ivSearchIcon"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_search"
-                android:contentDescription="Tìm kiếm"
-                app:tint="@color/panda_green" />
-
-            <EditText
-                android:id="@+id/etSearchFavorite"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@null"
-                android:hint="Tìm trong danh sách yêu thích..."
-                android:textColor="@color/panda_green_dark"
-                android:textColorHint="@color/panda_gray"
-                android:textSize="14sp"
-                android:layout_marginStart="10dp"
-                android:inputType="text" />
-        </LinearLayout>
-
-        <!-- FILTER CHIPS ROW -->
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="none"
-            android:layout_marginBottom="16dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <!-- Chip 1: Tất cả (Selected) -->
-                <TextView
-                    android:id="@+id/chipAll"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Tất cả"
-                    android:textColor="@android:color/white"
-                    android:textSize="13sp"
-                    android:textStyle="bold"
-                    android:background="@drawable/bg_chip_selected"
-                    android:paddingHorizontal="18dp"
-                    android:paddingVertical="9dp"
-                    android:layout_marginEnd="8dp"
-                    android:gravity="center"
-                    android:clickable="true"
-                    android:focusable="true" />
+                <!-- Nút Quay lại (Back Button) -->
+                <ImageButton
+                    android:id="@+id/btnBack"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:background="@drawable/bg_circle_white"
+                    android:contentDescription="Quay lại"
+                    android:elevation="2dp"
+                    android:src="@drawable/ic_arrow_back"
+                    app:tint="@color/panda_green_dark" />
 
-                <!-- Chip 2: Món chính -->
-                <TextView
-                    android:id="@+id/chipMain"
-                    android:layout_width="wrap_content"
+                <!-- Khối Tiêu đề màn hình -->
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Món chính"
-                    android:textColor="@color/panda_green_dark"
-                    android:textSize="13sp"
-                    android:textStyle="bold"
-                    android:background="@drawable/bg_chip_normal"
-                    android:paddingHorizontal="18dp"
-                    android:paddingVertical="9dp"
-                    android:layout_marginEnd="8dp"
-                    android:gravity="center"
-                    android:clickable="true"
-                    android:focusable="true" />
+                    android:layout_marginStart="14dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-                <!-- Chip 3: Nhanh gọn -->
-                <TextView
-                    android:id="@+id/chipQuick"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nhanh gọn"
-                    android:textColor="@color/panda_green_dark"
-                    android:textSize="13sp"
-                    android:textStyle="bold"
-                    android:background="@drawable/bg_chip_normal"
-                    android:paddingHorizontal="18dp"
-                    android:paddingVertical="9dp"
-                    android:layout_marginEnd="8dp"
-                    android:gravity="center"
-                    android:clickable="true"
-                    android:focusable="true" />
+                    <TextView
+                        android:id="@+id/tvHeaderCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Yêu thích"
+                        android:textColor="#8AA68A"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
 
-                <!-- Chip 4: Tráng miệng -->
-                <TextView
-                    android:id="@+id/chipDessert"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Tráng miệng"
-                    android:textColor="@color/panda_green_dark"
-                    android:textSize="13sp"
-                    android:textStyle="bold"
-                    android:background="@drawable/bg_chip_normal"
-                    android:paddingHorizontal="18dp"
-                    android:paddingVertical="9dp"
-                    android:gravity="center"
-                    android:clickable="true"
-                    android:focusable="true" />
+                    <TextView
+                        android:id="@+id/tvTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Danh sách yêu thích"
+                        android:textColor="@color/panda_green_dark"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvSubtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Những công thức bạn yêu thích"
+                        android:textColor="@color/panda_gray"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <!-- Nút Yêu thích (Top Right Heart Icon) -->
+                <ImageButton
+                    android:id="@+id/btnHeartHeader"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/bg_circle_white"
+                    android:contentDescription="Yêu thích"
+                    android:elevation="2dp"
+                    android:src="@drawable/ic_heart"
+                    app:tint="@color/panda_green" />
 
             </LinearLayout>
-        </HorizontalScrollView>
 
-        <!-- SUMMARY BANNER CARD -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:background="@drawable/bg_card"
-            android:padding="16dp"
-            android:elevation="2dp"
-            android:layout_marginBottom="16dp">
-
-            <ImageView
-                android:id="@+id/ivSummaryIcon"
-                android:layout_width="44dp"
-                android:layout_height="44dp"
-                android:background="@drawable/bg_circle_cream"
-                android:padding="10dp"
-                android:src="@drawable/ic_heart"
-                android:contentDescription="Yêu thích"
-                app:tint="@color/panda_green" />
-
+            <!-- SEARCH BAR -->
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_marginStart="14dp">
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_input_field"
+                android:elevation="1dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp">
 
-                <TextView
-                    android:id="@+id/tvSummaryTitle"
+                <ImageView
+                    android:id="@+id/ivSearchIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:contentDescription="Tìm kiếm"
+                    android:src="@drawable/ic_search"
+                    app:tint="@color/panda_green" />
+
+                <EditText
+                    android:id="@+id/etSearchFavorite"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:background="@null"
+                    android:hint="Tìm trong danh sách yêu thích..."
+                    android:inputType="text"
+                    android:textColor="@color/panda_green_dark"
+                    android:textColorHint="@color/panda_gray"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- FILTER CHIPS ROW -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:scrollbars="none">
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="12 công thức yêu thích"
-                    android:textColor="@color/panda_green_dark"
+                    android:orientation="horizontal">
+
+                    <!-- Chip 1: Tất cả (Selected) -->
+                    <TextView
+                        android:id="@+id/chipAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/bg_chip_selected"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:paddingHorizontal="18dp"
+                        android:paddingVertical="9dp"
+                        android:text="Tất cả"
+                        android:textColor="@android:color/white"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <!-- Chip 2: Món chính -->
+                    <TextView
+                        android:id="@+id/chipMain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/bg_chip_normal"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:paddingHorizontal="18dp"
+                        android:paddingVertical="9dp"
+                        android:text="Món chính"
+                        android:textColor="@color/panda_green_dark"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <!-- Chip 3: Nhanh gọn -->
+                    <TextView
+                        android:id="@+id/chipQuick"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/bg_chip_normal"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:paddingHorizontal="18dp"
+                        android:paddingVertical="9dp"
+                        android:text="Nhanh gọn"
+                        android:textColor="@color/panda_green_dark"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <!-- Chip 4: Tráng miệng -->
+                    <TextView
+                        android:id="@+id/chipDessert"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_chip_normal"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:paddingHorizontal="18dp"
+                        android:paddingVertical="9dp"
+                        android:text="Tráng miệng"
+                        android:textColor="@color/panda_green_dark"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- SUMMARY BANNER CARD -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_card"
+                android:elevation="2dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/ivSummaryIcon"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:background="@drawable/bg_circle_cream"
+                    android:contentDescription="Yêu thích"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_heart"
+                    app:tint="@color/panda_green" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvSummaryTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="12 công thức yêu thích"
+                        android:textColor="@color/panda_green_dark"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvSummaryDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="3 món bạn có thể nấu trong hôm nay"
+                        android:textColor="@color/panda_gray"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- RECIPE ITEM 1: GỎI CUỐN TÔM THỊT -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_card"
+                android:elevation="2dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/ivRecipe1"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:background="@drawable/bg_circle_cream"
+                    android:contentDescription="Món ăn"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_gear" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvRecipe1Category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Món cuốn"
+                        android:textColor="@color/panda_green"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvRecipe1Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Gỏi Cuốn Tôm Thịt"
+                        android:textColor="@color/panda_green_dark"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvRecipe1Details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="15 phút • Dễ • 4 người"
+                        android:textColor="@color/panda_gray"
+                        android:textSize="12sp" />
+
+                    <!-- Rating row -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:contentDescription="Star"
+                            android:src="@drawable/ic_star"
+                            app:tint="#F59E0B" />
+
+                        <TextView
+                            android:id="@+id/tvRecipe1Rating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:text="4.8"
+                            android:textColor="@color/panda_green_dark"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/btnFavorite1"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/bg_badge_published"
+                    android:contentDescription="Yêu thích"
+                    android:src="@drawable/ic_heart"
+                    app:tint="@color/panda_green" />
+            </LinearLayout>
+
+            <!-- RECIPE ITEM 2: CƠM GÀ XỐI MỠ -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_card"
+                android:elevation="2dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/ivRecipe2"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:background="@drawable/bg_circle_cream"
+                    android:contentDescription="Món ăn"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_gear" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvRecipe2Category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Món chính"
+                        android:textColor="@color/panda_green"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvRecipe2Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Cơm Gà Xối Mỡ"
+                        android:textColor="@color/panda_green_dark"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvRecipe2Details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="35 phút • Trung bình"
+                        android:textColor="@color/panda_gray"
+                        android:textSize="12sp" />
+
+                    <!-- Rating row -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:contentDescription="Star"
+                            android:src="@drawable/ic_star"
+                            app:tint="#F59E0B" />
+
+                        <TextView
+                            android:id="@+id/tvRecipe2Rating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:text="4.7"
+                            android:textColor="@color/panda_green_dark"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/btnFavorite2"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/bg_badge_published"
+                    android:contentDescription="Yêu thích"
+                    android:src="@drawable/ic_heart"
+                    app:tint="@color/panda_green" />
+            </LinearLayout>
+
+            <!-- RECIPE ITEM 3: CHÈ KHÚC BẠCH -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_card"
+                android:elevation="2dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/ivRecipe3"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:background="@drawable/bg_circle_cream"
+                    android:contentDescription="Món ăn"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_gear" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvRecipe3Category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tráng miệng"
+                        android:textColor="@color/panda_green"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvRecipe3Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Chè Khúc Bạch"
+                        android:textColor="@color/panda_green_dark"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvRecipe3Details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="25 phút • Dễ"
+                        android:textColor="@color/panda_gray"
+                        android:textSize="12sp" />
+
+                    <!-- Rating row -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:contentDescription="Star"
+                            android:src="@drawable/ic_star"
+                            app:tint="#F59E0B" />
+
+                        <TextView
+                            android:id="@+id/tvRecipe3Rating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:text="4.9"
+                            android:textColor="@color/panda_green_dark"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/btnFavorite3"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/bg_badge_published"
+                    android:contentDescription="Yêu thích"
+                    android:src="@drawable/ic_heart"
+                    app:tint="@color/panda_green" />
+            </LinearLayout>
+
+            <!-- RECIPE ITEM 4: MÌ Ý SỐT BÒ BẰM -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_card"
+                android:elevation="2dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/ivRecipe4"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:background="@drawable/bg_circle_cream"
+                    android:contentDescription="Món ăn"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_gear" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvRecipe4Category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Món nhanh"
+                        android:textColor="@color/panda_green"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvRecipe4Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Mì Ý Sốt Bò Bằm"
+                        android:textColor="@color/panda_green_dark"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvRecipe4Details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="20 phút • Dễ"
+                        android:textColor="@color/panda_gray"
+                        android:textSize="12sp" />
+
+                    <!-- Rating row -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:contentDescription="Star"
+                            android:src="@drawable/ic_star"
+                            app:tint="#F59E0B" />
+
+                        <TextView
+                            android:id="@+id/tvRecipe4Rating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:text="4.6"
+                            android:textColor="@color/panda_green_dark"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/btnFavorite4"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/bg_badge_published"
+                    android:contentDescription="Yêu thích"
+                    android:src="@drawable/ic_heart"
+                    app:tint="@color/panda_green" />
+            </LinearLayout>
+
+            <!-- BOTTOM BUTTON: KHÁM PHÁ THÊM CÔNG THỨC -->
+            <LinearLayout
+                android:id="@+id/btnExploreMore"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_card"
+                android:clickable="true"
+                android:elevation="2dp"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/ivPlusIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="6dp"
+                    android:contentDescription="Thêm"
+                    android:src="@drawable/ic_plus"
+                    app:tint="@color/panda_green" />
+
+                <TextView
+                    android:id="@+id/tvExploreMore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Khám phá thêm công thức"
+                    android:textColor="@color/panda_green"
                     android:textSize="15sp"
                     android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvSummaryDesc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="3 món bạn có thể nấu trong hôm nay"
-                    android:textColor="@color/panda_gray"
-                    android:textSize="12sp"
-                    android:layout_marginTop="2dp" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <!-- RECIPE ITEM 1: GỎI CUỐN TÔM THỊT -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:background="@drawable/bg_card"
-            android:padding="16dp"
-            android:elevation="2dp"
-            android:layout_marginBottom="12dp">
-
-            <ImageView
-                android:id="@+id/ivRecipe1"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
-                android:background="@drawable/bg_circle_cream"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_gear"
-                android:contentDescription="Món ăn" />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_marginStart="14dp"
-                android:layout_marginEnd="8dp">
-
-                <TextView
-                    android:id="@+id/tvRecipe1Category"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Món cuốn"
-                    android:textColor="@color/panda_green"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvRecipe1Title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Gỏi Cuốn Tôm Thịt"
-                    android:textColor="@color/panda_green_dark"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="2dp" />
-
-                <TextView
-                    android:id="@+id/tvRecipe1Details"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="15 phút • Dễ • 4 người"
-                    android:textColor="@color/panda_gray"
-                    android:textSize="12sp"
-                    android:layout_marginTop="2dp" />
-
-                <!-- Rating row -->
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_marginTop="4dp">
-
-                    <ImageView
-                        android:layout_width="14dp"
-                        android:layout_height="14dp"
-                        android:src="@drawable/ic_star"
-                        app:tint="#F59E0B"
-                        android:contentDescription="Star" />
-
-                    <TextView
-                        android:id="@+id/tvRecipe1Rating"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="4.8"
-                        android:textColor="@color/panda_green_dark"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        android:layout_marginStart="4dp" />
-                </LinearLayout>
             </LinearLayout>
 
-            <ImageButton
-                android:id="@+id/btnFavorite1"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/bg_badge_published"
-                android:src="@drawable/ic_heart"
-                android:contentDescription="Yêu thích"
-                app:tint="@color/panda_green" />
         </LinearLayout>
 
-        <!-- RECIPE ITEM 2: CƠM GÀ XỐI MỠ -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:background="@drawable/bg_card"
-            android:padding="16dp"
-            android:elevation="2dp"
-            android:layout_marginBottom="12dp">
+    </ScrollView>
 
-            <ImageView
-                android:id="@+id/ivRecipe2"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
-                android:background="@drawable/bg_circle_cream"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_gear"
-                android:contentDescription="Món ăn" />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_marginStart="14dp"
-                android:layout_marginEnd="8dp">
-
-                <TextView
-                    android:id="@+id/tvRecipe2Category"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Món chính"
-                    android:textColor="@color/panda_green"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvRecipe2Title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Cơm Gà Xối Mỡ"
-                    android:textColor="@color/panda_green_dark"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="2dp" />
-
-                <TextView
-                    android:id="@+id/tvRecipe2Details"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="35 phút • Trung bình"
-                    android:textColor="@color/panda_gray"
-                    android:textSize="12sp"
-                    android:layout_marginTop="2dp" />
-
-                <!-- Rating row -->
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_marginTop="4dp">
-
-                    <ImageView
-                        android:layout_width="14dp"
-                        android:layout_height="14dp"
-                        android:src="@drawable/ic_star"
-                        app:tint="#F59E0B"
-                        android:contentDescription="Star" />
-
-                    <TextView
-                        android:id="@+id/tvRecipe2Rating"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="4.7"
-                        android:textColor="@color/panda_green_dark"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        android:layout_marginStart="4dp" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <ImageButton
-                android:id="@+id/btnFavorite2"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/bg_badge_published"
-                android:src="@drawable/ic_heart"
-                android:contentDescription="Yêu thích"
-                app:tint="@color/panda_green" />
-        </LinearLayout>
-
-        <!-- RECIPE ITEM 3: CHÈ KHÚC BẠCH -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:background="@drawable/bg_card"
-            android:padding="16dp"
-            android:elevation="2dp"
-            android:layout_marginBottom="12dp">
-
-            <ImageView
-                android:id="@+id/ivRecipe3"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
-                android:background="@drawable/bg_circle_cream"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_gear"
-                android:contentDescription="Món ăn" />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_marginStart="14dp"
-                android:layout_marginEnd="8dp">
-
-                <TextView
-                    android:id="@+id/tvRecipe3Category"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Tráng miệng"
-                    android:textColor="@color/panda_green"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvRecipe3Title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Chè Khúc Bạch"
-                    android:textColor="@color/panda_green_dark"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="2dp" />
-
-                <TextView
-                    android:id="@+id/tvRecipe3Details"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="25 phút • Dễ"
-                    android:textColor="@color/panda_gray"
-                    android:textSize="12sp"
-                    android:layout_marginTop="2dp" />
-
-                <!-- Rating row -->
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_marginTop="4dp">
-
-                    <ImageView
-                        android:layout_width="14dp"
-                        android:layout_height="14dp"
-                        android:src="@drawable/ic_star"
-                        app:tint="#F59E0B"
-                        android:contentDescription="Star" />
-
-                    <TextView
-                        android:id="@+id/tvRecipe3Rating"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="4.9"
-                        android:textColor="@color/panda_green_dark"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        android:layout_marginStart="4dp" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <ImageButton
-                android:id="@+id/btnFavorite3"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/bg_badge_published"
-                android:src="@drawable/ic_heart"
-                android:contentDescription="Yêu thích"
-                app:tint="@color/panda_green" />
-        </LinearLayout>
-
-        <!-- RECIPE ITEM 4: MÌ Ý SỐT BÒ BẰM -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:background="@drawable/bg_card"
-            android:padding="16dp"
-            android:elevation="2dp"
-            android:layout_marginBottom="16dp">
-
-            <ImageView
-                android:id="@+id/ivRecipe4"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
-                android:background="@drawable/bg_circle_cream"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_gear"
-                android:contentDescription="Món ăn" />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_marginStart="14dp"
-                android:layout_marginEnd="8dp">
-
-                <TextView
-                    android:id="@+id/tvRecipe4Category"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Món nhanh"
-                    android:textColor="@color/panda_green"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvRecipe4Title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Mì Ý Sốt Bò Bằm"
-                    android:textColor="@color/panda_green_dark"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="2dp" />
-
-                <TextView
-                    android:id="@+id/tvRecipe4Details"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="20 phút • Dễ"
-                    android:textColor="@color/panda_gray"
-                    android:textSize="12sp"
-                    android:layout_marginTop="2dp" />
-
-                <!-- Rating row -->
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_marginTop="4dp">
-
-                    <ImageView
-                        android:layout_width="14dp"
-                        android:layout_height="14dp"
-                        android:src="@drawable/ic_star"
-                        app:tint="#F59E0B"
-                        android:contentDescription="Star" />
-
-                    <TextView
-                        android:id="@+id/tvRecipe4Rating"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="4.6"
-                        android:textColor="@color/panda_green_dark"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        android:layout_marginStart="4dp" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <ImageButton
-                android:id="@+id/btnFavorite4"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/bg_badge_published"
-                android:src="@drawable/ic_heart"
-                android:contentDescription="Yêu thích"
-                app:tint="@color/panda_green" />
-        </LinearLayout>
-
-        <!-- BOTTOM BUTTON: KHÁM PHÁ THÊM CÔNG THỨC -->
-        <LinearLayout
-            android:id="@+id/btnExploreMore"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:background="@drawable/bg_card"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:clickable="true"
-            android:focusable="true"
-            android:elevation="2dp"
-            android:layout_marginBottom="16dp">
-
-            <ImageView
-                android:id="@+id/ivPlusIcon"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_plus"
-                android:contentDescription="Thêm"
-                app:tint="@color/panda_green"
-                android:layout_marginEnd="6dp" />
-
-            <TextView
-                android:id="@+id/tvExploreMore"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Khám phá thêm công thức"
-                android:textColor="@color/panda_green"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-    </LinearLayout>
-
-</ScrollView>
+</FrameLayout>

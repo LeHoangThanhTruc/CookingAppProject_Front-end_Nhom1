@@ -1,186 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/panda_bg"
-    android:fillViewport="true"
     tools:ignore="HardcodedText">
 
-    <LinearLayout
+    <!-- Lớp ảnh nền dưới cùng -->
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background2" />
 
-        <!-- HEADER SECTION -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginBottom="24dp">
+            android:orientation="vertical"
+            android:padding="20dp">
 
-            <!-- Nút Quay lại (Back Button) -->
-            <ImageButton
-                android:id="@+id/btnBack"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_arrow_back"
-                android:contentDescription="Quay lại"
-                app:tint="@color/panda_green_dark" />
-
-            <!-- Tiêu đề màn hình -->
-            <TextView
-                android:id="@+id/tvTitle"
-                android:layout_width="0dp"
+            <!-- HEADER SECTION -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Vui lòng chọn:"
+                android:layout_marginBottom="24dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <!-- Nút Quay lại (Back Button) -->
+                <ImageButton
+                    android:id="@+id/btnBack"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Quay lại"
+                    android:src="@drawable/ic_arrow_back"
+                    app:tint="@color/panda_green_dark" />
+
+                <!-- Tiêu đề màn hình -->
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:text="Vui lòng chọn:"
+                    android:textColor="@color/panda_green_dark"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <!-- DESCRIPTION TEXT -->
+            <TextView
+                android:id="@+id/tvMethodDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:text="Chọn 1 trong những phương thức bên dưới để nhận mã xác nhận đến số (+84) 983 114 724"
                 android:textColor="@color/panda_green_dark"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginStart="12dp" />
+                android:textSize="14sp" />
 
-        </LinearLayout>
-
-        <!-- DESCRIPTION TEXT -->
-        <TextView
-            android:id="@+id/tvMethodDesc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Chọn 1 trong những phương thức bên dưới để nhận mã xác nhận đến số (+84) 983 114 724"
-            android:textColor="@color/panda_green_dark"
-            android:textSize="14sp"
-            android:layout_marginBottom="24dp" />
-
-        <!-- OPTION 1: ZALO -->
-        <LinearLayout
-            android:id="@+id/btnZaloOption"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingVertical="14dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:background="?android:attr/selectableItemBackground"
-            android:layout_marginBottom="12dp">
-
-            <ImageView
-                android:id="@+id/ivZaloIcon"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_zalo"
-                android:contentDescription="Zalo" />
-
-            <TextView
-                android:id="@+id/tvZaloTitle"
-                android:layout_width="0dp"
+            <!-- OPTION 1: ZALO -->
+            <LinearLayout
+                android:id="@+id/btnZaloOption"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Zalo"
-                android:textColor="@color/panda_gray"
-                android:textSize="15sp"
-                android:layout_marginStart="14dp" />
+                android:layout_marginBottom="12dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="14dp">
 
-            <ImageView
-                android:id="@+id/ivZaloChevron"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_chevron_right"
-                android:contentDescription="Mở rộng"
-                app:tint="@color/panda_gray" />
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/ivZaloIcon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/bg_button_green"
+                    android:contentDescription="Zalo"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_zalo"
+                    app:tint="@android:color/white" />
 
-        <!-- OPTION 2: TIN NHẮN (SMS) -->
-        <LinearLayout
-            android:id="@+id/btnSmsOption"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingVertical="14dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:background="?android:attr/selectableItemBackground"
-            android:layout_marginBottom="12dp">
+                <TextView
+                    android:id="@+id/tvZaloTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_weight="1"
+                    android:text="Zalo"
+                    android:textColor="@color/panda_gray"
+                    android:textSize="15sp" />
 
-            <ImageView
-                android:id="@+id/ivSmsIcon"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/bg_circle_blue_light"
-                android:padding="8dp"
-                android:src="@drawable/ic_chat"
-                android:contentDescription="Tin nhắn"
-                app:tint="#0068FF" />
+                <ImageView
+                    android:id="@+id/ivZaloChevron"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:contentDescription="Mở rộng"
+                    android:src="@drawable/ic_chevron_right"
+                    app:tint="@color/panda_gray" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/tvSmsTitle"
-                android:layout_width="0dp"
+            <!-- OPTION 2: TIN NHẮN (SMS) -->
+            <LinearLayout
+                android:id="@+id/btnSmsOption"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Tin nhắn"
-                android:textColor="@color/panda_gray"
-                android:textSize="15sp"
-                android:layout_marginStart="14dp" />
+                android:layout_marginBottom="12dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="14dp">
 
-            <ImageView
-                android:id="@+id/ivSmsChevron"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_chevron_right"
-                android:contentDescription="Mở rộng"
-                app:tint="@color/panda_gray" />
+                <ImageView
+                    android:id="@+id/ivSmsIcon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/bg_button_green"
+                    android:contentDescription="Tin nhắn"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_chat"
+                    app:tint="@android:color/white" />
+
+                <TextView
+                    android:id="@+id/tvSmsTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_weight="1"
+                    android:text="Tin nhắn"
+                    android:textColor="@color/panda_gray"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:id="@+id/ivSmsChevron"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:contentDescription="Mở rộng"
+                    android:src="@drawable/ic_chevron_right"
+                    app:tint="@color/panda_gray" />
+            </LinearLayout>
+
         </LinearLayout>
 
-        <!-- OPTION 3: CUỘC GỌI THOẠI -->
-        <LinearLayout
-            android:id="@+id/btnCallOption"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingVertical="14dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:background="?android:attr/selectableItemBackground"
-            android:layout_marginBottom="12dp">
+    </ScrollView>
 
-            <ImageView
-                android:id="@+id/ivCallIcon"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/bg_circle_blue_light"
-                android:padding="8dp"
-                android:src="@drawable/ic_phone"
-                android:contentDescription="Cuộc gọi thoại"
-                app:tint="#0068FF" />
-
-            <TextView
-                android:id="@+id/tvCallTitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Cuộc gọi thoại"
-                android:textColor="@color/panda_gray"
-                android:textSize="15sp"
-                android:layout_marginStart="14dp" />
-
-            <ImageView
-                android:id="@+id/ivCallChevron"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_chevron_right"
-                android:contentDescription="Mở rộng"
-                app:tint="@color/panda_gray" />
-        </LinearLayout>
-
-
-
-    </LinearLayout>
-
-</ScrollView>
+</FrameLayout>

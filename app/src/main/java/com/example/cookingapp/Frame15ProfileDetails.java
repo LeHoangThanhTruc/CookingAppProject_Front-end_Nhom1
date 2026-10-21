@@ -51,9 +51,13 @@ public class Frame15ProfileDetails extends Activity {
     }
 
     private void setupEvents() {
-        // Nút Back
+        // Nút Back trên góc trái -> Quay về giao diện activity_setting.xml (Frame7SettingActivity)
         if (btnBack != null) {
-            btnBack.setOnClickListener(v -> finish());
+            btnBack.setOnClickListener(v -> {
+                Intent intent = new Intent(Frame15ProfileDetails.this, Frame7SettingActivity.class);
+                startActivity(intent);
+                finish();
+            });
         }
 
         // Đổi ảnh đại diện

@@ -54,9 +54,12 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/btnBack"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/bg_circle_white"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:gravity="center"
                     android:text="‹"
                     android:textColor="@color/panda_green_dark"
