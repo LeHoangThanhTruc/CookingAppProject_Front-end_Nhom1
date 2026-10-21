@@ -1,6 +1,7 @@
 package com.example.cookingapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -48,9 +49,13 @@ public class Frame11Dadanhgia extends Activity {
     }
 
     private void setupEvents() {
-        // Nút Back
+        // Nút Back -> Quay về giao diện activity_myactivity.xml (Frame10Myactivity)
         if (btnBack != null) {
-            btnBack.setOnClickListener(v -> finish());
+            btnBack.setOnClickListener(v -> {
+                Intent intent = new Intent(Frame11Dadanhgia.this, Frame10Myactivity.class);
+                startActivity(intent);
+                finish();
+            });
         }
 
         // Nút Profile

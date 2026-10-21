@@ -1,6 +1,7 @@
 package com.example.cookingapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -48,9 +49,13 @@ public class Frame12FavoritesList extends Activity {
     }
 
     private void setupEvents() {
-        // Nút Back
+        // Nút Back -> Quay về giao diện activity_myactivity.xml (Frame10Myactivity)
         if (btnBack != null) {
-            btnBack.setOnClickListener(v -> finish());
+            btnBack.setOnClickListener(v -> {
+                Intent intent = new Intent(Frame12FavoritesList.this, Frame10Myactivity.class);
+                startActivity(intent);
+                finish();
+            });
         }
 
         // Nút Heart Header
@@ -80,11 +85,12 @@ public class Frame12FavoritesList extends Activity {
             btnFavorite4.setOnClickListener(v -> Toast.makeText(this, "Đã bỏ Mì Ý Sốt Bò Bằm khỏi yêu thích", Toast.LENGTH_SHORT).show());
         }
 
-        // Nút Khám phá thêm công thức
+        // Nút Khám phá thêm công thức -> Chuyển sang activity_man_hinh_chinh.xml (ManHinhChinhActivity)
         if (btnExploreMore != null) {
-            btnExploreMore.setOnClickListener(v ->
-                    Toast.makeText(this, "Khám phá thêm công thức mới", Toast.LENGTH_SHORT).show()
-            );
+            btnExploreMore.setOnClickListener(v -> {
+                Intent intent = new Intent(Frame12FavoritesList.this, ManHinhChinhActivity.class);
+                startActivity(intent);
+            });
         }
     }
 }

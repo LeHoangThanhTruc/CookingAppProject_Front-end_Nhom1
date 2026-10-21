@@ -35,12 +35,12 @@ public class Frame10Myactivity extends Activity {
     }
 
     private void setupEvents() {
-        // Nút Quay về -> Chuyển sang ManHinhChinhActivity
+        // Nút Quay về -> Chuyển sang Frame7SettingActivity (activity_setting.xml)
         if (btnBack != null) {
             btnBack.setOnClickListener(v -> {
-                Intent intent = new Intent(Frame10Myactivity.this, ManHinhChinhActivity.class);
+                Intent intent = new Intent(Frame10Myactivity.this, Frame7SettingActivity.class);
                 startActivity(intent);
-                finish(); // Đóng màn hình cá nhân
+                finish();
             });
         }
 
@@ -50,28 +50,36 @@ public class Frame10Myactivity extends Activity {
             );
         }
 
+        // 1. Chuyển sang activity_saved_list.xml (Frame14SavedList)
         if (btnSavedRecipes != null) {
-            btnSavedRecipes.setOnClickListener(v ->
-                    startActivity(new Intent(this, Frame14SavedList.class))
-            );
+            btnSavedRecipes.setOnClickListener(v -> {
+                Intent intent = new Intent(Frame10Myactivity.this, Frame14SavedList.class);
+                startActivity(intent);
+            });
         }
 
+        // 2. Chuyển sang activity_dadanhgia.xml (Frame11Dadanhgia)
         if (btnReviews != null) {
-            btnReviews.setOnClickListener(v ->
-                    startActivity(new Intent(this, Frame11Dadanhgia.class))
-            );
+            btnReviews.setOnClickListener(v -> {
+                Intent intent = new Intent(Frame10Myactivity.this, Frame11Dadanhgia.class);
+                startActivity(intent);
+            });
         }
 
+        // 3. Chuyển sang activity_cooking_schedule.xml (Frame13CookingSchedule)
         if (btnCookingCalendar != null) {
-            btnCookingCalendar.setOnClickListener(v ->
-                    startActivity(new Intent(this, Frame13CookingSchedule.class))
-            );
+            btnCookingCalendar.setOnClickListener(v -> {
+                Intent intent = new Intent(Frame10Myactivity.this, Frame13CookingSchedule.class);
+                startActivity(intent);
+            });
         }
 
+        // 4. Chuyển sang activity_favorites_list.xml (Frame12FavoritesList)
         if (btnFavoriteRecipes != null) {
-            btnFavoriteRecipes.setOnClickListener(v ->
-                    startActivity(new Intent(this, Frame12FavoritesList.class))
-            );
+            btnFavoriteRecipes.setOnClickListener(v -> {
+                Intent intent = new Intent(Frame10Myactivity.this, Frame12FavoritesList.class);
+                startActivity(intent);
+            });
         }
     }
 }

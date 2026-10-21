@@ -49,9 +49,13 @@ public class Frame14SavedList extends Activity {
     }
 
     private void setupEvents() {
-        // Nút Back
+        // Nút Back -> Quay về giao diện activity_myactivity.xml (Frame10Myactivity)
         if (btnBack != null) {
-            btnBack.setOnClickListener(v -> finish());
+            btnBack.setOnClickListener(v -> {
+                Intent intent = new Intent(Frame14SavedList.this, Frame10Myactivity.class);
+                startActivity(intent);
+                finish();
+            });
         }
 
         // Nút Bookmark Header
@@ -78,7 +82,7 @@ public class Frame14SavedList extends Activity {
             btnBookmark3.setOnClickListener(v -> Toast.makeText(this, "Đã cập nhật Chè Khúc Bạch", Toast.LENGTH_SHORT).show());
         }
         if (btnBookmark4 != null) {
-            btnBookmark4.setOnClickListener(v -> Toast.makeText(this, "Đã cập nhật Mì Ý Sốt Bò Bằm", Toast.LENGTH_SHORT).show());
+            btnBookmark4.setOnClickListener(v -> Toast.makeText(this, "Đã cập nhật Mì Ý Sốt Bò Bằm khỏi danh sách lưu", Toast.LENGTH_SHORT).show());
         }
 
         // Nút Lên lịch nấu ăn

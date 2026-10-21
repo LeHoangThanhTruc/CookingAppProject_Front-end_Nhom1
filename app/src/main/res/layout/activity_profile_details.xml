@@ -1,382 +1,395 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/panda_bg"
-    android:fillViewport="true"
     tools:ignore="HardcodedText,Autofill">
 
-    <LinearLayout
+    <!-- Lớp ảnh nền dưới cùng -->
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background2" />
 
-        <!-- HEADER SECTION -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginBottom="20dp">
+            android:orientation="vertical"
+            android:padding="20dp">
 
-            <!-- Nút Quay lại (Back Button) -->
-            <ImageButton
-                android:id="@+id/btnBack"
-                android:layout_width="44dp"
-                android:layout_height="44dp"
-                android:background="@drawable/bg_circle_white"
-                android:src="@drawable/ic_arrow_back"
-                android:contentDescription="Quay lại"
+            <!-- HEADER SECTION -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <!-- Nút Quay lại (Back Button) -->
+                <ImageButton
+                    android:id="@+id/btnBack"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:background="@drawable/bg_circle_white"
+                    android:contentDescription="Quay lại"
+                    android:elevation="2dp"
+                    android:src="@drawable/ic_arrow_back"
+                    app:tint="@color/panda_green_dark" />
+
+                <!-- Khối Tiêu đề màn hình -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvHeaderCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Profile"
+                        android:textColor="#8AA68A"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chi tiết hồ sơ"
+                        android:textColor="@color/panda_green_dark"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvSubtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Thông tin của bạn, luôn được bảo vệ"
+                        android:textColor="@color/panda_gray"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- AVATAR CARD -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_card"
                 android:elevation="2dp"
-                app:tint="@color/panda_green_dark" />
-
-            <!-- Khối Tiêu đề màn hình -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:gravity="center"
                 android:orientation="vertical"
-                android:layout_marginStart="14dp">
+                android:padding="24dp">
+
+                <ImageView
+                    android:id="@+id/ivAvatar"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:background="@drawable/bg_circle_cream"
+                    android:contentDescription="Avatar"
+                    android:padding="14dp"
+                    android:src="@drawable/ic_panda_avatar"
+                    app:tint="@color/panda_green_dark" />
 
                 <TextView
-                    android:id="@+id/tvHeaderCategory"
+                    android:id="@+id/btnChangeAvatar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Profile"
-                    android:textColor="#8AA68A"
-                    android:textSize="12sp"
+                    android:layout_marginTop="12dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:text="Đổi ảnh đại diện"
+                    android:textColor="@color/panda_green"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
+            </LinearLayout>
+
+            <!-- ACCOUNT INFO CARD -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_card"
+                android:elevation="2dp"
+                android:orientation="vertical"
+                android:padding="20dp">
+
                 <TextView
-                    android:id="@+id/tvTitle"
+                    android:id="@+id/tvAccountInfoTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Chi tiết hồ sơ"
+                    android:layout_marginBottom="16dp"
+                    android:text="Thông tin tài khoản"
                     android:textColor="@color/panda_green_dark"
-                    android:textSize="22sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
+                <!-- Field 1: Tên tài khoản -->
                 <TextView
-                    android:id="@+id/tvSubtitle"
+                    android:id="@+id/tvUsernameLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Thông tin của bạn, luôn được bảo vệ"
+                    android:layout_marginBottom="6dp"
+                    android:text="Tên tài khoản"
                     android:textColor="@color/panda_gray"
-                    android:textSize="13sp" />
-            </LinearLayout>
+                    android:textSize="12sp" />
 
-        </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="14dp"
+                    android:background="@drawable/bg_input_field"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="14dp">
 
-        <!-- AVATAR CARD -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:background="@drawable/bg_card"
-            android:padding="24dp"
-            android:elevation="2dp"
-            android:layout_marginBottom="16dp">
+                    <ImageView
+                        android:id="@+id/ivUsernameIcon"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="Tên tài khoản"
+                        android:src="@drawable/ic_person"
+                        app:tint="@color/panda_green" />
 
-            <ImageView
-                android:id="@+id/ivAvatar"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
-                android:background="@drawable/bg_circle_cream"
-                android:padding="14dp"
-                android:src="@drawable/ic_panda_avatar"
-                android:contentDescription="Avatar"
-                app:tint="@color/panda_green_dark" />
+                    <EditText
+                        android:id="@+id/etUsername"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:inputType="textPersonName"
+                        android:text="Nhóm dễ thương"
+                        android:textColor="@color/panda_green_dark"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/btnChangeAvatar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Đổi ảnh đại diện"
-                android:textColor="@color/panda_green"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:layout_marginTop="12dp"
-                android:clickable="true"
-                android:focusable="true" />
+                    <ImageView
+                        android:id="@+id/ivEditUsername"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="Chỉnh sửa"
+                        android:src="@drawable/ic_edit_pencil"
+                        app:tint="@color/panda_green" />
+                </LinearLayout>
 
-        </LinearLayout>
-
-        <!-- ACCOUNT INFO CARD -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/bg_card"
-            android:padding="20dp"
-            android:elevation="2dp"
-            android:layout_marginBottom="12dp">
-
-            <TextView
-                android:id="@+id/tvAccountInfoTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Thông tin tài khoản"
-                android:textColor="@color/panda_green_dark"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="16dp" />
-
-            <!-- Field 1: Tên tài khoản -->
-            <TextView
-                android:id="@+id/tvUsernameLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tên tài khoản"
-                android:textColor="@color/panda_gray"
-                android:textSize="12sp"
-                android:layout_marginBottom="6dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:background="@drawable/bg_input_field"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:paddingHorizontal="14dp"
-                android:layout_marginBottom="14dp">
-
-                <ImageView
-                    android:id="@+id/ivUsernameIcon"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_person"
-                    android:contentDescription="Tên tài khoản"
-                    app:tint="@color/panda_green" />
-
-                <EditText
-                    android:id="@+id/etUsername"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:text="Nhóm dễ thương"
-                    android:textColor="@color/panda_green_dark"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:layout_marginStart="10dp"
-                    android:inputType="textPersonName" />
-
-                <ImageView
-                    android:id="@+id/ivEditUsername"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_edit_pencil"
-                    android:contentDescription="Chỉnh sửa"
-                    app:tint="@color/panda_green" />
-            </LinearLayout>
-
-            <!-- Field 2: Gmail -->
-            <TextView
-                android:id="@+id/tvGmailLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Gmail"
-                android:textColor="@color/panda_gray"
-                android:textSize="12sp"
-                android:layout_marginBottom="6dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:background="@drawable/bg_input_field"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:paddingHorizontal="14dp"
-                android:layout_marginBottom="14dp">
-
-                <ImageView
-                    android:id="@+id/ivGmailIcon"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_mail"
-                    android:contentDescription="Gmail"
-                    app:tint="@color/panda_green" />
-
-                <EditText
-                    android:id="@+id/etGmail"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:text="nhomdethuong@gm.uit.edu.vn"
-                    android:textColor="@color/panda_green_dark"
-                    android:textSize="14sp"
-                    android:layout_marginStart="10dp"
-                    android:inputType="textEmailAddress" />
-
-                <ImageView
-                    android:id="@+id/ivEditGmail"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_edit_pencil"
-                    android:contentDescription="Chỉnh sửa"
-                    app:tint="@color/panda_green" />
-            </LinearLayout>
-
-            <!-- Field 3: Số điện thoại -->
-            <TextView
-                android:id="@+id/tvPhoneLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Số điện thoại"
-                android:textColor="@color/panda_gray"
-                android:textSize="12sp"
-                android:layout_marginBottom="6dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:background="@drawable/bg_input_field"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:paddingHorizontal="14dp"
-                android:layout_marginBottom="14dp">
-
-                <ImageView
-                    android:id="@+id/ivPhoneIcon"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_phone"
-                    android:contentDescription="Số điện thoại"
-                    app:tint="@color/panda_green" />
-
-                <EditText
-                    android:id="@+id/etPhone"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:text="Chưa cập nhật"
+                <!-- Field 2: Gmail -->
+                <TextView
+                    android:id="@+id/tvGmailLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    android:text="Gmail"
                     android:textColor="@color/panda_gray"
-                    android:textSize="14sp"
-                    android:layout_marginStart="10dp"
-                    android:inputType="phone" />
+                    android:textSize="12sp" />
 
-                <ImageView
-                    android:id="@+id/ivEditPhone"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_edit_pencil"
-                    android:contentDescription="Chỉnh sửa"
-                    app:tint="@color/panda_green" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="14dp"
+                    android:background="@drawable/bg_input_field"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="14dp">
+
+                    <ImageView
+                        android:id="@+id/ivGmailIcon"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="Gmail"
+                        android:src="@drawable/ic_mail"
+                        app:tint="@color/panda_green" />
+
+                    <EditText
+                        android:id="@+id/etGmail"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:inputType="textEmailAddress"
+                        android:text="nhomdethuong@gm.uit.edu.vn"
+                        android:textColor="@color/panda_green_dark"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:id="@+id/ivEditGmail"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="Chỉnh sửa"
+                        android:src="@drawable/ic_edit_pencil"
+                        app:tint="@color/panda_green" />
+                </LinearLayout>
+
+                <!-- Field 3: Số điện thoại -->
+                <TextView
+                    android:id="@+id/tvPhoneLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    android:text="Số điện thoại"
+                    android:textColor="@color/panda_gray"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="14dp"
+                    android:background="@drawable/bg_input_field"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="14dp">
+
+                    <ImageView
+                        android:id="@+id/ivPhoneIcon"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="Số điện thoại"
+                        android:src="@drawable/ic_phone"
+                        app:tint="@color/panda_green" />
+
+                    <EditText
+                        android:id="@+id/etPhone"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:inputType="phone"
+                        android:text="Chưa cập nhật"
+                        android:textColor="@color/panda_gray"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:id="@+id/ivEditPhone"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="Chỉnh sửa"
+                        android:src="@drawable/ic_edit_pencil"
+                        app:tint="@color/panda_green" />
+                </LinearLayout>
+
+                <!-- Field 4: Mật khẩu -->
+                <TextView
+                    android:id="@+id/tvPasswordLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    android:text="Mật khẩu"
+                    android:textColor="@color/panda_gray"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/bg_input_field"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="14dp">
+
+                    <ImageView
+                        android:id="@+id/ivPasswordIcon"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="Mật khẩu"
+                        android:src="@drawable/ic_lock"
+                        app:tint="@color/panda_green" />
+
+                    <EditText
+                        android:id="@+id/etPassword"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:inputType="textPassword"
+                        android:text="••••••••"
+                        android:textColor="@color/panda_green_dark"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:id="@+id/ivEyePassword"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="Hiện/Ẩn mật khẩu"
+                        android:src="@drawable/ic_visibility_off"
+                        app:tint="@color/panda_gray" />
+                </LinearLayout>
+
+                <!-- Row: Đổi mật khẩu -->
+                <LinearLayout
+                    android:id="@+id/btnChangePasswordRow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="12dp">
+
+                    <TextView
+                        android:id="@+id/tvChangePasswordLabel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Đổi mật khẩu"
+                        android:textColor="@color/panda_green_dark"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/ivChangePasswordChevron"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="Mở rộng"
+                        android:src="@drawable/ic_chevron_right"
+                        app:tint="@color/panda_gray" />
+                </LinearLayout>
+
             </LinearLayout>
 
-            <!-- Field 4: Mật khẩu -->
-            <TextView
-                android:id="@+id/tvPasswordLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Mật khẩu"
-                android:textColor="@color/panda_gray"
-                android:textSize="12sp"
-                android:layout_marginBottom="6dp" />
-
+            <!-- SECURITY NOTICE FOOTER -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:background="@drawable/bg_input_field"
-                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
                 android:gravity="center_vertical"
-                android:paddingHorizontal="14dp"
-                android:layout_marginBottom="8dp">
+                android:orientation="horizontal"
+                android:paddingHorizontal="4dp">
 
                 <ImageView
-                    android:id="@+id/ivPasswordIcon"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_lock"
-                    android:contentDescription="Mật khẩu"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:contentDescription="Bảo mật"
+                    android:src="@drawable/ic_check_circle"
                     app:tint="@color/panda_green" />
-
-                <EditText
-                    android:id="@+id/etPassword"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:text="••••••••"
-                    android:textColor="@color/panda_green_dark"
-                    android:textSize="14sp"
-                    android:layout_marginStart="10dp"
-                    android:inputType="textPassword" />
-
-                <ImageView
-                    android:id="@+id/ivEyePassword"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_visibility_off"
-                    android:contentDescription="Hiện/Ẩn mật khẩu"
-                    app:tint="@color/panda_gray" />
-            </LinearLayout>
-
-            <!-- Row: Đổi mật khẩu -->
-            <LinearLayout
-                android:id="@+id/btnChangePasswordRow"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:paddingVertical="12dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="?android:attr/selectableItemBackground">
 
                 <TextView
-                    android:id="@+id/tvChangePasswordLabel"
-                    android:layout_width="0dp"
+                    android:id="@+id/tvSecurityNotice"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Đổi mật khẩu"
-                    android:textColor="@color/panda_green_dark"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    android:id="@+id/ivChangePasswordChevron"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_chevron_right"
-                    android:contentDescription="Mở rộng"
-                    app:tint="@color/panda_gray" />
+                    android:layout_marginStart="8dp"
+                    android:text="Mật khẩu được ẩn để bảo vệ tài khoản của bạn."
+                    android:textColor="@color/panda_gray"
+                    android:textSize="12sp" />
             </LinearLayout>
 
         </LinearLayout>
 
-        <!-- SECURITY NOTICE FOOTER -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="4dp"
-            android:layout_marginBottom="16dp">
+    </ScrollView>
 
-            <ImageView
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:src="@drawable/ic_check_circle"
-                android:contentDescription="Bảo mật"
-                app:tint="@color/panda_green" />
-
-            <TextView
-                android:id="@+id/tvSecurityNotice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Mật khẩu được ẩn để bảo vệ tài khoản của bạn."
-                android:textColor="@color/panda_gray"
-                android:textSize="12sp"
-                android:layout_marginStart="8dp" />
-        </LinearLayout>
-
-    </LinearLayout>
-
-</ScrollView>
+</FrameLayout>

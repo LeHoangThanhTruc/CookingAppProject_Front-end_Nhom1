@@ -1,6 +1,7 @@
 package com.example.cookingapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -56,14 +57,16 @@ public class Frame23EnterCurrentPassword extends Activity {
             );
         }
 
-        // 3. Link Quên mật khẩu
+        // 3. Link Quên mật khẩu -> Truyền FLOW_SOURCE = "ENTER_CURRENT_PASSWORD"
         if (tvForgotPassword != null) {
-            tvForgotPassword.setOnClickListener(v ->
-                    Toast.makeText(this, "Mở màn hình Quên mật khẩu", Toast.LENGTH_SHORT).show()
-            );
+            tvForgotPassword.setOnClickListener(v -> {
+                Intent intent = new Intent(Frame23EnterCurrentPassword.this, ForgotPasswordActivity.class);
+                intent.putExtra("FLOW_SOURCE", "ENTER_CURRENT_PASSWORD");
+                startActivity(intent);
+            });
         }
 
-        // 4. Nút Tiếp theo
+        // 4. Nút Tiếp theo (btnSubmit) -> Chuyển sang ResetPasswordActivity (activity_reset_password.xml)
         if (btnNext != null) {
             btnNext.setOnClickListener(v -> {
                 String password = etCurrentPassword != null ? etCurrentPassword.getText().toString().trim() : "";
@@ -73,8 +76,9 @@ public class Frame23EnterCurrentPassword extends Activity {
                 } else if (password.length() < 6) {
                     Toast.makeText(this, "Mật khẩu phải chứa ít nhất 6 ký tự!", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(this, "Xác nhận mật khẩu hiện tại thành công!", Toast.LENGTH_LONG).show();
-                    finish();
+                    Toast.makeText(this, "Xác nhận mật khẩu hiện tại thành công!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(Frame23EnterCurrentPassword.this, ResetPasswordActivity.class);
+                    startActivity(intent);
                 }
             });
         }
