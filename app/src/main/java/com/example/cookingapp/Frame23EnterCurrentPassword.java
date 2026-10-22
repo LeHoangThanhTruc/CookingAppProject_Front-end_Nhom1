@@ -72,7 +72,10 @@ public class Frame23EnterCurrentPassword extends Activity {
                 } else {
                     Toast.makeText(this, "Xác nhận mật khẩu hiện tại thành công!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Frame23EnterCurrentPassword.this, ResetPasswordActivity.class);
+<<<<<<< HEAD
                     // Gửi cờ nguồn sang ResetPasswordActivity
+=======
+>>>>>>> 7868ff52cfa2eb75c49c22756e9cc30676f3e225
                     intent.putExtra("SOURCE_SCREEN", "ENTER_CURRENT_PASSWORD");
                     startActivity(intent);
                 }

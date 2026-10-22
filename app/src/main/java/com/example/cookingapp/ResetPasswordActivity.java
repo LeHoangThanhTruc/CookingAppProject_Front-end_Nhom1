@@ -2,6 +2,7 @@ package com.example.cookingapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -12,6 +13,8 @@ public class ResetPasswordActivity extends AppCompatActivity {
 
     private ImageView btnBack;
     private RelativeLayout btnSubmitReset;
+    private EditText edtNewPassword;
+    private EditText edtConfirmPassword;
     private String sourceScreen = "";
 
     @Override
@@ -26,6 +29,8 @@ public class ResetPasswordActivity extends AppCompatActivity {
 
         btnBack = findViewById(R.id.btnBack);
         btnSubmitReset = findViewById(R.id.btnSubmitReset);
+        edtNewPassword = findViewById(R.id.edtNewPassword);
+        edtConfirmPassword = findViewById(R.id.edtConfirmPassword);
 
         // Nút Mũi tên quay về
         if (btnBack != null) {
@@ -39,19 +44,25 @@ public class ResetPasswordActivity extends AppCompatActivity {
     }
 
     private void handleBackNavigation() {
-        if ("ENTER_CURRENT_PASSWORD".equals(sourceScreen)) {
-            // Quay về Frame23EnterCurrentPassword
-            Intent intent = new Intent(ResetPasswordActivity.this, Frame23EnterCurrentPassword.class);
-            startActivity(intent);
-        } else {
-            // Quay về ForgotPasswordActivity
-            Intent intent = new Intent(ResetPasswordActivity.this, ForgotPasswordActivity.class);
-            startActivity(intent);
-        }
         finish();
     }
 
     private void handleSubmitSuccess() {
+        String password = edtNewPassword.getText().toString().trim();
+        String confirmation = edtConfirmPassword.getText().toString().trim();
+        if (password.isEmpty() || confirmation.isEmpty()) {
+            Toast.makeText(this, "Vui lòng nhập đầy đủ mật khẩu!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (password.length() < 6) {
+            Toast.makeText(this, "Mật khẩu phải chứa ít nhất 6 ký tự!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (!password.equals(confirmation)) {
+            Toast.makeText(this, "Mật khẩu xác nhận không khớp!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         Toast.makeText(this, "Đặt lại mật khẩu thành công!", Toast.LENGTH_SHORT).show();
 
         if ("ENTER_CURRENT_PASSWORD".equals(sourceScreen)) {

@@ -152,6 +152,27 @@ public class NavigationSmokeTest {
     }
 
     @Test
+    public void passwordResetKeepsSourceAndBackStack() {
+        try (ActivityScenario<ForgotPasswordActivity> ignored = ActivityScenario.launch(ForgotPasswordActivity.class)) {
+            onView(withId(R.id.edtEmailOrPhone)).perform(replaceText("panda@example.com"));
+            onView(withId(R.id.btnSubmit)).perform(FORCE_CLICK);
+            onView(withId(R.id.edtNewPassword)).perform(replaceText("panda123"));
+            onView(withId(R.id.edtConfirmPassword)).perform(replaceText("panda123"));
+            onView(withId(R.id.btnBack)).perform(FORCE_CLICK);
+            onView(withId(R.id.edtEmailOrPhone)).perform(replaceText("0901234567"));
+        }
+
+        try (ActivityScenario<Frame23EnterCurrentPassword> ignored = ActivityScenario.launch(Frame23EnterCurrentPassword.class)) {
+            onView(withId(R.id.etCurrentPassword)).perform(replaceText("panda123"));
+            onView(withId(R.id.btnNext)).perform(FORCE_CLICK);
+            onView(withId(R.id.edtNewPassword)).perform(replaceText("panda456"));
+            onView(withId(R.id.edtConfirmPassword)).perform(replaceText("panda456"));
+            onView(withId(R.id.btnSubmitReset)).perform(FORCE_CLICK);
+            onView(withId(R.id.btnChangePasswordRow)).perform(FORCE_CLICK);
+        }
+    }
+
+    @Test
     public void createRecipePublishFlowWorks() {
         try (ActivityScenario<Frame31CreateRecipeActivity> ignored = ActivityScenario.launch(Frame31CreateRecipeActivity.class)) {
             onView(withId(R.id.input_recipe_name)).perform(replaceText("Phở bò"));

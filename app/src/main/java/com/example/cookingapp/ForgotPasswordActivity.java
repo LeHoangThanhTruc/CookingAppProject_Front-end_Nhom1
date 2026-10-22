@@ -36,7 +36,11 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     }
 
     private void handleSubmit() {
+<<<<<<< HEAD
         String input = edtEmailOrPhone != null ? edtEmailOrPhone.getText().toString().trim() : "";
+=======
+        String input = edtEmailOrPhone.getText().toString().trim();
+>>>>>>> 7868ff52cfa2eb75c49c22756e9cc30676f3e225
 
         if (input.isEmpty()) {
             Toast.makeText(this, "Vui lòng nhập Email hoặc Số điện thoại!", Toast.LENGTH_SHORT).show();
