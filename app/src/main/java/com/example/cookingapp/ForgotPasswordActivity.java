@@ -6,8 +6,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.cookingapp.R;
 
 public class ForgotPasswordActivity extends AppCompatActivity {
 
@@ -25,21 +26,33 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         edtEmailOrPhone = findViewById(R.id.edtEmailOrPhone);
         btnSubmit = findViewById(R.id.btnSubmit);
 
-        // Nút Mũi tên quay về: Quay về giao diện activity_enter_current_password.xml (hoặc Login tùy flow)
-        if (btnBack != null) {
-            btnBack.setOnClickListener(v -> finish());
-        }
+        // Nút Mũi tên quay về: Quay lại màn hình Đăng Nhập
+        btnBack.setOnClickListener(v -> finish());
 
-        // Nút Tiếp tục (btnSubmit): Chuyển sang OTP Gmail hoặc OTP SĐT dựa vào dữ liệu nhập
-        if (btnSubmit != null) {
-            btnSubmit.setOnClickListener(v -> handleSubmit());
-        }
+        // Nút Tiếp tục: Tạm thời chuyển thẳng sang màn hình Nhập lại mật khẩu mới
+        btnSubmit.setOnClickListener(v -> handleSubmit());
     }
 
     private void handleSubmit() {
+<<<<<<< HEAD
         Intent intent = new Intent(ForgotPasswordActivity.this, ResetPasswordActivity.class);
         // Thêm dòng này để đánh dấu nguồn chuyển tới là FORGOT_PASSWORD
         intent.putExtra("SOURCE_SCREEN", "FORGOT_PASSWORD");
         startActivity(intent);
+=======
+        String input = edtEmailOrPhone.getText().toString().trim();
+
+        if (input.isEmpty()) {
+            Toast.makeText(this, "Vui lòng nhập Email hoặc Số điện thoại!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Toast.makeText(this, "Yêu cầu hợp lệ, chuyển sang đặt lại mật khẩu!", Toast.LENGTH_SHORT).show();
+
+        // Chuyển sang form Đặt lại mật khẩu mới
+        Intent intent = new Intent(ForgotPasswordActivity.this, ResetPasswordActivity.class);
+        startActivity(intent);
+        finish(); // Đóng ForgotPasswordActivity
+>>>>>>> 400e4cd020184747325bacac4bd82a274422985c
     }
 }

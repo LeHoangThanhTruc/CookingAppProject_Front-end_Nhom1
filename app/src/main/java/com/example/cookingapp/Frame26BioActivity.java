@@ -1,20 +1,19 @@
 package com.example.cookingapp;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 public class Frame26BioActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_frame_26_bio);
-        View root = findViewById(android.R.id.content);
-        FrameNavigation.bindText(root, "Bạn bè", v -> startActivity(new Intent(this, Frame27FriendsActivity.class)));
-        FrameNavigation.bindText(root, "Người bạn đang theo dõi", v -> startActivity(new Intent(this, Frame28FollowingActivity.class)));
-        FrameNavigation.bindText(root, "Tin nhắn", v -> startActivity(new Intent(this, Frame29MessagesActivity.class)));
-        FrameNavigation.bindText(root, "Thông Báo", v -> startActivity(new Intent(this, Frame33NotificationsActivity.class)));
-        FrameNavigation.bindText(root, "Tạo Công Thức", v -> startActivity(new Intent(this, Frame31CreateRecipeActivity.class)));
+        FrameNavigation.bindBack(this, R.id.button_back_profile);
+        FrameNavigation.bindToast(this, R.id.menu_bio, "Bạn đang xem phần giới thiệu");
+        FrameNavigation.bindOpen(this, R.id.menu_friends, Frame27FriendsActivity.class);
+        FrameNavigation.bindOpen(this, R.id.menu_following, Frame28FollowingActivity.class);
+        FrameNavigation.bindOpen(this, R.id.menu_messages, Frame29MessagesActivity.class);
+        FrameNavigation.bindOpen(this, R.id.menu_notifications, Frame33NotificationsActivity.class);
+        FrameNavigation.bindOpen(this, R.id.menu_create_recipe, Frame31CreateRecipeActivity.class);
     }
 }

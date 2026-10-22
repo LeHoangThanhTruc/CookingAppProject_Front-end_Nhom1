@@ -116,6 +116,7 @@
                 android:paddingBottom="12dp">
 
                 <LinearLayout
+                    android:id="@+id/privacy_only_me"
                     android:layout_width="match_parent"
                     android:layout_height="58dp"
                     android:background="@drawable/bg_privacy_option_selected"
@@ -159,6 +160,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/privacy_friends"
                     android:layout_width="match_parent"
                     android:layout_height="58dp"
                     android:layout_marginTop="8dp"
@@ -198,6 +200,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/privacy_public"
                     android:layout_width="match_parent"
                     android:layout_height="58dp"
                     android:layout_marginTop="8dp"

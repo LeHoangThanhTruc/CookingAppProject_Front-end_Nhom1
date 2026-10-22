@@ -64,5 +64,6 @@ public class Frame19ChangePhoneNumber extends Activity {
                 }
             });
         }
+        findViewById(R.id.layoutLogoutDevices).setOnClickListener(v -> cbLogoutOtherDevices.setChecked(!cbLogoutOtherDevices.isChecked()));
     }
 }

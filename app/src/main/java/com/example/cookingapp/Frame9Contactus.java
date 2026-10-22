@@ -60,11 +60,7 @@ public class Frame9Contactus extends Activity {
     private void setupEvents() {
         // 1. Nút Back - chuyển về màn hình Cài đặt (Frame7SettingActivity)
         if (btnBack != null) {
-            btnBack.setOnClickListener(v -> {
-                Intent intent = new Intent(this, Frame7SettingActivity.class);
-                startActivity(intent);
-                finish();
-            });
+            btnBack.setOnClickListener(v -> finish());
         }
 
         // 2. Nút Hỗ trợ (Top Right)
@@ -108,8 +104,6 @@ public class Frame9Contactus extends Activity {
                     Toast.makeText(this, "Gửi liên hệ thành công! Panda sẽ phản hồi sớm nhất.", Toast.LENGTH_LONG).show();
                     
                     // Chuyển về màn hình Cài đặt sau khi gửi thành công
-                    Intent intent = new Intent(this, Frame7SettingActivity.class);
-                    startActivity(intent);
                     finish();
                 }
             });

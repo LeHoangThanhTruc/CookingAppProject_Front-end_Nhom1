@@ -49,13 +49,9 @@ public class Frame12FavoritesList extends Activity {
     }
 
     private void setupEvents() {
-        // Nút Back -> Quay về giao diện activity_myactivity.xml (Frame10Myactivity)
+        // Nút Back
         if (btnBack != null) {
-            btnBack.setOnClickListener(v -> {
-                Intent intent = new Intent(Frame12FavoritesList.this, Frame10Myactivity.class);
-                startActivity(intent);
-                finish();
-            });
+            btnBack.setOnClickListener(v -> finish());
         }
 
         // Nút Heart Header
@@ -85,12 +81,9 @@ public class Frame12FavoritesList extends Activity {
             btnFavorite4.setOnClickListener(v -> Toast.makeText(this, "Đã bỏ Mì Ý Sốt Bò Bằm khỏi yêu thích", Toast.LENGTH_SHORT).show());
         }
 
-        // Nút Khám phá thêm công thức -> Chuyển sang activity_man_hinh_chinh.xml (ManHinhChinhActivity)
+        // Nút Khám phá thêm công thức
         if (btnExploreMore != null) {
-            btnExploreMore.setOnClickListener(v -> {
-                Intent intent = new Intent(Frame12FavoritesList.this, ManHinhChinhActivity.class);
-                startActivity(intent);
-            });
+            btnExploreMore.setOnClickListener(v -> startActivity(new Intent(this, SearchActivity.class)));
         }
     }
 }

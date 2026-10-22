@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public abstract class BaseFrameActivity extends Activity {
     protected LinearLayout content;
@@ -63,6 +64,7 @@ public abstract class BaseFrameActivity extends Activity {
         if (action != null && !action.isEmpty()) {
             TextView actionButton = ScreenUi.circleButton(this, action);
             actionButton.setTextSize(17);
+            actionButton.setOnClickListener(v -> Toast.makeText(this, "Tùy chọn màn hình", Toast.LENGTH_SHORT).show());
             header.addView(actionButton);
         }
         content.addView(header);
@@ -99,6 +101,7 @@ public abstract class BaseFrameActivity extends Activity {
 
         TextView actionView = ScreenUi.iconButton(this, action, 36, c(R.color.panda_mint_light), c(R.color.panda_green_dark));
         actionView.setTextSize(18);
+        actionView.setOnClickListener(v -> Toast.makeText(this, "Tùy chọn màn hình", Toast.LENGTH_SHORT).show());
         top.addView(actionView);
 
         content.addView(top);

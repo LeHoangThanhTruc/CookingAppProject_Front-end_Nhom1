@@ -69,7 +69,7 @@ public class Frame8Language extends Activity {
     private void setupEvents() {
         // Nút Back - quay về màn hình Cài đặt (Setting)
         if (btnBack != null) {
-            btnBack.setOnClickListener(v -> navigateToSettingScreen());
+            btnBack.setOnClickListener(v -> finish());
         }
 
         // Nút Cài đặt phụ (Gear)
@@ -103,7 +103,7 @@ public class Frame8Language extends Activity {
         if (btnApply != null) {
             btnApply.setOnClickListener(v -> {
                 Toast.makeText(this, "Đã áp dụng ngôn ngữ: " + selectedLanguageName, Toast.LENGTH_SHORT).show();
-                navigateToSettingScreen();
+                finish();
             });
         }
     }
@@ -161,9 +161,4 @@ public class Frame8Language extends Activity {
     /**
      * Chuyển về màn hình Cài đặt (Setting)
      */
-    private void navigateToSettingScreen() {
-        Intent intent = new Intent(this, Frame7SettingActivity.class);
-        startActivity(intent);
-        finish();
-    }
 }

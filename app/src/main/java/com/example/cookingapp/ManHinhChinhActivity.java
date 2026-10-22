@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -16,6 +17,8 @@ public class ManHinhChinhActivity extends AppCompatActivity {
     private ImageView btnNotification;
     private ImageView imgAvatar1;
     private LinearLayout btnQuickSearch, btnQuickProfile, btnQuickSettings;
+    private TextView tvSeeAll;
+    private ImageView imgAvatar2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,14 +38,14 @@ public class ManHinhChinhActivity extends AppCompatActivity {
         btnQuickSearch = findViewById(R.id.btnQuickSearch);
         btnQuickProfile = findViewById(R.id.btnQuickProfile);
         btnQuickSettings = findViewById(R.id.btnQuickSettings);
+        tvSeeAll = findViewById(R.id.tvSeeAll);
+        imgAvatar2 = findViewById(R.id.imgAvatar2);
     }
 
     private void setupEvents() {
         // Nút Chuông thông báo
         if (btnNotification != null) {
-            btnNotification.setOnClickListener(v ->
-                    Toast.makeText(this, "Chưa có thông báo mới!", Toast.LENGTH_SHORT).show()
-            );
+            btnNotification.setOnClickListener(v -> startActivity(new Intent(this, Frame33NotificationsActivity.class)));
         }
 
         // Bấm imgAvatar1 -> Chuyển sang Frame24OtherProfileActivity
@@ -75,6 +78,12 @@ public class ManHinhChinhActivity extends AppCompatActivity {
                 Intent intent = new Intent(ManHinhChinhActivity.this, Frame7SettingActivity.class);
                 startActivity(intent);
             });
+        }
+        if (tvSeeAll != null) {
+            tvSeeAll.setOnClickListener(v -> startActivity(new Intent(this, SearchActivity.class)));
+        }
+        if (imgAvatar2 != null) {
+            imgAvatar2.setOnClickListener(v -> startActivity(new Intent(this, Frame24OtherProfileActivity.class)));
         }
     }
 }

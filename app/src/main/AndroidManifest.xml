@@ -11,10 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GameCookingTutorial">
-
-        <!-- Màn hình khởi chạy (LAUNCHER) -->
         <activity
-            android:name="com.example.cookingapp.SplashActivity"
+            android:name=".SplashActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize">
@@ -24,76 +22,67 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <!-- Các Activity chính -->
         <activity
-            android:name="com.example.cookingapp.MainActivity"
+            android:name=".LoginActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="com.example.cookingapp.LoginActivity"
+            android:name=".RegisterActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="com.example.cookingapp.RegisterActivity"
+            android:name=".ForgotPasswordActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="com.example.cookingapp.ForgotPasswordActivity"
+            android:name=".ResetPasswordActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="com.example.cookingapp.ResetPasswordActivity"
+            android:name=".ManHinhChinhActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="com.example.cookingapp.ManHinhChinhActivity"
+            android:name=".SearchActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="com.example.cookingapp.SearchActivity"
+            android:name=".RecipeDetailActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="com.example.cookingapp.RecipeDetailActivity"
+            android:name=".ReviewActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name="com.example.cookingapp.ReviewActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name="com.example.cookingapp.PlaceholderActivity"
-            android:exported="false" />
-
-        <!-- Các Frame Activity khác -->
-        <activity android:name="com.example.cookingapp.Frame7SettingActivity" android:exported="false" />
-        <activity android:name="com.example.cookingapp.Frame8Language" android:exported="false" />
-        <activity android:name="com.example.cookingapp.Frame9Contactus" android:exported="false" />
-        <activity android:name="com.example.cookingapp.Frame10Myactivity" android:exported="false" />
-        <activity android:name="com.example.cookingapp.Frame11Dadanhgia" android:exported="false" />
-        <activity android:name="com.example.cookingapp.Frame12FavoritesList" android:exported="false" />
-        <activity android:name="com.example.cookingapp.Frame13CookingSchedule" android:exported="false" />
-        <activity android:name="com.example.cookingapp.Frame14SavedList" android:exported="false" />
-        <activity android:name="com.example.cookingapp.Frame15ProfileDetails" android:exported="false" />
-        <activity android:name="com.example.cookingapp.Frame16ChangeAccountName" android:exported="false" />
-        <activity android:name="com.example.cookingapp.Frame17ChangeGmailAddress" android:exported="false" />
-        <activity android:name="com.example.cookingapp.Frame18EnterGmailOTP" android:exported="false" />
-        <activity android:name="com.example.cookingapp.Frame19ChangePhoneNumber" android:exported="false" />
-        <activity android:name="com.example.cookingapp.Frame20SelectAMethod" android:exported="false" />
-        <activity android:name="com.example.cookingapp.Frame21OTPZalo" android:exported="false" />
-        <activity android:name="com.example.cookingapp.Frame22OTPSDT" android:exported="false" />
-        <activity android:name="com.example.cookingapp.Frame23EnterCurrentPassword" android:exported="false" />
-        <activity android:name="com.example.cookingapp.Frame24OtherProfileActivity" android:exported="false" />
-        <activity android:name="com.example.cookingapp.Frame25MyProfileActivity" android:exported="false" />
-        <activity android:name="com.example.cookingapp.Frame26BioActivity" android:exported="false" />
-        <activity android:name="com.example.cookingapp.Frame27FriendsActivity" android:exported="false" />
-        <activity android:name="com.example.cookingapp.Frame28FollowingActivity" android:exported="false" />
-        <activity android:name="com.example.cookingapp.Frame29MessagesActivity" android:exported="false" />
-        <activity android:name="com.example.cookingapp.Frame30ChatDetailActivity" android:exported="false" />
-        <activity android:name="com.example.cookingapp.Frame31CreateRecipeActivity" android:exported="false" />
-        <activity android:name="com.example.cookingapp.Frame32PrivacyActivity" android:exported="false" />
-        <activity android:name="com.example.cookingapp.Frame33NotificationsActivity" android:exported="false" />
+        <activity android:name=".MainActivity" android:exported="false" />
+        <activity android:name=".PlaceholderActivity" android:exported="false" />
+        <activity android:name=".Frame7SettingActivity" android:exported="false" />
+        <activity android:name=".Frame8Language" android:exported="false" />
+        <activity android:name=".Frame9Contactus" android:exported="false" />
+        <activity android:name=".Frame10Myactivity" android:exported="false" />
+        <activity android:name=".Frame11Dadanhgia" android:exported="false" />
+        <activity android:name=".Frame12FavoritesList" android:exported="false" />
+        <activity android:name=".Frame13CookingSchedule" android:exported="false" />
+        <activity android:name=".Frame14SavedList" android:exported="false" />
+        <activity android:name=".Frame15ProfileDetails" android:exported="false" />
+        <activity android:name=".Frame16ChangeAccountName" android:exported="false" />
+        <activity android:name=".Frame17ChangeGmailAddress" android:exported="false" />
+        <activity android:name=".Frame18EnterGmailOTP" android:exported="false" />
+        <activity android:name=".Frame19ChangePhoneNumber" android:exported="false" />
+        <activity android:name=".Frame20SelectAMethod" android:exported="false" />
+        <activity android:name=".Frame21OTPZalo" android:exported="false" />
+        <activity android:name=".Frame22OTPSDT" android:exported="false" />
+        <activity android:name=".Frame23EnterCurrentPassword" android:exported="false" />
+        <activity android:name=".Frame24OtherProfileActivity" android:exported="false" />
+        <activity android:name=".Frame25MyProfileActivity" android:exported="false" />
+        <activity android:name=".Frame26BioActivity" android:exported="false" />
+        <activity android:name=".Frame27FriendsActivity" android:exported="false" />
+        <activity android:name=".Frame28FollowingActivity" android:exported="false" />
+        <activity android:name=".Frame29MessagesActivity" android:exported="false" />
+        <activity android:name=".Frame30ChatDetailActivity" android:exported="false" />
+        <activity android:name=".Frame31CreateRecipeActivity" android:exported="false" />
+        <activity android:name=".Frame32PrivacyActivity" android:exported="false" />
+        <activity android:name=".Frame33NotificationsActivity" android:exported="false" />
     </application>
 
 </manifest>

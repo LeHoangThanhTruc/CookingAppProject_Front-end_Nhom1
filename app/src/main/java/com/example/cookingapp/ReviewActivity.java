@@ -90,8 +90,6 @@ public class ReviewActivity extends AppCompatActivity {
     }
 
     private void navigateBackToDetail() {
-        Intent intent = new Intent(ReviewActivity.this, RecipeDetailActivity.class);
-        startActivity(intent);
         finish();
     }
 }

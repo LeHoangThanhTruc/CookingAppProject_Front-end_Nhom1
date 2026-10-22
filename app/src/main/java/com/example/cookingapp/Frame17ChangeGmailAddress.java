@@ -60,5 +60,6 @@ public class Frame17ChangeGmailAddress extends Activity {
                 }
             });
         }
+        findViewById(R.id.layoutNewsletter).setOnClickListener(v -> cbNewsletter.setChecked(!cbNewsletter.isChecked()));
     }
 }

@@ -52,21 +52,19 @@ public class Frame23EnterCurrentPassword extends Activity {
 
         // 2. Nút Cài đặt trên Header
         if (btnGearHeader != null) {
-            btnGearHeader.setOnClickListener(v ->
-                    Toast.makeText(this, "Mở phần Cài đặt", Toast.LENGTH_SHORT).show()
-            );
+            btnGearHeader.setOnClickListener(v -> startActivity(new Intent(this, Frame7SettingActivity.class)));
         }
 
-        // 3. Link Quên mật khẩu -> Truyền FLOW_SOURCE = "ENTER_CURRENT_PASSWORD"
+        // 3. Link Quên mật khẩu
         if (tvForgotPassword != null) {
-            tvForgotPassword.setOnClickListener(v -> {
-                Intent intent = new Intent(Frame23EnterCurrentPassword.this, ForgotPasswordActivity.class);
-                intent.putExtra("FLOW_SOURCE", "ENTER_CURRENT_PASSWORD");
-                startActivity(intent);
-            });
+            tvForgotPassword.setOnClickListener(v -> startActivity(new Intent(this, ForgotPasswordActivity.class)));
         }
 
+<<<<<<< HEAD
         // 4. Nút Tiếp theo (btnNext) -> Chuyển sang ResetPasswordActivity
+=======
+        // 4. Nút Tiếp theo
+>>>>>>> 400e4cd020184747325bacac4bd82a274422985c
         if (btnNext != null) {
             btnNext.setOnClickListener(v -> {
                 String password = etCurrentPassword != null ? etCurrentPassword.getText().toString().trim() : "";
@@ -76,11 +74,16 @@ public class Frame23EnterCurrentPassword extends Activity {
                 } else if (password.length() < 6) {
                     Toast.makeText(this, "Mật khẩu phải chứa ít nhất 6 ký tự!", Toast.LENGTH_SHORT).show();
                 } else {
+<<<<<<< HEAD
                     Toast.makeText(this, "Xác nhận mật khẩu hiện tại thành công!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Frame23EnterCurrentPassword.this, ResetPasswordActivity.class);
                     //gửi cờ nguồn sang ResetPasswordActivity
                     intent.putExtra("SOURCE_SCREEN", "ENTER_CURRENT_PASSWORD");
                     startActivity(intent);
+=======
+                    Toast.makeText(this, "Xác nhận mật khẩu hiện tại thành công!", Toast.LENGTH_LONG).show();
+                    finish();
+>>>>>>> 400e4cd020184747325bacac4bd82a274422985c
                 }
             });
         }
