@@ -34,12 +34,6 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     }
 
     private void handleSubmit() {
-<<<<<<< HEAD
-        Intent intent = new Intent(ForgotPasswordActivity.this, ResetPasswordActivity.class);
-        // Thêm dòng này để đánh dấu nguồn chuyển tới là FORGOT_PASSWORD
-        intent.putExtra("SOURCE_SCREEN", "FORGOT_PASSWORD");
-        startActivity(intent);
-=======
         String input = edtEmailOrPhone.getText().toString().trim();
 
         if (input.isEmpty()) {
@@ -51,8 +45,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
         // Chuyển sang form Đặt lại mật khẩu mới
         Intent intent = new Intent(ForgotPasswordActivity.this, ResetPasswordActivity.class);
+        intent.putExtra("SOURCE_SCREEN", "FORGOT_PASSWORD");
         startActivity(intent);
-        finish(); // Đóng ForgotPasswordActivity
->>>>>>> 400e4cd020184747325bacac4bd82a274422985c
     }
 }
