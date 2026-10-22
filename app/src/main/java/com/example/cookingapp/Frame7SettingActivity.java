@@ -39,8 +39,6 @@ public class Frame7SettingActivity extends Activity {
         switchDarkMode = findViewById(R.id.switchDarkMode);
         btnLanguage = findViewById(R.id.btnLanguage);
         btnProfile = findViewById(R.id.btnProfile);
-        btnChangePassword = findViewById(R.id.btnChangePassword);
-        btnPrivacy = findViewById(R.id.btnPrivacy);
         btnActivity = findViewById(R.id.btnActivity);
         btnSupport = findViewById(R.id.btnSupport);
         btnLogOut = findViewById(R.id.btnLogOut);
@@ -90,17 +88,7 @@ public class Frame7SettingActivity extends Activity {
             );
         }
 
-        if (btnChangePassword != null) {
-            btnChangePassword.setOnClickListener(v ->
-                    startActivity(new Intent(this, Frame23EnterCurrentPassword.class))
-            );
-        }
 
-        if (btnPrivacy != null) {
-            btnPrivacy.setOnClickListener(v ->
-                    startActivity(new Intent(this, Frame32PrivacyActivity.class))
-            );
-        }
 
         if (btnActivity != null) {
             btnActivity.setOnClickListener(v ->

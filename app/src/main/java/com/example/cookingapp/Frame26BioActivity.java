@@ -1,19 +1,49 @@
 package com.example.cookingapp;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
-public class Frame26BioActivity extends Activity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class Frame26BioActivity extends AppCompatActivity {
+
+    private ImageView btnBack;
+    private RelativeLayout btnSubmit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_frame_26_bio);
-        FrameNavigation.bindBack(this, R.id.button_back_profile);
-        FrameNavigation.bindToast(this, R.id.menu_bio, "Bạn đang xem phần giới thiệu");
-        FrameNavigation.bindOpen(this, R.id.menu_friends, Frame27FriendsActivity.class);
-        FrameNavigation.bindOpen(this, R.id.menu_following, Frame28FollowingActivity.class);
-        FrameNavigation.bindOpen(this, R.id.menu_messages, Frame29MessagesActivity.class);
-        FrameNavigation.bindOpen(this, R.id.menu_notifications, Frame33NotificationsActivity.class);
-        FrameNavigation.bindOpen(this, R.id.menu_create_recipe, Frame31CreateRecipeActivity.class);
+        setContentView(R.layout.activity_frame_26_bio); // Đổi tên file XML tương ứng của bạn
+
+        // Ánh xạ View
+        btnBack = findViewById(R.id.btnBack);
+        btnSubmit = findViewById(R.id.btnSubmit);
+
+        // 1. Nút Back -> Quay về Trang của tôi (Frame25MyProfileActivity)
+        if (btnBack != null) {
+            btnBack.setOnClickListener(v -> navigateToMyProfile());
+        }
+
+        // 2. Nút Cập nhật (btnSubmit) -> Thông báo thành công & Quay về Frame25MyProfileActivity
+        if (btnSubmit != null) {
+            btnSubmit.setOnClickListener(v -> {
+                Toast.makeText(this, "Cập nhật thông tin thành công!", Toast.LENGTH_SHORT).show();
+                navigateToMyProfile();
+            });
+        }
+    }
+
+    /**
+     * Hàm dùng chung để điều hướng về Frame25MyProfileActivity
+     */
+    private void navigateToMyProfile() {
+        Intent intent = new Intent(Frame26BioActivity.this, Frame25MyProfileActivity.class);
+        // Xóa các Activity nằm phía trên MyProfile trong BackStack nếu có để tránh tạo trùng lặp màn hình
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(intent);
+        finish(); // Đóng màn hình hiện tại
     }
 }

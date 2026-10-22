@@ -59,7 +59,7 @@
             </LinearLayout>
 
             <!-- Nút Cài đặt bổ sung (Gear Icon) -->
-            <ImageButton
+            <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/btnGear"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -100,7 +100,7 @@
                 android:gravity="center_vertical"
                 android:paddingVertical="10dp">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/ivNotificationIcon"
                     android:layout_width="44dp"
                     android:layout_height="44dp"
@@ -153,14 +153,14 @@
                 android:gravity="center_vertical"
                 android:paddingVertical="10dp">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/ivDarkModeIcon"
                     android:layout_width="44dp"
                     android:layout_height="44dp"
                     android:background="@drawable/bg_circle_cream"
+                    android:contentDescription="Chế độ tối"
                     android:padding="10dp"
                     android:src="@drawable/ic_moon"
-                    android:contentDescription="Chế độ tối"
                     app:tint="#F59E0B" />
 
                 <LinearLayout
@@ -209,14 +209,14 @@
                 android:focusable="true"
                 android:background="?android:attr/selectableItemBackground">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/ivLanguageIcon"
                     android:layout_width="44dp"
                     android:layout_height="44dp"
                     android:background="@drawable/bg_circle_blue_light"
+                    android:contentDescription="Ngôn ngữ"
                     android:padding="10dp"
                     android:src="@drawable/ic_globe"
-                    android:contentDescription="Ngôn ngữ"
                     app:tint="#2563EB" />
 
                 <LinearLayout
@@ -288,7 +288,7 @@
                 android:focusable="true"
                 android:background="?android:attr/selectableItemBackground">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/ivProfileIcon"
                     android:layout_width="44dp"
                     android:layout_height="44dp"
@@ -334,118 +334,8 @@
             </LinearLayout>
 
             <!-- Mục 2: Đổi mật khẩu -->
-            <LinearLayout
-                android:id="@+id/btnChangePassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:paddingVertical="10dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="?android:attr/selectableItemBackground">
-
-                <ImageView
-                    android:id="@+id/ivChangePasswordIcon"
-                    android:layout_width="44dp"
-                    android:layout_height="44dp"
-                    android:background="@drawable/bg_circle_cream"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_key"
-                    android:contentDescription="Đổi mật khẩu"
-                    app:tint="#16A34A" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:layout_marginStart="14dp">
-
-                    <TextView
-                        android:id="@+id/tvChangePasswordTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Đổi mật khẩu"
-                        android:textColor="@color/panda_green_dark"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tvChangePasswordSubtitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Bảo vệ tài khoản của bạn"
-                        android:textColor="@color/panda_gray"
-                        android:textSize="12sp"
-                        android:layout_marginTop="2dp" />
-                </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/ivChangePasswordChevron"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_chevron_right"
-                    android:contentDescription="Mở rộng"
-                    app:tint="@color/panda_gray" />
-            </LinearLayout>
 
             <!-- Mục 3: Quyền riêng tư -->
-            <LinearLayout
-                android:id="@+id/btnPrivacy"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:paddingVertical="10dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="?android:attr/selectableItemBackground">
-
-                <ImageView
-                    android:id="@+id/ivPrivacyIcon"
-                    android:layout_width="44dp"
-                    android:layout_height="44dp"
-                    android:background="@drawable/bg_circle_cream"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_shield"
-                    android:contentDescription="Quyền riêng tư"
-                    app:tint="#16A34A" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:layout_marginStart="14dp">
-
-                    <TextView
-                        android:id="@+id/tvPrivacyTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Quyền riêng tư"
-                        android:textColor="@color/panda_green_dark"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tvPrivacySubtitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Quản lý dữ liệu cá nhân"
-                        android:textColor="@color/panda_gray"
-                        android:textSize="12sp"
-                        android:layout_marginTop="2dp" />
-                </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/ivPrivacyChevron"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_chevron_right"
-                    android:contentDescription="Mở rộng"
-                    app:tint="@color/panda_gray" />
-            </LinearLayout>
 
             <!-- Mục 4: Hoạt động của tôi -->
             <LinearLayout
@@ -459,7 +349,7 @@
                 android:focusable="true"
                 android:background="?android:attr/selectableItemBackground">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/ivActivityIcon"
                     android:layout_width="44dp"
                     android:layout_height="44dp"
@@ -516,7 +406,7 @@
                 android:focusable="true"
                 android:background="?android:attr/selectableItemBackground">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/ivSupportIcon"
                     android:layout_width="44dp"
                     android:layout_height="44dp"
