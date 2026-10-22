@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class Frame7SettingActivity extends Activity {
@@ -18,7 +17,8 @@ public class Frame7SettingActivity extends Activity {
     private Switch switchDarkMode;
     private LinearLayout btnLanguage;
     private LinearLayout btnProfile;
-    private TextView tvProfileTitle;
+    private LinearLayout btnChangePassword;
+    private LinearLayout btnPrivacy;
     private LinearLayout btnActivity;
     private LinearLayout btnSupport;
     private LinearLayout btnLogOut;
@@ -39,20 +39,17 @@ public class Frame7SettingActivity extends Activity {
         switchDarkMode = findViewById(R.id.switchDarkMode);
         btnLanguage = findViewById(R.id.btnLanguage);
         btnProfile = findViewById(R.id.btnProfile);
-        tvProfileTitle = findViewById(R.id.tvProfileTitle);
+        btnChangePassword = findViewById(R.id.btnChangePassword);
+        btnPrivacy = findViewById(R.id.btnPrivacy);
         btnActivity = findViewById(R.id.btnActivity);
         btnSupport = findViewById(R.id.btnSupport);
         btnLogOut = findViewById(R.id.btnLogOut);
     }
 
     private void setupEvents() {
-        // Nút Back -> Quay về ManHinhChinhActivity
+        // Sửa nút Quay về -> Chuyển sang ManHinhChinhActivity
         if (btnBack != null) {
-            btnBack.setOnClickListener(v -> {
-                Intent intent = new Intent(Frame7SettingActivity.this, ManHinhChinhActivity.class);
-                startActivity(intent);
-                finish(); // Đóng màn hình Setting lại
-            });
+            btnBack.setOnClickListener(v -> finish());
         }
 
         if (btnGear != null) {
@@ -81,46 +78,42 @@ public class Frame7SettingActivity extends Activity {
             });
         }
 
-        // 1. Chuyển sang activity_language.xml (Frame8Language)
         if (btnLanguage != null) {
-            btnLanguage.setOnClickListener(v -> {
-                Intent intent = new Intent(Frame7SettingActivity.this, Frame8Language.class);
-                startActivity(intent);
-            });
-        }
-
-        // 2. Chuyển sang activity_profile_details.xml (Frame15ProfileDetails)
-        if (tvProfileTitle != null) {
-            tvProfileTitle.setOnClickListener(v -> {
-                Intent intent = new Intent(Frame7SettingActivity.this, Frame15ProfileDetails.class);
-                startActivity(intent);
-            });
+            btnLanguage.setOnClickListener(v ->
+                    startActivity(new Intent(this, Frame8Language.class))
+            );
         }
 
         if (btnProfile != null) {
-            btnProfile.setOnClickListener(v -> {
-                Intent intent = new Intent(Frame7SettingActivity.this, Frame15ProfileDetails.class);
-                startActivity(intent);
-            });
+            btnProfile.setOnClickListener(v ->
+                    startActivity(new Intent(this, Frame25MyProfileActivity.class))
+            );
         }
 
-        // 3. Chuyển sang activity_myactivity.xml (Frame10Myactivity)
+        if (btnChangePassword != null) {
+            btnChangePassword.setOnClickListener(v ->
+                    startActivity(new Intent(this, Frame23EnterCurrentPassword.class))
+            );
+        }
+
+        if (btnPrivacy != null) {
+            btnPrivacy.setOnClickListener(v ->
+                    startActivity(new Intent(this, Frame32PrivacyActivity.class))
+            );
+        }
+
         if (btnActivity != null) {
-            btnActivity.setOnClickListener(v -> {
-                Intent intent = new Intent(Frame7SettingActivity.this, Frame10Myactivity.class);
-                startActivity(intent);
-            });
+            btnActivity.setOnClickListener(v ->
+                    startActivity(new Intent(this, Frame10Myactivity.class))
+            );
         }
 
-        // 4. Chuyển sang activity_contactus.xml (Frame9Contactus)
         if (btnSupport != null) {
-            btnSupport.setOnClickListener(v -> {
-                Intent intent = new Intent(Frame7SettingActivity.this, Frame9Contactus.class);
-                startActivity(intent);
-            });
+            btnSupport.setOnClickListener(v ->
+                    startActivity(new Intent(this, Frame9Contactus.class))
+            );
         }
 
-        // 5. Đăng xuất -> Chuyển sang LoginActivity (activity_login.xml)
         if (btnLogOut != null) {
             btnLogOut.setOnClickListener(v -> showLogoutConfirmationDialog());
         }
@@ -132,7 +125,7 @@ public class Frame7SettingActivity extends Activity {
                 .setMessage("Bạn có chắc chắn muốn đăng xuất khỏi ứng dụng?")
                 .setPositiveButton("Đăng xuất", (dialog, which) -> {
                     Toast.makeText(this, "Đã đăng xuất thành công", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(Frame7SettingActivity.this, LoginActivity.class);
+                    Intent intent = new Intent(this, LoginActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                     finish();

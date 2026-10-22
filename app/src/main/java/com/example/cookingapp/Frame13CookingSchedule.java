@@ -64,16 +64,12 @@ public class Frame13CookingSchedule extends Activity {
 
         // Nút Thông báo
         if (btnNotificationHeader != null) {
-            btnNotificationHeader.setOnClickListener(v ->
-                    Toast.makeText(this, "Thông báo lịch nấu ăn", Toast.LENGTH_SHORT).show()
-            );
+            btnNotificationHeader.setOnClickListener(v -> startActivity(new Intent(this, Frame33NotificationsActivity.class)));
         }
 
         // Nút Avatar
         if (btnAvatarHeader != null) {
-            btnAvatarHeader.setOnClickListener(v ->
-                    Toast.makeText(this, "Hồ sơ cá nhân", Toast.LENGTH_SHORT).show()
-            );
+            btnAvatarHeader.setOnClickListener(v -> startActivity(new Intent(this, Frame25MyProfileActivity.class)));
         }
 
         // Filter Chips tuần
@@ -94,10 +90,10 @@ public class Frame13CookingSchedule extends Activity {
 
         // Chọn món đã lưu cho bữa trưa / chiều
         if (btnChooseRecipe2 != null) {
-            btnChooseRecipe2.setOnClickListener(v -> Toast.makeText(this, "Chọn món đã lưu cho bữa trưa", Toast.LENGTH_SHORT).show());
+            btnChooseRecipe2.setOnClickListener(v -> startActivity(new Intent(this, Frame14SavedList.class)));
         }
         if (btnChooseRecipe3 != null) {
-            btnChooseRecipe3.setOnClickListener(v -> Toast.makeText(this, "Chọn món đã lưu cho bữa chiều", Toast.LENGTH_SHORT).show());
+            btnChooseRecipe3.setOnClickListener(v -> startActivity(new Intent(this, Frame14SavedList.class)));
         }
     }
 }

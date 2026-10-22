@@ -1,36 +1,43 @@
 package com.example.cookingapp;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.Toast;
 
 final class FrameNavigation {
     private FrameNavigation() {
     }
 
-    static void bindText(View root, String text, View.OnClickListener listener) {
-        TextView target = findText(root, text);
-        if (target == null) {
-            return;
+    static void bind(Activity activity, int viewId, View.OnClickListener listener) {
+        View target = activity.findViewById(viewId);
+        if (target != null) {
+            bind(target, listener);
         }
-        View clickable = target.getParent() instanceof View ? (View) target.getParent() : target;
-        clickable.setClickable(true);
-        clickable.setOnClickListener(listener);
     }
 
-    private static TextView findText(View view, String text) {
-        if (view instanceof TextView && text.equals(((TextView) view).getText().toString())) {
-            return (TextView) view;
-        }
-        if (view instanceof ViewGroup) {
-            ViewGroup group = (ViewGroup) view;
-            for (int i = 0; i < group.getChildCount(); i++) {
-                TextView found = findText(group.getChildAt(i), text);
-                if (found != null) {
-                    return found;
-                }
-            }
-        }
-        return null;
+    static void bindOpen(Activity activity, int viewId, Class<? extends Activity> destination) {
+        bind(activity, viewId, view -> activity.startActivity(new Intent(activity, destination)));
     }
+
+    static void bindBack(Activity activity, int viewId) {
+        bind(activity, viewId, view -> activity.finish());
+    }
+
+    static void bindToast(Activity activity, int viewId, String message) {
+        bind(activity, viewId, view -> Toast.makeText(activity, message, Toast.LENGTH_SHORT).show());
+    }
+
+    private static void bind(View target, View.OnClickListener listener) {
+        target.setClickable(true);
+        target.setOnClickListener(view -> {
+            if (!view.isEnabled()) {
+                return;
+            }
+            view.setEnabled(false);
+            view.postDelayed(() -> view.setEnabled(true), 450L);
+            listener.onClick(view);
+        });
+    }
+
 }

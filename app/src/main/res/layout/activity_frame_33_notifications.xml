@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/panda_bg">
@@ -110,6 +111,7 @@
                     android:textStyle="bold" />
 
                 <LinearLayout
+                    android:id="@+id/notification_friend_huy"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:layout_marginTop="14dp"
@@ -164,15 +166,17 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/delete_notification_huy"
                         android:layout_width="22dp"
                         android:layout_height="22dp"
                         android:layout_marginStart="10dp"
                         android:contentDescription="Xóa"
                         android:src="@drawable/trash"
-                        android:tint="@color/panda_red" />
+                        app:tint="@color/panda_red" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/notification_friend_an"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:gravity="center_vertical"
@@ -226,12 +230,13 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/delete_notification_an"
                         android:layout_width="22dp"
                         android:layout_height="22dp"
                         android:layout_marginStart="10dp"
                         android:contentDescription="Xóa"
                         android:src="@drawable/trash"
-                        android:tint="@color/panda_red" />
+                        app:tint="@color/panda_red" />
                 </LinearLayout>
 
                 <TextView
@@ -244,6 +249,7 @@
                     android:textStyle="bold" />
 
                 <LinearLayout
+                    android:id="@+id/notification_share_linh"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:layout_marginTop="12dp"
@@ -297,15 +303,17 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/delete_notification_linh"
                         android:layout_width="22dp"
                         android:layout_height="22dp"
                         android:layout_marginStart="10dp"
                         android:contentDescription="Xóa"
                         android:src="@drawable/trash"
-                        android:tint="@color/panda_red" />
+                        app:tint="@color/panda_red" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/notification_like_minh"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:gravity="center_vertical"
@@ -358,12 +366,13 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/delete_notification_minh"
                         android:layout_width="22dp"
                         android:layout_height="22dp"
                         android:layout_marginStart="10dp"
                         android:contentDescription="Xóa"
                         android:src="@drawable/trash"
-                        android:tint="@color/panda_red" />
+                        app:tint="@color/panda_red" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

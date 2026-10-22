@@ -49,6 +49,7 @@
             android:paddingBottom="24dp">
 
             <LinearLayout
+                android:id="@+id/button_back_chat"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:gravity="center_vertical"
@@ -416,6 +417,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/button_attach_message"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:background="@drawable/bg_figma_icon_circle"
@@ -423,7 +425,8 @@
                         android:text="🔗"
                         android:textSize="18sp" />
 
-                    <TextView
+                    <EditText
+                        android:id="@+id/input_message"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="8dp"
@@ -433,11 +436,15 @@
                         android:gravity="center_vertical"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
-                        android:text="Nhập tin nhắn..."
-                        android:textColor="@color/panda_gray"
+                        android:hint="Nhập tin nhắn..."
+                        android:inputType="textCapSentences|textMultiLine"
+                        android:maxLines="2"
+                        android:textColor="@color/panda_green_dark"
+                        android:textColorHint="@color/panda_gray"
                         android:textSize="15sp" />
 
                     <TextView
+                        android:id="@+id/button_send_message"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:background="@drawable/bg_figma_send_circle"

@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.NestedScrollView;
@@ -19,6 +20,8 @@ public class SearchActivity extends AppCompatActivity {
     private NestedScrollView cardAdvancedFilter;
     private TextView btnTypeAll, btnTypeDishes, btnTypeUsers;
     private TextView btnViewRecipe; // Nút chuyển sang màn hình Chi tiết công thức
+    private TextView btnResetFilter, btnApplyFilter;
+    private EditText edtSearchQuery;
     private boolean isFilterExpanded = true; // Mặc định đang mở
 
     @Override
@@ -41,23 +44,29 @@ public class SearchActivity extends AppCompatActivity {
         btnTypeUsers = findViewById(R.id.btnTypeUsers);
         // Ánh xạ nút Xem công thức món ăn
         btnViewRecipe = findViewById(R.id.btnViewRecipe);
+        btnResetFilter = findViewById(R.id.btnResetFilter);
+        btnApplyFilter = findViewById(R.id.btnApplyFilter);
+        edtSearchQuery = findViewById(R.id.edtSearchQuery);
     }
 
     private void setupEvents() {
         // 1. Nút mũi tên quay về: Mở lại MainActivity và đóng SearchActivity
-        btnHome.setOnClickListener(v -> {
-            Intent intent = new Intent(SearchActivity.this, ManHinhChinhActivity.class);
-            startActivity(intent);
-            finish();
-        });
+        btnHome.setOnClickListener(v -> finish());
 
         // 2. Bật / Tắt hiển thị bộ lọc nâng cao bằng Chevron
         layoutAdvancedHeader.setOnClickListener(v -> toggleAdvancedFilter());
+        findViewById(R.id.btnToggleFilter).setOnClickListener(v -> toggleAdvancedFilter());
 
         // 3. Xử lý chọn loại tìm kiếm (Tất cả / Món ăn / Người dùng)
         btnTypeAll.setOnClickListener(v -> selectTypeFilter("ALL"));
         btnTypeDishes.setOnClickListener(v -> selectTypeFilter("DISHES"));
         btnTypeUsers.setOnClickListener(v -> selectTypeFilter("USERS"));
+        btnResetFilter.setOnClickListener(v -> {
+            edtSearchQuery.setText("");
+            selectTypeFilter("ALL");
+            Toast.makeText(this, "Đã đặt lại bộ lọc", Toast.LENGTH_SHORT).show();
+        });
+        btnApplyFilter.setOnClickListener(v -> Toast.makeText(this, "Đã áp dụng bộ lọc", Toast.LENGTH_SHORT).show());
 
         // 4. Lắng nghe sự kiện click -> Chuyển sang màn hình Chi tiết công thức (RecipeDetailActivity)
         if (btnViewRecipe != null) {

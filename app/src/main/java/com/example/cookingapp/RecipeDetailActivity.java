@@ -44,11 +44,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
 
     private void setupEvents() {
         // 1. Bấm mũi tên quay về -> Mở lại SearchActivity và đóng màn hình hiện tại
-        btnBack.setOnClickListener(v -> {
-            Intent intent = new Intent(RecipeDetailActivity.this, SearchActivity.class);
-            startActivity(intent);
-            finish();
-        });
+        btnBack.setOnClickListener(v -> finish());
 
         // 2. Nút Chia sẻ công thức
         btnShare.setOnClickListener(v ->
@@ -56,9 +52,12 @@ public class RecipeDetailActivity extends AppCompatActivity {
         );
 
         // 3. Nút Lưu công thức
-        btnSaveRecipe.setOnClickListener(v ->
-                Toast.makeText(this, "Đã lưu công thức!", Toast.LENGTH_SHORT).show()
-        );
+        btnSaveRecipe.setOnClickListener(v -> {
+            boolean selected = !btnSaveRecipe.isSelected();
+            btnSaveRecipe.setSelected(selected);
+            btnSaveRecipe.setAlpha(selected ? 0.55f : 1f);
+            Toast.makeText(this, selected ? "Đã lưu công thức!" : "Đã bỏ lưu công thức!", Toast.LENGTH_SHORT).show();
+        });
 
         // 4. Bật / Tắt hiển thị Hướng dẫn chi tiết bằng Chevron (Thay đổi chevron_down <-> chevron_up)
         layoutInstructionHeader.setOnClickListener(v -> toggleInstructionContent());
