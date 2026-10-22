@@ -37,31 +37,9 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     }
 
     private void handleSubmit() {
-        if (edtEmailOrPhone == null) return;
-        String input = edtEmailOrPhone.getText().toString().trim();
-
-        if (input.isEmpty()) {
-            Toast.makeText(this, "Vui lòng nhập Email hoặc Số điện thoại!", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        String flowSource = getIntent() != null ? getIntent().getStringExtra("FLOW_SOURCE") : "LOGIN";
-
-        // Kiểm tra xem dữ liệu nhập vào là Email hay Số điện thoại
-        if (input.contains("@")) {
-            Toast.makeText(this, "Gửi mã xác thực qua Email!", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(ForgotPasswordActivity.this, Frame18EnterGmailOTP.class);
-            intent.putExtra("EMAIL_TARGET", input);
-            intent.putExtra("FLOW_TYPE", "FORGOT_PASSWORD");
-            intent.putExtra("FLOW_SOURCE", flowSource);
-            startActivity(intent);
-        } else {
-            Toast.makeText(this, "Gửi mã xác thực qua SĐT!", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(ForgotPasswordActivity.this, Frame22OTPSDT.class);
-            intent.putExtra("PHONE_TARGET", input);
-            intent.putExtra("FLOW_TYPE", "FORGOT_PASSWORD");
-            intent.putExtra("FLOW_SOURCE", flowSource);
-            startActivity(intent);
-        }
+        Intent intent = new Intent(ForgotPasswordActivity.this, ResetPasswordActivity.class);
+        // Thêm dòng này để đánh dấu nguồn chuyển tới là FORGOT_PASSWORD
+        intent.putExtra("SOURCE_SCREEN", "FORGOT_PASSWORD");
+        startActivity(intent);
     }
 }

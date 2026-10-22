@@ -66,7 +66,7 @@ public class Frame23EnterCurrentPassword extends Activity {
             });
         }
 
-        // 4. Nút Tiếp theo (btnSubmit) -> Chuyển sang ResetPasswordActivity (activity_reset_password.xml)
+        // 4. Nút Tiếp theo (btnNext) -> Chuyển sang ResetPasswordActivity
         if (btnNext != null) {
             btnNext.setOnClickListener(v -> {
                 String password = etCurrentPassword != null ? etCurrentPassword.getText().toString().trim() : "";
@@ -78,6 +78,8 @@ public class Frame23EnterCurrentPassword extends Activity {
                 } else {
                     Toast.makeText(this, "Xác nhận mật khẩu hiện tại thành công!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Frame23EnterCurrentPassword.this, ResetPasswordActivity.class);
+                    //gửi cờ nguồn sang ResetPasswordActivity
+                    intent.putExtra("SOURCE_SCREEN", "ENTER_CURRENT_PASSWORD");
                     startActivity(intent);
                 }
             });

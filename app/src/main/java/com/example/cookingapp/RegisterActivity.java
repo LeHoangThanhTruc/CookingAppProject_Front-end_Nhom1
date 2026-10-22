@@ -43,25 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void handleRegister() {
-        String fullname = edtFullname.getText().toString().trim();
-        String email = edtEmail.getText().toString().trim();
-        String password = edtPassword.getText().toString().trim();
-        String confirmPassword = edtConfirmPassword.getText().toString().trim();
 
-        if (fullname.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-            Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        if (!password.equals(confirmPassword)) {
-            Toast.makeText(this, "Mật khẩu xác nhận không khớp!", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        if (!chkTerms.isChecked()) {
-            Toast.makeText(this, "Bạn cần đồng ý với điều khoản để tiếp tục!", Toast.LENGTH_SHORT).show();
-            return;
-        }
 
         // Xử lý đăng ký thành công
         Toast.makeText(this, "Đăng ký tài khoản thành công!", Toast.LENGTH_SHORT).show();
