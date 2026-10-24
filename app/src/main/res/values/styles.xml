@@ -7,4 +7,26 @@
         <item name="android:navigationBarColor">@color/panda_bg</item>
         <item name="android:colorAccent">@color/panda_green</item>
     </style>
+
+    <style name="OtherBioLabel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:textColor">#2D3748</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="OtherBioValue">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_marginTop">6dp</item>
+        <item name="android:background">@drawable/bg_input_field</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:textColor">#1A202C</item>
+        <item name="android:textIsSelectable">true</item>
+        <item name="android:textSize">14sp</item>
+    </style>
 </resources>

@@ -28,7 +28,8 @@ final class FrameRoutes {
             new FrameDefinition(30, "Giao Diện Nhắn Tin", "Frame30ChatDetailActivity"),
             new FrameDefinition(31, "Tạo công thức", "Frame31CreateRecipeActivity"),
             new FrameDefinition(32, "Quyền Xem", "Frame32PrivacyActivity"),
-            new FrameDefinition(33, "Thông Báo", "Frame33NotificationsActivity")
+            new FrameDefinition(33, "Thông Báo", "Frame33NotificationsActivity"),
+            new FrameDefinition(34, "Giới thiệu người dùng", "Frame34OtherBioActivity")
     };
 
     private FrameRoutes() {

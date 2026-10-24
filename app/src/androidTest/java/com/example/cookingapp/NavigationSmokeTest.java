@@ -3,11 +3,14 @@ package com.example.cookingapp;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.Espresso.pressBack;
 import static androidx.test.espresso.Espresso.closeSoftKeyboard;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.isEnabled;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import android.view.View;
 import android.app.Activity;
@@ -81,6 +84,7 @@ public class NavigationSmokeTest {
         launchAndClose(Frame31CreateRecipeActivity.class);
         launchAndClose(Frame32PrivacyActivity.class);
         launchAndClose(Frame33NotificationsActivity.class);
+        launchAndClose(Frame34OtherBioActivity.class);
     }
 
     private <T extends Activity> void launchAndClose(Class<T> activityClass) {
@@ -131,7 +135,21 @@ public class NavigationSmokeTest {
             onView(withId(R.id.friend_an)).perform(click());
         }
         try (ActivityScenario<Frame24OtherProfileActivity> ignored = ActivityScenario.launch(Frame24OtherProfileActivity.class)) {
+            onView(withId(R.id.menu_bio)).perform(scrollTo(), click());
+            onView(withId(R.id.tvFullname)).check(matches(withText("Thảo Vy")));
+            onView(withId(R.id.tvPhone)).check(matches(withText("0901 234 567")));
+            onView(withId(R.id.tvEmail)).check(matches(withText("thaovy@example.com")));
+            onView(withId(R.id.btnBack)).perform(click());
             onView(withId(R.id.menu_messages)).perform(scrollTo(), click());
+        }
+    }
+
+    @Test
+    public void bioBackReturnsToMyProfile() {
+        try (ActivityScenario<Frame25MyProfileActivity> ignored = ActivityScenario.launch(Frame25MyProfileActivity.class)) {
+            onView(withId(R.id.menu_bio)).perform(scrollTo(), click());
+            onView(withId(R.id.btnBack)).perform(click());
+            onView(withId(R.id.menu_bio)).check(matches(isDisplayed()));
         }
     }
 

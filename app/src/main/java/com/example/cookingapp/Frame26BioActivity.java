@@ -22,9 +22,9 @@ public class Frame26BioActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.btnBack);
         btnSubmit = findViewById(R.id.btnSubmit);
 
-        // 1. Nút Back -> Quay về Trang của tôi (Frame25MyProfileActivity)
+        // 1. Nút Back -> Quay về đúng màn hình đã mở Frame 26
         if (btnBack != null) {
-            btnBack.setOnClickListener(v -> navigateToMyProfile());
+            btnBack.setOnClickListener(v -> finish());
         }
 
         // 2. Nút Cập nhật (btnSubmit) -> Thông báo thành công & Quay về Frame25MyProfileActivity

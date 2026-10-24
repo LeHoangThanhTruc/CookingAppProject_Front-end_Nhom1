@@ -21,7 +21,7 @@ public class ManifestCoverageTest {
             "Frame23EnterCurrentPassword", "Frame24OtherProfileActivity", "Frame25MyProfileActivity",
             "Frame26BioActivity", "Frame27FriendsActivity", "Frame28FollowingActivity",
             "Frame29MessagesActivity", "Frame30ChatDetailActivity", "Frame31CreateRecipeActivity",
-            "Frame32PrivacyActivity", "Frame33NotificationsActivity"
+            "Frame32PrivacyActivity", "Frame33NotificationsActivity", "Frame34OtherBioActivity"
     };
 
     @Test

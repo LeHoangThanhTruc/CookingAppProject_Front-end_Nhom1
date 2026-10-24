@@ -83,6 +83,7 @@
         <activity android:name=".Frame31CreateRecipeActivity" android:exported="false" />
         <activity android:name=".Frame32PrivacyActivity" android:exported="false" />
         <activity android:name=".Frame33NotificationsActivity" android:exported="false" />
+        <activity android:name=".Frame34OtherBioActivity" android:exported="false" />
     </application>
 
 </manifest>
