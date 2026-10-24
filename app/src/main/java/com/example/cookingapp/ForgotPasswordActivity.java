@@ -6,6 +6,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ForgotPasswordActivity extends AppCompatActivity {
@@ -24,30 +25,51 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         edtEmailOrPhone = findViewById(R.id.edtEmailOrPhone);
         btnSubmit = findViewById(R.id.btnSubmit);
 
-        // Nút Mũi tên quay về: Quay lại màn hình Đăng Nhập
+        // Nút Back tại activity_forgot_password.xml -> Nếu từ Profile Details thì quay về activity_profile_details.xml, ngược lại finish()
         if (btnBack != null) {
-            btnBack.setOnClickListener(v -> finish());
+            btnBack.setOnClickListener(v -> {
+                String flowSource = getIntent() != null ? getIntent().getStringExtra("FLOW_SOURCE") : "LOGIN";
+                if ("PROFILE_DETAILS".equals(flowSource)) {
+                    Intent intent = new Intent(ForgotPasswordActivity.this, Frame15ProfileDetails.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    finish();
+                }
+            });
         }
 
-        // Nút Tiếp tục
+        // Nút Tiếp tục (btnSubmit)
         if (btnSubmit != null) {
             btnSubmit.setOnClickListener(v -> handleSubmit());
         }
     }
 
     private void handleSubmit() {
-        String input = edtEmailOrPhone != null ? edtEmailOrPhone.getText().toString().trim() : "";
+        if (edtEmailOrPhone == null) return;
+        String input = edtEmailOrPhone.getText().toString().trim();
 
         if (input.isEmpty()) {
             Toast.makeText(this, "Vui lòng nhập Email hoặc Số điện thoại!", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        Toast.makeText(this, "Yêu cầu hợp lệ, chuyển sang đặt lại mật khẩu!", Toast.LENGTH_SHORT).show();
+        String flowSource = getIntent() != null ? getIntent().getStringExtra("FLOW_SOURCE") : "LOGIN";
 
-        // Chuyển sang form Đặt lại mật khẩu mới kèm theo cờ SOURCE_SCREEN
-        Intent intent = new Intent(ForgotPasswordActivity.this, ResetPasswordActivity.class);
-        intent.putExtra("SOURCE_SCREEN", "FORGOT_PASSWORD");
-        startActivity(intent);
+        // Tùy thuộc vào dữ liệu là số điện thoại hay email mà chuyển tới activity_otpsdt.xml hay activity_enter_gmail_otp.xml / activity_otp_zalo.xml
+        if (input.contains("@")) {
+            Toast.makeText(this, "Gửi mã xác thực qua Email!", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(ForgotPasswordActivity.this, Frame18EnterGmailOTP.class);
+            intent.putExtra("EMAIL_TARGET", input);
+            intent.putExtra("FLOW_SOURCE", flowSource);
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "Gửi mã xác thực qua SĐT!", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(ForgotPasswordActivity.this, Frame22OTPSDT.class);
+            intent.putExtra("PHONE_TARGET", input);
+            intent.putExtra("FLOW_SOURCE", flowSource);
+            startActivity(intent);
+        }
     }
 }

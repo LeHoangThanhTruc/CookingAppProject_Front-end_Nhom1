@@ -17,8 +17,6 @@ public class Frame7SettingActivity extends Activity {
     private Switch switchDarkMode;
     private LinearLayout btnLanguage;
     private LinearLayout btnProfile;
-    private LinearLayout btnChangePassword;
-    private LinearLayout btnPrivacy;
     private LinearLayout btnActivity;
     private LinearLayout btnSupport;
     private LinearLayout btnLogOut;
@@ -45,9 +43,14 @@ public class Frame7SettingActivity extends Activity {
     }
 
     private void setupEvents() {
-        // Sửa nút Quay về -> Chuyển sang ManHinhChinhActivity
+        // Nút Back -> Quay về ManHinhChinhActivity ngay lập tức trong 1 lần bấm
         if (btnBack != null) {
-            btnBack.setOnClickListener(v -> finish());
+            btnBack.setOnClickListener(v -> {
+                Intent intent = new Intent(Frame7SettingActivity.this, ManHinhChinhActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                finish();
+            });
         }
 
         if (btnGear != null) {
@@ -82,13 +85,12 @@ public class Frame7SettingActivity extends Activity {
             );
         }
 
+        // Bấm "Hồ sơ của tôi" -> Chuyển sang activity_profile_details.xml (Frame15ProfileDetails)
         if (btnProfile != null) {
             btnProfile.setOnClickListener(v ->
-                    startActivity(new Intent(this, Frame25MyProfileActivity.class))
+                    startActivity(new Intent(this, Frame15ProfileDetails.class))
             );
         }
-
-
 
         if (btnActivity != null) {
             btnActivity.setOnClickListener(v ->

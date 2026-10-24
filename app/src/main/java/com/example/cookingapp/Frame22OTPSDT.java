@@ -40,27 +40,18 @@ public class Frame22OTPSDT extends Activity {
     }
 
     private void setupEvents() {
-        // 1. Nút Back -> Quay lại giao diện trước đó
+        // 1. Nút Back tại activity_otpsdt.xml -> Quay về giao diện activity_forgot_password.xml
         if (btnBack != null) {
             btnBack.setOnClickListener(v -> finish());
         }
 
-        // 2. Nút Tiếp theo
+        // 2. Nút Tiếp theo (btnNextOtp) -> Nhảy qua giao diện activity_reset_password.xml (ResetPasswordActivity)
         if (btnNextOtp != null) {
             btnNextOtp.setOnClickListener(v -> {
                 String flowSource = getIntent() != null ? getIntent().getStringExtra("FLOW_SOURCE") : "LOGIN";
-                Intent intent;
-                if ("LOGIN".equals(flowSource)) {
-                    Toast.makeText(this, "Xác minh thành công, quay về màn hình Đăng nhập!", Toast.LENGTH_LONG).show();
-                    intent = new Intent(Frame22OTPSDT.this, LoginActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                } else if ("ENTER_CURRENT_PASSWORD".equals(flowSource)) {
-                    Toast.makeText(this, "Xác minh thành công, quay về chi tiết hồ sơ!", Toast.LENGTH_LONG).show();
-                    intent = new Intent(Frame22OTPSDT.this, Frame15ProfileDetails.class);
-                } else {
-                    Toast.makeText(this, "Xác minh mã OTP SĐT thành công!", Toast.LENGTH_LONG).show();
-                    intent = new Intent(Frame22OTPSDT.this, Frame15ProfileDetails.class);
-                }
+                Toast.makeText(this, "Xác thực OTP SĐT thành công, chuyển sang đặt lại mật khẩu!", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(Frame22OTPSDT.this, ResetPasswordActivity.class);
+                intent.putExtra("FLOW_SOURCE", flowSource);
                 startActivity(intent);
                 finish();
             });

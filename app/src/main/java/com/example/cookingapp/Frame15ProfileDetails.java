@@ -51,10 +51,11 @@ public class Frame15ProfileDetails extends Activity {
     }
 
     private void setupEvents() {
-        // Nút Back trên góc trái -> Quay về giao diện activity_setting.xml (Frame7SettingActivity)
+        // Nút Back trên góc trái -> Quay về giao diện activity_setting.xml (Frame7SettingActivity) ngay lập tức trong 1 lần bấm
         if (btnBack != null) {
             btnBack.setOnClickListener(v -> {
                 Intent intent = new Intent(Frame15ProfileDetails.this, Frame7SettingActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
                 finish();
             });
@@ -106,11 +107,13 @@ public class Frame15ProfileDetails extends Activity {
             });
         }
 
-        // Đổi mật khẩu row
+        // Đổi mật khẩu row -> Nhảy sang activity_forgot_password.xml (ForgotPasswordActivity) với FLOW_SOURCE = "PROFILE_DETAILS"
         if (btnChangePasswordRow != null) {
-            btnChangePasswordRow.setOnClickListener(v ->
-                    startActivity(new Intent(this, Frame23EnterCurrentPassword.class))
-            );
+            btnChangePasswordRow.setOnClickListener(v -> {
+                Intent intent = new Intent(this, ForgotPasswordActivity.class);
+                intent.putExtra("FLOW_SOURCE", "PROFILE_DETAILS");
+                startActivity(intent);
+            });
         }
     }
 }

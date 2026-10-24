@@ -40,29 +40,37 @@ public class Frame18EnterGmailOTP extends Activity {
     }
 
     private void setupEvents() {
-        // 1. Nút Back -> Quay lại giao diện trước đó
+        // 1. Nút Back tại activity_enter_gmail_otp.xml -> Về giao diện trước đó (activity_change_gmail_address.xml hoặc activity_forgot_password.xml)
         if (btnBack != null) {
             btnBack.setOnClickListener(v -> finish());
         }
 
-        // 2. Nút Tiếp theo (btnNextOtp)
+        // 2. Nút Tiếp theo (btnNextOtp):
+        // - Nếu từ Đổi Gmail (CHANGE_GMAIL) -> Quay về activity_profile_details.xml (Frame15ProfileDetails)
+        // - Nếu từ Quên mật khẩu -> Nhảy qua activity_reset_password.xml (ResetPasswordActivity)
         if (btnNextOtp != null) {
             btnNextOtp.setOnClickListener(v -> {
-                String flowSource = getIntent() != null ? getIntent().getStringExtra("FLOW_SOURCE") : "LOGIN";
-                Intent intent;
-                if ("LOGIN".equals(flowSource)) {
-                    Toast.makeText(this, "Xác minh thành công, quay về màn hình Đăng nhập!", Toast.LENGTH_LONG).show();
-                    intent = new Intent(Frame18EnterGmailOTP.this, LoginActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                } else if ("ENTER_CURRENT_PASSWORD".equals(flowSource)) {
-                    Toast.makeText(this, "Xác minh thành công, quay về chi tiết hồ sơ!", Toast.LENGTH_LONG).show();
-                    intent = new Intent(Frame18EnterGmailOTP.this, Frame15ProfileDetails.class);
+                String flowType = getIntent() != null ? getIntent().getStringExtra("FLOW_TYPE") : null;
+                String flowSource = getIntent() != null ? getIntent().getStringExtra("FLOW_SOURCE") : null;
+
+                if ("CHANGE_GMAIL".equals(flowType)) {
+                    Toast.makeText(this, "Đổi Gmail thành công!", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(Frame18EnterGmailOTP.this, Frame15ProfileDetails.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(intent);
+                    finish();
+                } else if ("ENTER_CURRENT_PASSWORD".equals(flowSource) || "FORGOT_PASSWORD".equals(flowType) || "PROFILE_DETAILS".equals(flowSource)) {
+                    Toast.makeText(this, "Xác thực OTP Email thành công, chuyển sang đặt lại mật khẩu!", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(Frame18EnterGmailOTP.this, ResetPasswordActivity.class);
+                    intent.putExtra("FLOW_SOURCE", flowSource);
+                    startActivity(intent);
+                    finish();
                 } else {
                     Toast.makeText(this, "Xác minh mã OTP Email thành công!", Toast.LENGTH_LONG).show();
-                    intent = new Intent(Frame18EnterGmailOTP.this, Frame15ProfileDetails.class);
+                    Intent intent = new Intent(Frame18EnterGmailOTP.this, Frame15ProfileDetails.class);
+                    startActivity(intent);
+                    finish();
                 }
-                startActivity(intent);
-                finish();
             });
         }
 
