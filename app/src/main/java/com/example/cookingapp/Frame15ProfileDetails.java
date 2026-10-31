@@ -1,9 +1,9 @@
 package com.example.cookingapp;
 
-import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.text.InputType;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -11,109 +11,153 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Frame15ProfileDetails extends Activity {
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.AppCompatActivity;
 
+public class Frame15ProfileDetails extends AppCompatActivity {
     private ImageButton btnBack;
     private TextView btnChangeAvatar;
-    private EditText etUsername, etGmail, etPhone, etPassword;
-    private ImageView ivEditUsername, ivEditGmail, ivEditPhone, ivEyePassword;
+    private EditText etUsername;
+    private EditText etGmail;
+    private EditText etPhone;
+    private EditText etPassword;
+    private ImageView ivAvatar;
+    private ImageView ivEditUsername;
+    private ImageView ivEditGmail;
+    private ImageView ivEditPhone;
+    private ImageView ivEyePassword;
     private LinearLayout btnChangePasswordRow;
+    private ProfileRepository profileRepository;
 
-    private boolean isPasswordVisible = false;
+    private final ActivityResultLauncher<String> avatarPicker = registerForActivityResult(
+            new ActivityResultContracts.GetContent(),
+            this::uploadSelectedAvatar
+    );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_details);
 
-        // Ánh xạ các View từ XML
-        initViews();
+        if (!SessionManager.requireAuthenticated(this)) {
+            return;
+        }
 
-        // Đăng ký sự kiện Click
+        initViews();
+        profileRepository = ProfileRepository.getInstance(this);
         setupEvents();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (profileRepository != null && SessionManager.hasAccessToken(this)) {
+            loadProfile();
+        }
     }
 
     private void initViews() {
         btnBack = findViewById(R.id.btnBack);
         btnChangeAvatar = findViewById(R.id.btnChangeAvatar);
-
+        ivAvatar = findViewById(R.id.ivAvatar);
         etUsername = findViewById(R.id.etUsername);
         etGmail = findViewById(R.id.etGmail);
         etPhone = findViewById(R.id.etPhone);
         etPassword = findViewById(R.id.etPassword);
-
         ivEditUsername = findViewById(R.id.ivEditUsername);
         ivEditGmail = findViewById(R.id.ivEditGmail);
         ivEditPhone = findViewById(R.id.ivEditPhone);
         ivEyePassword = findViewById(R.id.ivEyePassword);
-
         btnChangePasswordRow = findViewById(R.id.btnChangePasswordRow);
+
+        etUsername.setFocusable(false);
+        etGmail.setFocusable(false);
+        etPhone.setFocusable(false);
+        etPassword.setFocusable(false);
+        etPassword.setText("••••••••");
+        ivEditUsername.setVisibility(View.GONE);
+        ivEditGmail.setVisibility(View.GONE);
+        ivEyePassword.setVisibility(View.GONE);
     }
 
     private void setupEvents() {
-        // Nút Back trên góc trái -> Quay về giao diện activity_setting.xml (Frame7SettingActivity) ngay lập tức trong 1 lần bấm
-        if (btnBack != null) {
-            btnBack.setOnClickListener(v -> {
-                Intent intent = new Intent(Frame15ProfileDetails.this, Frame7SettingActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(intent);
-                finish();
-            });
-        }
+        btnBack.setOnClickListener(v -> {
+            Intent intent = new Intent(this, Frame7SettingActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+            finish();
+        });
 
-        // Đổi ảnh đại diện
-        if (btnChangeAvatar != null) {
-            btnChangeAvatar.setOnClickListener(v ->
-                    Toast.makeText(this, "Chọn ảnh đại diện mới", Toast.LENGTH_SHORT).show()
-            );
-        }
+        btnChangeAvatar.setOnClickListener(v -> avatarPicker.launch("image/*"));
+        ivEditPhone.setOnClickListener(v ->
+                startActivity(new Intent(this, Frame26BioActivity.class))
+        );
 
-        // Chỉnh sửa tên tài khoản
-        if (ivEditUsername != null) {
-            ivEditUsername.setOnClickListener(v -> {
-                if (etUsername != null) etUsername.requestFocus();
-                startActivity(new Intent(this, Frame16ChangeAccountName.class));
-            });
-        }
+        btnChangePasswordRow.setOnClickListener(v -> {
+            Intent intent = new Intent(this, ForgotPasswordActivity.class);
+            intent.putExtra("FLOW_SOURCE", "PROFILE_DETAILS");
+            startActivity(intent);
+        });
+    }
 
-        // Chỉnh sửa Gmail
-        if (ivEditGmail != null) {
-            ivEditGmail.setOnClickListener(v -> {
-                if (etGmail != null) etGmail.requestFocus();
-                startActivity(new Intent(this, Frame17ChangeGmailAddress.class));
-            });
-        }
-
-        // Chỉnh sửa Số điện thoại
-        if (ivEditPhone != null) {
-            ivEditPhone.setOnClickListener(v -> {
-                if (etPhone != null) etPhone.requestFocus();
-                startActivity(new Intent(this, Frame19ChangePhoneNumber.class));
-            });
-        }
-
-        // Hiện/Ẩn mật khẩu
-        if (ivEyePassword != null && etPassword != null) {
-            ivEyePassword.setOnClickListener(v -> {
-                isPasswordVisible = !isPasswordVisible;
-                if (isPasswordVisible) {
-                    etPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-                    Toast.makeText(this, "Hiển thị mật khẩu", Toast.LENGTH_SHORT).show();
-                } else {
-                    etPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                    Toast.makeText(this, "Đã ẩn mật khẩu", Toast.LENGTH_SHORT).show();
+    private void loadProfile() {
+        profileRepository.getProfile(new ProfileRepository.ApiCallback<Profile>() {
+            @Override
+            public void onSuccess(Profile profile) {
+                if (isFinishing() || isDestroyed()) {
+                    return;
                 }
-                etPassword.setSelection(etPassword.getText().length());
-            });
+                etUsername.setText(profile.getUsername());
+                etGmail.setText(profile.getEmail());
+                etPhone.setText(ProfileActivitySupport.valueOrFallback(
+                        profile.getPhoneNumber(),
+                        "Chưa cập nhật"
+                ));
+                ProfileImageLoader.load(ivAvatar, profile.getAvatarUrl());
+            }
+
+            @Override
+            public void onError(ProfileRepository.ApiError error) {
+                ProfileActivitySupport.handleError(Frame15ProfileDetails.this, error);
+            }
+        });
+    }
+
+    private void uploadSelectedAvatar(Uri uri) {
+        if (uri == null || profileRepository == null) {
+            return;
         }
 
-        // Đổi mật khẩu row -> Nhảy sang activity_forgot_password.xml (ForgotPasswordActivity) với FLOW_SOURCE = "PROFILE_DETAILS"
-        if (btnChangePasswordRow != null) {
-            btnChangePasswordRow.setOnClickListener(v -> {
-                Intent intent = new Intent(this, ForgotPasswordActivity.class);
-                intent.putExtra("FLOW_SOURCE", "PROFILE_DETAILS");
-                startActivity(intent);
-            });
+        setAvatarUploading(true);
+        profileRepository.uploadAvatar(uri, new ProfileRepository.ApiCallback<Profile>() {
+            @Override
+            public void onSuccess(Profile profile) {
+                if (isFinishing() || isDestroyed()) {
+                    return;
+                }
+                setAvatarUploading(false);
+                ProfileImageLoader.load(ivAvatar, profile.getAvatarUrl());
+                Toast.makeText(
+                        Frame15ProfileDetails.this,
+                        "Đã cập nhật ảnh đại diện",
+                        Toast.LENGTH_SHORT
+                ).show();
+            }
+
+            @Override
+            public void onError(ProfileRepository.ApiError error) {
+                setAvatarUploading(false);
+                ProfileActivitySupport.handleError(Frame15ProfileDetails.this, error);
+            }
+        });
+    }
+
+    private void setAvatarUploading(boolean uploading) {
+        if (btnChangeAvatar != null) {
+            btnChangeAvatar.setEnabled(!uploading);
+            btnChangeAvatar.setAlpha(uploading ? 0.55f : 1f);
+            btnChangeAvatar.setText(uploading ? "Đang tải ảnh..." : "Đổi ảnh đại diện");
         }
     }
 }

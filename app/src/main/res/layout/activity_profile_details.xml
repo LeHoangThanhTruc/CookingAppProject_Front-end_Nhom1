@@ -98,9 +98,8 @@
                     android:layout_height="72dp"
                     android:background="@drawable/bg_circle_cream"
                     android:contentDescription="Avatar"
-                    android:padding="14dp"
-                    android:src="@drawable/ic_panda_avatar"
-                    app:tint="@color/panda_green_dark" />
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_person" />
 
                 <TextView
                     android:id="@+id/btnChangeAvatar"
@@ -170,6 +169,8 @@
                         android:layout_marginStart="10dp"
                         android:layout_weight="1"
                         android:background="@null"
+                        android:cursorVisible="false"
+                        android:focusable="false"
                         android:inputType="textPersonName"
                         android:text="Nhóm dễ thương"
                         android:textColor="@color/panda_green_dark"
@@ -182,6 +183,7 @@
                         android:layout_height="20dp"
                         android:contentDescription="Chỉnh sửa"
                         android:src="@drawable/ic_edit_pencil"
+                        android:visibility="gone"
                         app:tint="@color/panda_green" />
                 </LinearLayout>
 
@@ -219,6 +221,8 @@
                         android:layout_marginStart="10dp"
                         android:layout_weight="1"
                         android:background="@null"
+                        android:cursorVisible="false"
+                        android:focusable="false"
                         android:inputType="textEmailAddress"
                         android:text="nhomdethuong@gm.uit.edu.vn"
                         android:textColor="@color/panda_green_dark"
@@ -230,6 +234,7 @@
                         android:layout_height="20dp"
                         android:contentDescription="Chỉnh sửa"
                         android:src="@drawable/ic_edit_pencil"
+                        android:visibility="gone"
                         app:tint="@color/panda_green" />
                 </LinearLayout>
 
@@ -267,6 +272,8 @@
                         android:layout_marginStart="10dp"
                         android:layout_weight="1"
                         android:background="@null"
+                        android:cursorVisible="false"
+                        android:focusable="false"
                         android:inputType="phone"
                         android:text="Chưa cập nhật"
                         android:textColor="@color/panda_gray"

@@ -2,7 +2,12 @@ package com.example.cookingapp;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.Multipart;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
+import okhttp3.MultipartBody;
 //ApiService đang được hoàn thiện và sửa chửa do chưa hoàn thành code api ở backend
 //nên chưa có đầy đủ thông tin để hoàn thiện phần này
 public interface ApiService {
@@ -44,4 +49,14 @@ public interface ApiService {
     // Định nghĩa API Đăng nhập
     @POST("api/auth/login")
     Call<ApiResponse> loginUser(@Body LoginRequest request);
+
+    @GET("api/profile/me")
+    Call<Profile> getMyProfile();
+
+    @PATCH("api/profile/me")
+    Call<Profile> updateMyProfile(@Body UpdateProfileRequest request);
+
+    @Multipart
+    @POST("api/profile/me/avatar")
+    Call<Profile> uploadMyAvatar(@Part MultipartBody.Part file);
 }
