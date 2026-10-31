@@ -23,10 +23,26 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import org.hamcrest.Matcher;
 
 import org.junit.Test;
+import org.junit.Before;
 import org.junit.runner.RunWith;
+
+import androidx.test.platform.app.InstrumentationRegistry;
 
 @RunWith(AndroidJUnit4.class)
 public class NavigationSmokeTest {
+    private static final String PROFILE_TEST_TOKEN =
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9."
+                    + "eyJzdWIiOiIxIiwiZXhwIjo0MTAyNDQ0ODAwfQ."
+                    + "btMCeFNlV2YpRaR-pmrOobzvfzTDhTzSYzT8eiAxseo";
+
+    @Before
+    public void seedAuthenticatedProfileSession() {
+        SessionManager.saveAccessToken(
+                InstrumentationRegistry.getInstrumentation().getTargetContext(),
+                PROFILE_TEST_TOKEN
+        );
+    }
+
     private static final ViewAction FORCE_CLICK = new ViewAction() {
         @Override
         public Matcher<View> getConstraints() {

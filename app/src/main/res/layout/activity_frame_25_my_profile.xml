@@ -113,11 +113,13 @@
                         android:background="@drawable/bg_figma_avatar">
 
                         <ImageView
-                            android:layout_width="34dp"
-                            android:layout_height="34dp"
+                            android:id="@+id/ivProfileAvatar"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:layout_gravity="center"
-                            android:src="@drawable/ic_person"
-                            app:tint="@color/panda_green" />
+                            android:contentDescription="Ảnh đại diện"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_person" />
                     </FrameLayout>
 
                     <LinearLayout
@@ -128,6 +130,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tvProfileFullName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Tài khoản mẫu"
@@ -136,6 +139,7 @@
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/tvProfileUsername"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
