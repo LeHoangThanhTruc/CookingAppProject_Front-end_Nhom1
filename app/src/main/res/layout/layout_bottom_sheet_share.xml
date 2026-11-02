@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_pill_white"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Thanh gạch ngang nhỏ kéo trượt ở trên -->
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="12dp"
+        android:background="#D1D5DB" />
+
+    <!-- 1. CHIA SẺ VỀ BẢNG FEED CÁ NHÂN -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgMyAvatar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bxs_user"
+            app:shapeAppearanceOverlay="@style/CircularImageView" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvMyName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tên của bạn"
+                android:textColor="#193B1C"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:orientation="horizontal">
+
+                <!-- Nút bấm chọn Quyền xem -> Chuyển sang Frame32PrivacyActivity -->
+                <LinearLayout
+                    android:id="@+id/btnSelectPrivacy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_recipe_badge"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="2dp">
+
+                    <ImageView
+                        android:id="@+id/imgPrivacyIcon"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:src="@drawable/ic_lock" />
+
+                    <TextView
+                        android:id="@+id/tvPrivacyText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="Chỉ mình tôi"
+                        android:textColor="@color/panda_green"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Ô nhập Caption -->
+    <EditText
+        android:id="@+id/etShareCaption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@null"
+        android:hint="Bạn nói gì đi..."
+        android:minLines="2"
+        android:textColor="#2D3748"
+        android:textColorHint="#A0AEC0"
+        android:textSize="14sp" />
+
+    <!-- Nút Chia sẻ ngay -->
+    <Button
+        android:id="@+id/btnShareNow"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@color/panda_green"
+        android:text="Chia sẻ ngay"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginVertical="16dp"
+        android:background="#E2E8F0" />
+
+    <!-- 2. CHIA SẺ RIÊNG CHO BẠN BÈ -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gửi qua tin nhắn riêng"
+        android:textColor="#4A5568"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+    <!-- Danh sách Avatar Bạn bè (Demo chọn người nhận) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/btnFriend1"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bxs_user"
+            app:shapeAppearanceOverlay="@style/CircularImageView" />
+
+        <TextView
+            android:id="@+id/tvSelectedFriendName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Chọn bạn bè để gửi..."
+            android:textColor="#718096"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <!-- Ô soạn tin nhắn riêng & Nút Gửi (Mặc định ẩn) -->
+    <LinearLayout
+        android:id="@+id/layoutPrivateMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/etPrivateMessage"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_recipe_input"
+            android:hint="Soạn tin nhắn..."
+            android:paddingHorizontal="12dp"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/btnSendMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#0084FF"
+            android:text="Gửi"
+            android:textColor="@android:color/white"
+            android:textSize="13sp" />
+    </LinearLayout>
+</LinearLayout>

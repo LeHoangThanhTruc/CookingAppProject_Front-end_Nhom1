@@ -1,5 +1,6 @@
 package com.example.cookingapp;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -7,12 +8,29 @@ import retrofit2.http.Multipart;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
-import okhttp3.MultipartBody;
-//ApiService đang được hoàn thiện và sửa chửa do chưa hoàn thành code api ở backend
-//nên chưa có đầy đủ thông tin để hoàn thiện phần này
+import retrofit2.http.Path;
+import retrofit2.http.Query;
+
 public interface ApiService {
 
-    // Class mô tả dữ liệu gửi lên khi Đăng ký
+    // 1. API tin tức & bài viết (Của bạn)
+    @GET("api/posts/feed")
+    Call<FeedResponse> getFeed(@Query("post_type") String postType);
+
+    @POST("api/posts/{post_id}/share")
+    Call<Void> sharePost(
+            @Path("post_id") int postId,
+            @Query("share_type") String shareType,
+            @Query("caption") String caption
+    );
+
+    @POST("api/posts/{post_id}/like")
+    Call<Void> toggleLike(
+            @Path("post_id") int postId,
+            @Query("user_id") int userId
+    );
+
+    // 2. Class Request & Response cho Auth (Của nhóm)
     static class RegisterRequest {
         String full_name;
         String email;
@@ -25,7 +43,6 @@ public interface ApiService {
         }
     }
 
-    // Class mô tả dữ liệu gửi lên khi Đăng nhập
     static class LoginRequest {
         String email;
         String password;
@@ -36,20 +53,19 @@ public interface ApiService {
         }
     }
 
-    // Class nhận phản hồi từ Server Backend
     static class ApiResponse {
         public String status;
         public String message;
     }
 
-    // Định nghĩa API Đăng ký
+    // 3. API Xác thực & Tài khoản (Của nhóm)
     @POST("api/auth/register")
     Call<ApiResponse> registerUser(@Body RegisterRequest request);
 
-    // Định nghĩa API Đăng nhập
     @POST("api/auth/login")
     Call<ApiResponse> loginUser(@Body LoginRequest request);
 
+    // 4. API Thông tin cá nhân & Avatar (Của nhóm)
     @GET("api/profile/me")
     Call<Profile> getMyProfile();
 

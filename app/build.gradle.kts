@@ -1,5 +1,6 @@
 import org.gradle.kotlin.dsl.dependencies
 
+// 1. Logic đọc biến API_BASE_URL từ gradle.properties (hoặc mặc định localhost máy ảo)
 val apiBaseUrlProperty = providers.gradleProperty("API_BASE_URL")
 val apiBaseUrl = apiBaseUrlProperty
     .orElse("http://10.0.2.2:8000/")
@@ -29,6 +30,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // Tạo biến BuildConfig.API_BASE_URL
         buildConfigField("String", "API_BASE_URL", "\"$apiBaseUrl\"")
     }
 
@@ -45,6 +48,8 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
+    // Bắt buộc bật tính năng này để Gradle sinh ra class BuildConfig
     buildFeatures {
         buildConfig = true
     }
@@ -58,10 +63,13 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.espresso.core)
     androidTestImplementation(libs.ext.junit)
-    androidTestImplementation(libs.okhttp.mockwebserver)
+
+    // Networking & Retrofit
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.gson)
-    implementation(libs.okhttp)
-    implementation(libs.glide)
-    testImplementation(libs.okhttp.mockwebserver)
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+
+    // Glide dùng load hình ảnh
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
 }

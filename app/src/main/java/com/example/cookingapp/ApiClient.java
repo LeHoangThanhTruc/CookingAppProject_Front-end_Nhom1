@@ -11,7 +11,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public final class ApiClient {
-    public static final String BASE_URL = BuildConfig.API_BASE_URL;
+    public static final String BASE_URL = "http://10.0.2.2:8000/";;
 
     private static volatile Retrofit publicRetrofit;
     private static volatile Retrofit authenticatedRetrofit;
@@ -20,7 +20,8 @@ public final class ApiClient {
     }
 
     /**
-     * Client không gắn access token, giữ tương thích cho module đăng nhập/đăng ký.
+     - Client không gắn access token, giữ tương thích cho module đăng nhập/đăng ký.
+
      */
     public static Retrofit getClient() {
         if (publicRetrofit == null) {

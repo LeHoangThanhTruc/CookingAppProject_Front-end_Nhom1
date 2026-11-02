@@ -29,4 +29,8 @@
         <item name="android:textIsSelectable">true</item>
         <item name="android:textSize">14sp</item>
     </style>
+    <!-- style bo tròn Avatar -->
+    <style name="CircularImageView">
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>

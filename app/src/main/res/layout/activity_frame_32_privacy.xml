@@ -295,7 +295,7 @@
             android:layout_height="56dp"
             android:background="@drawable/bg_recipe_primary_button"
             android:gravity="center"
-            android:text="🐼 Đăng bài"
+            android:text="🐼 Chọn"
             android:textColor="@android:color/white"
             android:textSize="18sp"
             android:textStyle="bold" />

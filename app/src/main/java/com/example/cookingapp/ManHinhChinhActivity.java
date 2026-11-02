@@ -4,21 +4,30 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.cookingapp.R;
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ManHinhChinhActivity extends AppCompatActivity {
 
-    private ImageView btnNotification;
-    private ImageView imgAvatar1;
+    private ImageView btnNotification, btnFilter;
     private LinearLayout btnQuickSearch, btnQuickProfile, btnQuickSettings;
-    private TextView tvSeeAll;
-    private ImageView imgAvatar2;
+
+    // Khai báo RecyclerView và Adapter
+    private RecyclerView rvPostsFeed;
+    private PostAdapter postAdapter;
+    private List<Post> postList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,63 +36,90 @@ public class ManHinhChinhActivity extends AppCompatActivity {
         setContentView(R.layout.activity_man_hinh_chinh);
 
         initViews();
-
-        // Lắng nghe sự kiện click cho các nút lối tắt và thông báo
+        setupRecyclerView();
         setupEvents();
+
+        // Nạp dữ liệu từ Backend SQLite lần đầu (Lấy tất cả bài viết)
+        loadFeedFromBackend("ALL");
     }
 
     private void initViews() {
         btnNotification = findViewById(R.id.btnNotification);
-        imgAvatar1 = findViewById(R.id.imgAvatar1);
+        btnFilter = findViewById(R.id.btnFilter); // Icon bộ lọc
         btnQuickSearch = findViewById(R.id.btnQuickSearch);
         btnQuickProfile = findViewById(R.id.btnQuickProfile);
         btnQuickSettings = findViewById(R.id.btnQuickSettings);
-        tvSeeAll = findViewById(R.id.tvSeeAll);
-        imgAvatar2 = findViewById(R.id.imgAvatar2);
+        rvPostsFeed = findViewById(R.id.rvPostsFeed);
+    }
+
+    private void setupRecyclerView() {
+        rvPostsFeed.setLayoutManager(new LinearLayoutManager(this));
+        postAdapter = new PostAdapter(this, postList);
+        rvPostsFeed.setAdapter(postAdapter);
     }
 
     private void setupEvents() {
-        // Nút Chuông thông báo
         if (btnNotification != null) {
             btnNotification.setOnClickListener(v -> startActivity(new Intent(this, Frame33NotificationsActivity.class)));
         }
 
-        // Bấm imgAvatar1 -> Chuyển sang Frame24OtherProfileActivity
-        if (imgAvatar1 != null) {
-            imgAvatar1.setOnClickListener(v -> {
-                Intent intent = new Intent(ManHinhChinhActivity.this, Frame24OtherProfileActivity.class);
-                startActivity(intent);
-            });
-        }
-
-        // Nút Tìm kiếm
         if (btnQuickSearch != null) {
-            btnQuickSearch.setOnClickListener(v -> {
-                Intent intent = new Intent(ManHinhChinhActivity.this, SearchActivity.class);
-                startActivity(intent);
-            });
+            btnQuickSearch.setOnClickListener(v -> startActivity(new Intent(this, SearchActivity.class)));
         }
 
-        // Nút Trang của tôi -> Chuyển sang activity_frame_25_my_profile.xml (Frame25MyProfileActivity)
         if (btnQuickProfile != null) {
-            btnQuickProfile.setOnClickListener(v -> {
-                Intent intent = new Intent(ManHinhChinhActivity.this, Frame25MyProfileActivity.class);
-                startActivity(intent);
-            });
+            btnQuickProfile.setOnClickListener(v -> startActivity(new Intent(this, Frame25MyProfileActivity.class)));
         }
 
-        // Nút Cài đặt -> Chuyển sang Frame7SettingActivity
         if (btnQuickSettings != null) {
-            btnQuickSettings.setOnClickListener(v -> {
-                Intent intent = new Intent(ManHinhChinhActivity.this, Frame7SettingActivity.class);
-                startActivity(intent);
-            });
+            btnQuickSettings.setOnClickListener(v -> startActivity(new Intent(this, Frame7SettingActivity.class)));
         }
-        if (tvSeeAll != null) {
-            tvSeeAll.setOnClickListener(v -> startActivity(new Intent(this, SearchActivity.class)));
+
+        // Sự kiện bấm nút Filter (Bộ lọc)
+        if (btnFilter != null) {
+            btnFilter.setOnClickListener(v -> showFilterPopupMenu(v));
         }
-        if (imgAvatar2 != null) {
-            imgAvatar2.setOnClickListener(v -> startActivity(new Intent(this, Frame24OtherProfileActivity.class)));
-        }
+    }
+
+    // Hiển thị Menu lọc bài đăng tiếng Việt
+    private void showFilterPopupMenu(android.view.View view) {
+        PopupMenu popup = new PopupMenu(this, view);
+        popup.getMenu().add(0, 1, 0, "Tất cả");          // ALL
+        popup.getMenu().add(0, 2, 1, "Bài viết thường"); // REGULAR
+        popup.getMenu().add(0, 3, 2, "Công thức");       // RECIPE
+
+        popup.setOnMenuItemClickListener(item -> {
+            switch (item.getItemId()) {
+                case 1: loadFeedFromBackend("ALL"); break;
+                case 2: loadFeedFromBackend("REGULAR"); break;
+                case 3: loadFeedFromBackend("RECIPE"); break;
+            }
+            return true;
+        });
+        popup.show();
+    }
+
+    // Gọi API FastAPI từ Backend
+    private void loadFeedFromBackend(String postType) {
+        // Khởi tạo ApiService từ ApiClient đã có của bạn
+        ApiService apiService = ApiClient.getClient().create(ApiService.class);
+
+        apiService.getFeed(postType).enqueue(new Callback<FeedResponse>() {
+            @Override
+            public void onResponse(Call<FeedResponse> call, Response<FeedResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    postList.clear();
+                    postList.addAll(response.body().getData());
+                    postAdapter.notifyDataSetChanged(); // Cập nhật lại giao diện RecyclerView tự động
+                } else {
+                    Toast.makeText(ManHinhChinhActivity.this, "Không lấy được dữ liệu bài đăng!", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<FeedResponse> call, Throwable t) {
+                Toast.makeText(ManHinhChinhActivity.this, "Lỗi kết nối Server: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
