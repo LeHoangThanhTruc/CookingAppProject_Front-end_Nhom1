@@ -240,6 +240,34 @@
                     android:visibility="gone" />
             </RelativeLayout>
         </GridLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutAttachmentFile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="14dp"
+            android:background="#F0F2F5"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/public_globe" />
+
+            <TextView
+                android:id="@+id/tvAttachmentUrl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="#1877F2"
+                android:textSize="13sp" />
+        </LinearLayout>
     </FrameLayout>
 
     <!-- TẦNG 4: BOTTOM ACTION BAR (Cố định chiều cao & khoảng cách) -->

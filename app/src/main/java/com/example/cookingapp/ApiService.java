@@ -13,7 +13,7 @@ import retrofit2.http.Query;
 
 public interface ApiService {
 
-    // 1. API tin tức & bài viết (Của bạn)
+    // 1. API tin tức & bài viết
     @GET("api/posts/feed")
     Call<FeedResponse> getFeed(@Query("post_type") String postType);
 
@@ -29,8 +29,10 @@ public interface ApiService {
             @Path("post_id") int postId,
             @Query("user_id") int userId
     );
-
-    // 2. Class Request & Response cho Auth (Của nhóm)
+    //hàm gọi API thả tim riêng cho từng Media
+    @POST("api/posts/media/{media_id}/like")
+    Call<MediaLikeResponse> toggleMediaLike(@Path("media_id") int mediaId, @Query("user_id") int userId);
+    // 2. Class Request & Response cho Auth
     static class RegisterRequest {
         String full_name;
         String email;

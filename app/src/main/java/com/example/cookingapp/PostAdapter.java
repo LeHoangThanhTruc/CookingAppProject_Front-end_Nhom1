@@ -26,7 +26,7 @@ import java.util.Locale;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
+import android.net.Uri;
 public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private static final int VIEW_TYPE_REGULAR = 1;
@@ -103,7 +103,7 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         ImageView imgAvatar, imgPrivacy, imgLike, imgSave;
         LinearLayout btnLike, btnComment, btnShare, btnSave;
 
-        // Khai báo thêm đầy đủ các biến View cho Media Grid và Bài Share
+        // Khai báo các biến View cho Media Grid và Bài Share
         FrameLayout containerMedia;
         LinearLayout layoutOriginalPost;
         ImageView imgOrigAvatar, imgOrigPostMedia;
@@ -113,7 +113,8 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         ImageView imgMedia1, imgMedia2, imgMedia3, imgMedia4;
         RelativeLayout layoutMediaOverlay;
         TextView tvMoreMediaCount;
-
+        LinearLayout layoutAttachmentFile;
+        TextView tvAttachmentUrl;
         public RegularViewHolder(@NonNull View itemView) {
             super(itemView);
             imgAvatar = itemView.findViewById(R.id.imgAvatar);
@@ -133,6 +134,7 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             tvOrigCaption = itemView.findViewById(R.id.tvOrigCaption);
             imgOrigPostMedia = itemView.findViewById(R.id.imgOrigPostMedia);
             imgOrigPrivacy = itemView.findViewById(R.id.imgOrigPrivacy);
+
             // Ánh xạ Grid Media 4 Ảnh & Lớp phủ +N
             gridMedia = itemView.findViewById(R.id.gridMedia);
             imgMedia1 = itemView.findViewById(R.id.imgMedia1);
@@ -154,6 +156,8 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
             btnSave = itemView.findViewById(R.id.btnSave);
             imgSave = itemView.findViewById(R.id.imgSave);
+            layoutAttachmentFile = itemView.findViewById(R.id.layoutAttachmentFile);
+            tvAttachmentUrl = itemView.findViewById(R.id.tvAttachmentUrl);
         }
 
         private void setupMediaAndShare(Post post, Context context) {
@@ -173,21 +177,16 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
             // 2. Khung Container Media
             if (containerMedia != null) {
-                if (isShared || hasMedia) {
-                    containerMedia.setVisibility(View.VISIBLE);
-                } else {
-                    containerMedia.setVisibility(View.GONE);
-                }
+                containerMedia.setVisibility((isShared || hasMedia) ? View.VISIBLE : View.GONE);
             }
 
-            // 3. Nếu là Bài SHARED -> Nằm gọn hoàn toàn bên trong Khung Media
+            // 3. Nếu là Bài SHARED
             if (isShared) {
                 if (layoutOriginalPost != null) layoutOriginalPost.setVisibility(View.VISIBLE);
                 if (gridMedia != null) gridMedia.setVisibility(View.GONE);
 
                 Post orig = post.getOriginalPost();
                 if (orig != null) {
-                    // 1. Tên & Avatar tác giả gốc
                     if (orig.getAuthor() != null && tvOrigAuthorName != null) {
                         tvOrigAuthorName.setText(orig.getAuthor().getFullName());
                         if (orig.getAuthor().getAvatarUrl() != null && imgOrigAvatar != null) {
@@ -195,15 +194,12 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         }
                     }
 
-                    // 2. Caption bài gốc
                     if (tvOrigCaption != null) tvOrigCaption.setText(orig.getCaption());
 
-                    // 3. Thời gian bài gốc (Time Ago)
                     if (tvOrigTimeAgo != null && orig.getCreatedAt() != null) {
                         tvOrigTimeAgo.setText(getTimeAgo(orig.getCreatedAt()));
                     }
 
-                    // 4. NẠP QUYỀN XEM ĐỘNG TỪ DATABASE CHO BÀI GỐC
                     if (imgOrigPrivacy != null && orig.getPrivacy() != null) {
                         switch (orig.getPrivacy()) {
                             case "PUBLIC":
@@ -218,85 +214,61 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         }
                     }
 
-                    // 5. Media/Ảnh bài gốc
                     if (orig.getMediaList() != null && !orig.getMediaList().isEmpty() && imgOrigPostMedia != null) {
                         imgOrigPostMedia.setVisibility(View.VISIBLE);
-                        Glide.with(context).load(orig.getMediaList().get(0).getUrl()).into(imgOrigPostMedia);
+                        Post.Media origMedia = orig.getMediaList().get(0);
+                        Glide.with(context).load(origMedia.getUrl()).into(imgOrigPostMedia);
+                        imgOrigPostMedia.setOnClickListener(v -> handleMediaClick(context, origMedia, orig));
                     } else if (imgOrigPostMedia != null) {
                         imgOrigPostMedia.setVisibility(View.GONE);
                     }
                 }
             }
-            // 4. Bài thường có Media -> Phân bổ Grid và hiển thị lớp phủ +N
+            // 4. Bài thường có Media -> Đưa vào Grid
             else if (hasMedia) {
                 if (layoutOriginalPost != null) layoutOriginalPost.setVisibility(View.GONE);
-                if (gridMedia != null) gridMedia.setVisibility(View.VISIBLE);
-
                 List<Post.Media> mediaList = post.getMediaList();
+                Post.Media firstMedia = mediaList.get(0);
+                String mediaType = firstMedia.getMediaType() != null ? firstMedia.getMediaType().toUpperCase() : "IMAGE";
+
+                //Nếu là File tài liệu/Excel/Link -> Hiện thẻ Attachment
+                if (!mediaType.contains("IMAGE") && !mediaType.contains("VIDEO")) {
+                    if (gridMedia != null) gridMedia.setVisibility(View.GONE);
+                    if (layoutAttachmentFile != null && tvAttachmentUrl != null) {
+                        layoutAttachmentFile.setVisibility(View.VISIBLE);
+                        tvAttachmentUrl.setText(firstMedia.getUrl());
+                        layoutAttachmentFile.setOnClickListener(v -> handleMediaClick(context, firstMedia, post));
+                    }
+                    return;
+                }
+                if (gridMedia != null) gridMedia.setVisibility(View.VISIBLE);
+                if (layoutAttachmentFile != null) layoutAttachmentFile.setVisibility(View.GONE);
+
+                resetMediaViews();
                 int total = mediaList.size();
 
-                // Reset trạng thái hiển thị
-                if (imgMedia1 != null) imgMedia1.setVisibility(View.GONE);
-                if (imgMedia2 != null) imgMedia2.setVisibility(View.GONE);
-                if (imgMedia3 != null) imgMedia3.setVisibility(View.GONE);
-                if (layoutMediaOverlay != null) layoutMediaOverlay.setVisibility(View.GONE);
-                if (tvMoreMediaCount != null) tvMoreMediaCount.setVisibility(View.GONE);
-
-                // Click mở Chi tiết Bài viết
-                View.OnClickListener openDetailListener = v -> {
-                    Intent intent = new Intent(context, PostDetailActivity.class);
-                    intent.putExtra("POST_DATA", post);
-                    context.startActivity(intent);
-                };
-
                 if (total == 1) {
-                    if (imgMedia1 != null) {
-                        imgMedia1.setVisibility(View.VISIBLE);
-                        Glide.with(context).load(mediaList.get(0).getUrl()).into(imgMedia1);
-                        imgMedia1.setOnClickListener(openDetailListener);
-                    }
+                    bindMediaItem(context, mediaList.get(0), imgMedia1, post);
                 } else if (total == 2) {
-                    if (imgMedia1 != null && imgMedia2 != null) {
-                        imgMedia1.setVisibility(View.VISIBLE);
-                        imgMedia2.setVisibility(View.VISIBLE);
-                        Glide.with(context).load(mediaList.get(0).getUrl()).into(imgMedia1);
-                        Glide.with(context).load(mediaList.get(1).getUrl()).into(imgMedia2);
-                        imgMedia1.setOnClickListener(openDetailListener);
-                        imgMedia2.setOnClickListener(openDetailListener);
-                    }
+                    bindMediaItem(context, mediaList.get(0), imgMedia1, post);
+                    bindMediaItem(context, mediaList.get(1), imgMedia2, post);
                 } else if (total == 3) {
-                    if (imgMedia1 != null && imgMedia2 != null && imgMedia3 != null) {
-                        imgMedia1.setVisibility(View.VISIBLE);
-                        imgMedia2.setVisibility(View.VISIBLE);
-                        imgMedia3.setVisibility(View.VISIBLE);
-                        Glide.with(context).load(mediaList.get(0).getUrl()).into(imgMedia1);
-                        Glide.with(context).load(mediaList.get(1).getUrl()).into(imgMedia2);
-                        Glide.with(context).load(mediaList.get(2).getUrl()).into(imgMedia3);
-                        imgMedia1.setOnClickListener(openDetailListener);
-                        imgMedia2.setOnClickListener(openDetailListener);
-                        imgMedia3.setOnClickListener(openDetailListener);
-                    }
+                    bindMediaItem(context, mediaList.get(0), imgMedia1, post);
+                    bindMediaItem(context, mediaList.get(1), imgMedia2, post);
+                    bindMediaItem(context, mediaList.get(2), imgMedia3, post);
                 } else if (total >= 4) {
-                    if (imgMedia1 != null && imgMedia2 != null && imgMedia3 != null && layoutMediaOverlay != null && imgMedia4 != null) {
-                        imgMedia1.setVisibility(View.VISIBLE);
-                        imgMedia2.setVisibility(View.VISIBLE);
-                        imgMedia3.setVisibility(View.VISIBLE);
-                        layoutMediaOverlay.setVisibility(View.VISIBLE);
+                    bindMediaItem(context, mediaList.get(0), imgMedia1, post);
+                    bindMediaItem(context, mediaList.get(1), imgMedia2, post);
+                    bindMediaItem(context, mediaList.get(2), imgMedia3, post);
+                    bindMediaItem(context, mediaList.get(3), imgMedia4, post);
 
-                        Glide.with(context).load(mediaList.get(0).getUrl()).into(imgMedia1);
-                        Glide.with(context).load(mediaList.get(1).getUrl()).into(imgMedia2);
-                        Glide.with(context).load(mediaList.get(2).getUrl()).into(imgMedia3);
-                        Glide.with(context).load(mediaList.get(3).getUrl()).into(imgMedia4);
-
-                        if (total > 4 && tvMoreMediaCount != null) {
-                            tvMoreMediaCount.setVisibility(View.VISIBLE);
-                            tvMoreMediaCount.setText("+" + (total - 3));
-                        }
-
-                        imgMedia1.setOnClickListener(openDetailListener);
-                        imgMedia2.setOnClickListener(openDetailListener);
-                        imgMedia3.setOnClickListener(openDetailListener);
-                        layoutMediaOverlay.setOnClickListener(openDetailListener);
+                    if (layoutMediaOverlay != null) layoutMediaOverlay.setVisibility(View.VISIBLE);
+                    if (total > 4 && tvMoreMediaCount != null) {
+                        tvMoreMediaCount.setVisibility(View.VISIBLE);
+                        tvMoreMediaCount.setText("+" + (total - 3));
+                    }
+                    if (layoutMediaOverlay != null) {
+                        layoutMediaOverlay.setOnClickListener(v -> handleMediaClick(context, mediaList.get(3), post));
                     }
                 }
             } else {
@@ -305,8 +277,75 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             }
         }
 
+        // 🟢 HÀM 1: Nạp Media Item & Hiển thị Thumbnail
+        private void bindMediaItem(Context context, Post.Media media, ImageView imageView, Post post) {
+            if (imageView == null) return;
+            imageView.setVisibility(View.VISIBLE);
+
+            Glide.with(context)
+                    .load(media.getUrl())
+                    .placeholder(R.drawable.public_globe)
+                    .into(imageView);
+            // Bật icon Play nếu media là Video
+            String type = media.getMediaType() != null ? media.getMediaType().toUpperCase() : "";
+            if (type.contains("VIDEO") || media.getUrl().toLowerCase().endsWith(".mp4")) {
+                //Thu nhỏ icon Play về 48dp x 48dp chính giữa ảnh
+                android.graphics.drawable.Drawable playIcon = androidx.core.content.ContextCompat.getDrawable(context, android.R.drawable.ic_media_play);
+                if (playIcon != null) {
+                    android.graphics.drawable.LayerDrawable layerDrawable = new android.graphics.drawable.LayerDrawable(new android.graphics.drawable.Drawable[]{playIcon});
+                    //kích thước 48dp x 48dp cho icon Play
+                    int sizeInPx = (int) (48 * context.getResources().getDisplayMetrics().density);
+                    layerDrawable.setLayerSize(0, sizeInPx, sizeInPx);
+                    layerDrawable.setLayerGravity(0, android.view.Gravity.CENTER);
+                    imageView.setForeground(layerDrawable);
+                }
+            } else {
+                imageView.setForeground(null);
+            }
+
+            imageView.setOnClickListener(v -> handleMediaClick(context, media, post));
+        }
+
+        // Mở Media / Video an toàn (Tránh văng App)
+        private void handleMediaClick(Context context, Post.Media media, Post post) {
+            if (context == null || media == null || media.getUrl() == null) return;
+
+            String url = media.getUrl();
+            String type = media.getMediaType() != null ? media.getMediaType().toUpperCase() : "";
+
+            // Nếu là Video hoặc File URL
+            if (type.contains("VIDEO") || url.toLowerCase().endsWith(".mp4") || url.contains("xlsx")) {
+                try {
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setDataAndType(Uri.parse(url), url.toLowerCase().endsWith(".mp4") ? "video/*" : "*/*");
+                    context.startActivity(intent);
+                } catch (Exception e) {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    context.startActivity(browserIntent);
+                }
+            } else {
+                // Nếu là Ảnh -> Mở PostDetailActivity
+                try {
+                    Intent intent = new Intent(context, PostDetailActivity.class);
+                    intent.putExtra("POST_DATA", post);
+                    context.startActivity(intent);
+                } catch (Exception e) {
+                    Toast.makeText(context, "Không thể mở chi tiết bài viết", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+
+        private void resetMediaViews() {
+            if (imgMedia1 != null) imgMedia1.setVisibility(View.GONE);
+            if (imgMedia2 != null) imgMedia2.setVisibility(View.GONE);
+            if (imgMedia3 != null) imgMedia3.setVisibility(View.GONE);
+            if (imgMedia4 != null) imgMedia4.setVisibility(View.GONE);
+
+            if (layoutMediaOverlay != null) layoutMediaOverlay.setVisibility(View.GONE);
+            if (tvMoreMediaCount != null) tvMoreMediaCount.setVisibility(View.GONE);
+        }
+
         public void bind(Post post, Context context) {
-            // 1. Nạp thông tin Tác giả & Avatar
             if (post.getAuthor() != null) {
                 if (tvAuthor != null) tvAuthor.setText(post.getAuthor().getFullName());
                 if (imgAvatar != null && post.getAuthor().getAvatarUrl() != null) {
@@ -317,10 +356,13 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 }
             }
 
-            // 2. Gọi hàm xử lý Media, Caption & Bài Share
             setupMediaAndShare(post, context);
 
-            // 3. Nạp "Xem thêm / Thu gọn" Caption
+            if (tvLikes != null) tvLikes.setText(String.valueOf(post.getLikeCount()));
+            if (tvShareCount != null) tvShareCount.setText(String.valueOf(post.getShareCount()));
+            if (tvCommentCount != null) tvCommentCount.setText(String.valueOf(post.getCommentCount()));
+            if (tvTimeAgo != null) tvTimeAgo.setText(getTimeAgo(post.getCreatedAt()));
+
             if (tvCaption != null && post.getCaption() != null) {
                 tvCaption.post(() -> {
                     if (tvCaption.getLineCount() > 3) {
@@ -343,15 +385,6 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 }
             }
 
-            // 4. Nạp số liệu Thả tim, Share, Comment
-            if (tvLikes != null) tvLikes.setText(String.valueOf(post.getLikeCount()));
-            if (tvShareCount != null) tvShareCount.setText(String.valueOf(post.getShareCount()));
-            if (tvCommentCount != null) tvCommentCount.setText(String.valueOf(post.getCommentCount()));
-
-            // 5. Nạp thời gian
-            if (tvTimeAgo != null) tvTimeAgo.setText(getTimeAgo(post.getCreatedAt()));
-
-            // 6. Đổi biểu tượng Quyền xem
             if (imgPrivacy != null && post.getPrivacy() != null) {
                 switch (post.getPrivacy()) {
                     case "PUBLIC":
@@ -366,7 +399,6 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 }
             }
 
-            // --- Logic Thả tim / Bỏ tim ---
             if (imgLike != null) {
                 imgLike.setImageResource(post.isLiked() ? R.drawable.heart_red : R.drawable.heart);
                 View.OnClickListener likeClickListener = v -> {
@@ -401,7 +433,6 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 if (btnLike != null) btnLike.setOnClickListener(likeClickListener);
             }
 
-            // --- Logic Nút Comment, Share & Save ---
             if (btnComment != null) {
                 btnComment.setOnClickListener(v ->
                         Toast.makeText(context, "Mở khung bình luận...", Toast.LENGTH_SHORT).show());
@@ -422,7 +453,6 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             }
         }
     }
-
     // ================= 2. ViewHolder Bài đăng Công thức =================
     static class RecipeViewHolder extends RecyclerView.ViewHolder {
         TextView tvAuthor, tvRecipeTitle, tvRecipeDescription, btnToggleRecipe, tvTimeAgo, tvShareCount, tvLikes, tvCommentCount, btnToggleCaption;
