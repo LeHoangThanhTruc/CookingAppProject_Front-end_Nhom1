@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginVertical="8dp"
+        android:background="#CBD5E0" />
+
+    <!-- TRẠNG THÁI RỖNG: Hiển thị khi chưa có bình luận nào -->
+    <LinearLayout
+        android:id="@+id/layoutEmptyState"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_chat" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Chia sẻ suy nghĩ của bạn"
+            android:textColor="#1A202C"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="Sau mỗi bài viết hay là một người bình luận còn tuyệt hơn thế."
+            android:textColor="#718096"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <!-- DANH SÁCH BÌNH LUẬN -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvComments"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- Thanh trạng thái "Đang phản hồi username" -->
+    <LinearLayout
+        android:id="@+id/layoutReplyingState"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F0F2F5"
+        android:orientation="horizontal"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="6dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tvReplyingTo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#4A5568"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/btnCancelReply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hủy"
+            android:textColor="#E53E3E"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- KHUNG PREVIEW ĐỌC ẢNH ĐÍNH KÈM CHỌN TỪ MÁY (Tối đa 1 ảnh chuẩn Facebook) -->
+    <RelativeLayout
+        android:id="@+id/layoutPreviewMedia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="4dp"
+        android:visibility="gone">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgPreviewCommentMedia"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:id="@+id/btnRemovePreviewMedia"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignTop="@id/imgPreviewCommentMedia"
+            android:layout_alignEnd="@id/imgPreviewCommentMedia"
+            android:layout_marginTop="-4dp"
+            android:layout_marginEnd="-4dp"
+            android:src="@drawable/x" />
+    </RelativeLayout>
+
+    <!-- KHUNG NHẬP BÌNH LUẬN -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <!-- Nút chọn ảnh từ máy (Camera/Library) -->
+        <ImageView
+            android:id="@+id/btnPickImage"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/camera" />
+
+        <EditText
+            android:id="@+id/edtCommentInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_badge_card"
+            android:hint="Viết bình luận..."
+            android:maxLines="4"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="8dp"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/btnSendComment"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="8dp"
+            android:enabled="false"
+            android:src="@drawable/send_grey" />
+    </LinearLayout>
+</LinearLayout>

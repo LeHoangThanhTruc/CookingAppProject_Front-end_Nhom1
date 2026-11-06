@@ -61,6 +61,7 @@
                 android:src="@drawable/ic_chat"
                 app:tint="#718096" />
             <TextView
+                android:id="@+id/tvMediaCommentCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"

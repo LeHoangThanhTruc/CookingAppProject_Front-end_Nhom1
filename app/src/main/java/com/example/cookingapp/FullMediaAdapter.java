@@ -75,48 +75,54 @@ public class FullMediaAdapter extends RecyclerView.Adapter<FullMediaAdapter.Medi
             }
         });
 
-        // ĐỒNG BỘ HIỂN THỊ VÀ THẢ TIM CHO TỪNG MEDIA ITEM
-        updateMediaLikeUI(holder, media);
+        // 🟢 1. CẬP NHẬT TOÀN BỘ GIAO DIỆN LIKE & COMMENT BẰNG HÀM CHUẨN
+        updateMediaUI(holder, media);
 
-        // Sự kiện bấm nút Thả tim trên từng Media
+        // 🟢 2. Sự kiện bấm nút Thả tim trên từng Media
         holder.btnMediaLike.setOnClickListener(v -> {
-            // 1. Thay đổi tạm thời trên UI trước cho mượt
             int currentLikes = media.getLikeCount();
-            boolean newLikedState = !media.isLiked();
-            media.setLiked(newLikedState);
-            media.setLikeCount(newLikedState ? currentLikes + 1 : Math.max(0, currentLikes - 1));
-            updateMediaLikeUI(holder, media);
+            boolean isCurrentlyLiked = media.isLiked();
 
-            // 2. Gửi API xuống Backend (VS Code)
+            // Cập nhật logic trên RAM trước cho mượt
+            boolean newLikedState = !isCurrentlyLiked;
+            int newLikeCount = newLikedState ? currentLikes + 1 : Math.max(0, currentLikes - 1);
+
+            media.setLiked(newLikedState);
+            media.setLikeCount(newLikeCount);
+            updateMediaUI(holder, media);
+
+            // Gửi API xuống Server Database
             ApiService apiService = ApiClient.getClient().create(ApiService.class);
             apiService.toggleMediaLike(media.getMediaId(), 1).enqueue(new Callback<MediaLikeResponse>() {
                 @Override
                 public void onResponse(Call<MediaLikeResponse> call, Response<MediaLikeResponse> response) {
                     if (response.isSuccessful() && response.body() != null) {
-                        MediaLikeResponse res = response.body();
-                        // Cập nhật lại UI chính xác theo dữ liệu SQLite trả về từ Server
-                        media.setLiked(res.isLiked());
-                        media.setLikeCount(res.getLikeCount());
-                        updateMediaLikeUI(holder, media);
+                        // Cập nhật lại chuẩn xác dữ liệu trả về từ DB
+                        media.setLiked(response.body().isLiked());
+                        media.setLikeCount(response.body().getLikeCount());
+                        updateMediaUI(holder, media);
                     }
                 }
 
                 @Override
                 public void onFailure(Call<MediaLikeResponse> call, Throwable t) {
-                    // Nếu lỗi mạng -> Revert quay về trạng thái cũ
-                    media.setLiked(!media.isLiked());
+                    // Lỗi mạng -> Revert về trạng thái ban đầu
+                    media.setLiked(isCurrentlyLiked);
                     media.setLikeCount(currentLikes);
-                    updateMediaLikeUI(holder, media);
-                    Toast.makeText(context, "Lỗi kết nối máy chủ!", Toast.LENGTH_SHORT).show();
+                    updateMediaUI(holder, media);
                 }
             });
         });
 
-        // Bình luận riêng từng media
-        holder.btnMediaComment.setOnClickListener(v ->
-                Toast.makeText(context, "Mở bình luận cho ảnh này...", Toast.LENGTH_SHORT).show());
+        // 🟢 3. Bình luận riêng từng media
+        holder.btnMediaComment.setOnClickListener(v -> {
+            if (context instanceof FragmentActivity) {
+                CommentBottomSheetDialogFragment cmtSheet = new CommentBottomSheetDialogFragment(media.getMediaId(), true);
+                cmtSheet.show(((FragmentActivity) context).getSupportFragmentManager(), "MediaCommentSheet");
+            }
+        });
 
-        // Chia sẻ chung cho cả bài viết
+        // 🟢 4. Chia sẻ chung cho cả bài viết
         holder.btnMediaShare.setOnClickListener(v -> {
             if (context instanceof FragmentActivity && parentPost != null) {
                 ShareBottomSheetDialogFragment shareSheet = new ShareBottomSheetDialogFragment(parentPost.getPostId());
@@ -125,16 +131,44 @@ public class FullMediaAdapter extends RecyclerView.Adapter<FullMediaAdapter.Medi
         });
     }
 
-    private void updateMediaLikeUI(MediaViewHolder holder, Post.Media media) {
-        if (holder.imgMediaLikeIcon != null) {
-            // Đổi icon tim đỏ / tim thường
-            holder.imgMediaLikeIcon.setImageResource(media.isLiked() ? R.drawable.heart_red : R.drawable.heart);
+    // 🟢 HÀM QUẢN LÝ QUY TẮC HIỂN THỊ LIKE & COMMENT DUY NHẤT
+    private void updateMediaUI(MediaViewHolder holder, Post.Media media) {
+        // Xử lý UI Like
+        if (holder.imgMediaLikeIcon != null && holder.tvMediaLikeCount != null) {
+            if (media.isLiked()) {
+                holder.imgMediaLikeIcon.setImageResource(R.drawable.heart_red);
+                holder.tvMediaLikeCount.setText(media.getLikeCount() > 0 ? String.valueOf(media.getLikeCount()) : "Thích");
+            } else {
+                holder.imgMediaLikeIcon.setImageResource(R.drawable.heart);
+                holder.tvMediaLikeCount.setText(media.getLikeCount() > 0 ? String.valueOf(media.getLikeCount()) : "Thích");
+            }
         }
-        if (holder.tvMediaLikeCount != null) {
-            // Cập nhật số lượt tim trên UI
-            holder.tvMediaLikeCount.setText(media.getLikeCount() > 0 ? String.valueOf(media.getLikeCount()) : "Thích");
+
+        // Xử lý UI Comment
+        if (holder.tvMediaCommentCount != null) {
+            if (media.getCommentCount() > 0) {
+                holder.tvMediaCommentCount.setText(String.valueOf(media.getCommentCount()));
+            } else {
+                holder.tvMediaCommentCount.setText("Bình luận");
+            }
         }
     }
+
+    // Giúp PostDetailActivity cập nhật lại số lượng comment của Media khi có comment mới / xóa comment
+    public void updateMediaCommentCount(int mediaId, int newCommentCount) {
+        if (mediaList != null) {
+            for (int i = 0; i < mediaList.size(); i++) {
+                Post.Media media = mediaList.get(i);
+                if (media.getMediaId() == mediaId) {
+                    media.setCommentCount(newCommentCount);
+                    notifyItemChanged(i);
+                    break;
+                }
+            }
+        }
+    }
+
+// (XÓA BỎ HÀM updateMediaLikeUI THỪA NẰM Ở DƯỚI)
 
     @Override
     public int getItemCount() {
@@ -143,7 +177,7 @@ public class FullMediaAdapter extends RecyclerView.Adapter<FullMediaAdapter.Medi
 
     static class MediaViewHolder extends RecyclerView.ViewHolder {
         ImageView imgMedia, imgMediaLikeIcon;
-        TextView tvMediaLikeCount;
+        TextView tvMediaLikeCount, tvMediaCommentCount;
         LinearLayout btnMediaLike, btnMediaComment, btnMediaShare;
 
         public MediaViewHolder(@NonNull View itemView) {
@@ -151,6 +185,9 @@ public class FullMediaAdapter extends RecyclerView.Adapter<FullMediaAdapter.Medi
             imgMedia = itemView.findViewById(R.id.imgMediaItem);
             imgMediaLikeIcon = itemView.findViewById(R.id.imgMediaLikeIcon);
             tvMediaLikeCount = itemView.findViewById(R.id.tvMediaLikeCount);
+
+            tvMediaCommentCount = itemView.findViewById(R.id.tvMediaCommentCount);
+
             btnMediaLike = itemView.findViewById(R.id.btnMediaLike);
             btnMediaComment = itemView.findViewById(R.id.btnMediaComment);
             btnMediaShare = itemView.findViewById(R.id.btnMediaShare);

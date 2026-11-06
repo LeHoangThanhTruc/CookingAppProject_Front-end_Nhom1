@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="16dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="20dp"
+    android:background="@drawable/bg_button_light">
+
+    <!-- Thanh Gạch Ngang Giúp Người Dùng Nhận Biết Vuốt Trượt Để Tắt Tab -->
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:background="#D1D5DB" />
+
+    <!-- Sao chép bình luận + Icon mini_message_box -->
+    <TextView
+        android:id="@+id/btnCopyComment"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:drawableStart="@drawable/mini_message_box"
+        android:drawablePadding="12dp"
+        android:text="Sao chép bình luận"
+        android:textColor="#1C1E21"
+        android:textSize="15sp" />
+
+    <!-- Chỉnh sửa + Icon pen_edit -->
+    <TextView
+        android:id="@+id/btnEditComment"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:drawableStart="@drawable/pen_edit"
+        android:drawablePadding="12dp"
+        android:text="Chỉnh sửa"
+        android:textColor="#1C1E21"
+        android:textSize="15sp" />
+
+    <!-- Xóa bình luận + Icon trash -->
+    <TextView
+        android:id="@+id/btnDeleteComment"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:drawableStart="@drawable/trash"
+        android:drawablePadding="12dp"
+        android:text="Xóa bình luận"
+        android:textColor="#E53935"
+        android:textSize="15sp" />
+
+</LinearLayout>

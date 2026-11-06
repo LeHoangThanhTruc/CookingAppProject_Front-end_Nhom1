@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,6 +28,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import android.net.Uri;
+
 public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private static final int VIEW_TYPE_REGULAR = 1;
@@ -34,10 +36,20 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private final Context context;
     private final List<Post> postList;
+    //  1. Khai báo biến launcher để nhận từ Activity truyền vào
+    private ActivityResultLauncher<Intent> postDetailLauncher;
 
+    // Constructor gốc (Giữ nguyên để tương thích code cũ)
     public PostAdapter(Context context, List<Post> postList) {
         this.context = context;
         this.postList = postList;
+    }
+
+    // 2. BỔ SUNG Constructor mới có nhận ActivityResultLauncher
+    public PostAdapter(Context context, List<Post> postList, ActivityResultLauncher<Intent> postDetailLauncher) {
+        this.context = context;
+        this.postList = postList;
+        this.postDetailLauncher = postDetailLauncher;
     }
 
     @Override
@@ -65,9 +77,9 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Post post = postList.get(position);
         if (holder instanceof RecipeViewHolder) {
-            ((RecipeViewHolder) holder).bind(post, context);
+            ((RecipeViewHolder) holder).bind(post, context, postDetailLauncher);
         } else if (holder instanceof RegularViewHolder) {
-            ((RegularViewHolder) holder).bind(post, context);
+            ((RegularViewHolder) holder).bind(post, context, postDetailLauncher);
         }
     }
 
@@ -76,7 +88,36 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return postList != null ? postList.size() : 0;
     }
 
-    // Hàm tính khoảng thời gian đăng bài (Time Ago)
+    // Cập nhật riêng số lượng comment
+    public void updateCommentCount(int postId, int newCommentCount) {
+        if (postList != null) {
+            for (int i = 0; i < postList.size(); i++) {
+                Post post = postList.get(i);
+                if (post.getPostId() == postId) {
+                    post.setCommentCount(newCommentCount);
+                    notifyItemChanged(i);
+                    break;
+                }
+            }
+        }
+    }
+
+    //  3. BỔ SUNG: Cập nhật tổng thể cả Like và Comment từ PostDetailActivity trả về
+    public void updatePostStats(int postId, int newCommentCount, int newLikeCount, boolean isLiked) {
+        if (postList != null) {
+            for (int i = 0; i < postList.size(); i++) {
+                Post p = postList.get(i);
+                if (p.getPostId() == postId) {
+                    if (newCommentCount != -1) p.setCommentCount(newCommentCount);
+                    if (newLikeCount != -1) p.setLikeCount(newLikeCount);
+                    p.setLiked(isLiked);
+                    notifyItemChanged(i); // Refresh riêng dòng này
+                    break;
+                }
+            }
+        }
+    }
+
     public static String getTimeAgo(String createdAtStr) {
         if (createdAtStr == null || createdAtStr.isEmpty()) return "";
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
@@ -85,7 +126,7 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             if (postDate == null) return createdAtStr;
             long timeInMillis = postDate.getTime();
             long now = System.currentTimeMillis();
-            long diff = (now - timeInMillis) / 1000; // Đơn vị giây
+            long diff = (now - timeInMillis) / 1000;
 
             if (diff < 60) return "Vừa xong";
             if (diff < 3600) return (diff / 60) + " phút trước";
@@ -103,7 +144,6 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         ImageView imgAvatar, imgPrivacy, imgLike, imgSave;
         LinearLayout btnLike, btnComment, btnShare, btnSave;
 
-        // Khai báo các biến View cho Media Grid và Bài Share
         FrameLayout containerMedia;
         LinearLayout layoutOriginalPost;
         ImageView imgOrigAvatar, imgOrigPostMedia;
@@ -115,6 +155,7 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         TextView tvMoreMediaCount;
         LinearLayout layoutAttachmentFile;
         TextView tvAttachmentUrl;
+
         public RegularViewHolder(@NonNull View itemView) {
             super(itemView);
             imgAvatar = itemView.findViewById(R.id.imgAvatar);
@@ -125,7 +166,6 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             tvTimeAgo = itemView.findViewById(R.id.tvTimeAgo);
             imgPrivacy = itemView.findViewById(R.id.imgPrivacy);
 
-            // Ánh xạ Khung Media & Bài Share
             containerMedia = itemView.findViewById(R.id.containerMedia);
             layoutOriginalPost = itemView.findViewById(R.id.layoutOriginalPost);
             imgOrigAvatar = itemView.findViewById(R.id.imgOrigAvatar);
@@ -135,7 +175,6 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             imgOrigPostMedia = itemView.findViewById(R.id.imgOrigPostMedia);
             imgOrigPrivacy = itemView.findViewById(R.id.imgOrigPrivacy);
 
-            // Ánh xạ Grid Media 4 Ảnh & Lớp phủ +N
             gridMedia = itemView.findViewById(R.id.gridMedia);
             imgMedia1 = itemView.findViewById(R.id.imgMedia1);
             imgMedia2 = itemView.findViewById(R.id.imgMedia2);
@@ -144,7 +183,6 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             layoutMediaOverlay = itemView.findViewById(R.id.layoutMediaOverlay);
             tvMoreMediaCount = itemView.findViewById(R.id.tvMoreMediaCount);
 
-            // Ánh xạ 4 Nút Tương tác
             btnLike = itemView.findViewById(R.id.btnLike);
             imgLike = itemView.findViewById(R.id.imgLike);
 
@@ -160,12 +198,11 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             tvAttachmentUrl = itemView.findViewById(R.id.tvAttachmentUrl);
         }
 
-        private void setupMediaAndShare(Post post, Context context) {
+        private void setupMediaAndShare(Post post, Context context, ActivityResultLauncher<Intent> launcher) {
             boolean hasCaption = post.getCaption() != null && !post.getCaption().trim().isEmpty();
             boolean isShared = "SHARED".equals(post.getPostType()) && post.getOriginalPost() != null;
             boolean hasMedia = post.getMediaList() != null && !post.getMediaList().isEmpty();
 
-            // 1. Kiểm tra Ràng buộc Caption
             if (hasCaption) {
                 if (tvCaption != null) {
                     tvCaption.setVisibility(View.VISIBLE);
@@ -175,12 +212,10 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 if (tvCaption != null) tvCaption.setVisibility(View.GONE);
             }
 
-            // 2. Khung Container Media
             if (containerMedia != null) {
                 containerMedia.setVisibility((isShared || hasMedia) ? View.VISIBLE : View.GONE);
             }
 
-            // 3. Nếu là Bài SHARED
             if (isShared) {
                 if (layoutOriginalPost != null) layoutOriginalPost.setVisibility(View.VISIBLE);
                 if (gridMedia != null) gridMedia.setVisibility(View.GONE);
@@ -218,26 +253,23 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         imgOrigPostMedia.setVisibility(View.VISIBLE);
                         Post.Media origMedia = orig.getMediaList().get(0);
                         Glide.with(context).load(origMedia.getUrl()).into(imgOrigPostMedia);
-                        imgOrigPostMedia.setOnClickListener(v -> handleMediaClick(context, origMedia, orig));
+                        imgOrigPostMedia.setOnClickListener(v -> handleMediaClick(context, origMedia, orig, launcher));
                     } else if (imgOrigPostMedia != null) {
                         imgOrigPostMedia.setVisibility(View.GONE);
                     }
                 }
-            }
-            // 4. Bài thường có Media -> Đưa vào Grid
-            else if (hasMedia) {
+            } else if (hasMedia) {
                 if (layoutOriginalPost != null) layoutOriginalPost.setVisibility(View.GONE);
                 List<Post.Media> mediaList = post.getMediaList();
                 Post.Media firstMedia = mediaList.get(0);
                 String mediaType = firstMedia.getMediaType() != null ? firstMedia.getMediaType().toUpperCase() : "IMAGE";
 
-                //Nếu là File tài liệu/Excel/Link -> Hiện thẻ Attachment
                 if (!mediaType.contains("IMAGE") && !mediaType.contains("VIDEO")) {
                     if (gridMedia != null) gridMedia.setVisibility(View.GONE);
                     if (layoutAttachmentFile != null && tvAttachmentUrl != null) {
                         layoutAttachmentFile.setVisibility(View.VISIBLE);
                         tvAttachmentUrl.setText(firstMedia.getUrl());
-                        layoutAttachmentFile.setOnClickListener(v -> handleMediaClick(context, firstMedia, post));
+                        layoutAttachmentFile.setOnClickListener(v -> handleMediaClick(context, firstMedia, post, launcher));
                     }
                     return;
                 }
@@ -248,19 +280,19 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 int total = mediaList.size();
 
                 if (total == 1) {
-                    bindMediaItem(context, mediaList.get(0), imgMedia1, post);
+                    bindMediaItem(context, mediaList.get(0), imgMedia1, post, launcher);
                 } else if (total == 2) {
-                    bindMediaItem(context, mediaList.get(0), imgMedia1, post);
-                    bindMediaItem(context, mediaList.get(1), imgMedia2, post);
+                    bindMediaItem(context, mediaList.get(0), imgMedia1, post, launcher);
+                    bindMediaItem(context, mediaList.get(1), imgMedia2, post, launcher);
                 } else if (total == 3) {
-                    bindMediaItem(context, mediaList.get(0), imgMedia1, post);
-                    bindMediaItem(context, mediaList.get(1), imgMedia2, post);
-                    bindMediaItem(context, mediaList.get(2), imgMedia3, post);
+                    bindMediaItem(context, mediaList.get(0), imgMedia1, post, launcher);
+                    bindMediaItem(context, mediaList.get(1), imgMedia2, post, launcher);
+                    bindMediaItem(context, mediaList.get(2), imgMedia3, post, launcher);
                 } else if (total >= 4) {
-                    bindMediaItem(context, mediaList.get(0), imgMedia1, post);
-                    bindMediaItem(context, mediaList.get(1), imgMedia2, post);
-                    bindMediaItem(context, mediaList.get(2), imgMedia3, post);
-                    bindMediaItem(context, mediaList.get(3), imgMedia4, post);
+                    bindMediaItem(context, mediaList.get(0), imgMedia1, post, launcher);
+                    bindMediaItem(context, mediaList.get(1), imgMedia2, post, launcher);
+                    bindMediaItem(context, mediaList.get(2), imgMedia3, post, launcher);
+                    bindMediaItem(context, mediaList.get(3), imgMedia4, post, launcher);
 
                     if (layoutMediaOverlay != null) layoutMediaOverlay.setVisibility(View.VISIBLE);
                     if (total > 4 && tvMoreMediaCount != null) {
@@ -268,7 +300,7 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         tvMoreMediaCount.setText("+" + (total - 3));
                     }
                     if (layoutMediaOverlay != null) {
-                        layoutMediaOverlay.setOnClickListener(v -> handleMediaClick(context, mediaList.get(3), post));
+                        layoutMediaOverlay.setOnClickListener(v -> handleMediaClick(context, mediaList.get(3), post, launcher));
                     }
                 }
             } else {
@@ -277,8 +309,7 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             }
         }
 
-        // 🟢 HÀM 1: Nạp Media Item & Hiển thị Thumbnail
-        private void bindMediaItem(Context context, Post.Media media, ImageView imageView, Post post) {
+        private void bindMediaItem(Context context, Post.Media media, ImageView imageView, Post post, ActivityResultLauncher<Intent> launcher) {
             if (imageView == null) return;
             imageView.setVisibility(View.VISIBLE);
 
@@ -286,14 +317,12 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     .load(media.getUrl())
                     .placeholder(R.drawable.public_globe)
                     .into(imageView);
-            // Bật icon Play nếu media là Video
+
             String type = media.getMediaType() != null ? media.getMediaType().toUpperCase() : "";
             if (type.contains("VIDEO") || media.getUrl().toLowerCase().endsWith(".mp4")) {
-                //Thu nhỏ icon Play về 48dp x 48dp chính giữa ảnh
                 android.graphics.drawable.Drawable playIcon = androidx.core.content.ContextCompat.getDrawable(context, android.R.drawable.ic_media_play);
                 if (playIcon != null) {
                     android.graphics.drawable.LayerDrawable layerDrawable = new android.graphics.drawable.LayerDrawable(new android.graphics.drawable.Drawable[]{playIcon});
-                    //kích thước 48dp x 48dp cho icon Play
                     int sizeInPx = (int) (48 * context.getResources().getDisplayMetrics().density);
                     layerDrawable.setLayerSize(0, sizeInPx, sizeInPx);
                     layerDrawable.setLayerGravity(0, android.view.Gravity.CENTER);
@@ -303,17 +332,16 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 imageView.setForeground(null);
             }
 
-            imageView.setOnClickListener(v -> handleMediaClick(context, media, post));
+            imageView.setOnClickListener(v -> handleMediaClick(context, media, post, launcher));
         }
 
-        // Mở Media / Video an toàn (Tránh văng App)
-        private void handleMediaClick(Context context, Post.Media media, Post post) {
+        //4. BỔ SUNG: Mở PostDetailActivity bằng Launcher để hứng kết quả khi quay lại
+        private void handleMediaClick(Context context, Post.Media media, Post post, ActivityResultLauncher<Intent> launcher) {
             if (context == null || media == null || media.getUrl() == null) return;
 
             String url = media.getUrl();
             String type = media.getMediaType() != null ? media.getMediaType().toUpperCase() : "";
 
-            // Nếu là Video hoặc File URL
             if (type.contains("VIDEO") || url.toLowerCase().endsWith(".mp4") || url.contains("xlsx")) {
                 try {
                     Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -324,11 +352,14 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     context.startActivity(browserIntent);
                 }
             } else {
-                // Nếu là Ảnh -> Mở PostDetailActivity
                 try {
                     Intent intent = new Intent(context, PostDetailActivity.class);
                     intent.putExtra("POST_DATA", post);
-                    context.startActivity(intent);
+                    if (launcher != null) {
+                        launcher.launch(intent); //  Gọi mở qua Launcher để hứng kết quả
+                    } else {
+                        context.startActivity(intent);
+                    }
                 } catch (Exception e) {
                     Toast.makeText(context, "Không thể mở chi tiết bài viết", Toast.LENGTH_SHORT).show();
                 }
@@ -345,7 +376,7 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             if (tvMoreMediaCount != null) tvMoreMediaCount.setVisibility(View.GONE);
         }
 
-        public void bind(Post post, Context context) {
+        public void bind(Post post, Context context, ActivityResultLauncher<Intent> launcher) {
             if (post.getAuthor() != null) {
                 if (tvAuthor != null) tvAuthor.setText(post.getAuthor().getFullName());
                 if (imgAvatar != null && post.getAuthor().getAvatarUrl() != null) {
@@ -356,7 +387,7 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 }
             }
 
-            setupMediaAndShare(post, context);
+            setupMediaAndShare(post, context, launcher);
 
             if (tvLikes != null) tvLikes.setText(String.valueOf(post.getLikeCount()));
             if (tvShareCount != null) tvShareCount.setText(String.valueOf(post.getShareCount()));
@@ -434,8 +465,12 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             }
 
             if (btnComment != null) {
-                btnComment.setOnClickListener(v ->
-                        Toast.makeText(context, "Mở khung bình luận...", Toast.LENGTH_SHORT).show());
+                btnComment.setOnClickListener(v -> {
+                    if (context instanceof androidx.fragment.app.FragmentActivity) {
+                        CommentBottomSheetDialogFragment commentSheet = new CommentBottomSheetDialogFragment(post.getPostId());
+                        commentSheet.show(((androidx.fragment.app.FragmentActivity) context).getSupportFragmentManager(), "CommentSheet");
+                    }
+                });
             }
 
             if (btnShare != null) {
@@ -453,6 +488,7 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             }
         }
     }
+
     // ================= 2. ViewHolder Bài đăng Công thức =================
     static class RecipeViewHolder extends RecyclerView.ViewHolder {
         TextView tvAuthor, tvRecipeTitle, tvRecipeDescription, btnToggleRecipe, tvTimeAgo, tvShareCount, tvLikes, tvCommentCount, btnToggleCaption;
@@ -485,7 +521,7 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             imgSave = itemView.findViewById(R.id.imgSave);
         }
 
-        public void bind(Post post, Context context) {
+        public void bind(Post post, Context context, ActivityResultLauncher<Intent> launcher) {
             if (post.getAuthor() != null) {
                 if (tvAuthor != null) tvAuthor.setText(post.getAuthor().getFullName());
                 if (imgAvatar != null && post.getAuthor().getAvatarUrl() != null) {
@@ -520,7 +556,6 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 }
             }
 
-            // Logic Ẩn/Hiện Chi tiết Công thức
             if (btnToggleRecipe != null && layoutRecipeDetails != null) {
                 btnToggleRecipe.setOnClickListener(v -> {
                     if (layoutRecipeDetails.getVisibility() == View.GONE) {
@@ -533,7 +568,6 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 });
             }
 
-            // Logic Thả tim
             if (imgLike != null) {
                 imgLike.setImageResource(post.isLiked() ? R.drawable.heart_red : R.drawable.heart);
                 View.OnClickListener likeClickListener = v -> {
@@ -568,10 +602,13 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 if (btnLike != null) btnLike.setOnClickListener(likeClickListener);
             }
 
-            // Logic Nút Comment, Share & Save
             if (btnComment != null) {
-                btnComment.setOnClickListener(v ->
-                        Toast.makeText(context, "Mở khung bình luận...", Toast.LENGTH_SHORT).show());
+                btnComment.setOnClickListener(v -> {
+                    if (context instanceof androidx.fragment.app.FragmentActivity) {
+                        CommentBottomSheetDialogFragment commentSheet = new CommentBottomSheetDialogFragment(post.getPostId());
+                        commentSheet.show(((androidx.fragment.app.FragmentActivity) context).getSupportFragmentManager(), "CommentSheet");
+                    }
+                });
             }
 
             if (btnShare != null) {
