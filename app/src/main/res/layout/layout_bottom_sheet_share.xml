@@ -47,43 +47,36 @@
                 android:textStyle="bold" />
 
             <LinearLayout
+                android:id="@+id/btnSelectPrivacy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:orientation="horizontal">
+                android:background="@drawable/bg_recipe_badge"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="2dp">
 
-                <!-- Nút bấm chọn Quyền xem -> Chuyển sang Frame32PrivacyActivity -->
-                <LinearLayout
-                    android:id="@+id/btnSelectPrivacy"
+                <ImageView
+                    android:id="@+id/imgPrivacyIcon"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@drawable/ic_lock" />
+
+                <TextView
+                    android:id="@+id/tvPrivacyText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_recipe_badge"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center_vertical"
-                    android:paddingHorizontal="8dp"
-                    android:paddingVertical="2dp">
-
-                    <ImageView
-                        android:id="@+id/imgPrivacyIcon"
-                        android:layout_width="12dp"
-                        android:layout_height="12dp"
-                        android:src="@drawable/ic_lock" />
-
-                    <TextView
-                        android:id="@+id/tvPrivacyText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:text="Chỉ mình tôi"
-                        android:textColor="@color/panda_green"
-                        android:textSize="12sp" />
-                </LinearLayout>
+                    android:layout_marginStart="4dp"
+                    android:text="Chỉ mình tôi"
+                    android:textColor="@color/panda_green"
+                    android:textSize="12sp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
-    <!-- Ô nhập Caption -->
+    <!-- Ô nhập Caption chia sẻ Feed -->
     <EditText
         android:id="@+id/etShareCaption"
         android:layout_width="match_parent"
@@ -96,7 +89,7 @@
         android:textColorHint="#A0AEC0"
         android:textSize="14sp" />
 
-    <!-- Nút Chia sẻ ngay -->
+    <!-- Nút Chia sẻ ngay lên Feed -->
     <Button
         android:id="@+id/btnShareNow"
         android:layout_width="match_parent"
@@ -122,33 +115,16 @@
         android:textSize="13sp"
         android:textStyle="bold" />
 
-    <!-- Danh sách Avatar Bạn bè (Demo chọn người nhận) -->
-    <LinearLayout
+    <!-- RECYCLERVIEW HIỂN THỊ DANH SÁCH AVATAR BẠN BÈ HÌNH TRÒN CUỘN NGANG -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFriendsList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/btnFriend1"
-            android:layout_width="46dp"
-            android:layout_height="46dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/bxs_user"
-            app:shapeAppearanceOverlay="@style/CircularImageView" />
-
-        <TextView
-            android:id="@+id/tvSelectedFriendName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="Chọn bạn bè để gửi..."
-            android:textColor="#718096"
-            android:textSize="14sp" />
-    </LinearLayout>
-
-    <!-- Ô soạn tin nhắn riêng & Nút Gửi (Mặc định ẩn) -->
+    <!-- Ô SOẠN TIN NHẮN RIÊNG & NÚT GỬI (Hiện ra khi click vào 1 người bạn) -->
     <LinearLayout
         android:id="@+id/layoutPrivateMessage"
         android:layout_width="match_parent"

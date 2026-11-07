@@ -146,15 +146,57 @@ public class Post implements Serializable {
         @SerializedName("title")
         private String title;
 
+        @SerializedName("cover_image_url")
+        private String coverImageUrl;
+
+        @SerializedName("servings")
+        private int servings;
+
+        @SerializedName("servings_to")
+        private int servingsTo;
+
+        @SerializedName("cooking_time")
+        private int cookingTime;
+
+        @SerializedName("cooking_time_unit")
+        private String cookingTimeUnit;
+
+        @SerializedName("difficulty")
+        private String difficulty;
+
         @SerializedName("ingredients")
         private List<Ingredient> ingredients;
 
         @SerializedName("steps")
         private List<Step> steps;
 
+        // Getters & Setters
         public String getTitle() { return title; }
+        public void setTitle(String title) { this.title = title; }
+
+        public String getCoverImageUrl() { return coverImageUrl; }
+        public void setCoverImageUrl(String coverImageUrl) { this.coverImageUrl = coverImageUrl; }
+
+        public int getServings() { return servings; }
+        public void setServings(int servings) { this.servings = servings; }
+
+        public int getServingsTo() { return servingsTo; }
+        public void setServingsTo(int servingsTo) { this.servingsTo = servingsTo; }
+
+        public int getCookingTime() { return cookingTime; }
+        public void setCookingTime(int cookingTime) { this.cookingTime = cookingTime; }
+
+        public String getCookingTimeUnit() { return cookingTimeUnit; }
+        public void setCookingTimeUnit(String cookingTimeUnit) { this.cookingTimeUnit = cookingTimeUnit; }
+
+        public String getDifficulty() { return difficulty; }
+        public void setDifficulty(String difficulty) { this.difficulty = difficulty; }
+
         public List<Ingredient> getIngredients() { return ingredients; }
+        public void setIngredients(List<Ingredient> ingredients) { this.ingredients = ingredients; }
+
         public List<Step> getSteps() { return steps; }
+        public void setSteps(List<Step> steps) { this.steps = steps; }
     }
 
     // ================= Inner Class Ingredient =================
@@ -163,21 +205,45 @@ public class Post implements Serializable {
         private String name;
 
         @SerializedName("amount")
-        private String amount;
+        private double amount;
+
+        @SerializedName("unit")
+        private String unit;
 
         public String getName() { return name; }
-        public String getAmount() { return amount; }
+        public void setName(String name) { this.name = name; }
+
+        public double getAmount() { return amount; }
+        public void setAmount(double amount) { this.amount = amount; }
+
+        public String getUnit() { return unit; }
+        public void setUnit(String unit) { this.unit = unit; }
     }
 
     // ================= Inner Class Step =================
     public static class Step implements Serializable {
-        @SerializedName("step")
-        private int step;
+        @SerializedName("step_number")
+        private int stepNumber;
 
         @SerializedName("instruction")
         private String instruction;
 
-        public int getStep() { return step; }
+        @SerializedName("media_url")
+        private String mediaUrl;
+
+        @SerializedName("media_type")
+        private String mediaType;
+
+        public int getStepNumber() { return stepNumber; }
+        public void setStepNumber(int stepNumber) { this.stepNumber = stepNumber; }
+
         public String getInstruction() { return instruction; }
+        public void setInstruction(String instruction) { this.instruction = instruction; }
+
+        public String getMediaUrl() { return mediaUrl; }
+        public void setMediaUrl(String mediaUrl) { this.mediaUrl = mediaUrl; }
+
+        public String getMediaType() { return mediaType; }
+        public void setMediaType(String mediaType) { this.mediaType = mediaType; }
     }
 }

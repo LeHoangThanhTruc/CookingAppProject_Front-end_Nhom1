@@ -13,7 +13,7 @@ import retrofit2.http.Query;
 
 import retrofit2.http.DELETE;
 import retrofit2.http.PUT;
-
+import java.util.List;
 public interface ApiService {
 
     // API tin tức & bài viết
@@ -83,6 +83,43 @@ public interface ApiService {
             @Path("post_id") int postId,
             @Query("current_user_id") int currentUserId
     );
+    // 1. Lấy danh sách bạn bè
+    @GET("api/posts/users/{user_id}/friends")
+    Call<FriendResponse> getUserFriends(@Path("user_id") int userId);
+    // Trong ApiService.java
+    @GET("api/posts/users/{user_id}")
+    Call<Post.Author> getUserProfile(@Path("user_id") int userId);
+    // 2. Request body cho Share Feed
+    class ShareToFeedRequest {
+        int user_id;
+        String caption;
+        String privacy;
+
+        public ShareToFeedRequest(int user_id, String caption, String privacy) {
+            this.user_id = user_id;
+            this.caption = caption;
+            this.privacy = privacy;
+        }
+    }
+
+    @POST("api/posts/{post_id}/share-to-feed")
+    Call<Void> sharePostToFeed(@Path("post_id") int postId, @Body ShareToFeedRequest body);
+
+    // 3. Request body cho Share Message
+    class ShareToMessageRequest {
+        int sender_id;
+        List<Integer> receiver_ids;
+        String message_text;
+
+        public ShareToMessageRequest(int sender_id, List<Integer> receiver_ids, String message_text) {
+            this.sender_id = sender_id;
+            this.receiver_ids = receiver_ids;
+            this.message_text = message_text;
+        }
+    }
+
+    @POST("api/posts/{post_id}/share-to-message")
+    Call<Void> sharePostToMessage(@Path("post_id") int postId, @Body ShareToMessageRequest body);
     // Class Request & Response cho Auth
     static class RegisterRequest {
         String full_name;

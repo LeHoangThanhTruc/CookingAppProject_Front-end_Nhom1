@@ -2,6 +2,7 @@ package com.example.cookingapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +28,6 @@ import java.util.Locale;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import android.net.Uri;
 
 public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -36,16 +36,13 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private final Context context;
     private final List<Post> postList;
-    //  1. Khai báo biến launcher để nhận từ Activity truyền vào
     private ActivityResultLauncher<Intent> postDetailLauncher;
 
-    // Constructor gốc (Giữ nguyên để tương thích code cũ)
     public PostAdapter(Context context, List<Post> postList) {
         this.context = context;
         this.postList = postList;
     }
 
-    // 2. BỔ SUNG Constructor mới có nhận ActivityResultLauncher
     public PostAdapter(Context context, List<Post> postList, ActivityResultLauncher<Intent> postDetailLauncher) {
         this.context = context;
         this.postList = postList;
@@ -88,7 +85,6 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return postList != null ? postList.size() : 0;
     }
 
-    // Cập nhật riêng số lượng comment
     public void updateCommentCount(int postId, int newCommentCount) {
         if (postList != null) {
             for (int i = 0; i < postList.size(); i++) {
@@ -102,7 +98,6 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
     }
 
-    //  3. BỔ SUNG: Cập nhật tổng thể cả Like và Comment từ PostDetailActivity trả về
     public void updatePostStats(int postId, int newCommentCount, int newLikeCount, boolean isLiked) {
         if (postList != null) {
             for (int i = 0; i < postList.size(); i++) {
@@ -111,7 +106,7 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     if (newCommentCount != -1) p.setCommentCount(newCommentCount);
                     if (newLikeCount != -1) p.setLikeCount(newLikeCount);
                     p.setLiked(isLiked);
-                    notifyItemChanged(i); // Refresh riêng dòng này
+                    notifyItemChanged(i);
                     break;
                 }
             }
@@ -138,17 +133,13 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
     }
 
-    // ================= 1. ViewHolder Bài đăng thường =================
+    // ================= 1. ViewHolder Bài đăng thường (Regular) =================
     static class RegularViewHolder extends RecyclerView.ViewHolder {
         TextView tvAuthor, tvCaption, tvLikes, tvTimeAgo, tvShareCount, tvCommentCount, btnToggleCaption;
         ImageView imgAvatar, imgPrivacy, imgLike, imgSave;
         LinearLayout btnLike, btnComment, btnShare, btnSave;
 
         FrameLayout containerMedia;
-        LinearLayout layoutOriginalPost;
-        ImageView imgOrigAvatar, imgOrigPostMedia;
-        TextView tvOrigAuthorName, tvOrigCaption, tvOrigTimeAgo;
-        ImageView imgOrigPrivacy;
         GridLayout gridMedia;
         ImageView imgMedia1, imgMedia2, imgMedia3, imgMedia4;
         RelativeLayout layoutMediaOverlay;
@@ -167,13 +158,6 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             imgPrivacy = itemView.findViewById(R.id.imgPrivacy);
 
             containerMedia = itemView.findViewById(R.id.containerMedia);
-            layoutOriginalPost = itemView.findViewById(R.id.layoutOriginalPost);
-            imgOrigAvatar = itemView.findViewById(R.id.imgOrigAvatar);
-            tvOrigAuthorName = itemView.findViewById(R.id.tvOrigAuthorName);
-            tvOrigTimeAgo = itemView.findViewById(R.id.tvOrigTimeAgo);
-            tvOrigCaption = itemView.findViewById(R.id.tvOrigCaption);
-            imgOrigPostMedia = itemView.findViewById(R.id.imgOrigPostMedia);
-            imgOrigPrivacy = itemView.findViewById(R.id.imgOrigPrivacy);
 
             gridMedia = itemView.findViewById(R.id.gridMedia);
             imgMedia1 = itemView.findViewById(R.id.imgMedia1);
@@ -194,13 +178,13 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
             btnSave = itemView.findViewById(R.id.btnSave);
             imgSave = itemView.findViewById(R.id.imgSave);
+
             layoutAttachmentFile = itemView.findViewById(R.id.layoutAttachmentFile);
             tvAttachmentUrl = itemView.findViewById(R.id.tvAttachmentUrl);
         }
 
-        private void setupMediaAndShare(Post post, Context context, ActivityResultLauncher<Intent> launcher) {
+        private void setupMedia(Post post, Context context, ActivityResultLauncher<Intent> launcher) {
             boolean hasCaption = post.getCaption() != null && !post.getCaption().trim().isEmpty();
-            boolean isShared = "SHARED".equals(post.getPostType()) && post.getOriginalPost() != null;
             boolean hasMedia = post.getMediaList() != null && !post.getMediaList().isEmpty();
 
             if (hasCaption) {
@@ -213,53 +197,10 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             }
 
             if (containerMedia != null) {
-                containerMedia.setVisibility((isShared || hasMedia) ? View.VISIBLE : View.GONE);
+                containerMedia.setVisibility(hasMedia ? View.VISIBLE : View.GONE);
             }
 
-            if (isShared) {
-                if (layoutOriginalPost != null) layoutOriginalPost.setVisibility(View.VISIBLE);
-                if (gridMedia != null) gridMedia.setVisibility(View.GONE);
-
-                Post orig = post.getOriginalPost();
-                if (orig != null) {
-                    if (orig.getAuthor() != null && tvOrigAuthorName != null) {
-                        tvOrigAuthorName.setText(orig.getAuthor().getFullName());
-                        if (orig.getAuthor().getAvatarUrl() != null && imgOrigAvatar != null) {
-                            Glide.with(context).load(orig.getAuthor().getAvatarUrl()).into(imgOrigAvatar);
-                        }
-                    }
-
-                    if (tvOrigCaption != null) tvOrigCaption.setText(orig.getCaption());
-
-                    if (tvOrigTimeAgo != null && orig.getCreatedAt() != null) {
-                        tvOrigTimeAgo.setText(getTimeAgo(orig.getCreatedAt()));
-                    }
-
-                    if (imgOrigPrivacy != null && orig.getPrivacy() != null) {
-                        switch (orig.getPrivacy()) {
-                            case "PUBLIC":
-                                imgOrigPrivacy.setImageResource(R.drawable.public_globe);
-                                break;
-                            case "FRIENDS":
-                                imgOrigPrivacy.setImageResource(R.drawable.friends);
-                                break;
-                            case "ONLY_ME":
-                                imgOrigPrivacy.setImageResource(R.drawable.ic_lock);
-                                break;
-                        }
-                    }
-
-                    if (orig.getMediaList() != null && !orig.getMediaList().isEmpty() && imgOrigPostMedia != null) {
-                        imgOrigPostMedia.setVisibility(View.VISIBLE);
-                        Post.Media origMedia = orig.getMediaList().get(0);
-                        Glide.with(context).load(origMedia.getUrl()).into(imgOrigPostMedia);
-                        imgOrigPostMedia.setOnClickListener(v -> handleMediaClick(context, origMedia, orig, launcher));
-                    } else if (imgOrigPostMedia != null) {
-                        imgOrigPostMedia.setVisibility(View.GONE);
-                    }
-                }
-            } else if (hasMedia) {
-                if (layoutOriginalPost != null) layoutOriginalPost.setVisibility(View.GONE);
+            if (hasMedia) {
                 List<Post.Media> mediaList = post.getMediaList();
                 Post.Media firstMedia = mediaList.get(0);
                 String mediaType = firstMedia.getMediaType() != null ? firstMedia.getMediaType().toUpperCase() : "IMAGE";
@@ -304,7 +245,6 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     }
                 }
             } else {
-                if (layoutOriginalPost != null) layoutOriginalPost.setVisibility(View.GONE);
                 if (gridMedia != null) gridMedia.setVisibility(View.GONE);
             }
         }
@@ -335,7 +275,6 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             imageView.setOnClickListener(v -> handleMediaClick(context, media, post, launcher));
         }
 
-        //4. BỔ SUNG: Mở PostDetailActivity bằng Launcher để hứng kết quả khi quay lại
         private void handleMediaClick(Context context, Post.Media media, Post post, ActivityResultLauncher<Intent> launcher) {
             if (context == null || media == null || media.getUrl() == null) return;
 
@@ -356,7 +295,7 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     Intent intent = new Intent(context, PostDetailActivity.class);
                     intent.putExtra("POST_DATA", post);
                     if (launcher != null) {
-                        launcher.launch(intent); //  Gọi mở qua Launcher để hứng kết quả
+                        launcher.launch(intent);
                     } else {
                         context.startActivity(intent);
                     }
@@ -387,7 +326,7 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 }
             }
 
-            setupMediaAndShare(post, context, launcher);
+            setupMedia(post, context, launcher);
 
             if (tvLikes != null) tvLikes.setText(String.valueOf(post.getLikeCount()));
             if (tvShareCount != null) tvShareCount.setText(String.valueOf(post.getShareCount()));
@@ -489,11 +428,12 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
     }
 
-    // ================= 2. ViewHolder Bài đăng Công thức =================
+    // ================= 2. ViewHolder Bài đăng Công thức (Recipe) =================
     static class RecipeViewHolder extends RecyclerView.ViewHolder {
-        TextView tvAuthor, tvRecipeTitle, tvRecipeDescription, btnToggleRecipe, tvTimeAgo, tvShareCount, tvLikes, tvCommentCount, btnToggleCaption;
-        ImageView imgAvatar, imgPrivacy, imgLike, imgSave;
-        LinearLayout layoutRecipeDetails, btnLike, btnComment, btnShare, btnSave;
+        TextView tvAuthor, tvRecipeTitle, tvRecipeDescription, tvTimeAgo, tvShareCount, tvLikes, tvCommentCount, btnToggleCaption;
+        TextView tvCookingTime, tvServings, tvDifficulty, tvIngredientsList, tvToggleRecipeText;
+        ImageView imgAvatar, imgPrivacy, imgLike, imgSave, imgComment, imgToggleRecipeIcon;
+        LinearLayout layoutRecipeDetails, layoutStepsContainer, btnToggleRecipe, btnLike, btnComment, btnShare, btnSave;
 
         public RecipeViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -502,16 +442,27 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             tvRecipeTitle = itemView.findViewById(R.id.tvRecipeTitle);
             tvRecipeDescription = itemView.findViewById(R.id.tvRecipeDescription);
             btnToggleCaption = itemView.findViewById(R.id.btnToggleCaption);
+
             btnToggleRecipe = itemView.findViewById(R.id.btnToggleRecipe);
+            tvToggleRecipeText = itemView.findViewById(R.id.tvToggleRecipeText);
+            imgToggleRecipeIcon = itemView.findViewById(R.id.imgToggleRecipeIcon);
             layoutRecipeDetails = itemView.findViewById(R.id.layoutRecipeDetails);
+
             tvTimeAgo = itemView.findViewById(R.id.tvTimeAgo);
             imgPrivacy = itemView.findViewById(R.id.imgPrivacy);
+
+            tvCookingTime = itemView.findViewById(R.id.tvCookingTime);
+            tvServings = itemView.findViewById(R.id.tvServings);
+            tvDifficulty = itemView.findViewById(R.id.tvDifficulty);
+            tvIngredientsList = itemView.findViewById(R.id.tvIngredientsList);
+            layoutStepsContainer = itemView.findViewById(R.id.layoutStepsContainer);
 
             btnLike = itemView.findViewById(R.id.btnLike);
             imgLike = itemView.findViewById(R.id.imgLike);
             tvLikes = itemView.findViewById(R.id.tvLikeCount);
 
             btnComment = itemView.findViewById(R.id.btnComment);
+            imgComment = itemView.findViewById(R.id.imgComment);
             tvCommentCount = itemView.findViewById(R.id.tvCommentCount);
 
             btnShare = itemView.findViewById(R.id.btnShare);
@@ -532,15 +483,109 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 }
             }
 
-            if (post.getRecipeDetails() != null && tvRecipeTitle != null) {
-                tvRecipeTitle.setText(post.getRecipeDetails().getTitle());
-            }
             if (tvRecipeDescription != null) tvRecipeDescription.setText(post.getCaption());
-
             if (tvLikes != null) tvLikes.setText(String.valueOf(post.getLikeCount()));
             if (tvShareCount != null) tvShareCount.setText(String.valueOf(post.getShareCount()));
             if (tvCommentCount != null) tvCommentCount.setText(String.valueOf(post.getCommentCount()));
             if (tvTimeAgo != null) tvTimeAgo.setText(getTimeAgo(post.getCreatedAt()));
+
+            Post.RecipeDetails rec = post.getRecipeDetails();
+            if (rec == null && post.getOriginalPost() != null) {
+                rec = post.getOriginalPost().getRecipeDetails();
+            }
+
+            if (rec != null) {
+                if (tvRecipeTitle != null) tvRecipeTitle.setText(rec.getTitle());
+
+                if (tvCookingTime != null) {
+                    String timeUnit = rec.getCookingTimeUnit() != null ? rec.getCookingTimeUnit() : "phút";
+                    tvCookingTime.setText("⏱ " + rec.getCookingTime() + " " + timeUnit);
+                }
+
+                if (tvServings != null) {
+                    String servStr = rec.getServingsTo() > 0 ? rec.getServings() + " - " + rec.getServingsTo() : String.valueOf(rec.getServings());
+                    tvServings.setText("👥 " + servStr + " người");
+                }
+
+                if (tvDifficulty != null) {
+                    String diff = rec.getDifficulty() != null ? rec.getDifficulty() : "Dễ";
+                    tvDifficulty.setText("🔥 " + diff);
+                }
+
+                if (tvIngredientsList != null && rec.getIngredients() != null) {
+                    StringBuilder sb = new StringBuilder();
+                    for (Post.Ingredient ing : rec.getIngredients()) {
+                        sb.append("• ").append(ing.getName()).append(": ").append(ing.getAmount()).append(" ").append(ing.getUnit()).append("\n");
+                    }
+                    tvIngredientsList.setText(sb.toString().trim());
+                }
+
+                if (layoutStepsContainer != null && rec.getSteps() != null) {
+                    layoutStepsContainer.removeAllViews();
+                    for (Post.Step step : rec.getSteps()) {
+                        TextView tvStep = new TextView(context);
+                        tvStep.setText("Bước " + step.getStepNumber() + ": " + step.getInstruction());
+                        tvStep.setTextColor(android.graphics.Color.parseColor("#2D3748"));
+                        tvStep.setTextSize(14);
+                        tvStep.setTypeface(null, android.graphics.Typeface.BOLD);
+                        tvStep.setPadding(0, 10, 0, 4);
+                        layoutStepsContainer.addView(tvStep);
+
+                        if (step.getMediaUrl() != null && !step.getMediaUrl().trim().isEmpty()) {
+                            ImageView imgStepMedia = new ImageView(context);
+                            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                                    ViewGroup.LayoutParams.MATCH_PARENT, 420);
+                            lp.setMargins(0, 4, 0, 12);
+                            imgStepMedia.setLayoutParams(lp);
+                            imgStepMedia.setScaleType(ImageView.ScaleType.CENTER_CROP);
+
+                            Glide.with(context)
+                                    .load(step.getMediaUrl())
+                                    .placeholder(R.drawable.public_globe)
+                                    .into(imgStepMedia);
+
+                            String mediaType = step.getMediaType() != null ? step.getMediaType().toUpperCase() : "";
+                            boolean isVideo = mediaType.contains("VIDEO") || step.getMediaUrl().toLowerCase().endsWith(".mp4");
+
+                            if (isVideo) {
+                                android.graphics.drawable.Drawable playIcon = androidx.core.content.ContextCompat.getDrawable(context, android.R.drawable.ic_media_play);
+                                if (playIcon != null) {
+                                    android.graphics.drawable.LayerDrawable layerDrawable = new android.graphics.drawable.LayerDrawable(new android.graphics.drawable.Drawable[]{playIcon});
+                                    int sizeInPx = (int) (48 * context.getResources().getDisplayMetrics().density);
+                                    layerDrawable.setLayerSize(0, sizeInPx, sizeInPx);
+                                    layerDrawable.setLayerGravity(0, android.view.Gravity.CENTER);
+                                    imgStepMedia.setForeground(layerDrawable);
+                                }
+                            } else {
+                                imgStepMedia.setForeground(null);
+                            }
+
+                            imgStepMedia.setOnClickListener(v -> {
+                                if (isVideo) {
+                                    try {
+                                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                                        intent.setDataAndType(Uri.parse(step.getMediaUrl()), "video/*");
+                                        context.startActivity(intent);
+                                    } catch (Exception e) {
+                                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(step.getMediaUrl()));
+                                        context.startActivity(browserIntent);
+                                    }
+                                } else {
+                                    Intent intent = new Intent(context, PostDetailActivity.class);
+                                    intent.putExtra("POST_DATA", post);
+                                    if (launcher != null) {
+                                        launcher.launch(intent);
+                                    } else {
+                                        context.startActivity(intent);
+                                    }
+                                }
+                            });
+
+                            layoutStepsContainer.addView(imgStepMedia);
+                        }
+                    }
+                }
+            }
 
             if (imgPrivacy != null && post.getPrivacy() != null) {
                 switch (post.getPrivacy()) {
@@ -560,10 +605,12 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 btnToggleRecipe.setOnClickListener(v -> {
                     if (layoutRecipeDetails.getVisibility() == View.GONE) {
                         layoutRecipeDetails.setVisibility(View.VISIBLE);
-                        btnToggleRecipe.setText("Thu gọn công thức 🔼");
+                        if (tvToggleRecipeText != null) tvToggleRecipeText.setText("Thu gọn công thức");
+                        if (imgToggleRecipeIcon != null) imgToggleRecipeIcon.setImageResource(R.drawable.ic_chevron_up);
                     } else {
                         layoutRecipeDetails.setVisibility(View.GONE);
-                        btnToggleRecipe.setText("Xem chi tiết công thức 🔽");
+                        if (tvToggleRecipeText != null) tvToggleRecipeText.setText("Xem chi tiết công thức");
+                        if (imgToggleRecipeIcon != null) imgToggleRecipeIcon.setImageResource(R.drawable.ic_chevron_down);
                     }
                 });
             }
@@ -622,7 +669,7 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
             if (btnSave != null) {
                 btnSave.setOnClickListener(v ->
-                        Toast.makeText(context, "Đã lưu bài viết!", Toast.LENGTH_SHORT).show());
+                        Toast.makeText(context, "Đã lưu công thức bài viết!", Toast.LENGTH_SHORT).show());
             }
         }
     }

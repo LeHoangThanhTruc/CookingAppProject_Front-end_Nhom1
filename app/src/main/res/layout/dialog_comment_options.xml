@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:paddingHorizontal="16dp"
     android:paddingTop="10dp"
@@ -36,6 +37,7 @@
         android:gravity="center_vertical"
         android:drawableStart="@drawable/pen_edit"
         android:drawablePadding="12dp"
+        app:drawableTint="#606770"
         android:text="Chỉnh sửa"
         android:textColor="#1C1E21"
         android:textSize="15sp" />
