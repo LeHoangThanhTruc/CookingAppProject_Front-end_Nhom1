@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +40,10 @@ public class Frame23EnterCurrentPassword extends Activity {
         etCurrentPassword = findViewById(R.id.etCurrentPassword);
         tvForgotPassword = findViewById(R.id.tvForgotPassword);
         btnNext = findViewById(R.id.btnNext);
+
+        // Nút con mắt để xem/ẩn mật khẩu hiện tại
+        ImageView ivTogglePassword = findViewById(R.id.ivTogglePassword);
+        PasswordToggleHelper.attach(etCurrentPassword, ivTogglePassword);
     }
 
     /**
@@ -70,13 +75,36 @@ public class Frame23EnterCurrentPassword extends Activity {
                 } else if (password.length() < 6) {
                     Toast.makeText(this, "Mật khẩu phải chứa ít nhất 6 ký tự!", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(this, "Xác nhận mật khẩu hiện tại thành công!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(Frame23EnterCurrentPassword.this, ResetPasswordActivity.class);
-                    // Gửi cờ nguồn sang ResetPasswordActivity
-                    intent.putExtra("SOURCE_SCREEN", "ENTER_CURRENT_PASSWORD");
-                    startActivity(intent);
+                    // BỔ SUNG: kiểm tra mật khẩu hiện tại với backend trước khi chuyển màn hình
+                    verifyCurrentPasswordThenContinue(password);
                 }
             });
         }
+    }
+
+    // BỔ SUNG: gọi API xác nhận mật khẩu hiện tại; đúng thì đi tiếp theo luồng cũ,
+    // đồng thời gửi kèm RESET_TOKEN để ResetPasswordActivity đặt mật khẩu mới.
+    private void verifyCurrentPasswordThenContinue(String password) {
+        btnNext.setEnabled(false);
+        PasswordResetHelper.verifyCurrentPassword(this, password,
+                new PasswordResetHelper.Listener<AuthModels.VerifyOtpResponse>() {
+                    @Override
+                    public void onSuccess(AuthModels.VerifyOtpResponse value) {
+                        btnNext.setEnabled(true);
+                        Toast.makeText(Frame23EnterCurrentPassword.this,
+                                "Xác nhận mật khẩu hiện tại thành công!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(Frame23EnterCurrentPassword.this, ResetPasswordActivity.class);
+                        // Gửi cờ nguồn sang ResetPasswordActivity
+                        intent.putExtra("SOURCE_SCREEN", "ENTER_CURRENT_PASSWORD");
+                        intent.putExtra("RESET_TOKEN", value.reset_token);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onError(String message) {
+                        btnNext.setEnabled(true);
+                        Toast.makeText(Frame23EnterCurrentPassword.this, message, Toast.LENGTH_LONG).show();
+                    }
+                });
     }
 }

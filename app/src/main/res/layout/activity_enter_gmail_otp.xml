@@ -85,56 +85,20 @@
             </LinearLayout>
 
             <!-- OTP DIGIT UNDERLINES / SLOTS -->
-            <LinearLayout
+            <!-- Ô NHẬP MÃ OTP (thêm mới) -->
+            <EditText
+                android:id="@+id/edtOtp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 android:gravity="center"
-                android:orientation="horizontal">
-
-                <!-- Slot 1 -->
-                <View
-                    android:id="@+id/viewOtp1"
-                    android:layout_width="36dp"
-                    android:layout_height="2dp"
-                    android:layout_marginHorizontal="6dp"
-                    android:background="@color/panda_green" />
-                <!-- Slot 2 -->
-                <View
-                    android:id="@+id/viewOtp2"
-                    android:layout_width="36dp"
-                    android:layout_height="2dp"
-                    android:layout_marginHorizontal="6dp"
-                    android:background="#CBD5E1" />
-                <!-- Slot 3 -->
-                <View
-                    android:id="@+id/viewOtp3"
-                    android:layout_width="36dp"
-                    android:layout_height="2dp"
-                    android:layout_marginHorizontal="6dp"
-                    android:background="#CBD5E1" />
-                <!-- Slot 4 -->
-                <View
-                    android:id="@+id/viewOtp4"
-                    android:layout_width="36dp"
-                    android:layout_height="2dp"
-                    android:layout_marginHorizontal="6dp"
-                    android:background="#CBD5E1" />
-                <!-- Slot 5 -->
-                <View
-                    android:id="@+id/viewOtp5"
-                    android:layout_width="36dp"
-                    android:layout_height="2dp"
-                    android:layout_marginHorizontal="6dp"
-                    android:background="#CBD5E1" />
-                <!-- Slot 6 -->
-                <View
-                    android:id="@+id/viewOtp6"
-                    android:layout_width="36dp"
-                    android:layout_height="2dp"
-                    android:layout_marginHorizontal="6dp"
-                    android:background="#CBD5E1" />
-            </LinearLayout>
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:letterSpacing="0.3"
+                android:maxLength="6"
+                android:textColor="@color/panda_green_dark"
+                android:textSize="22sp"
+                android:textStyle="bold" />
 
             <!-- NÚT TIẾP THEO -->
             <LinearLayout

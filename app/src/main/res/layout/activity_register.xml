@@ -162,12 +162,54 @@
                         android:textSize="@dimen/register_input_text_size" />
                 </RelativeLayout>
 
-                <!-- 2. Email -->
+                <!-- 1b. Tên tài khoản (thêm mới) -->
+                <TextView
+                    android:id="@+id/tvLabelUsername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/layoutInputFullname"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/register_label_username"
+                    android:textColor="#2D3748"
+                    android:textSize="@dimen/register_label_size"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:id="@+id/layoutInputUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/register_input_height"
+                    android:layout_below="@id/tvLabelUsername"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/bg_pill_white"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp">
+
+                    <ImageView
+                        android:id="@+id/iconUsername"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/user" />
+
+                    <EditText
+                        android:id="@+id/edtUsername"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_toEndOf="@id/iconUsername"
+                        android:background="@null"
+                        android:hint="@string/register_hint_username"
+                        android:inputType="text"
+                        android:maxLength="50"
+                        android:textSize="@dimen/register_input_text_size" />
+                </RelativeLayout>
+
+                <!-- 2. Email (nằm dưới ô Tên tài khoản) -->
                 <TextView
                     android:id="@+id/tvLabelEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/layoutInputFullname"
+                    android:layout_below="@id/layoutInputUsername"
                     android:layout_marginTop="10dp"
                     android:text="@string/register_label_email"
                     android:textColor="#2D3748"
@@ -203,12 +245,53 @@
                         android:textSize="@dimen/register_input_text_size" />
                 </RelativeLayout>
 
-                <!-- 3. Mật khẩu -->
+                <!-- 2b. Số điện thoại -->
+                <TextView
+                    android:id="@+id/tvLabelPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/layoutInputEmail"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/register_label_phone"
+                    android:textColor="#2D3748"
+                    android:textSize="@dimen/register_label_size"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:id="@+id/layoutInputPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/register_input_height"
+                    android:layout_below="@id/tvLabelPhone"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/bg_pill_white"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp">
+
+                    <ImageView
+                        android:id="@+id/iconPhone"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/phone" />
+
+                    <EditText
+                        android:id="@+id/edtPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_toEndOf="@id/iconPhone"
+                        android:background="@null"
+                        android:hint="@string/register_hint_phone"
+                        android:inputType="phone"
+                        android:textSize="@dimen/register_input_text_size" />
+                </RelativeLayout>
+
+                <!-- 3. Mật khẩu (nằm dưới ô Số điện thoại) -->
                 <TextView
                     android:id="@+id/tvLabelPassword"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/layoutInputEmail"
+                    android:layout_below="@id/layoutInputPhone"
                     android:layout_marginTop="10dp"
                     android:text="@string/register_label_password"
                     android:textColor="#2D3748"
@@ -232,11 +315,23 @@
                         android:layout_centerVertical="true"
                         android:src="@drawable/lock_icon_bg" />
 
+                    <!-- Nút con mắt xem/ẩn mật khẩu (thêm mới) -->
+                    <ImageView
+                        android:id="@+id/iconTogglePassword"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="Hiện/Ẩn mật khẩu"
+                        android:padding="2dp"
+                        android:src="@drawable/ic_password_show" />
+
                     <EditText
                         android:id="@+id/edtPassword"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
+                        android:layout_toStartOf="@id/iconTogglePassword"
                         android:layout_toEndOf="@id/iconLock"
                         android:background="@null"
                         android:hint="@string/register_hint_password"
@@ -273,11 +368,23 @@
                         android:layout_centerVertical="true"
                         android:src="@drawable/tick" />
 
+                    <!-- Nút con mắt xem/ẩn mật khẩu (thêm mới) -->
+                    <ImageView
+                        android:id="@+id/iconToggleConfirmPassword"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="Hiện/Ẩn mật khẩu"
+                        android:padding="2dp"
+                        android:src="@drawable/ic_password_show" />
+
                     <EditText
                         android:id="@+id/edtConfirmPassword"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
+                        android:layout_toStartOf="@id/iconToggleConfirmPassword"
                         android:layout_toEndOf="@id/iconTick"
                         android:background="@null"
                         android:hint="@string/register_hint_confirm_password"

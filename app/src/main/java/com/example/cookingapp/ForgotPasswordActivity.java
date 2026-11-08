@@ -2,6 +2,7 @@ package com.example.cookingapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -51,25 +52,37 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         String input = edtEmailOrPhone.getText().toString().trim();
 
         if (input.isEmpty()) {
-            Toast.makeText(this, "Vui lòng nhập Email hoặc Số điện thoại!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Vui lòng nhập Email đã đăng ký!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        // Mã xác thực chỉ gửi về email đã đăng ký nên bắt buộc nhập đúng định dạng email
+        if (!Patterns.EMAIL_ADDRESS.matcher(input).matches()) {
+            Toast.makeText(this, "Email không hợp lệ! Vui lòng nhập email đã đăng ký.", Toast.LENGTH_SHORT).show();
             return;
         }
 
         String flowSource = getIntent() != null ? getIntent().getStringExtra("FLOW_SOURCE") : "LOGIN";
 
-        // Tùy thuộc vào dữ liệu là số điện thoại hay email mà chuyển tới activity_otpsdt.xml hay activity_enter_gmail_otp.xml / activity_otp_zalo.xml
-        if (input.contains("@")) {
-            Toast.makeText(this, "Gửi mã xác thực qua Email!", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(ForgotPasswordActivity.this, Frame18EnterGmailOTP.class);
-            intent.putExtra("EMAIL_TARGET", input);
-            intent.putExtra("FLOW_SOURCE", flowSource);
-            startActivity(intent);
-        } else {
-            Toast.makeText(this, "Gửi mã xác thực qua SĐT!", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(ForgotPasswordActivity.this, Frame22OTPSDT.class);
-            intent.putExtra("PHONE_TARGET", input);
-            intent.putExtra("FLOW_SOURCE", flowSource);
-            startActivity(intent);
-        }
+        // Yêu cầu backend gửi mã OTP về email, thành công thì mới sang màn hình nhập mã
+        btnSubmit.setEnabled(false);
+        PasswordResetHelper.requestOtp(input, new PasswordResetHelper.Listener<AuthModels.MessageResponse>() {
+            @Override
+            public void onSuccess(AuthModels.MessageResponse value) {
+                btnSubmit.setEnabled(true);
+                Toast.makeText(ForgotPasswordActivity.this,
+                        "Nếu email đã đăng ký, mã xác thực đã được gửi tới email đó!", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(ForgotPasswordActivity.this, Frame18EnterGmailOTP.class);
+                intent.putExtra("EMAIL_TARGET", input);
+                intent.putExtra("RESET_IDENTIFIER", input);
+                intent.putExtra("FLOW_SOURCE", flowSource);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onError(String message) {
+                btnSubmit.setEnabled(true);
+                Toast.makeText(ForgotPasswordActivity.this, message, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }
