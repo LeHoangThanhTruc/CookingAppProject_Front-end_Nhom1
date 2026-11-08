@@ -90,7 +90,7 @@
         android:textStyle="bold"
         android:visibility="gone" />
 
-    <!-- TẦNG 3: KHUNG MEDIA CONTAINER (Bài Share & Grid ảnh nằm trọn ở đây) -->
+    <!-- TẦNG 3: KHUNG MEDIA CONTAINER (Chứa Grid ảnh đa dạng & file đính kèm) -->
     <FrameLayout
         android:id="@+id/containerMedia"
         android:layout_width="match_parent"
@@ -98,85 +98,7 @@
         android:layout_marginTop="10dp"
         android:visibility="gone">
 
-        <!-- A. KHUNG BÀI GỐC ĐƯỢC SHARE (Nằm gọn bên trong Khung Media) -->
-        <LinearLayout
-            android:id="@+id/layoutOriginalPost"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="14dp"
-            android:background="@drawable/bg_figma_card"
-            android:orientation="vertical"
-            android:padding="10dp"
-            android:visibility="gone">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/imgOrigAvatar"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/bxs_user"
-                    app:shapeAppearanceOverlay="@style/CircularImageView" />
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:orientation="vertical">
-                    <TextView
-                        android:id="@+id/tvOrigAuthorName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#193B1C"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:id="@+id/tvOrigTimeAgo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="#718096"
-                            android:textSize="11sp" />
-
-                        <ImageView
-                            android:id="@+id/imgOrigPrivacy"
-                            android:layout_width="14dp"
-                            android:layout_height="14dp"
-                            android:layout_marginStart="6dp"
-                            android:src="@drawable/public_globe" />
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/tvOrigCaption"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:ellipsize="end"
-                android:maxLines="2"
-                android:textColor="#4A5568"
-                android:textSize="13sp" />
-
-            <!-- Media của bài gốc -->
-            <ImageView
-                android:id="@+id/imgOrigPostMedia"
-                android:layout_width="match_parent"
-                android:layout_height="180dp"
-                android:layout_marginTop="6dp"
-                android:scaleType="centerCrop"
-                android:visibility="gone" />
-        </LinearLayout>
-
-        <!-- B. GRID MEDIA ĐA DẠNG (1 ảnh full, 2-3 ảnh, 4+ ảnh với ô +N) -->
+        <!-- A. GRID MEDIA ĐA DẠNG (1 ảnh full, 2-3 ảnh, 4+ ảnh với ô +N) -->
         <GridLayout
             android:id="@+id/gridMedia"
             android:layout_width="match_parent"
@@ -240,6 +162,35 @@
                     android:visibility="gone" />
             </RelativeLayout>
         </GridLayout>
+
+        <!-- B. KHUNG FILE ĐÍNH KÈM -->
+        <LinearLayout
+            android:id="@+id/layoutAttachmentFile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="14dp"
+            android:background="#F0F2F5"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/public_globe" />
+
+            <TextView
+                android:id="@+id/tvAttachmentUrl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="#1877F2"
+                android:textSize="13sp" />
+        </LinearLayout>
     </FrameLayout>
 
     <!-- TẦNG 4: BOTTOM ACTION BAR (Cố định chiều cao & khoảng cách) -->

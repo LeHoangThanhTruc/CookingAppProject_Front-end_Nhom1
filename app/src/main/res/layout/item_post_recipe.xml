@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:padding="14dp">
 
-    <!-- 1. Header Người đăng -->
+    <!-- 1. PHẦN HEADER (Avatar, Tên, Thời gian, Quyền xem, Badge Công thức) -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -81,7 +81,8 @@
             android:textStyle="bold" />
     </RelativeLayout>
 
-    <!-- 2. Tên món ăn & Mô tả (Caption) -->
+    <!-- 2. PHẦN GIỮA (Nội dung Công thức) -->
+    <!-- Tên món ăn -->
     <TextView
         android:id="@+id/tvRecipeTitle"
         android:layout_width="match_parent"
@@ -91,6 +92,7 @@
         android:textSize="17sp"
         android:textStyle="bold" />
 
+    <!-- Mô tả ngắn (Caption) -->
     <TextView
         android:id="@+id/tvRecipeDescription"
         android:layout_width="match_parent"
@@ -114,7 +116,7 @@
         android:textStyle="bold"
         android:visibility="gone" />
 
-    <!-- 3. Khối chi tiết Công thức (Mặc định ẩn) -->
+    <!-- Khối Chi tiết Công thức (Mặc định ẩn) -->
     <LinearLayout
         android:id="@+id/layoutRecipeDetails"
         android:layout_width="match_parent"
@@ -122,13 +124,55 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/bg_figma_card"
         android:orientation="vertical"
-        android:padding="10dp"
+        android:padding="12dp"
         android:visibility="gone">
 
+        <!-- Thông tin Thời gian, Khẩu phần & Độ khó -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/tvCookingTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#2D3748"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvServings"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#2D3748"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDifficulty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#2D3748"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="6dp"
+            android:background="#E2E8F0" />
+
+        <!-- Danh sách Nguyên liệu & Định lượng -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="🥗 Nguyên liệu &amp; Cách làm:"
+            android:text="🥗 Nguyên liệu:"
             android:textColor="@color/panda_green_dark"
             android:textSize="14sp"
             android:textStyle="bold" />
@@ -141,22 +185,61 @@
             android:lineSpacingExtra="3dp"
             android:textColor="#2D3748"
             android:textSize="13sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="8dp"
+            android:background="#E2E8F0" />
+
+        <!-- Danh sách Các bước thực hiện (Chứa cả chữ và Ảnh/Video đính kèm) -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="👩‍🍳 Các bước thực hiện:"
+            android:textColor="@color/panda_green_dark"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/layoutStepsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:orientation="vertical" />
     </LinearLayout>
 
-    <!-- 4. Nút Thu gọn / Mở rộng Chi tiết Công thức -->
-    <TextView
+    <!-- Nút Mở rộng / Thu gọn Chi tiết Công thức kèm biểu tượng ic_chevron_down / ic_chevron_up -->
+    <LinearLayout
         android:id="@+id/btnToggleRecipe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="8dp"
-        android:padding="6dp"
-        android:text="Xem chi tiết công thức 🔽"
-        android:textColor="@color/panda_green"
-        android:textSize="13sp"
-        android:textStyle="bold" />
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="6dp">
 
-    <!-- 5. Thanh Thả tim / Share -->
+        <TextView
+            android:id="@+id/tvToggleRecipeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Xem chi tiết công thức"
+            android:textColor="@color/panda_green"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imgToggleRecipeIcon"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="4dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_chevron_down"
+            app:tint="@color/panda_green" />
+    </LinearLayout>
+
+    <!-- 3. PHẦN CUỐI (Thanh Công cụ Tương tác: Thích, Bình luận, Share, Lưu) -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -164,12 +247,13 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <!-- Nút Like -->
+        <!-- Nút Thích (Like) -->
         <LinearLayout
             android:id="@+id/btnLike"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <ImageView
@@ -188,13 +272,39 @@
                 android:textSize="13sp" />
         </LinearLayout>
 
-        <!-- Nút Share -->
+        <!-- Nút Bình luận (Comment) - ic_chat -->
+        <LinearLayout
+            android:id="@+id/btnComment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imgComment"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_chat"
+                app:tint="#718096" />
+
+            <TextView
+                android:id="@+id/tvCommentCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:textColor="#718096"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <!-- Nút Chia sẻ (Share) -->
         <LinearLayout
             android:id="@+id/btnShare"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <ImageView
@@ -207,9 +317,26 @@
                 android:id="@+id/tvShareCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="6dp"
                 android:textColor="#718096"
                 android:textSize="13sp" />
+        </LinearLayout>
+
+        <!-- Nút Lưu (Save) - save_icon -->
+        <LinearLayout
+            android:id="@+id/btnSave"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imgSave"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:contentDescription="@null"
+                android:src="@drawable/save_icon" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
