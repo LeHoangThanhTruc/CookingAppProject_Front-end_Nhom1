@@ -114,6 +114,7 @@ public class Frame7SettingActivity extends Activity {
                 .setTitle("Xác nhận đăng xuất")
                 .setMessage("Bạn có chắc chắn muốn đăng xuất khỏi ứng dụng?")
                 .setPositiveButton("Đăng xuất", (dialog, which) -> {
+                    AuthSessionHelper.logout(this);
                     Toast.makeText(this, "Đã đăng xuất thành công", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(this, LoginActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

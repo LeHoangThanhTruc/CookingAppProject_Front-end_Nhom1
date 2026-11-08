@@ -10,6 +10,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+import retrofit2.http.Header;
 
 import retrofit2.http.DELETE;
 import retrofit2.http.PUT;
@@ -165,4 +166,30 @@ public interface ApiService {
     @Multipart
     @POST("api/profile/me/avatar")
     Call<Profile> uploadMyAvatar(@Part MultipartBody.Part file);
+    // 5. API Authentication mới (khớp backend)
+    @POST("api/auth/register")
+    Call<AuthModels.RegisterResponse> register(@Body AuthModels.RegisterBody body);
+
+    @POST("api/auth/login")
+    Call<AuthModels.TokenResponse> login(@Body AuthModels.LoginBody body);
+
+    @POST("api/auth/logout")
+    Call<AuthModels.MessageResponse> logoutWithToken(@Header("Authorization") String bearer);
+
+    @POST("api/auth/forgot-password")
+    Call<AuthModels.MessageResponse> forgotPassword(@Body AuthModels.ForgotPasswordBody body);
+
+    @POST("api/auth/verify-otp")
+    Call<AuthModels.VerifyOtpResponse> verifyOtp(@Body AuthModels.VerifyOtpBody body);
+
+    @POST("api/auth/reset-password")
+    Call<AuthModels.MessageResponse> resetPassword(@Body AuthModels.ResetPasswordBody body);
+
+    @POST("api/auth/change-password")
+    Call<AuthModels.MessageResponse> changePassword(@Body AuthModels.ChangePasswordBody body);
+
+    @POST("api/auth/verify-current-password")
+    Call<AuthModels.VerifyOtpResponse> verifyCurrentPassword(@Body AuthModels.VerifyCurrentPasswordBody body);
+    @POST("api/auth/oauth-login")
+    Call<AuthModels.TokenResponse> oauthLogin(@Body AuthModels.OAuthBody body);
 }

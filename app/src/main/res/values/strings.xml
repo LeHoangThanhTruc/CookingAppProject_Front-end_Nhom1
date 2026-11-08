@@ -12,7 +12,7 @@
     <string name="login_title">Đăng nhập</string>
     <string name="login_sub_title">Đăng nhập để lưu món ngon yêu thích, đánh giá công thức và theo dõi tiến độ học nấu ăn.</string>
     <string name="login_label_email_phone">Email / Số điện thoại</string>
-    <string name="login_hint_email_phone">Nhập email hoặc số điện thoại</string>
+    <string name="login_hint_email_phone">Email, tên tài khoản hoặc số điện thoại</string>
     <string name="login_label_password">Mật khẩu</string>
     <string name="login_hint_password">Nhập mật khẩu</string>
     <string name="login_forgot_password">Quên mật khẩu?</string>
@@ -32,8 +32,14 @@
     <string name="register_label_fullname">Họ tên</string>
     <string name="register_hint_fullname">Nguyễn Minh Anh</string>
 
+    <string name="register_label_username">Tên tài khoản</string>
+    <string name="register_hint_username">Ví dụ: panda_bep (chữ không dấu, số, _ hoặc .)</string>
+
     <string name="register_label_email">Email</string>
     <string name="register_hint_email">23521558@gm.uit.edu.vn</string>
+
+    <string name="register_label_phone">Số điện thoại</string>
+    <string name="register_hint_phone">Nhập số điện thoại</string>
 
     <string name="register_label_password">Mật khẩu</string>
     <string name="register_hint_password">••••••••</string>
@@ -204,4 +210,10 @@
     <string name="review_warning_text">Hãy chia sẻ chân thật để mọi người cùng tham khảo trước khi vào bếp.</string>
     <string name="review_btn_cancel">Hủy</string>
     <string name="review_btn_submit">Gửi</string>
+
+    <!-- Cấu hình Google & Facebook Auth -->
+    <string name="google_web_client_id">1038385744103-0tkmbsbp9l35fgk2lpeq8rm60e34t7vl.apps.googleusercontent.com</string>
+    <string name="facebook_app_id">1990781320266783</string>
+    <string name="fb_login_protocol_scheme">fb1990781320266783</string>
+    <string name="facebook_client_token">d684ad2f9a0724de98b654bf3a0ef71c</string>
 </resources>

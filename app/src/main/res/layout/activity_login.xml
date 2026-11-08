@@ -113,7 +113,7 @@
                 android:autofillHints="emailAddress,phoneNumber"
                 android:background="@null"
                 android:hint="@string/login_hint_email_phone"
-                android:inputType="textEmailAddress|phone"
+                android:inputType="textEmailAddress"
                 android:paddingStart="10dp"
                 android:paddingEnd="0dp"
                 android:textColor="#193B1C"
@@ -154,12 +154,15 @@
 
             <ImageView
                 android:id="@+id/iconEye"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:contentDescription="@null"
-                android:src="@drawable/eye_off" />
+                android:clickable="true"
+                android:contentDescription="Hiện/Ẩn mật khẩu"
+                android:focusable="true"
+                android:padding="2dp"
+                android:src="@drawable/ic_password_show" />
 
             <EditText
                 android:id="@+id/edtPassword"
