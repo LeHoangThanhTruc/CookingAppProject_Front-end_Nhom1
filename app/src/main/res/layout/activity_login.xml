@@ -39,9 +39,7 @@
             android:textColor="#193B1C"
             android:textSize="@dimen/splash_title_size"
             android:textStyle="bold" />
-
     </RelativeLayout>
-
 
     <!-- ================= PHẦN 2: FORM CHÍNH (Tỷ lệ 57%) ================= -->
     <RelativeLayout
@@ -82,7 +80,7 @@
             android:layout_below="@id/txt2"
             android:layout_alignParentStart="true"
             android:layout_marginTop="16dp"
-            android:text="@string/login_label_email_phone"
+            android:text="Username / Email / Số điện thoại"
             android:textColor="#234725"
             android:textSize="@dimen/login_label_size"
             android:textStyle="bold" />
@@ -112,8 +110,8 @@
                 android:layout_toEndOf="@id/iconGmail"
                 android:autofillHints="emailAddress,phoneNumber"
                 android:background="@null"
-                android:hint="@string/login_hint_email_phone"
-                android:inputType="textEmailAddress"
+                android:hint="Nhập tên tài khoản, email hoặc số điện thoại"
+                android:inputType="text"
                 android:paddingStart="10dp"
                 android:paddingEnd="0dp"
                 android:textColor="#193B1C"
@@ -209,9 +207,7 @@
             android:textColor="#FFFFFF"
             android:textSize="@dimen/login_button_text_size"
             android:textStyle="bold" />
-
     </RelativeLayout>
-
 
     <!-- ================= PHẦN 3: SOCIAL LOGIN & FOOTER (Tỷ lệ 15%) ================= -->
     <RelativeLayout
@@ -299,7 +295,6 @@
                         android:textStyle="bold" />
                 </LinearLayout>
             </RelativeLayout>
-
         </LinearLayout>
 
         <!-- Dòng prompt Đăng ký tài khoản -->
@@ -330,7 +325,5 @@
                 android:textSize="@dimen/login_label_size"
                 android:textStyle="bold" />
         </LinearLayout>
-
     </RelativeLayout>
-
 </LinearLayout>

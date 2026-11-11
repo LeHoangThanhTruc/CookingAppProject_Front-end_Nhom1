@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:ignore="HardcodedText,Autofill">
-
     <!-- Lớp ảnh nền dưới cùng -->
     <ImageView
         android:layout_width="match_parent"
@@ -78,7 +77,6 @@
                         android:textColor="@color/panda_gray"
                         android:textSize="13sp" />
                 </LinearLayout>
-
             </LinearLayout>
 
             <!-- AVATAR CARD -->
@@ -112,7 +110,6 @@
                     android:textColor="@color/panda_green"
                     android:textSize="14sp"
                     android:textStyle="bold" />
-
             </LinearLayout>
 
             <!-- ACCOUNT INFO CARD -->
@@ -329,11 +326,13 @@
 
                     <ImageView
                         android:id="@+id/ivEyePassword"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:clickable="true"
                         android:contentDescription="Hiện/Ẩn mật khẩu"
-                        android:src="@drawable/ic_visibility_off"
-                        app:tint="@color/panda_gray" />
+                        android:focusable="true"
+                        android:padding="2dp"
+                        android:src="@drawable/ic_password_show" />
                 </LinearLayout>
 
                 <!-- Row: Đổi mật khẩu -->
@@ -366,7 +365,6 @@
                         android:src="@drawable/ic_chevron_right"
                         app:tint="@color/panda_gray" />
                 </LinearLayout>
-
             </LinearLayout>
 
             <!-- SECURITY NOTICE FOOTER -->
@@ -394,9 +392,6 @@
                     android:textColor="@color/panda_gray"
                     android:textSize="12sp" />
             </LinearLayout>
-
         </LinearLayout>
-
     </ScrollView>
-
 </FrameLayout>

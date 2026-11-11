@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
@@ -76,9 +75,11 @@ public class Frame15ProfileDetails extends AppCompatActivity {
         etPhone.setFocusable(false);
         etPassword.setFocusable(false);
         etPassword.setText("••••••••");
-        ivEditUsername.setVisibility(View.GONE);
-        ivEditGmail.setVisibility(View.GONE);
-        ivEyePassword.setVisibility(View.GONE);
+
+        ivEditUsername.setVisibility(View.VISIBLE);
+        ivEditGmail.setVisibility(View.VISIBLE);
+        ivEyePassword.setVisibility(View.VISIBLE);
+        PasswordToggleHelper.attach(etPassword, ivEyePassword);
     }
 
     private void setupEvents() {
@@ -90,14 +91,17 @@ public class Frame15ProfileDetails extends AppCompatActivity {
         });
 
         btnChangeAvatar.setOnClickListener(v -> avatarPicker.launch("image/*"));
+        ivEditUsername.setOnClickListener(v ->
+                startActivity(new Intent(this, Frame16ChangeAccountName.class))
+        );
+        ivEditGmail.setOnClickListener(v ->
+                startActivity(new Intent(this, Frame17ChangeGmailAddress.class))
+        );
         ivEditPhone.setOnClickListener(v ->
                 startActivity(new Intent(this, Frame26BioActivity.class))
         );
-
         btnChangePasswordRow.setOnClickListener(v -> {
-            Intent intent = new Intent(this, ForgotPasswordActivity.class);
-            intent.putExtra("FLOW_SOURCE", "PROFILE_DETAILS");
-            startActivity(intent);
+            startActivity(new Intent(this, Frame23EnterCurrentPassword.class));
         });
     }
 
@@ -108,7 +112,10 @@ public class Frame15ProfileDetails extends AppCompatActivity {
                 if (isFinishing() || isDestroyed()) {
                     return;
                 }
-                etUsername.setText(profile.getUsername());
+                etUsername.setText(ProfileActivitySupport.valueOrFallback(
+                        profile.getUsername(),
+                        "Chưa cập nhật"
+                ));
                 etGmail.setText(profile.getEmail());
                 etPhone.setText(ProfileActivitySupport.valueOrFallback(
                         profile.getPhoneNumber(),
@@ -128,7 +135,6 @@ public class Frame15ProfileDetails extends AppCompatActivity {
         if (uri == null || profileRepository == null) {
             return;
         }
-
         setAvatarUploading(true);
         profileRepository.uploadAvatar(uri, new ProfileRepository.ApiCallback<Profile>() {
             @Override

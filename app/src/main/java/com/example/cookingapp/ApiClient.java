@@ -11,7 +11,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public final class ApiClient {
-    public static final String BASE_URL = "http://192.168.71.162:8000/";;
+    public static final String BASE_URL = BuildConfig.API_BASE_URL;
 
     private static volatile Retrofit publicRetrofit;
     private static volatile Retrofit authenticatedRetrofit;

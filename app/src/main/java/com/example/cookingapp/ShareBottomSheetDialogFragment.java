@@ -91,16 +91,16 @@ public class ShareBottomSheetDialogFragment extends BottomSheetDialogFragment {
         int currentUserId = 1; // ID user hiện tại
 
         ApiService apiService = ApiClient.getClient().create(ApiService.class);
-        apiService.getUserProfile(currentUserId).enqueue(new Callback<Post.Author>() {
+        apiService.getUserProfile(currentUserId).enqueue(new Callback<ApiService.OtherProfile>() {
             @Override
-            public void onResponse(Call<Post.Author> call, Response<Post.Author> response) {
+            public void onResponse(Call<ApiService.OtherProfile> call, Response<ApiService.OtherProfile> response) {
                 if (response.isSuccessful() && response.body() != null && getContext() != null) {
-                    Post.Author myProfile = response.body();
-                    tvMyName.setText(myProfile.getFullName());
+                    ApiService.OtherProfile myProfile = response.body();
+                    tvMyName.setText(myProfile.full_name);
 
-                    if (myProfile.getAvatarUrl() != null && !myProfile.getAvatarUrl().isEmpty()) {
+                    if (myProfile.avatar_url != null && !myProfile.avatar_url.isEmpty()) {
                         Glide.with(getContext())
-                                .load(myProfile.getAvatarUrl())
+                                .load(myProfile.avatar_url)
                                 .placeholder(R.drawable.bxs_user)
                                 .into(imgMyAvatar);
                     }
@@ -108,7 +108,7 @@ public class ShareBottomSheetDialogFragment extends BottomSheetDialogFragment {
             }
 
             @Override
-            public void onFailure(Call<Post.Author> call, Throwable t) {
+            public void onFailure(Call<ApiService.OtherProfile> call, Throwable t) {
                 // Giữ nguyên fallback nếu không lấy được dữ liệu
             }
         });

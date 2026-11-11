@@ -1,24 +1,33 @@
 package com.example.cookingapp;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.facebook.CallbackManager;
-
+import java.security.MessageDigest;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
-
+    private EditText edtEmailPhone;
+    private EditText edtPassword;
+    private Button btnDangNhap;
+    private View googleLogin;
+    private View facebookLogin;
     private CallbackManager facebookCallbackManager;
 
     @Override
@@ -27,112 +36,206 @@ public class LoginActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
 
-        // 1. Ánh xạ View từ XML
+        // In KeyHash ra Logcat (tag: KeyHash)
+        printKeyHash();
+
+        // Ánh xạ View
         TextView tvRegister = findViewById(R.id.tvRegister);
         TextView tvForgotPassword = findViewById(R.id.tvForgotPassword);
-        Button btnDangNhap = findViewById(R.id.btnDangNhap);
-        EditText emailOrPhone = findViewById(R.id.edtEmailPhone);
-        EditText password = findViewById(R.id.edtPassword);
-        android.widget.ImageView iconEye = findViewById(R.id.iconEye);
-        View googleLogin = findViewById(R.id.btnLogInUsingGoogle);
-        View facebookLogin = findViewById(R.id.btnLogInUsingFacebook);
+        btnDangNhap = findViewById(R.id.btnDangNhap);
+        edtEmailPhone = findViewById(R.id.edtEmailPhone);
+        edtPassword = findViewById(R.id.edtPassword);
+        ImageView iconEye = findViewById(R.id.iconEye);
+        googleLogin = findViewById(R.id.btnLogInUsingGoogle);
+        facebookLogin = findViewById(R.id.btnLogInUsingFacebook);
 
-        // Nút con mắt ẩn/hiện mật khẩu
-        PasswordToggleHelper.attach(password, iconEye);
+        PasswordToggleHelper.attach(edtPassword, iconEye);
 
-        // 2. Lắng nghe sự kiện click chuyển sang Đăng ký
-        tvRegister.setOnClickListener(v -> {
-            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-            startActivity(intent);
-        });
+        // Đăng ký Facebook callback một lần trong Activity
+        facebookCallbackManager = SocialLoginHelper.registerFacebookCallback(
+                new SocialLoginHelper.Listener() {
+                    @Override
+                    public void onSuccess(AuthModels.TokenResponse response) {
+                        handleSocialLoginSuccess(response);
+                    }
 
-        // 3. Lắng nghe sự kiện click chuyển sang Quên mật khẩu -> Truyền FLOW_SOURCE = "LOGIN"
-        tvForgotPassword.setOnClickListener(v -> {
-            Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
-            intent.putExtra("FLOW_SOURCE", "LOGIN");
-            startActivity(intent);
-        });
+                    @Override
+                    public void onError(String message) {
+                        showMessage(message);
+                    }
+                }
+        );
 
-        // 4. Đăng nhập: gọi API backend, thành công thì lưu token rồi vào màn hình chính
-        btnDangNhap.setOnClickListener(v -> {
-            String identifier = emailOrPhone.getText().toString().trim();
-            String passwordText = password.getText().toString();
+        // Chuyển sang đăng ký
+        if (tvRegister != null) {
+            tvRegister.setOnClickListener(v -> {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            });
+        }
 
-            if (identifier.isEmpty()) {
-                emailOrPhone.setError("Vui lòng nhập email, tên tài khoản hoặc số điện thoại");
-                emailOrPhone.requestFocus();
-                return;
-            }
-            if (passwordText.length() < 6) {
-                password.setError("Mật khẩu phải có ít nhất 6 ký tự");
-                password.requestFocus();
-                return;
-            }
+        // Quên mật khẩu
+        if (tvForgotPassword != null) {
+            tvForgotPassword.setOnClickListener(v -> {
+                Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+                intent.putExtra("FLOW_SOURCE", "LOGIN");
+                startActivity(intent);
+            });
+        }
 
-            btnDangNhap.setEnabled(false);
-            ApiService api = ApiClient.getClient().create(ApiService.class);
-            api.login(new AuthModels.LoginBody(identifier, passwordText))
-                    .enqueue(new Callback<AuthModels.TokenResponse>() {
-                        @Override
-                        public void onResponse(Call<AuthModels.TokenResponse> call,
-                                               Response<AuthModels.TokenResponse> response) {
-                            btnDangNhap.setEnabled(true);
-                            if (response.isSuccessful() && response.body() != null
-                                    && response.body().access_token != null) {
-                                SessionManager.saveAccessToken(
-                                        LoginActivity.this, response.body().access_token);
-                                Toast.makeText(LoginActivity.this,
-                                        "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
+        // Đăng nhập bằng tài khoản và mật khẩu
+        if (btnDangNhap != null) {
+            btnDangNhap.setOnClickListener(v -> login());
+        }
 
-                                Intent intent = new Intent(LoginActivity.this, ManHinhChinhActivity.class);
-                                startActivity(intent);
+        // Đăng nhập Google
+        if (googleLogin != null) {
+            googleLogin.setOnClickListener(v -> {
+                setSocialButtonsEnabled(false);
+                SocialLoginHelper.loginWithGoogle(
+                        LoginActivity.this,
+                        new SocialLoginHelper.Listener() {
+                            @Override
+                            public void onSuccess(AuthModels.TokenResponse response) {
+                                setSocialButtonsEnabled(true);
+                                handleSocialLoginSuccess(response);
+                            }
 
-                                // Đóng LoginActivity để bấm Back không quay lại màn hình đăng nhập
-                                finish();
-                            } else {
-                                Toast.makeText(LoginActivity.this,
-                                        AuthModels.errorMessage(response), Toast.LENGTH_LONG).show();
+                            @Override
+                            public void onError(String message) {
+                                setSocialButtonsEnabled(true);
+                                showMessage(message);
                             }
                         }
+                );
+            });
+        }
 
-                        @Override
-                        public void onFailure(Call<AuthModels.TokenResponse> call, Throwable t) {
-                            btnDangNhap.setEnabled(true);
-                            Toast.makeText(LoginActivity.this,
-                                    "Không kết nối được server. Kiểm tra backend đã chạy chưa.",
-                                    Toast.LENGTH_LONG).show();
-                        }
-                    });
-        });
-
-        // 5. Đăng nhập Google / Facebook: lấy token từ Google/Facebook rồi gửi cho backend xác minh
-        SocialLoginHelper.Listener socialListener = new SocialLoginHelper.Listener() {
-            @Override
-            public void onSuccess(AuthModels.TokenResponse response) {
-                SessionManager.saveAccessToken(LoginActivity.this, response.access_token);
-                Toast.makeText(LoginActivity.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(LoginActivity.this, ManHinhChinhActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-            }
-
-            @Override
-            public void onError(String message) {
-                Toast.makeText(LoginActivity.this, message, Toast.LENGTH_LONG).show();
-            }
-        };
-        facebookCallbackManager = SocialLoginHelper.registerFacebookCallback(socialListener);
-
-        googleLogin.setOnClickListener(v -> SocialLoginHelper.loginWithGoogle(this, socialListener));
-        facebookLogin.setOnClickListener(v -> SocialLoginHelper.startFacebookLogin(this));
+        // Đăng nhập Facebook
+        if (facebookLogin != null) {
+            facebookLogin.setOnClickListener(v -> {
+                setSocialButtonsEnabled(false);
+                SocialLoginHelper.startFacebookLogin(this);
+            });
+        }
     }
 
+    private void printKeyHash() {
+        try {
+            PackageInfo info;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                info = getPackageManager().getPackageInfo(
+                        getPackageName(),
+                        PackageManager.GET_SIGNING_CERTIFICATES
+                );
+                if (info.signingInfo != null) {
+                    Signature[] signatures = info.signingInfo.getApkContentsSigners();
+                    for (Signature signature : signatures) {
+                        MessageDigest md = MessageDigest.getInstance("SHA");
+                        md.update(signature.toByteArray());
+                        Log.d("KeyHash", Base64.encodeToString(md.digest(), Base64.NO_WRAP));
+                    }
+                }
+            } else {
+                info = getPackageManager().getPackageInfo(
+                        getPackageName(),
+                        PackageManager.GET_SIGNATURES
+                );
+                for (Signature signature : info.signatures) {
+                    MessageDigest md = MessageDigest.getInstance("SHA");
+                    md.update(signature.toByteArray());
+                    Log.d("KeyHash", Base64.encodeToString(md.digest(), Base64.NO_WRAP));
+                }
+            }
+        } catch (Exception e) {
+            Log.e("KeyHash", "Lỗi lấy key hash", e);
+        }
+    }
+
+    // Facebook SDK trả kết quả về đây
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        // Chuyển kết quả cho Facebook SDK
         if (facebookCallbackManager != null) {
             facebookCallbackManager.onActivityResult(requestCode, resultCode, data);
         }
+    }
+
+    // ================= LOGIN THƯỜNG =================
+    private void login() {
+        String identifier = edtEmailPhone.getText().toString().trim();
+        String password = edtPassword.getText().toString();
+
+        if (identifier.isEmpty()) {
+            edtEmailPhone.setError("Vui lòng nhập username, email hoặc số điện thoại");
+            edtEmailPhone.requestFocus();
+            return;
+        }
+
+        if (password.isEmpty()) {
+            edtPassword.setError("Vui lòng nhập mật khẩu");
+            edtPassword.requestFocus();
+            return;
+        }
+
+        loginUser(identifier, password);
+    }
+
+    private void loginUser(String identifier, String password) {
+        btnDangNhap.setEnabled(false);
+        ApiService service = ApiClient.getClient().create(ApiService.class);
+        service.loginUser(new ApiService.LoginRequest(identifier, password))
+                .enqueue(new Callback<ApiService.AuthResponse>() {
+                    @Override
+                    public void onResponse(
+                            Call<ApiService.AuthResponse> call,
+                            Response<ApiService.AuthResponse> response
+                    ) {
+                        btnDangNhap.setEnabled(true);
+                        ApiService.AuthResponse body = response.body();
+                        if (!response.isSuccessful()
+                                || body == null
+                                || body.access_token == null
+                                || body.access_token.isEmpty()) {
+                            showMessage(ApiErrorUtils.message(response, "Đăng nhập thất bại"));
+                            return;
+                        }
+                        SessionManager.saveAccessToken(LoginActivity.this, body.access_token);
+                        goToMainScreen();
+                    }
+
+                    @Override
+                    public void onFailure(Call<ApiService.AuthResponse> call, Throwable error) {
+                        btnDangNhap.setEnabled(true);
+                        showMessage("Không kết nối được máy chủ");
+                    }
+                });
+    }
+
+    // ================= SOCIAL LOGIN =================
+    private void handleSocialLoginSuccess(AuthModels.TokenResponse response) {
+        if (response == null || response.access_token == null || response.access_token.isEmpty()) {
+            showMessage("Máy chủ không trả về access token");
+            return;
+        }
+        SessionManager.saveAccessToken(LoginActivity.this, response.access_token);
+        showMessage("Đăng nhập thành công!");
+        goToMainScreen();
+    }
+
+    private void setSocialButtonsEnabled(boolean enabled) {
+        if (googleLogin != null) googleLogin.setEnabled(enabled);
+        if (facebookLogin != null) facebookLogin.setEnabled(enabled);
+    }
+
+    private void goToMainScreen() {
+        Intent intent = new Intent(LoginActivity.this, ManHinhChinhActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+
+    private void showMessage(String message) {
+        Toast.makeText(LoginActivity.this, message, Toast.LENGTH_LONG).show();
     }
 }
