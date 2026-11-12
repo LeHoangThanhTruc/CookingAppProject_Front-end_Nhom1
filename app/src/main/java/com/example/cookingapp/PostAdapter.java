@@ -385,7 +385,7 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     if (tvLikes != null) tvLikes.setText(String.valueOf(post.getLikeCount()));
 
                     int currentUserId = 1;
-                    ApiService apiService = ApiClient.getClient().create(ApiService.class);
+                    ApiService apiService = ApiClient.getAuthenticatedClient(context).create(ApiService.class);
                     apiService.toggleLike(post.getPostId(), currentUserId).enqueue(new Callback<Void>() {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {}
@@ -631,7 +631,7 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     if (tvLikes != null) tvLikes.setText(String.valueOf(post.getLikeCount()));
 
                     int currentUserId = 1;
-                    ApiService apiService = ApiClient.getClient().create(ApiService.class);
+                    ApiService apiService = ApiClient.getAuthenticatedClient(context).create(ApiService.class);
                     apiService.toggleLike(post.getPostId(), currentUserId).enqueue(new Callback<Void>() {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {}

@@ -58,7 +58,7 @@ public class PostDetailActivity extends AppCompatActivity implements OnCommentCo
             bindPostDataToUI(tvTitle, tvHeaderAuthor, imgHeaderAvatar, tvHeaderTimeAgo,
                     imgHeaderPrivacy, tvHeaderCaption, tvHeaderShareCount);
 
-            // 🟢 2. GỌI API LẤY DỮ LIỆU THỜI GIAN THỰC TỪ DATABASE KHI MỞ TRANG
+            // 2. GỌI API LẤY DỮ LIỆU THỜI GIAN THỰC TỪ DATABASE KHI MỞ TRANG
             fetchPostDetailFromDatabase();
 
             // Sự kiện Bình luận Header
@@ -79,7 +79,7 @@ public class PostDetailActivity extends AppCompatActivity implements OnCommentCo
                 }
                 updateHeaderLikeUI();
 
-                ApiService apiService = ApiClient.getClient().create(ApiService.class);
+                ApiService apiService = ApiClient.getAuthenticatedClient(this).create(ApiService.class);
                 apiService.toggleLike(post.getPostId(), 1).enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {}
@@ -105,7 +105,7 @@ public class PostDetailActivity extends AppCompatActivity implements OnCommentCo
     public void fetchPostDetailFromDatabase() {
         if (post == null) return;
 
-        ApiService apiService = ApiClient.getClient().create(ApiService.class);
+        ApiService apiService = ApiClient.getAuthenticatedClient(this).create(ApiService.class);
         apiService.getPostDetail(post.getPostId(), 1).enqueue(new Callback<PostDetailResponse>() {
             @Override
             public void onResponse(Call<PostDetailResponse> call, Response<PostDetailResponse> response) {

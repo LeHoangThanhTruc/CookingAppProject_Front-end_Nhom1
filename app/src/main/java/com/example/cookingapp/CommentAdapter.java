@@ -122,7 +122,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
                     for (Comment reply : replies) {
                         View replyView = LayoutInflater.from(context).inflate(R.layout.item_comment, holder.layoutSubReplies, false);
 
-                        // 🟢 1B. SỰ KIỆN NHẤN GIỮ BÌNH LUẬN CON ĐỂ MỞ MENU OPTIONS
+                        // SỰ KIỆN NHẤN GIỮ BÌNH LUẬN CON ĐỂ MỞ MENU OPTIONS
                         replyView.setOnLongClickListener(subV -> {
                             showCommentOptionsMenu(reply);
                             return true;
@@ -231,7 +231,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
         // 3. CHỨC NĂNG XÓA
         btnDelete.setOnClickListener(v -> {
             dialog.dismiss();
-            ApiService apiService = ApiClient.getClient().create(ApiService.class);
+            ApiService apiService = ApiClient.getAuthenticatedClient(context).create(ApiService.class);
             apiService.deleteComment(comment.getCommentId(), 1).enqueue(new Callback<CommentResponse>() {
                 @Override
                 public void onResponse(Call<CommentResponse> call, Response<CommentResponse> response) {
@@ -308,7 +308,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
         cmt.setDislikeCount(Math.max(0, newDislikes));
         updateReactionUI(btnLike, btnDislike, tvLikes, tvDislikes, targetReaction, cmt.getLikeCount(), cmt.getDislikeCount());
 
-        ApiService apiService = ApiClient.getClient().create(ApiService.class);
+        ApiService apiService = ApiClient.getAuthenticatedClient(context).create(ApiService.class);
         int currentUserId = 1;
 
         apiService.reactComment(cmt.getCommentId(), new ReactionRequest(currentUserId, targetReaction))

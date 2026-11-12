@@ -90,7 +90,7 @@ public class ShareBottomSheetDialogFragment extends BottomSheetDialogFragment {
     private void loadUserProfile(ShapeableImageView imgMyAvatar, TextView tvMyName) {
         int currentUserId = 1; // ID user hiện tại
 
-        ApiService apiService = ApiClient.getClient().create(ApiService.class);
+        ApiService apiService = ApiClient.getAuthenticatedClient(requireContext()).create(ApiService.class);
         apiService.getUserProfile(currentUserId).enqueue(new Callback<ApiService.OtherProfile>() {
             @Override
             public void onResponse(Call<ApiService.OtherProfile> call, Response<ApiService.OtherProfile> response) {
@@ -118,7 +118,7 @@ public class ShareBottomSheetDialogFragment extends BottomSheetDialogFragment {
     private void loadFriendsList(RecyclerView rvFriendsList, LinearLayout layoutPrivateMessage) {
         int currentUserId = 1; // ID user hiện tại
 
-        ApiService apiService = ApiClient.getClient().create(ApiService.class);
+        ApiService apiService = ApiClient.getAuthenticatedClient(requireContext()).create(ApiService.class);
         apiService.getUserFriends(currentUserId).enqueue(new Callback<FriendResponse>() {
             @Override
             public void onResponse(Call<FriendResponse> call, Response<FriendResponse> response) {
@@ -143,7 +143,7 @@ public class ShareBottomSheetDialogFragment extends BottomSheetDialogFragment {
 
     // --- Chia sẻ lên Feed cá nhân ---
     private void shareToFeed(String caption) {
-        ApiService apiService = ApiClient.getClient().create(ApiService.class);
+        ApiService apiService = ApiClient.getAuthenticatedClient(requireContext()).create(ApiService.class);
         apiService.sharePostToFeed(postId, new ApiService.ShareToFeedRequest(1, caption, "PUBLIC"))
                 .enqueue(new Callback<Void>() {
                     @Override
@@ -162,7 +162,7 @@ public class ShareBottomSheetDialogFragment extends BottomSheetDialogFragment {
 
     // --- Gửi qua tin nhắn riêng ---
     private void shareToMessage(int receiverId, String messageText) {
-        ApiService apiService = ApiClient.getClient().create(ApiService.class);
+        ApiService apiService = ApiClient.getAuthenticatedClient(requireContext()).create(ApiService.class);
         ApiService.ShareToMessageRequest request = new ApiService.ShareToMessageRequest(1, Collections.singletonList(receiverId), messageText);
 
         apiService.sharePostToMessage(postId, request).enqueue(new Callback<Void>() {

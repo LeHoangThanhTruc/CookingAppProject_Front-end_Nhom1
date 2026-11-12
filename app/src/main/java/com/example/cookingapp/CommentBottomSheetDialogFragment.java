@@ -186,7 +186,7 @@ public class CommentBottomSheetDialogFragment extends BottomSheetDialogFragment 
             RequestBody requestFile = RequestBody.create(MediaType.parse(mimeType), bytes);
             MultipartBody.Part body = MultipartBody.Part.createFormData("file", fileName, requestFile);
 
-            ApiService apiService = ApiClient.getClient().create(ApiService.class);
+            ApiService apiService = ApiClient.getAuthenticatedClient(requireContext()).create(ApiService.class);
             apiService.uploadMedia(body).enqueue(new Callback<UploadResponse>() {
                 @Override
                 public void onResponse(Call<UploadResponse> call, Response<UploadResponse> response) {
@@ -211,7 +211,7 @@ public class CommentBottomSheetDialogFragment extends BottomSheetDialogFragment 
     // 2. CẬP NHẬT HÀM GỬI BÌNH LUẬN (HỖ TRỢ CẢ TẠO MỚI VÀ EDIT)
     private void sendCommentToBackend(String content, String mediaUrl, String mediaType) {
         btnSendComment.setEnabled(false);
-        ApiService apiService = ApiClient.getClient().create(ApiService.class);
+        ApiService apiService = ApiClient.getAuthenticatedClient(requireContext()).create(ApiService.class);
 
         // NẾU ĐANG TRONG CHẾ ĐỘ CHỈNH SỬA (EDIT)
         if (isEditMode && editingCommentId != -1) {
@@ -307,7 +307,7 @@ public class CommentBottomSheetDialogFragment extends BottomSheetDialogFragment 
 
     // 4. CHUYỂN HAM LOAD API THÀNH PUBLIC ĐỂ COMMENTADAPTER GỌI KHI XÓA SUCCESS
     public void loadCommentsFromApi() {
-        ApiService apiService = ApiClient.getClient().create(ApiService.class);
+        ApiService apiService = ApiClient.getAuthenticatedClient(requireContext()).create(ApiService.class);
         Call<CommentListResponse> call = isMediaComment ?
                 apiService.getMediaComments(targetId, 1) :
                 apiService.getComments(targetId, 1);
