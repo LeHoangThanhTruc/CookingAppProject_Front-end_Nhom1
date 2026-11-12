@@ -183,7 +183,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void loginUser(String identifier, String password) {
         btnDangNhap.setEnabled(false);
-        ApiService service = ApiClient.getClient().create(ApiService.class);
+        ApiService service = ApiClient.getAuthenticatedClient(this).create(ApiService.class);
         service.loginUser(new ApiService.LoginRequest(identifier, password))
                 .enqueue(new Callback<ApiService.AuthResponse>() {
                     @Override

@@ -103,7 +103,7 @@ public class RegisterActivity extends AppCompatActivity {
                 );
 
         btnRegister.setEnabled(false);
-        ApiService service = ApiClient.getClient().create(ApiService.class);
+        ApiService service = ApiClient.getAuthenticatedClient(this).create(ApiService.class);
         service.registerUser(request)
                 .enqueue(new Callback<ApiService.ApiResponse>() {
                     @Override

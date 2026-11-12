@@ -54,7 +54,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
                     return;
                 }
                 btnSubmitReset.setEnabled(false);
-                ApiClient.getClient().create(ApiService.class)
+                ApiClient.getAuthenticatedClient(this).create(ApiService.class)
                         .resetPassword(new ApiService.ResetPasswordRequest(resetToken, password))
                         .enqueue(new Callback<ApiService.ApiResponse>() {
                             @Override
