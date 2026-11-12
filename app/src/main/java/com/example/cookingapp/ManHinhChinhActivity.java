@@ -119,7 +119,7 @@ public class ManHinhChinhActivity extends AppCompatActivity implements OnComment
     }
 
     private void loadFeedFromBackend(String postType) {
-        ApiService apiService = ApiClient.getClient().create(ApiService.class);
+        ApiService apiService = ApiClient.getAuthenticatedClient(this).create(ApiService.class);
 
         apiService.getFeed(postType).enqueue(new Callback<FeedResponse>() {
             @Override
